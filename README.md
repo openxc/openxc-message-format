@@ -10,17 +10,13 @@ the abstract side of the interface.
 
 The expected format of a single valued message is:
 
-{% highlight javascript %}
-{"name": "steering_wheel_angle", "value": 45}
-{% endhighlight %}
+    {"name": "steering_wheel_angle", "value": 45}
 
 ## Evented
 
 The expected format of an event message is:
 
-{% highlight javascript %}
-{"name": "button_event", "value": "up", "event": "pressed"}
-{% endhighlight %}
+    {"name": "button_event", "value": "up", "event": "pressed"}
 
 This format is good for something like a button event, where there are two
 discrete pieces of information in the measurement.
