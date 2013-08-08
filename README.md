@@ -47,6 +47,9 @@ manufacturers may support custom message names.
 * transmission_gear_position
     * states: first, second, third, fourth, fifth, sixth, seventh, eighth,
       reverse, neutral
+* gear_lever_position
+    * states: neutral, park, reverse, drive, sport, low, first, second, third,
+      fourth, fifth, sixth
 * odometer
     * Numerical, km
 * ignition_status
