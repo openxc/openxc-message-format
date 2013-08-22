@@ -13,6 +13,7 @@ def sizeof_fmt(num):
             return "%3.1f%s" % (num, unit)
         num /= 1024.0
 
+total_raw_can_size = 0
 total_raw_json_size = 0
 total_raw_binary_size = 0
 total_translated_json_size = 0
@@ -26,6 +27,9 @@ for trace_file in sys.argv[1:]:
             continue
 
         if 'id' and 'data' in json_message:
+            # rough approx. that CAN messages are 10 bytes - they could be less
+            # but most of ours are full 64+11 bits
+            total_raw_can_size += 10
             total_raw_json_size += len(line)
             binary_message = openxc_pb2.RawMessage()
             binary_message.message_id = json_message['id']
@@ -45,6 +49,7 @@ for trace_file in sys.argv[1:]:
 
 
 print("For the %d trace files given..." % len(sys.argv[1:]))
+print("Total transferred raw CAN size is %s" % sizeof_fmt(total_raw_can_size))
 print("Total transferred raw JSON size is %s" % sizeof_fmt(total_raw_json_size))
 print("Total transferred raw binary size is %s" % sizeof_fmt(total_raw_binary_size))
 print("Total transferred translated JSON size is %s" %
@@ -57,9 +62,16 @@ print("Total transferred JSON size is %s" % sizeof_fmt(total_json_size))
 total_binary_size = total_raw_binary_size + total_translated_binary_size
 print("Total transferred binary size is %s" % sizeof_fmt(total_binary_size))
 
-print("Binary encoding is %f%% smaller than JSON for raw messages" % (
-        100 - (total_raw_binary_size / total_raw_json_size * 100)))
-print("Binary encoding is %f%% smaller than JSON for translated messages" % (
-        100 - (total_translated_binary_size / total_translated_json_size * 100)))
+if total_raw_can_size > 0:
+    print("Binary encoding adds %f%% overhead to raw CAN messages" % (
+            total_raw_binary_size / total_raw_can_size * 100 - 100))
+    print("JSON encoding adds %f%% overhead to raw CAN messages" % (
+            total_raw_json_size / total_raw_can_size * 100 - 100))
+if total_raw_json_size > 0:
+    print("Binary encoding is %f%% smaller than JSON for raw messages" % (
+            100 - (total_raw_binary_size / total_raw_json_size * 100)))
+if total_translated_json_size > 0:
+    print("Binary encoding is %f%% smaller than JSON for translated messages" % (
+            100 - (total_translated_binary_size / total_translated_json_size * 100)))
 print("Binary encoding is %f%% smaller than JSON overall" % (
         100 - (total_binary_size / total_json_size * 100)))
