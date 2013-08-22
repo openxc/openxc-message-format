@@ -19,3 +19,6 @@ message TranslatedBooleanMessage {
     optional string name = 1;
     optional bool value = 2;
 }
+
+// TODO we should also consider having an enum type, h aving each specific
+// message defined as a protobuf
