@@ -1,0 +1,21 @@
+package openxc;
+
+message RawMessage {
+    optional uint32 message_id = 1;
+    optional double data = 2;
+}
+
+message TranslatedStringMessage {
+    optional string name = 1;
+    optional string value = 2;
+}
+
+message TranslatedNumericMessage {
+    optional string name = 1;
+    optional double value = 2;
+}
+
+message TranslatedBooleanMessage {
+    optional string name = 1;
+    optional bool value = 2;
+}
