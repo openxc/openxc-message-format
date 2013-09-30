@@ -26,6 +26,8 @@ for trace_file in sys.argv[1:]:
         except ValueError:
             continue
 
+        message = openxc_pb2.VehicleMessage()
+
         if 'id' and 'data' in json_message:
             # rough approx. that CAN messages are 10 bytes - they could be less
             # but most of ours are full 64+11 bits
@@ -34,18 +36,24 @@ for trace_file in sys.argv[1:]:
             binary_message = openxc_pb2.RawMessage()
             binary_message.message_id = json_message['id']
             binary_message.data = int(json_message['data'], 0)
-            total_raw_binary_size += len(binary_message.SerializeToString())
+            message.type = openxc_pb2.VehicleMessage.RAW
+            message.raw_message = binary_message
+            total_raw_binary_size += len(message.SerializeToString())
         else:
             if isinstance(json_message['value'], bool):
-                binary_message = openxc_pb2.TranslatedBooleanMessage()
+                message.type = openxc_pb2.VehicleMessage.BOOL
+                message.boolean_message.name = json_message['name']
+                message.boolean_message.value = json_message['value']
             elif isinstance(json_message['value'], numbers.Number):
-                binary_message = openxc_pb2.TranslatedNumericMessage()
+                message.type = openxc_pb2.VehicleMessage.NUM
+                message.numerical_message.name = json_message['name']
+                message.numerical_message.value = json_message['value']
             else:
-                binary_message = openxc_pb2.TranslatedStringMessage()
-            binary_message.name = json_message['name']
-            binary_message.value = json_message['value']
+                message.type = openxc_pb2.VehicleMessage.STRING
+                message.string_message.name = json_message['name']
+                message.string_message.value = json_message['value']
             total_translated_json_size += len(line)
-            total_translated_binary_size += len(binary_message.SerializeToString())
+            total_translated_binary_size += len(message.SerializeToString())
 
 
 print("For the %d trace files given..." % len(sys.argv[1:]))
