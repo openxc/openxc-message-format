@@ -73,6 +73,22 @@ manufacturers may support custom message names.
 * longitude
     * numerical
 
+## Raw CAN Message format
+
+An OpenXC vehicle interface may also output raw CAN messages. Each CAN message
+is sent as a JSON object, separated by newlines. The format of each object is:
+
+    {"bus": 1, "id": 1234, "value": "0x12345678"}
+
+**bus** - the numerical identifier of the CAN bus where this message originated,
+  most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
+
+**id** - the CAN message ID
+
+**data** - up to 8 bytes of data from the CAN message's payload, represented as
+  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
+  integers, which is why we are not using a numerical data type.
+
 License
 =======
 
