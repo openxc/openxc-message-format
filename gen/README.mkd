@@ -1,0 +1,11 @@
+Generated Files
+================
+
+This directory holds generated implementation files for the Protocol Buffer
+objects defined in openxc.proto. The definitions don't change very often, and so
+it makes more sense to keep a compiled version in the repository for each
+major build environment rather than requiring each developer to get the protobuf
+dependencies.
+
+I've also not found a good way to incorporate protobuf generation with our
+Makefile build system in the openxc/vi-firmware project.
