@@ -1,0 +1,2 @@
+# TODO this isn't working yet, so I'm defining it for everything in the Makefile
+openxc_TranslatedNumericMessage.name max_size:100
