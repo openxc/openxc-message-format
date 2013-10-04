@@ -1,30 +1,25 @@
 
-Å
-openxc.protoopenxc"Å
+Â
+openxc.protoopenxc"¼
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
-raw_message (2.openxc.RawMessage7
-string_message (2.openxc.TranslatedStringMessage;
-numerical_message (2 .openxc.TranslatedNumericMessage9
-boolean_message (2 .openxc.TranslatedBooleanMessage".
+raw_message (2.openxc.RawMessage5
+translated_message (2.openxc.TranslatedMessage"
 Type
-RAW
+RAW
 
-STRING
-NUM
-BOOL";
+TRANSLATED";
 
 RawMessage
 bus (
 
 message_id (
-data ("6
-TranslatedStringMessage
-name (	
-value (	"7
-TranslatedNumericMessage
-name (	
-value ("7
-TranslatedBooleanMessage
-name (	
-value (
+data ("­
+TranslatedMessage
+name (	
+string_value (	
+numerical_value (
+boolean_value (
+string_event (	
+numerical_event (
+boolean_event (
