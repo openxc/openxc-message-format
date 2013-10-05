@@ -902,13 +902,13 @@ public final class Openxc {
      */
     int getMessageId();
 
-    // optional sint64 data = 3;
+    // optional uint64 data = 3;
     /**
-     * <code>optional sint64 data = 3;</code>
+     * <code>optional uint64 data = 3;</code>
      */
     boolean hasData();
     /**
-     * <code>optional sint64 data = 3;</code>
+     * <code>optional uint64 data = 3;</code>
      */
     long getData();
   }
@@ -975,7 +975,7 @@ public final class Openxc {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              data_ = input.readSInt64();
+              data_ = input.readUInt64();
               break;
             }
           }
@@ -1050,17 +1050,17 @@ public final class Openxc {
       return messageId_;
     }
 
-    // optional sint64 data = 3;
+    // optional uint64 data = 3;
     public static final int DATA_FIELD_NUMBER = 3;
     private long data_;
     /**
-     * <code>optional sint64 data = 3;</code>
+     * <code>optional uint64 data = 3;</code>
      */
     public boolean hasData() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional sint64 data = 3;</code>
+     * <code>optional uint64 data = 3;</code>
      */
     public long getData() {
       return data_;
@@ -1090,7 +1090,7 @@ public final class Openxc {
         output.writeUInt32(2, messageId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeSInt64(3, data_);
+        output.writeUInt64(3, data_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1111,7 +1111,7 @@ public final class Openxc {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(3, data_);
+          .computeUInt64Size(3, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1393,22 +1393,22 @@ public final class Openxc {
         return this;
       }
 
-      // optional sint64 data = 3;
+      // optional uint64 data = 3;
       private long data_ ;
       /**
-       * <code>optional sint64 data = 3;</code>
+       * <code>optional uint64 data = 3;</code>
        */
       public boolean hasData() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional sint64 data = 3;</code>
+       * <code>optional uint64 data = 3;</code>
        */
       public long getData() {
         return data_;
       }
       /**
-       * <code>optional sint64 data = 3;</code>
+       * <code>optional uint64 data = 3;</code>
        */
       public Builder setData(long value) {
         bitField0_ |= 0x00000004;
@@ -1417,7 +1417,7 @@ public final class Openxc {
         return this;
       }
       /**
-       * <code>optional sint64 data = 3;</code>
+       * <code>optional uint64 data = 3;</code>
        */
       public Builder clearData() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -2574,7 +2574,7 @@ public final class Openxc {
       "ssage\0225\n\022translated_message\030\003 \001(\0132\031.open" +
       "xc.TranslatedMessage\"\037\n\004Type\022\007\n\003RAW\020\001\022\016\n" +
       "\nTRANSLATED\020\002\";\n\nRawMessage\022\013\n\003bus\030\001 \001(\005" +
-      "\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004data\030\003 \001(\022\"\255\001\n\021T" +
+      "\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004data\030\003 \001(\004\"\255\001\n\021T" +
       "ranslatedMessage\022\014\n\004name\030\001 \001(\t\022\024\n\014string" +
       "_value\030\002 \001(\t\022\027\n\017numerical_value\030\003 \001(\001\022\025\n" +
       "\rboolean_value\030\004 \001(\010\022\024\n\014string_event\030\005 \001",
