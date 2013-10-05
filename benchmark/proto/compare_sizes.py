@@ -40,18 +40,14 @@ for trace_file in sys.argv[1:]:
             message.raw_message = binary_message
             total_raw_binary_size += len(message.SerializeToString())
         else:
+            message.type = openxc_pb2.VehicleMessage.TRANSLATED
+            message.translated_message.name = json_message['name']
             if isinstance(json_message['value'], bool):
-                message.type = openxc_pb2.VehicleMessage.BOOL
-                message.boolean_message.name = json_message['name']
-                message.boolean_message.value = json_message['value']
+                message.translated_message.boolean_value = json_message['value']
             elif isinstance(json_message['value'], numbers.Number):
-                message.type = openxc_pb2.VehicleMessage.NUM
-                message.numerical_message.name = json_message['name']
-                message.numerical_message.value = json_message['value']
+                message.translated_message.numerical_value = json_message['value']
             else:
-                message.type = openxc_pb2.VehicleMessage.STRING
-                message.string_message.name = json_message['name']
-                message.string_message.value = json_message['value']
+                message.translated_message.string_value = json_message['value']
             total_translated_json_size += len(line)
             total_translated_binary_size += len(message.SerializeToString())
 
