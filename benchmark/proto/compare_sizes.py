@@ -26,13 +26,15 @@ for trace_file in sys.argv[1:]:
         except ValueError:
             continue
 
+        del json_message['timestamp']
+
         message = openxc_pb2.VehicleMessage()
 
         if 'id' and 'data' in json_message:
             # rough approx. that CAN messages are 10 bytes - they could be less
             # but most of ours are full 64+11 bits
             total_raw_can_size += 10
-            total_raw_json_size += len(line)
+            total_raw_json_size += len(json.dumps(json_message))
             binary_message = openxc_pb2.RawMessage()
             binary_message.message_id = json_message['id']
             binary_message.data = int(json_message['data'], 0)
@@ -48,7 +50,7 @@ for trace_file in sys.argv[1:]:
                 message.translated_message.numerical_value = json_message['value']
             else:
                 message.translated_message.string_value = json_message['value']
-            total_translated_json_size += len(line)
+            total_translated_json_size += len(json.dumps(json_message))
             total_translated_binary_size += len(message.SerializeToString())
 
 
