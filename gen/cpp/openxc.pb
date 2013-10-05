@@ -14,7 +14,7 @@ RawMessage
 bus (
 
 message_id (
-data ("­
+data ("­
 TranslatedMessage
 name (	
 string_value (	

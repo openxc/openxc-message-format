@@ -35,11 +35,9 @@ for trace_file in sys.argv[1:]:
             # but most of ours are full 64+11 bits
             total_raw_can_size += 10
             total_raw_json_size += len(json.dumps(json_message))
-            binary_message = openxc_pb2.RawMessage()
-            binary_message.message_id = json_message['id']
-            binary_message.data = int(json_message['data'], 0)
             message.type = openxc_pb2.VehicleMessage.RAW
-            message.raw_message = binary_message
+            message.raw_message.message_id = json_message['id']
+            message.raw_message.data = int(json_message['data'], 0)
             total_raw_binary_size += len(message.SerializeToString())
         else:
             message.type = openxc_pb2.VehicleMessage.TRANSLATED

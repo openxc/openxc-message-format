@@ -12,7 +12,7 @@ message VehicleMessage {
 message RawMessage {
     optional int32 bus = 1;
     optional uint32 message_id = 2;
-    optional sint64 data = 3;
+    optional uint64 data = 3;
 }
 
 message TranslatedMessage {
