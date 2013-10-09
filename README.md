@@ -32,46 +32,68 @@ These signal names are a part of the OpenXC specification, although some
 manufacturers may support custom message names.
 
 * steering_wheel_angle
-    * numerical, degrees
+    * numerical, -600 to +600 degrees
+    * 10Hz
 * torque_at_transmission
-    * numerical, Nm
+    * numerical, -500 to 1500 Nm
+    * 10Hz
 * engine_speed
-    * numerical, RPM
-* vehicle_speed, numerical, Kph
+    * numerical, 0 to 16382 RPM
+    * 10Hz
+* vehicle_speed
+    * numerical, 0 to 655 km/h (this will be positive even if going in reverse
+      as it's not a velocity, although you can use the gear status to figure out
+      direction)
+    * 10Hz
 * accelerator_pedal_position
     * percentage
+    * 10Hz
 * parking_brake_status
     * boolean, (true == brake engaged)
+    * 1Hz, but sent immediately on change
 * brake_pedal_status
     * boolean (True == pedal pressed)
+    * 1Hz, but sent immediately on change
 * transmission_gear_position
     * states: first, second, third, fourth, fifth, sixth, seventh, eighth,
       reverse, neutral
+    * 1Hz, but sent immediately on change
 * gear_lever_position
     * states: neutral, park, reverse, drive, sport, low, first, second, third,
       fourth, fifth, sixth
 * odometer
     * Numerical, km
+        0 to 16777214.000 km, with about .2m resolution
+    * 10Hz
 * ignition_status
     * states: off, accessory, run, start
+    * 1Hz, but sent immediately on change
 * fuel_level
     * percentage
+    * 2Hz
 * fuel_consumed_since_restart
-    * numerical, liters (goes to 0 every time the
-  vehicle interfaces power cycles)
+    * numerical, 0 - 4294967295.0 L (this goes to 0 every time the vehicle
+      restarts, like a trip meter)
+    * 10Hz
 * door_status
     * Value is State: driver, passenger, rear_left, rear_right.
     * Event is boolean: true == ajar
+    * 1Hz, but sent immediately on change
 * headlamp_status
     * boolean, true is on
+    * 1Hz, but sent immediately on change
 * high_beam_status
     * boolean, true is on
+    * 1Hz, but sent immediately on change
 * windshield_wiper_status
     * boolean, true is on
+    * 1Hz, but sent immediately on change
 * latitude
-    * numerical
+    * numerical, -89.0 to 89.0 degrees with standard GPS accuracy
+    * 1Hz
 * longitude
-    * numerical
+    * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
+    * 1Hz
 
 ## Raw CAN Message format
 
