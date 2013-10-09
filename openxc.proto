@@ -1,5 +1,8 @@
 package openxc;
 
+option java_package = "com.openxc";
+option java_outer_classname = "BinaryMessages";
+
 message VehicleMessage {
     enum Type { RAW = 1; TRANSLATED = 2; }
 

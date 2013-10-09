@@ -1,5 +1,5 @@
 
-Â
+à
 openxc.protoopenxc"¼
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -22,4 +22,6 @@ message_id (
 boolean_value (
 string_event (	
 numerical_event (
-boolean_event (
+boolean_event (B
+
+com.openxcBBinaryMessages
