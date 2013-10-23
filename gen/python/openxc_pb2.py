@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='openxc.proto',
   package='openxc',
-  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\x9a\x04\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12-\n\x0estring_message\x18\x03 \x01(\x0b\x32\x15.openxc.StringMessage\x12/\n\x0fnumeric_message\x18\x04 \x01(\x0b\x32\x16.openxc.NumericMessage\x12/\n\x0f\x62oolean_message\x18\x05 \x01(\x0b\x32\x16.openxc.BooleanMessage\x12<\n\x16\x65vented_string_message\x18\x06 \x01(\x0b\x32\x1c.openxc.EventedStringMessage\x12>\n\x17\x65vented_boolean_message\x18\x07 \x01(\x0b\x32\x1d.openxc.EventedBooleanMessage\x12>\n\x17\x65vented_numeric_message\x18\x08 \x01(\x0b\x32\x1d.openxc.EventedNumericMessage\"e\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\n\n\x06STRING\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\x12\x07\n\x03NUM\x10\x04\x12\x0f\n\x0b\x45VENTED_NUM\x10\x05\x12\x12\n\x0e\x45VENTED_STRING\x10\x06\x12\x10\n\x0c\x45VENTED_BOOL\x10\x07\"-\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\",\n\rStringMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"-\n\x0eNumericMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01\"-\n\x0e\x42ooleanMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08\"B\n\x14\x45ventedStringMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\t\"C\n\x15\x45ventedBooleanMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\x08\"C\n\x15\x45ventedNumericMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\x01\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
+  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\x9a\x04\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12-\n\x0estring_message\x18\x03 \x01(\x0b\x32\x15.openxc.StringMessage\x12/\n\x0fnumeric_message\x18\x04 \x01(\x0b\x32\x16.openxc.NumericMessage\x12/\n\x0f\x62oolean_message\x18\x05 \x01(\x0b\x32\x16.openxc.BooleanMessage\x12<\n\x16\x65vented_string_message\x18\x06 \x01(\x0b\x32\x1c.openxc.EventedStringMessage\x12>\n\x17\x65vented_boolean_message\x18\x07 \x01(\x0b\x32\x1d.openxc.EventedBooleanMessage\x12>\n\x17\x65vented_numeric_message\x18\x08 \x01(\x0b\x32\x1d.openxc.EventedNumericMessage\"e\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\n\n\x06STRING\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\x12\x07\n\x03NUM\x10\x04\x12\x0f\n\x0b\x45VENTED_NUM\x10\x05\x12\x12\n\x0e\x45VENTED_STRING\x10\x06\x12\x10\n\x0c\x45VENTED_BOOL\x10\x07\";\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x04\",\n\rStringMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"-\n\x0eNumericMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01\"-\n\x0e\x42ooleanMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08\"B\n\x14\x45ventedStringMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\t\"C\n\x15\x45ventedBooleanMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\x08\"C\n\x15\x45ventedNumericMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12\r\n\x05\x65vent\x18\x03 \x01(\x01\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
 
 
 
@@ -158,6 +158,13 @@ _RAWMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='openxc.RawMessage.data', index=2,
+      number=3, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -168,7 +175,7 @@ _RAWMESSAGE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=565,
-  serialized_end=610,
+  serialized_end=624,
 )
 
 
@@ -202,8 +209,8 @@ _STRINGMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=612,
-  serialized_end=656,
+  serialized_start=626,
+  serialized_end=670,
 )
 
 
@@ -237,8 +244,8 @@ _NUMERICMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=658,
-  serialized_end=703,
+  serialized_start=672,
+  serialized_end=717,
 )
 
 
@@ -272,8 +279,8 @@ _BOOLEANMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=705,
-  serialized_end=750,
+  serialized_start=719,
+  serialized_end=764,
 )
 
 
@@ -314,8 +321,8 @@ _EVENTEDSTRINGMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=752,
-  serialized_end=818,
+  serialized_start=766,
+  serialized_end=832,
 )
 
 
@@ -356,8 +363,8 @@ _EVENTEDBOOLEANMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=820,
-  serialized_end=887,
+  serialized_start=834,
+  serialized_end=901,
 )
 
 
@@ -398,8 +405,8 @@ _EVENTEDNUMERICMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=889,
-  serialized_end=956,
+  serialized_start=903,
+  serialized_end=970,
 )
 
 _VEHICLEMESSAGE.fields_by_name['type'].enum_type = _VEHICLEMESSAGE_TYPE
