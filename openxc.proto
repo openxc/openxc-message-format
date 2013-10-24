@@ -4,62 +4,30 @@ option java_package = "com.openxc";
 option java_outer_classname = "BinaryMessages";
 
 message VehicleMessage {
-    enum Type { RAW = 1;
-        STRING = 2;
-        BOOL = 3;
-        NUM = 4;
-        EVENTED_NUM = 5;
-        EVENTED_STRING = 6;
-        EVENTED_BOOL = 7;
-    }
+    enum Type { RAW = 1; TRANSLATED = 2; }
 
     optional Type type = 1;
 
     optional RawMessage raw_message = 2;
-    optional StringMessage string_message = 3;
-    optional NumericMessage numeric_message = 4;
-    optional BooleanMessage boolean_message = 5;
-    optional EventedStringMessage evented_string_message = 6;
-    optional EventedBooleanMessage evented_boolean_message = 7;
-    optional EventedNumericMessage evented_numeric_message = 8;
+    optional TranslatedMessage translated_message = 3;
 }
 
 message RawMessage {
     optional int32 bus = 1;
     optional uint32 message_id = 2;
+    optional uint64 data = 3;
 }
 
-message StringMessage {
+message TranslatedMessage {
     optional string name = 1;
-    optional string value = 2;
-}
 
-message NumericMessage {
-    optional string name = 1;
-    optional double value = 2;
-}
+    optional string string_value = 2;
+    optional double numerical_value = 3;
+    optional bool boolean_value = 4;
 
-message BooleanMessage {
-    optional string name = 1;
-    optional bool value = 2;
-}
-
-message EventedStringMessage {
-    optional string name = 1;
-    optional string value = 2;
-    optional string event = 3;
-}
-
-message EventedBooleanMessage {
-    optional string name = 1;
-    optional string value = 2;
-    optional bool event = 3;
-}
-
-message EventedNumericMessage {
-    optional string name = 1;
-    optional string value = 2;
-    optional double event = 3;
+    optional string string_event = 5;
+    optional double numerical_event = 6;
+    optional bool boolean_event = 7;
 }
 
 // TODO we should also consider having an enum type, having each specific

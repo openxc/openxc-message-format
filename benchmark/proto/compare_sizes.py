@@ -40,35 +40,14 @@ for trace_file in sys.argv[1:]:
             message.raw_message.data = int(json_message['data'], 0)
             total_raw_binary_size += len(message.SerializeToString())
         else:
-            if 'event' in json_message:
-                if isinstance(json_message['event'], bool):
-                    message.type = openxc_pb2.VehicleMessage.EVENTED_BOOL
-                    message.evented_boolean_message.name = json_message['name']
-                    message.evented_boolean_message.value = json_message['value']
-                    message.evented_boolean_message.event = json_message['event']
-                elif isinstance(json_message['event'], numbers.Number):
-                    message.type = openxc_pb2.VehicleMessage.EVENTED_NUM
-                    message.evented_numeric_message.name = json_message['name']
-                    message.evented_numeric_message.value = json_message['value']
-                    message.evented_numeric_message.event = json_message['event']
-                else:
-                    message.type = openxc_pb2.VehicleMessage.EVENTED_STRING
-                    message.evented_string_message.name = json_message['name']
-                    message.evented_string_message.value = json_message['value']
-                    message.evented_numeric_message.event = json_message['event']
+            message.type = openxc_pb2.VehicleMessage.TRANSLATED
+            message.translated_message.name = json_message['name']
+            if isinstance(json_message['value'], bool):
+                message.translated_message.boolean_value = json_message['value']
+            elif isinstance(json_message['value'], numbers.Number):
+                message.translated_message.numerical_value = json_message['value']
             else:
-                if isinstance(json_message['value'], bool):
-                    message.type = openxc_pb2.VehicleMessage.BOOL
-                    message.boolean_message.name = json_message['name']
-                    message.boolean_message.value = json_message['value']
-                elif isinstance(json_message['value'], numbers.Number):
-                    message.type = openxc_pb2.VehicleMessage.NUM
-                    message.numeric_message.name = json_message['name']
-                    message.numeric_message.value = json_message['value']
-                else:
-                    message.type = openxc_pb2.VehicleMessage.STRING
-                    message.string_message.name = json_message['name']
-                    message.string_message.value = json_message['value']
+                message.translated_message.string_value = json_message['value']
             total_translated_json_size += len(json.dumps(json_message))
             total_translated_binary_size += len(message.SerializeToString())
 
