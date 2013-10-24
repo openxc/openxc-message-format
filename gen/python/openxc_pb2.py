@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='openxc.proto',
   package='openxc',
-  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\xbc\x01\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12\x35\n\x12translated_message\x18\x03 \x01(\x0b\x32\x19.openxc.TranslatedMessage\"\x1f\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\x0e\n\nTRANSLATED\x10\x02\";\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x04\"\xad\x01\n\x11TranslatedMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cstring_value\x18\x02 \x01(\t\x12\x17\n\x0fnumerical_value\x18\x03 \x01(\x01\x12\x15\n\rboolean_value\x18\x04 \x01(\x08\x12\x14\n\x0cstring_event\x18\x05 \x01(\t\x12\x17\n\x0fnumerical_event\x18\x06 \x01(\x01\x12\x15\n\rboolean_event\x18\x07 \x01(\x08\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
+  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\xbc\x01\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12\x35\n\x12translated_message\x18\x03 \x01(\x0b\x32\x19.openxc.TranslatedMessage\"\x1f\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\x0e\n\nTRANSLATED\x10\x02\";\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x04\"\xb5\x02\n\x11TranslatedMessage\x12,\n\x04type\x18\x01 \x01(\x0e\x32\x1e.openxc.TranslatedMessage.Type\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cstring_value\x18\x03 \x01(\t\x12\x15\n\rnumeric_value\x18\x04 \x01(\x01\x12\x15\n\rboolean_value\x18\x05 \x01(\x08\x12\x14\n\x0cstring_event\x18\x06 \x01(\t\x12\x15\n\rnumeric_event\x18\x07 \x01(\x01\x12\x15\n\rboolean_event\x18\x08 \x01(\x08\"\\\n\x04Type\x12\n\n\x06STRING\x10\x01\x12\x07\n\x03NUM\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\x12\x12\n\x0e\x45VENTED_STRING\x10\x04\x12\x0f\n\x0b\x45VENTED_NUM\x10\x05\x12\x10\n\x0c\x45VENTED_BOOL\x10\x06\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
 
 
 
@@ -36,6 +36,43 @@ _VEHICLEMESSAGE_TYPE = _descriptor.EnumDescriptor(
   options=None,
   serialized_start=182,
   serialized_end=213,
+)
+
+_TRANSLATEDMESSAGE_TYPE = _descriptor.EnumDescriptor(
+  name='Type',
+  full_name='openxc.TranslatedMessage.Type',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STRING', index=0, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NUM', index=1, number=2,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='BOOL', index=2, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EVENTED_STRING', index=3, number=4,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EVENTED_NUM', index=4, number=5,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='EVENTED_BOOL', index=5, number=6,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=494,
+  serialized_end=586,
 )
 
 
@@ -132,50 +169,57 @@ _TRANSLATEDMESSAGE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='openxc.TranslatedMessage.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
+      name='type', full_name='openxc.TranslatedMessage.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='string_value', full_name='openxc.TranslatedMessage.string_value', index=1,
+      name='name', full_name='openxc.TranslatedMessage.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='numerical_value', full_name='openxc.TranslatedMessage.numerical_value', index=2,
-      number=3, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='boolean_value', full_name='openxc.TranslatedMessage.boolean_value', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='string_event', full_name='openxc.TranslatedMessage.string_event', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='string_value', full_name='openxc.TranslatedMessage.string_value', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='numerical_event', full_name='openxc.TranslatedMessage.numerical_event', index=5,
-      number=6, type=1, cpp_type=5, label=1,
+      name='numeric_value', full_name='openxc.TranslatedMessage.numeric_value', index=3,
+      number=4, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='boolean_event', full_name='openxc.TranslatedMessage.boolean_event', index=6,
-      number=7, type=8, cpp_type=7, label=1,
+      name='boolean_value', full_name='openxc.TranslatedMessage.boolean_value', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='string_event', full_name='openxc.TranslatedMessage.string_event', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='numeric_event', full_name='openxc.TranslatedMessage.numeric_event', index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='boolean_event', full_name='openxc.TranslatedMessage.boolean_event', index=7,
+      number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -185,18 +229,21 @@ _TRANSLATEDMESSAGE = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _TRANSLATEDMESSAGE_TYPE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
   serialized_start=277,
-  serialized_end=450,
+  serialized_end=586,
 )
 
 _VEHICLEMESSAGE.fields_by_name['type'].enum_type = _VEHICLEMESSAGE_TYPE
 _VEHICLEMESSAGE.fields_by_name['raw_message'].message_type = _RAWMESSAGE
 _VEHICLEMESSAGE.fields_by_name['translated_message'].message_type = _TRANSLATEDMESSAGE
 _VEHICLEMESSAGE_TYPE.containing_type = _VEHICLEMESSAGE;
+_TRANSLATEDMESSAGE.fields_by_name['type'].enum_type = _TRANSLATEDMESSAGE_TYPE
+_TRANSLATEDMESSAGE_TYPE.containing_type = _TRANSLATEDMESSAGE;
 DESCRIPTOR.message_types_by_name['VehicleMessage'] = _VEHICLEMESSAGE
 DESCRIPTOR.message_types_by_name['RawMessage'] = _RAWMESSAGE
 DESCRIPTOR.message_types_by_name['TranslatedMessage'] = _TRANSLATEDMESSAGE

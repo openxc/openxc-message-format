@@ -1,5 +1,5 @@
 
-à
+è
 openxc.protoopenxc"¼
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -14,14 +14,23 @@ RawMessage
 bus (
 
 message_id (
-data ("­
-TranslatedMessage
-name (	
-string_value (	
-numerical_value (
-boolean_value (
-string_event (	
-numerical_event (
-boolean_event (B
+data ("µ
+TranslatedMessage,
+type (2.openxc.TranslatedMessage.Type
+name (	
+string_value (	
+numeric_value (
+boolean_value (
+string_event (	
+numeric_event (
+boolean_event ("\
+Type
+
+STRING
+NUM
+BOOL
+EVENTED_STRING
+EVENTED_NUM
+EVENTED_BOOLB
 
 com.openxcBBinaryMessages
