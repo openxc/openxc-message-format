@@ -42,12 +42,27 @@ for trace_file in sys.argv[1:]:
         else:
             message.type = openxc_pb2.VehicleMessage.TRANSLATED
             message.translated_message.name = json_message['name']
-            if isinstance(json_message['value'], bool):
-                message.translated_message.boolean_value = json_message['value']
-            elif isinstance(json_message['value'], numbers.Number):
-                message.translated_message.numerical_value = json_message['value']
-            else:
+            if 'event' in json_message:
                 message.translated_message.string_value = json_message['value']
+                if isinstance(json_message['event'], bool):
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.EVENTED_BOOL
+                    message.translated_message.boolean_event = json_message['event']
+                elif isinstance(json_message['event'], numbers.Number):
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.EVENTED_NUM
+                    message.translated_message.numeric_value = json_message['event']
+                else:
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.EVENTED_STRING
+                    message.translated_message.string_value = json_message['event']
+            else:
+                if isinstance(json_message['value'], bool):
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.BOOL
+                    message.translated_message.boolean_value = json_message['value']
+                elif isinstance(json_message['value'], numbers.Number):
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.NUM
+                    message.translated_message.numeric_value = json_message['value']
+                else:
+                    message.translated_message.type = openxc_pb2.TranslatedMessage.STRING
+                    message.translated_message.string_value = json_message['value']
             total_translated_json_size += len(json.dumps(json_message))
             total_translated_binary_size += len(message.SerializeToString())
 

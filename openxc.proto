@@ -7,7 +7,6 @@ message VehicleMessage {
     enum Type { RAW = 1; TRANSLATED = 2; }
 
     optional Type type = 1;
-
     optional RawMessage raw_message = 2;
     optional TranslatedMessage translated_message = 3;
 }
@@ -19,15 +18,19 @@ message RawMessage {
 }
 
 message TranslatedMessage {
-    optional string name = 1;
+    enum Type { STRING = 1; NUM = 2; BOOL = 3;
+        EVENTED_STRING = 4; EVENTED_NUM = 5; EVENTED_BOOL = 6;}
 
-    optional string string_value = 2;
-    optional double numerical_value = 3;
-    optional bool boolean_value = 4;
+    optional Type type = 1;
+    optional string name = 2;
 
-    optional string string_event = 5;
-    optional double numerical_event = 6;
-    optional bool boolean_event = 7;
+    optional string string_value = 3;
+    optional double numeric_value = 4;
+    optional bool boolean_value = 5;
+
+    optional string string_event = 6;
+    optional double numeric_event = 7;
+    optional bool boolean_event = 8;
 }
 
 // TODO we should also consider having an enum type, having each specific
