@@ -1,5 +1,5 @@
 
-è
+Ú
 openxc.protoopenxc"š
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -18,13 +18,12 @@
 NUM
 EVENTED_NUM
 EVENTED_STRING
-EVENTED_BOOL";
+EVENTED_BOOL"-
 
 RawMessage
 bus (
 
-message_id (
-data (",
+message_id (",
 StringMessage
 name (	
 value (	"-

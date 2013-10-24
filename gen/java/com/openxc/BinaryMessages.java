@@ -1906,16 +1906,6 @@ public final class BinaryMessages {
      * <code>optional uint32 message_id = 2;</code>
      */
     int getMessageId();
-
-    // optional uint64 data = 3;
-    /**
-     * <code>optional uint64 data = 3;</code>
-     */
-    boolean hasData();
-    /**
-     * <code>optional uint64 data = 3;</code>
-     */
-    long getData();
   }
   /**
    * Protobuf type {@code openxc.RawMessage}
@@ -1976,11 +1966,6 @@ public final class BinaryMessages {
             case 16: {
               bitField0_ |= 0x00000002;
               messageId_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              data_ = input.readUInt64();
               break;
             }
           }
@@ -2055,26 +2040,9 @@ public final class BinaryMessages {
       return messageId_;
     }
 
-    // optional uint64 data = 3;
-    public static final int DATA_FIELD_NUMBER = 3;
-    private long data_;
-    /**
-     * <code>optional uint64 data = 3;</code>
-     */
-    public boolean hasData() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint64 data = 3;</code>
-     */
-    public long getData() {
-      return data_;
-    }
-
     private void initFields() {
       bus_ = 0;
       messageId_ = 0;
-      data_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2094,9 +2062,6 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(2, messageId_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, data_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2113,10 +2078,6 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, messageId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2238,8 +2199,6 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000001);
         messageId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        data_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2276,10 +2235,6 @@ public final class BinaryMessages {
           to_bitField0_ |= 0x00000002;
         }
         result.messageId_ = messageId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.data_ = data_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2301,9 +2256,6 @@ public final class BinaryMessages {
         }
         if (other.hasMessageId()) {
           setMessageId(other.getMessageId());
-        }
-        if (other.hasData()) {
-          setData(other.getData());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2394,39 +2346,6 @@ public final class BinaryMessages {
       public Builder clearMessageId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         messageId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint64 data = 3;
-      private long data_ ;
-      /**
-       * <code>optional uint64 data = 3;</code>
-       */
-      public boolean hasData() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint64 data = 3;</code>
-       */
-      public long getData() {
-        return data_;
-      }
-      /**
-       * <code>optional uint64 data = 3;</code>
-       */
-      public Builder setData(long value) {
-        bitField0_ |= 0x00000004;
-        data_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint64 data = 3;</code>
-       */
-      public Builder clearData() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        data_ = 0L;
         onChanged();
         return this;
       }
@@ -6435,17 +6354,17 @@ public final class BinaryMessages {
       "ventedNumericMessage\"e\n\004Type\022\007\n\003RAW\020\001\022\n\n" +
       "\006STRING\020\002\022\010\n\004BOOL\020\003\022\007\n\003NUM\020\004\022\017\n\013EVENTED_" +
       "NUM\020\005\022\022\n\016EVENTED_STRING\020\006\022\020\n\014EVENTED_BOO" +
-      "L\020\007\";\n\nRawMessage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
-      "e_id\030\002 \001(\r\022\014\n\004data\030\003 \001(\004\",\n\rStringMessag" +
-      "e\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"-\n\016Numeri" +
-      "cMessage\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\"-\n" +
-      "\016BooleanMessage\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002" +
-      " \001(\010\"B\n\024EventedStringMessage\022\014\n\004name\030\001 \001",
-      "(\t\022\r\n\005value\030\002 \001(\t\022\r\n\005event\030\003 \001(\t\"C\n\025Even" +
-      "tedBooleanMessage\022\014\n\004name\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\t\022\r\n\005event\030\003 \001(\010\"C\n\025EventedNumericM" +
-      "essage\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022\r\n\005e" +
-      "vent\030\003 \001(\001B\034\n\ncom.openxcB\016BinaryMessages"
+      "L\020\007\"-\n\nRawMessage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
+      "e_id\030\002 \001(\r\",\n\rStringMessage\022\014\n\004name\030\001 \001(" +
+      "\t\022\r\n\005value\030\002 \001(\t\"-\n\016NumericMessage\022\014\n\004na" +
+      "me\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\"-\n\016BooleanMessag" +
+      "e\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\010\"B\n\024Evente" +
+      "dStringMessage\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 ",
+      "\001(\t\022\r\n\005event\030\003 \001(\t\"C\n\025EventedBooleanMess" +
+      "age\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022\r\n\005even" +
+      "t\030\003 \001(\010\"C\n\025EventedNumericMessage\022\014\n\004name" +
+      "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022\r\n\005event\030\003 \001(\001B\034\n\n" +
+      "com.openxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6463,7 +6382,7 @@ public final class BinaryMessages {
           internal_static_openxc_RawMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_RawMessage_descriptor,
-              new java.lang.String[] { "Bus", "MessageId", "Data", });
+              new java.lang.String[] { "Bus", "MessageId", });
           internal_static_openxc_StringMessage_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_openxc_StringMessage_fieldAccessorTable = new
