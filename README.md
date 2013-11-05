@@ -61,6 +61,7 @@ manufacturers may support custom message names.
 * gear_lever_position
     * states: neutral, park, reverse, drive, sport, low, first, second, third,
       fourth, fifth, sixth
+    * 1Hz, but sent immediately on change
 * odometer
     * Numerical, km
         0 to 16777214.000 km, with about .2m resolution
