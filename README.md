@@ -26,6 +26,52 @@ The expected format of an event message is:
 This format is good for something like a button event, where there are two
 discrete pieces of information in the measurement.
 
+## Raw CAN Message format
+
+An OpenXC vehicle interface may also output raw CAN messages. Each CAN message
+is sent as a JSON object, separated by newlines. The format of each object is:
+
+    {"bus": 1, "id": 1234, "value": "0x12345678"}
+
+**bus** - the numerical identifier of the CAN bus where this message originated,
+  most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
+
+**id** - the CAN message ID
+
+**data** - up to 8 bytes of data from the CAN message's payload, represented as
+  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
+  integers, which is why we are not using a numerical data type.
+
+## Trace File Format
+
+An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
+separated by newlines.
+
+The first line may be a metadata object, although this is optional:
+
+```
+{"metadata": {
+    "version": "v3.0",
+    "vehicle_interface_id": "7ABF",
+    "vehicle": {
+        "make": "Ford",
+        "model": "Mustang",
+        "trim": "V6 Premium",
+        "year": 2013
+    },
+    "description": "highway drive to work",
+    "driver_name": "TJ Giuli",
+    "vehicle_id": "17N1039247929"
+}
+```
+
+The following lines are OpenXC messages with a `timestamp` field added, e.g.:
+
+    {"timestamp": 1385133351.285525, "name": "steering_wheel_angle", "value": 45}
+
+The timestamp is in [UNIX time](http://en.wikipedia.org/wiki/Unix_time)
+(i.e. seconds since the UNIX epoch, 00:00:00 UTC, 1/1/1970).
+
 ## Official Signals
 
 These signal names are a part of the OpenXC specification, although some
@@ -95,22 +141,6 @@ manufacturers may support custom message names.
 * longitude
     * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
     * 1Hz
-
-## Raw CAN Message format
-
-An OpenXC vehicle interface may also output raw CAN messages. Each CAN message
-is sent as a JSON object, separated by newlines. The format of each object is:
-
-    {"bus": 1, "id": 1234, "value": "0x12345678"}
-
-**bus** - the numerical identifier of the CAN bus where this message originated,
-  most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
-
-**id** - the CAN message ID
-
-**data** - up to 8 bytes of data from the CAN message's payload, represented as
-  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
-  integers, which is why we are not using a numerical data type.
 
 License
 =======
