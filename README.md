@@ -42,6 +42,81 @@ is sent as a JSON object, separated by newlines. The format of each object is:
   a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
   integers, which is why we are not using a numerical data type.
 
+## Diagnostic Messages
+
+### Requests
+
+    {"bus": 1,
+      "id": 1234,
+      "mode": 1,
+      "pid": 5,
+      "payload": "0x1234",
+      "frequency": 0}
+
+**bus** - the numerical identifier of the CAN bus where this request should be
+    sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
+
+**id** - the CAN arbitration ID for the request.
+
+**mode** - the OBD-II mode of the request - 0x1 through 0xf (0x1 through 0xa
+    are the standardized modes).
+
+**pid** - (optional) the PID for the request, if applicable.
+
+**payload** - (optional) up to 7 bytes of data for the request's payload
+    represented as a hexidecimal number in a string. Many JSON parser cannot
+    handle 64-bit integers, which is why we are not using a numerical data type.
+
+**frequency** - (optional, defaults to 0) The frequency in Hz to send this
+    request. To send a single request, set this to 0 or leave it out.
+
+TODO it'd be nice to have the OBD-II PIDs built in, with the proper conversion
+functions - that may need a different output format
+
+If you're just requesting a PID, you can use a simplified format for the
+request:
+
+    {"bus": 1, "id": 1234, "mode": 1, "pid": 5}
+
+### Responses
+
+    {"bus": 1,
+      "id": 1234,
+      "mode": 1,
+      "pid": 5,
+      "success": true,
+      "negative_response_code": 17,
+      "payload": "0x1234"}
+
+**bus** - the numerical identifier of the CAN bus where this response was
+    received.
+
+**id** - the CAN arbitration ID for this response.
+
+**mode** - the OBD-II mode of the original diagnostic request.
+
+**pid** - (optional) the PID for the request, if applicable.
+
+**success** -  true if the response received was a positive response. If this
+  field is false, the remote node returned an error and the
+  `negative_response_code` field should be populated.
+
+**negative_response_code** - (optional)  If requsted node returned an error,
+    `success` will be `false` and this field will contain the negative response
+    code (NRC).
+
+**payload** - (optional) up to 7 bytes of data returned in the response,
+    represented as a hexidecimal number in a string. Many JSON parser cannot
+    handle 64-bit integers, which is why we are not using a numerical data type.
+
+The response to a simple PID requset would look like this:
+
+    {"bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
+
+TODO again, it'd be nice to have the OBD-II PIDs built in, with the proper
+conversion functions so the response here included the actual transformed value
+of the pid and a human readable name
+
 ## Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
