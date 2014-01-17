@@ -1,5 +1,6 @@
 nanopb: proto
-	python libs/nanopb/generator/nanopb_generator.py -s max_size:100 -f openxc.options gen/cpp/openxc.pb
+	make -C libs/nanopb/generator/proto
+	python libs/nanopb/generator/nanopb_generator.py gen/cpp/openxc.pb -f openxc.options
 
 proto: openxc.proto
 	@mkdir -p gen/java

@@ -1,2 +1,3 @@
-# TODO this isn't working yet, so I'm defining it for everything in the Makefile
-openxc_TranslatedMessage.name max_size:100
+openxc.TranslatedMessage.name max_size:100
+openxc.TranslatedMessage.string_value max_size:100
+openxc.TranslatedMessage.string_event max_size:100
