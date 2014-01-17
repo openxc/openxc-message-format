@@ -17,7 +17,7 @@ RawMessage
 bus (
 
 message_id (
-data ("‘
+data ("‘
 DiagnosticMessage
 bus (
 
