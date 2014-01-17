@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='openxc.proto',
   package='openxc',
-  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\xbc\x01\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12\x35\n\x12translated_message\x18\x03 \x01(\x0b\x32\x19.openxc.TranslatedMessage\"\x1f\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\x0e\n\nTRANSLATED\x10\x02\";\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x04\"\x91\x01\n\x11\x44iagnosticMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07success\x18\x05 \x01(\x08\x12\x1e\n\x16negative_response_code\x18\x06 \x01(\r\x12\x0f\n\x07payload\x18\x07 \x01(\x0c\"\xb5\x02\n\x11TranslatedMessage\x12,\n\x04type\x18\x01 \x01(\x0e\x32\x1e.openxc.TranslatedMessage.Type\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cstring_value\x18\x03 \x01(\t\x12\x15\n\rnumeric_value\x18\x04 \x01(\x01\x12\x15\n\rboolean_value\x18\x05 \x01(\x08\x12\x14\n\x0cstring_event\x18\x06 \x01(\t\x12\x15\n\rnumeric_event\x18\x07 \x01(\x01\x12\x15\n\rboolean_event\x18\x08 \x01(\x08\"\\\n\x04Type\x12\n\n\x06STRING\x10\x01\x12\x07\n\x03NUM\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\x12\x12\n\x0e\x45VENTED_STRING\x10\x04\x12\x0f\n\x0b\x45VENTED_NUM\x10\x05\x12\x10\n\x0c\x45VENTED_BOOL\x10\x06\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
+  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\x83\x02\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0braw_message\x18\x02 \x01(\x0b\x32\x12.openxc.RawMessage\x12\x35\n\x12translated_message\x18\x03 \x01(\x0b\x32\x19.openxc.TranslatedMessage\x12\x35\n\x12\x64iagnostic_message\x18\x04 \x01(\x0b\x32\x19.openxc.DiagnosticMessage\"/\n\x04Type\x12\x07\n\x03RAW\x10\x01\x12\x0e\n\nTRANSLATED\x10\x02\x12\x0e\n\nDIAGNOSTIC\x10\x03\";\n\nRawMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x04\"\x91\x01\n\x11\x44iagnosticMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07success\x18\x05 \x01(\x08\x12\x1e\n\x16negative_response_code\x18\x06 \x01(\r\x12\x0f\n\x07payload\x18\x07 \x01(\x0c\"\xb5\x02\n\x11TranslatedMessage\x12,\n\x04type\x18\x01 \x01(\x0e\x32\x1e.openxc.TranslatedMessage.Type\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cstring_value\x18\x03 \x01(\t\x12\x15\n\rnumeric_value\x18\x04 \x01(\x01\x12\x15\n\rboolean_value\x18\x05 \x01(\x08\x12\x14\n\x0cstring_event\x18\x06 \x01(\t\x12\x15\n\rnumeric_event\x18\x07 \x01(\x01\x12\x15\n\rboolean_event\x18\x08 \x01(\x08\"\\\n\x04Type\x12\n\n\x06STRING\x10\x01\x12\x07\n\x03NUM\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\x12\x12\n\x0e\x45VENTED_STRING\x10\x04\x12\x0f\n\x0b\x45VENTED_NUM\x10\x05\x12\x10\n\x0c\x45VENTED_BOOL\x10\x06\x42\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
 
 
 
@@ -31,11 +31,15 @@ _VEHICLEMESSAGE_TYPE = _descriptor.EnumDescriptor(
       name='TRANSLATED', index=1, number=2,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DIAGNOSTIC', index=2, number=3,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=182,
-  serialized_end=213,
+  serialized_start=237,
+  serialized_end=284,
 )
 
 _TRANSLATEDMESSAGE_TYPE = _descriptor.EnumDescriptor(
@@ -71,8 +75,8 @@ _TRANSLATEDMESSAGE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=642,
-  serialized_end=734,
+  serialized_start=713,
+  serialized_end=805,
 )
 
 
@@ -104,6 +108,13 @@ _VEHICLEMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='diagnostic_message', full_name='openxc.VehicleMessage.diagnostic_message', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -115,7 +126,7 @@ _VEHICLEMESSAGE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=25,
-  serialized_end=213,
+  serialized_end=284,
 )
 
 
@@ -156,8 +167,8 @@ _RAWMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=215,
-  serialized_end=274,
+  serialized_start=286,
+  serialized_end=345,
 )
 
 
@@ -226,8 +237,8 @@ _DIAGNOSTICMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=277,
-  serialized_end=422,
+  serialized_start=348,
+  serialized_end=493,
 )
 
 
@@ -304,13 +315,14 @@ _TRANSLATEDMESSAGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=425,
-  serialized_end=734,
+  serialized_start=496,
+  serialized_end=805,
 )
 
 _VEHICLEMESSAGE.fields_by_name['type'].enum_type = _VEHICLEMESSAGE_TYPE
 _VEHICLEMESSAGE.fields_by_name['raw_message'].message_type = _RAWMESSAGE
 _VEHICLEMESSAGE.fields_by_name['translated_message'].message_type = _TRANSLATEDMESSAGE
+_VEHICLEMESSAGE.fields_by_name['diagnostic_message'].message_type = _DIAGNOSTICMESSAGE
 _VEHICLEMESSAGE_TYPE.containing_type = _VEHICLEMESSAGE;
 _TRANSLATEDMESSAGE.fields_by_name['type'].enum_type = _TRANSLATEDMESSAGE_TYPE
 _TRANSLATEDMESSAGE_TYPE.containing_type = _TRANSLATEDMESSAGE;
