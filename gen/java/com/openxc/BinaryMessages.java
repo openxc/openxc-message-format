@@ -1500,15 +1500,25 @@ public final class BinaryMessages {
      */
     int getNegativeResponseCode();
 
-    // optional uint64 payload = 7;
+    // optional bytes payload = 7;
     /**
-     * <code>optional uint64 payload = 7;</code>
+     * <code>optional bytes payload = 7;</code>
+     *
+     * <pre>
+     * TODO we are capping this at 8 bytes for now - need to change when we
+     * support multi-frame responses
+     * </pre>
      */
     boolean hasPayload();
     /**
-     * <code>optional uint64 payload = 7;</code>
+     * <code>optional bytes payload = 7;</code>
+     *
+     * <pre>
+     * TODO we are capping this at 8 bytes for now - need to change when we
+     * support multi-frame responses
+     * </pre>
      */
-    long getPayload();
+    com.google.protobuf.ByteString getPayload();
   }
   /**
    * Protobuf type {@code openxc.DiagnosticMessage}
@@ -1591,9 +1601,9 @@ public final class BinaryMessages {
               negativeResponseCode_ = input.readUInt32();
               break;
             }
-            case 56: {
+            case 58: {
               bitField0_ |= 0x00000040;
-              payload_ = input.readUInt64();
+              payload_ = input.readBytes();
               break;
             }
           }
@@ -1732,19 +1742,29 @@ public final class BinaryMessages {
       return negativeResponseCode_;
     }
 
-    // optional uint64 payload = 7;
+    // optional bytes payload = 7;
     public static final int PAYLOAD_FIELD_NUMBER = 7;
-    private long payload_;
+    private com.google.protobuf.ByteString payload_;
     /**
-     * <code>optional uint64 payload = 7;</code>
+     * <code>optional bytes payload = 7;</code>
+     *
+     * <pre>
+     * TODO we are capping this at 8 bytes for now - need to change when we
+     * support multi-frame responses
+     * </pre>
      */
     public boolean hasPayload() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional uint64 payload = 7;</code>
+     * <code>optional bytes payload = 7;</code>
+     *
+     * <pre>
+     * TODO we are capping this at 8 bytes for now - need to change when we
+     * support multi-frame responses
+     * </pre>
      */
-    public long getPayload() {
+    public com.google.protobuf.ByteString getPayload() {
       return payload_;
     }
 
@@ -1755,7 +1775,7 @@ public final class BinaryMessages {
       pid_ = 0;
       success_ = false;
       negativeResponseCode_ = 0;
-      payload_ = 0L;
+      payload_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1788,7 +1808,7 @@ public final class BinaryMessages {
         output.writeUInt32(6, negativeResponseCode_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeUInt64(7, payload_);
+        output.writeBytes(7, payload_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1825,7 +1845,7 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(7, payload_);
+          .computeBytesSize(7, payload_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1955,7 +1975,7 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000010);
         negativeResponseCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        payload_ = 0L;
+        payload_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
@@ -2275,35 +2295,58 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional uint64 payload = 7;
-      private long payload_ ;
+      // optional bytes payload = 7;
+      private com.google.protobuf.ByteString payload_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional uint64 payload = 7;</code>
+       * <code>optional bytes payload = 7;</code>
+       *
+       * <pre>
+       * TODO we are capping this at 8 bytes for now - need to change when we
+       * support multi-frame responses
+       * </pre>
        */
       public boolean hasPayload() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional uint64 payload = 7;</code>
+       * <code>optional bytes payload = 7;</code>
+       *
+       * <pre>
+       * TODO we are capping this at 8 bytes for now - need to change when we
+       * support multi-frame responses
+       * </pre>
        */
-      public long getPayload() {
+      public com.google.protobuf.ByteString getPayload() {
         return payload_;
       }
       /**
-       * <code>optional uint64 payload = 7;</code>
+       * <code>optional bytes payload = 7;</code>
+       *
+       * <pre>
+       * TODO we are capping this at 8 bytes for now - need to change when we
+       * support multi-frame responses
+       * </pre>
        */
-      public Builder setPayload(long value) {
-        bitField0_ |= 0x00000040;
+      public Builder setPayload(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
         payload_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 payload = 7;</code>
+       * <code>optional bytes payload = 7;</code>
+       *
+       * <pre>
+       * TODO we are capping this at 8 bytes for now - need to change when we
+       * support multi-frame responses
+       * </pre>
        */
       public Builder clearPayload() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        payload_ = 0L;
+        payload_ = getDefaultInstance().getPayload();
         onChanged();
         return this;
       }
@@ -3673,7 +3716,7 @@ public final class BinaryMessages {
       "iagnosticMessage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage" +
       "_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007" +
       "success\030\005 \001(\010\022\036\n\026negative_response_code\030",
-      "\006 \001(\r\022\017\n\007payload\030\007 \001(\004\"\265\002\n\021TranslatedMes" +
+      "\006 \001(\r\022\017\n\007payload\030\007 \001(\014\"\265\002\n\021TranslatedMes" +
       "sage\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMe" +
       "ssage.Type\022\014\n\004name\030\002 \001(\t\022\024\n\014string_value" +
       "\030\003 \001(\t\022\025\n\rnumeric_value\030\004 \001(\001\022\025\n\rboolean" +

@@ -23,7 +23,7 @@ message_id (
 pid (
 success (
 negative_response_code (
-payload ("µ
+payload ("µ
 TranslatedMessage,
 type (2.openxc.TranslatedMessage.Type
 name (	

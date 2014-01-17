@@ -24,7 +24,9 @@ message DiagnosticMessage {
     optional uint32 pid = 4;
     optional bool success = 5;
     optional uint32 negative_response_code = 6;
-    optional uint64 payload = 7;
+    // TODO we are capping this at 8 bytes for now - need to change when we
+    // support multi-frame responses
+    optional bytes payload = 7;
 }
 
 message TranslatedMessage {

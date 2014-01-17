@@ -1,3 +1,4 @@
 openxc.TranslatedMessage.name max_size:100
 openxc.TranslatedMessage.string_value max_size:100
 openxc.TranslatedMessage.string_event max_size:100
+openxc.DiagnosticMessage.payload max_size:8
