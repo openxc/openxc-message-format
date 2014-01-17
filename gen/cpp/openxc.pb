@@ -1,5 +1,5 @@
 
-è
+ü
 openxc.protoopenxc"¼
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -14,7 +14,16 @@ RawMessage
 bus (
 
 message_id (
-data ("µ
+data ("‘
+DiagnosticMessage
+bus (
+
+message_id (
+mode (
+pid (
+success (
+negative_response_code (
+payload ("µ
 TranslatedMessage,
 type (2.openxc.TranslatedMessage.Type
 name (	

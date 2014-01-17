@@ -17,6 +17,16 @@ message RawMessage {
     optional uint64 data = 3;
 }
 
+message DiagnosticMessage {
+    optional int32 bus = 1;
+    optional uint32 message_id = 2;
+    optional uint32 mode = 3;
+    optional uint32 pid = 4;
+    optional bool success = 5;
+    optional uint32 negative_response_code = 6;
+    optional uint64 payload = 7;
+}
+
 message TranslatedMessage {
     enum Type { STRING = 1; NUM = 2; BOOL = 3;
         EVENTED_STRING = 4; EVENTED_NUM = 5; EVENTED_BOOL = 6;}
