@@ -28,6 +28,7 @@ message DiagnosticMessage {
     // TODO we are capping this at 8 bytes for now - need to change when we
     // support multi-frame responses
     optional bytes payload = 7;
+    optional double value = 8;
 }
 
 message TranslatedMessage {
