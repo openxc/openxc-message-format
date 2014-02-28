@@ -46,15 +46,23 @@ is sent as a JSON object, separated by newlines. The format of each object is:
 
 ### Requests
 
-    {"bus": 1,
-      "id": 1234,
-      "mode": 1,
-      "pid": 5,
-      "payload": "0x1234",
-      "parse_payload": true,
-      "factor": 1.0,
-      "offset": 0,
-      "frequency": 0}
+A request to add or update a diagnostic request is sent to a vehicle interface
+with this command format:
+
+    { "command": "diagnostic_request",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5,
+          "payload": "0x1234",
+          "parse_payload": true,
+          "factor": 1.0,
+          "offset": 0,
+          "frequency": 1
+        }
+      }
+    }
 
 **bus** - the numerical identifier of the CAN bus where this request should be
     sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
@@ -89,8 +97,8 @@ is sent as a JSON object, separated by newlines. The format of each object is:
 TODO it'd be nice to have the OBD-II PIDs built in, with the proper conversion
 functions - that may need a different output format
 
-If you're just requesting a PID, you can use a simplified format for the
-request:
+If you're just requesting a PID, you can use this minimal field set for the
+`request` object:
 
     {"bus": 1, "id": 1234, "mode": 1, "pid": 5}
 
