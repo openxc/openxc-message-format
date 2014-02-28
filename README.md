@@ -94,6 +94,11 @@ with this command format:
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
     request. To send a single request, set this to 0 or leave it out.
 
+The `bus+id+mode+pid` key is unique, so if you send a create request with that
+key twice, it'll overwrite the existing one (i.e. it will change the frequency,
+the only other parameter). To cancel a recurring request, send this command with
+the frequency set to 0.
+
 TODO it'd be nice to have the OBD-II PIDs built in, with the proper conversion
 functions - that may need a different output format
 
