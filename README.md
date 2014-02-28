@@ -51,6 +51,9 @@ is sent as a JSON object, separated by newlines. The format of each object is:
       "mode": 1,
       "pid": 5,
       "payload": "0x1234",
+      "parse_payload": true,
+      "factor": 1.0,
+      "offset": 0,
       "frequency": 0}
 
 **bus** - the numerical identifier of the CAN bus where this request should be
@@ -58,14 +61,27 @@ is sent as a JSON object, separated by newlines. The format of each object is:
 
 **id** - the CAN arbitration ID for the request.
 
-**mode** - the OBD-II mode of the request - 0x1 through 0xf (0x1 through 0xa
-    are the standardized modes).
+**mode** - the OBD-II mode of the request - 1 through 15 (1 through 9 are the
+    standardized modes).
 
 **pid** - (optional) the PID for the request, if applicable.
 
 **payload** - (optional) up to 7 bytes of data for the request's payload
     represented as a hexidecimal number in a string. Many JSON parser cannot
     handle 64-bit integers, which is why we are not using a numerical data type.
+
+**parse_payload** - (optional, false by default) if true, the complete payload in the
+    response message will be parsed as a number and returned in the 'value' field of
+    the response. The 'payload' field will be omitted in responses with a
+    'value'.
+
+**factor** - (optional, 1.0 by default) if `parse_payload` is true, the value in
+    the payload will be multiplied by this factor before returning. The `factor`
+    is applied before the `offset`.
+
+**offset** - (optional, 0 by default) if `parse_payload` is true, this offset
+    will be added to the value in the payload before returning. The `offset` is
+    applied after the `factor`.
 
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
     request. To send a single request, set this to 0 or leave it out.
@@ -86,7 +102,8 @@ request:
       "pid": 5,
       "success": true,
       "negative_response_code": 17,
-      "payload": "0x1234"}
+      "payload": "0x1234",
+      "parsed_payload": 4660}
 
 **bus** - the numerical identifier of the CAN bus where this response was
     received.
@@ -101,15 +118,21 @@ request:
   field is false, the remote node returned an error and the
   `negative_response_code` field should be populated.
 
-**negative_response_code** - (optional)  If requsted node returned an error,
+**negative_response_code** - (optional)  If requested node returned an error,
     `success` will be `false` and this field will contain the negative response
     code (NRC).
 
+Finally, the `payload` and `value` fields are mutually exclusive:
+
 **payload** - (optional) up to 7 bytes of data returned in the response,
-    represented as a hexidecimal number in a string. Many JSON parser cannot
+    represented as a hexadecimal number in a string. Many JSON parser cannot
     handle 64-bit integers, which is why we are not using a numerical data type.
 
-The response to a simple PID requset would look like this:
+**value** - (optional) if the response had a payload, this may be the
+    payload interpreted as an integer and transformed with a factor and offset
+    provided with the request.
+
+The response to a simple PID request would look like this:
 
     {"bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
