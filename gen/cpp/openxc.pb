@@ -1,11 +1,11 @@
 
-Ò
-openxc.protoopenxc"ƒ
+«	
+openxc.protoopenxc"…
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
 raw_message (2.openxc.RawMessage5
-translated_message (2.openxc.TranslatedMessage5
-diagnostic_message (2.openxc.DiagnosticMessage"/
+translated_message (2.openxc.TranslatedMessage7
+diagnostic_response (2.openxc.DiagnosticResponse"/
 Type
 RAW
 
@@ -17,8 +17,27 @@ RawMessage
 bus (
 
 message_id (
-data (" 
-DiagnosticMessage
+data ("¦
+ControlCommand)
+type (2.openxc.ControlCommand.Type5
+diagnostic_request (2.openxc.DiagnosticRequest"2
+Type
+VERSION
+	DEVICE_ID
+
+DIAGNOSTIC"ª
+DiagnosticRequest
+bus (
+
+message_id (
+mode (
+pid (
+payload (
+parse_payload (
+factor (
+offset (
+	frequency	 ("¡
+DiagnosticResponse
 bus (
 
 message_id (
