@@ -1,17 +1,19 @@
 
-«	
-openxc.protoopenxc"…
+ñ	
+openxc.protoopenxc"Ë
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
 raw_message (2.openxc.RawMessage5
 translated_message (2.openxc.TranslatedMessage7
-diagnostic_response (2.openxc.DiagnosticResponse"/
+diagnostic_response (2.openxc.DiagnosticResponse/
+control_command (2.openxc.ControlCommand"D
 Type
 RAW
 
 TRANSLATED
 
-DIAGNOSTIC";
+DIAGNOSTIC
+CONTROL_COMMAND";
 
 RawMessage
 bus (

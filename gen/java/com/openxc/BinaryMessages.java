@@ -62,6 +62,20 @@ public final class BinaryMessages {
      * <code>optional .openxc.DiagnosticResponse diagnostic_response = 4;</code>
      */
     com.openxc.BinaryMessages.DiagnosticResponseOrBuilder getDiagnosticResponseOrBuilder();
+
+    // optional .openxc.ControlCommand control_command = 5;
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    boolean hasControlCommand();
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    com.openxc.BinaryMessages.ControlCommand getControlCommand();
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    com.openxc.BinaryMessages.ControlCommandOrBuilder getControlCommandOrBuilder();
   }
   /**
    * Protobuf type {@code openxc.VehicleMessage}
@@ -164,6 +178,19 @@ public final class BinaryMessages {
               bitField0_ |= 0x00000008;
               break;
             }
+            case 42: {
+              com.openxc.BinaryMessages.ControlCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = controlCommand_.toBuilder();
+              }
+              controlCommand_ = input.readMessage(com.openxc.BinaryMessages.ControlCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(controlCommand_);
+                controlCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -220,6 +247,10 @@ public final class BinaryMessages {
        * <code>DIAGNOSTIC = 3;</code>
        */
       DIAGNOSTIC(2, 3),
+      /**
+       * <code>CONTROL_COMMAND = 4;</code>
+       */
+      CONTROL_COMMAND(3, 4),
       ;
 
       /**
@@ -234,6 +265,10 @@ public final class BinaryMessages {
        * <code>DIAGNOSTIC = 3;</code>
        */
       public static final int DIAGNOSTIC_VALUE = 3;
+      /**
+       * <code>CONTROL_COMMAND = 4;</code>
+       */
+      public static final int CONTROL_COMMAND_VALUE = 4;
 
 
       public final int getNumber() { return value; }
@@ -243,6 +278,7 @@ public final class BinaryMessages {
           case 1: return RAW;
           case 2: return TRANSLATED;
           case 3: return DIAGNOSTIC;
+          case 4: return CONTROL_COMMAND;
           default: return null;
         }
       }
@@ -377,11 +413,34 @@ public final class BinaryMessages {
       return diagnosticResponse_;
     }
 
+    // optional .openxc.ControlCommand control_command = 5;
+    public static final int CONTROL_COMMAND_FIELD_NUMBER = 5;
+    private com.openxc.BinaryMessages.ControlCommand controlCommand_;
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    public boolean hasControlCommand() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    public com.openxc.BinaryMessages.ControlCommand getControlCommand() {
+      return controlCommand_;
+    }
+    /**
+     * <code>optional .openxc.ControlCommand control_command = 5;</code>
+     */
+    public com.openxc.BinaryMessages.ControlCommandOrBuilder getControlCommandOrBuilder() {
+      return controlCommand_;
+    }
+
     private void initFields() {
       type_ = com.openxc.BinaryMessages.VehicleMessage.Type.RAW;
       rawMessage_ = com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
       translatedMessage_ = com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
       diagnosticResponse_ = com.openxc.BinaryMessages.DiagnosticResponse.getDefaultInstance();
+      controlCommand_ = com.openxc.BinaryMessages.ControlCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -407,6 +466,9 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, diagnosticResponse_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, controlCommand_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -431,6 +493,10 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, diagnosticResponse_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, controlCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -543,6 +609,7 @@ public final class BinaryMessages {
           getRawMessageFieldBuilder();
           getTranslatedMessageFieldBuilder();
           getDiagnosticResponseFieldBuilder();
+          getControlCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -571,6 +638,12 @@ public final class BinaryMessages {
           diagnosticResponseBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (controlCommandBuilder_ == null) {
+          controlCommand_ = com.openxc.BinaryMessages.ControlCommand.getDefaultInstance();
+        } else {
+          controlCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -627,6 +700,14 @@ public final class BinaryMessages {
         } else {
           result.diagnosticResponse_ = diagnosticResponseBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (controlCommandBuilder_ == null) {
+          result.controlCommand_ = controlCommand_;
+        } else {
+          result.controlCommand_ = controlCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -654,6 +735,9 @@ public final class BinaryMessages {
         }
         if (other.hasDiagnosticResponse()) {
           mergeDiagnosticResponse(other.getDiagnosticResponse());
+        }
+        if (other.hasControlCommand()) {
+          mergeControlCommand(other.getControlCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1067,6 +1151,123 @@ public final class BinaryMessages {
           diagnosticResponse_ = null;
         }
         return diagnosticResponseBuilder_;
+      }
+
+      // optional .openxc.ControlCommand control_command = 5;
+      private com.openxc.BinaryMessages.ControlCommand controlCommand_ = com.openxc.BinaryMessages.ControlCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.ControlCommand, com.openxc.BinaryMessages.ControlCommand.Builder, com.openxc.BinaryMessages.ControlCommandOrBuilder> controlCommandBuilder_;
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public boolean hasControlCommand() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public com.openxc.BinaryMessages.ControlCommand getControlCommand() {
+        if (controlCommandBuilder_ == null) {
+          return controlCommand_;
+        } else {
+          return controlCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public Builder setControlCommand(com.openxc.BinaryMessages.ControlCommand value) {
+        if (controlCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          controlCommand_ = value;
+          onChanged();
+        } else {
+          controlCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public Builder setControlCommand(
+          com.openxc.BinaryMessages.ControlCommand.Builder builderForValue) {
+        if (controlCommandBuilder_ == null) {
+          controlCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          controlCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public Builder mergeControlCommand(com.openxc.BinaryMessages.ControlCommand value) {
+        if (controlCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              controlCommand_ != com.openxc.BinaryMessages.ControlCommand.getDefaultInstance()) {
+            controlCommand_ =
+              com.openxc.BinaryMessages.ControlCommand.newBuilder(controlCommand_).mergeFrom(value).buildPartial();
+          } else {
+            controlCommand_ = value;
+          }
+          onChanged();
+        } else {
+          controlCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public Builder clearControlCommand() {
+        if (controlCommandBuilder_ == null) {
+          controlCommand_ = com.openxc.BinaryMessages.ControlCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          controlCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public com.openxc.BinaryMessages.ControlCommand.Builder getControlCommandBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getControlCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      public com.openxc.BinaryMessages.ControlCommandOrBuilder getControlCommandOrBuilder() {
+        if (controlCommandBuilder_ != null) {
+          return controlCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return controlCommand_;
+        }
+      }
+      /**
+       * <code>optional .openxc.ControlCommand control_command = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.ControlCommand, com.openxc.BinaryMessages.ControlCommand.Builder, com.openxc.BinaryMessages.ControlCommandOrBuilder> 
+          getControlCommandFieldBuilder() {
+        if (controlCommandBuilder_ == null) {
+          controlCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.ControlCommand, com.openxc.BinaryMessages.ControlCommand.Builder, com.openxc.BinaryMessages.ControlCommandOrBuilder>(
+                  controlCommand_,
+                  getParentForChildren(),
+                  isClean());
+          controlCommand_ = null;
+        }
+        return controlCommandBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:openxc.VehicleMessage)
@@ -5776,36 +5977,38 @@ public final class BinaryMessages {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014openxc.proto\022\006openxc\"\205\002\n\016VehicleMessag" +
+      "\n\014openxc.proto\022\006openxc\"\313\002\n\016VehicleMessag" +
       "e\022)\n\004type\030\001 \001(\0162\033.openxc.VehicleMessage." +
       "Type\022\'\n\013raw_message\030\002 \001(\0132\022.openxc.RawMe" +
       "ssage\0225\n\022translated_message\030\003 \001(\0132\031.open" +
       "xc.TranslatedMessage\0227\n\023diagnostic_respo" +
-      "nse\030\004 \001(\0132\032.openxc.DiagnosticResponse\"/\n" +
-      "\004Type\022\007\n\003RAW\020\001\022\016\n\nTRANSLATED\020\002\022\016\n\nDIAGNO" +
-      "STIC\020\003\";\n\nRawMessage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmes" +
-      "sage_id\030\002 \001(\r\022\014\n\004data\030\003 \001(\014\"\246\001\n\016ControlC" +
-      "ommand\022)\n\004type\030\001 \001(\0162\033.openxc.ControlCom",
-      "mand.Type\0225\n\022diagnostic_request\030\002 \001(\0132\031." +
-      "openxc.DiagnosticRequest\"2\n\004Type\022\013\n\007VERS" +
-      "ION\020\001\022\r\n\tDEVICE_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\"\252\001\n" +
-      "\021DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessa" +
-      "ge_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017" +
-      "\n\007payload\030\005 \001(\014\022\025\n\rparse_payload\030\006 \001(\010\022\016" +
-      "\n\006factor\030\007 \001(\001\022\016\n\006offset\030\010 \001(\001\022\021\n\tfreque" +
-      "ncy\030\t \001(\001\"\241\001\n\022DiagnosticResponse\022\013\n\003bus\030" +
-      "\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022" +
-      "\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negativ",
-      "e_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r" +
-      "\n\005value\030\010 \001(\001\"\265\002\n\021TranslatedMessage\022,\n\004t" +
-      "ype\030\001 \001(\0162\036.openxc.TranslatedMessage.Typ" +
-      "e\022\014\n\004name\030\002 \001(\t\022\024\n\014string_value\030\003 \001(\t\022\025\n" +
-      "\rnumeric_value\030\004 \001(\001\022\025\n\rboolean_value\030\005 " +
-      "\001(\010\022\024\n\014string_event\030\006 \001(\t\022\025\n\rnumeric_eve" +
-      "nt\030\007 \001(\001\022\025\n\rboolean_event\030\010 \001(\010\"\\\n\004Type\022" +
-      "\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTE" +
-      "D_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EVENTED_B" +
-      "OOL\020\006B\034\n\ncom.openxcB\016BinaryMessages"
+      "nse\030\004 \001(\0132\032.openxc.DiagnosticResponse\022/\n" +
+      "\017control_command\030\005 \001(\0132\026.openxc.ControlC" +
+      "ommand\"D\n\004Type\022\007\n\003RAW\020\001\022\016\n\nTRANSLATED\020\002\022" +
+      "\016\n\nDIAGNOSTIC\020\003\022\023\n\017CONTROL_COMMAND\020\004\";\n\n" +
+      "RawMessage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 ",
+      "\001(\r\022\014\n\004data\030\003 \001(\014\"\246\001\n\016ControlCommand\022)\n\004" +
+      "type\030\001 \001(\0162\033.openxc.ControlCommand.Type\022" +
+      "5\n\022diagnostic_request\030\002 \001(\0132\031.openxc.Dia" +
+      "gnosticRequest\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tD" +
+      "EVICE_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\"\252\001\n\021Diagnosti" +
+      "cRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(" +
+      "\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030" +
+      "\005 \001(\014\022\025\n\rparse_payload\030\006 \001(\010\022\016\n\006factor\030\007" +
+      " \001(\001\022\016\n\006offset\030\010 \001(\001\022\021\n\tfrequency\030\t \001(\001\"" +
+      "\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nm",
+      "essage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001" +
+      "(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_response" +
+      "_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 " +
+      "\001(\001\"\265\002\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162" +
+      "\036.openxc.TranslatedMessage.Type\022\014\n\004name\030" +
+      "\002 \001(\t\022\024\n\014string_value\030\003 \001(\t\022\025\n\rnumeric_v" +
+      "alue\030\004 \001(\001\022\025\n\rboolean_value\030\005 \001(\010\022\024\n\014str" +
+      "ing_event\030\006 \001(\t\022\025\n\rnumeric_event\030\007 \001(\001\022\025" +
+      "\n\rboolean_event\030\010 \001(\010\"\\\n\004Type\022\n\n\006STRING\020" +
+      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004",
+      "\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\nc" +
+      "om.openxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5817,7 +6020,7 @@ public final class BinaryMessages {
           internal_static_openxc_VehicleMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_VehicleMessage_descriptor,
-              new java.lang.String[] { "Type", "RawMessage", "TranslatedMessage", "DiagnosticResponse", });
+              new java.lang.String[] { "Type", "RawMessage", "TranslatedMessage", "DiagnosticResponse", "ControlCommand", });
           internal_static_openxc_RawMessage_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_openxc_RawMessage_fieldAccessorTable = new
