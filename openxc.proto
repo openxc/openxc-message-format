@@ -53,20 +53,23 @@ message DiagnosticResponse {
     optional double value = 8;
 }
 
+message DynamicField {
+    enum Type { STRING = 1; NUM = 2; BOOL = 3; }
+
+    optional Type type = 1;
+    optional string string_value = 2;
+    optional double numeric_value = 3;
+    optional bool boolean_value = 4;
+}
+
 message TranslatedMessage {
     enum Type { STRING = 1; NUM = 2; BOOL = 3;
         EVENTED_STRING = 4; EVENTED_NUM = 5; EVENTED_BOOL = 6;}
 
     optional Type type = 1;
     optional string name = 2;
-
-    optional string string_value = 3;
-    optional double numeric_value = 4;
-    optional bool boolean_value = 5;
-
-    optional string string_event = 6;
-    optional double numeric_event = 7;
-    optional bool boolean_event = 8;
+    optional DynamicField value = 3;
+    optional DynamicField event = 4;
 }
 
 // TODO we should also consider having an enum type, having each specific

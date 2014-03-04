@@ -4623,6 +4623,820 @@ public final class BinaryMessages {
     // @@protoc_insertion_point(class_scope:openxc.DiagnosticResponse)
   }
 
+  public interface DynamicFieldOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .openxc.DynamicField.Type type = 1;
+    /**
+     * <code>optional .openxc.DynamicField.Type type = 1;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>optional .openxc.DynamicField.Type type = 1;</code>
+     */
+    com.openxc.BinaryMessages.DynamicField.Type getType();
+
+    // optional string string_value = 2;
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    boolean hasStringValue();
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    java.lang.String getStringValue();
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getStringValueBytes();
+
+    // optional double numeric_value = 3;
+    /**
+     * <code>optional double numeric_value = 3;</code>
+     */
+    boolean hasNumericValue();
+    /**
+     * <code>optional double numeric_value = 3;</code>
+     */
+    double getNumericValue();
+
+    // optional bool boolean_value = 4;
+    /**
+     * <code>optional bool boolean_value = 4;</code>
+     */
+    boolean hasBooleanValue();
+    /**
+     * <code>optional bool boolean_value = 4;</code>
+     */
+    boolean getBooleanValue();
+  }
+  /**
+   * Protobuf type {@code openxc.DynamicField}
+   */
+  public static final class DynamicField extends
+      com.google.protobuf.GeneratedMessage
+      implements DynamicFieldOrBuilder {
+    // Use DynamicField.newBuilder() to construct.
+    private DynamicField(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DynamicField(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DynamicField defaultInstance;
+    public static DynamicField getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DynamicField getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DynamicField(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              com.openxc.BinaryMessages.DynamicField.Type value = com.openxc.BinaryMessages.DynamicField.Type.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              stringValue_ = input.readBytes();
+              break;
+            }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              numericValue_ = input.readDouble();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              booleanValue_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.openxc.BinaryMessages.internal_static_openxc_DynamicField_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.openxc.BinaryMessages.internal_static_openxc_DynamicField_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.openxc.BinaryMessages.DynamicField.class, com.openxc.BinaryMessages.DynamicField.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DynamicField> PARSER =
+        new com.google.protobuf.AbstractParser<DynamicField>() {
+      public DynamicField parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DynamicField(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DynamicField> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code openxc.DynamicField.Type}
+     */
+    public enum Type
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>STRING = 1;</code>
+       */
+      STRING(0, 1),
+      /**
+       * <code>NUM = 2;</code>
+       */
+      NUM(1, 2),
+      /**
+       * <code>BOOL = 3;</code>
+       */
+      BOOL(2, 3),
+      ;
+
+      /**
+       * <code>STRING = 1;</code>
+       */
+      public static final int STRING_VALUE = 1;
+      /**
+       * <code>NUM = 2;</code>
+       */
+      public static final int NUM_VALUE = 2;
+      /**
+       * <code>BOOL = 3;</code>
+       */
+      public static final int BOOL_VALUE = 3;
+
+
+      public final int getNumber() { return value; }
+
+      public static Type valueOf(int value) {
+        switch (value) {
+          case 1: return STRING;
+          case 2: return NUM;
+          case 3: return BOOL;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+              public Type findValueByNumber(int number) {
+                return Type.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.DynamicField.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Type[] VALUES = values();
+
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private Type(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:openxc.DynamicField.Type)
+    }
+
+    private int bitField0_;
+    // optional .openxc.DynamicField.Type type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private com.openxc.BinaryMessages.DynamicField.Type type_;
+    /**
+     * <code>optional .openxc.DynamicField.Type type = 1;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .openxc.DynamicField.Type type = 1;</code>
+     */
+    public com.openxc.BinaryMessages.DynamicField.Type getType() {
+      return type_;
+    }
+
+    // optional string string_value = 2;
+    public static final int STRING_VALUE_FIELD_NUMBER = 2;
+    private java.lang.Object stringValue_;
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    public boolean hasStringValue() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    public java.lang.String getStringValue() {
+      java.lang.Object ref = stringValue_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          stringValue_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string string_value = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStringValueBytes() {
+      java.lang.Object ref = stringValue_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stringValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional double numeric_value = 3;
+    public static final int NUMERIC_VALUE_FIELD_NUMBER = 3;
+    private double numericValue_;
+    /**
+     * <code>optional double numeric_value = 3;</code>
+     */
+    public boolean hasNumericValue() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional double numeric_value = 3;</code>
+     */
+    public double getNumericValue() {
+      return numericValue_;
+    }
+
+    // optional bool boolean_value = 4;
+    public static final int BOOLEAN_VALUE_FIELD_NUMBER = 4;
+    private boolean booleanValue_;
+    /**
+     * <code>optional bool boolean_value = 4;</code>
+     */
+    public boolean hasBooleanValue() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bool boolean_value = 4;</code>
+     */
+    public boolean getBooleanValue() {
+      return booleanValue_;
+    }
+
+    private void initFields() {
+      type_ = com.openxc.BinaryMessages.DynamicField.Type.STRING;
+      stringValue_ = "";
+      numericValue_ = 0D;
+      booleanValue_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getStringValueBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeDouble(3, numericValue_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, booleanValue_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getStringValueBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, numericValue_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, booleanValue_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DynamicField parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.openxc.BinaryMessages.DynamicField prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code openxc.DynamicField}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.openxc.BinaryMessages.DynamicFieldOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DynamicField_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DynamicField_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.openxc.BinaryMessages.DynamicField.class, com.openxc.BinaryMessages.DynamicField.Builder.class);
+      }
+
+      // Construct using com.openxc.BinaryMessages.DynamicField.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = com.openxc.BinaryMessages.DynamicField.Type.STRING;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        stringValue_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        numericValue_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        booleanValue_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DynamicField_descriptor;
+      }
+
+      public com.openxc.BinaryMessages.DynamicField getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+      }
+
+      public com.openxc.BinaryMessages.DynamicField build() {
+        com.openxc.BinaryMessages.DynamicField result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.openxc.BinaryMessages.DynamicField buildPartial() {
+        com.openxc.BinaryMessages.DynamicField result = new com.openxc.BinaryMessages.DynamicField(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.stringValue_ = stringValue_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.numericValue_ = numericValue_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.booleanValue_ = booleanValue_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.openxc.BinaryMessages.DynamicField) {
+          return mergeFrom((com.openxc.BinaryMessages.DynamicField)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.openxc.BinaryMessages.DynamicField other) {
+        if (other == com.openxc.BinaryMessages.DynamicField.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasStringValue()) {
+          bitField0_ |= 0x00000002;
+          stringValue_ = other.stringValue_;
+          onChanged();
+        }
+        if (other.hasNumericValue()) {
+          setNumericValue(other.getNumericValue());
+        }
+        if (other.hasBooleanValue()) {
+          setBooleanValue(other.getBooleanValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.openxc.BinaryMessages.DynamicField parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.openxc.BinaryMessages.DynamicField) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .openxc.DynamicField.Type type = 1;
+      private com.openxc.BinaryMessages.DynamicField.Type type_ = com.openxc.BinaryMessages.DynamicField.Type.STRING;
+      /**
+       * <code>optional .openxc.DynamicField.Type type = 1;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .openxc.DynamicField.Type type = 1;</code>
+       */
+      public com.openxc.BinaryMessages.DynamicField.Type getType() {
+        return type_;
+      }
+      /**
+       * <code>optional .openxc.DynamicField.Type type = 1;</code>
+       */
+      public Builder setType(com.openxc.BinaryMessages.DynamicField.Type value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DynamicField.Type type = 1;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = com.openxc.BinaryMessages.DynamicField.Type.STRING;
+        onChanged();
+        return this;
+      }
+
+      // optional string string_value = 2;
+      private java.lang.Object stringValue_ = "";
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public boolean hasStringValue() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public java.lang.String getStringValue() {
+        java.lang.Object ref = stringValue_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          stringValue_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStringValueBytes() {
+        java.lang.Object ref = stringValue_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stringValue_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public Builder setStringValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        stringValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public Builder clearStringValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        stringValue_ = getDefaultInstance().getStringValue();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string string_value = 2;</code>
+       */
+      public Builder setStringValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        stringValue_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional double numeric_value = 3;
+      private double numericValue_ ;
+      /**
+       * <code>optional double numeric_value = 3;</code>
+       */
+      public boolean hasNumericValue() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional double numeric_value = 3;</code>
+       */
+      public double getNumericValue() {
+        return numericValue_;
+      }
+      /**
+       * <code>optional double numeric_value = 3;</code>
+       */
+      public Builder setNumericValue(double value) {
+        bitField0_ |= 0x00000004;
+        numericValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double numeric_value = 3;</code>
+       */
+      public Builder clearNumericValue() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        numericValue_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional bool boolean_value = 4;
+      private boolean booleanValue_ ;
+      /**
+       * <code>optional bool boolean_value = 4;</code>
+       */
+      public boolean hasBooleanValue() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bool boolean_value = 4;</code>
+       */
+      public boolean getBooleanValue() {
+        return booleanValue_;
+      }
+      /**
+       * <code>optional bool boolean_value = 4;</code>
+       */
+      public Builder setBooleanValue(boolean value) {
+        bitField0_ |= 0x00000008;
+        booleanValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool boolean_value = 4;</code>
+       */
+      public Builder clearBooleanValue() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        booleanValue_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:openxc.DynamicField)
+    }
+
+    static {
+      defaultInstance = new DynamicField(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:openxc.DynamicField)
+  }
+
   public interface TranslatedMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -4651,75 +5465,33 @@ public final class BinaryMessages {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional string string_value = 3;
+    // optional .openxc.DynamicField value = 3;
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    boolean hasStringValue();
+    boolean hasValue();
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    java.lang.String getStringValue();
+    com.openxc.BinaryMessages.DynamicField getValue();
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    com.google.protobuf.ByteString
-        getStringValueBytes();
+    com.openxc.BinaryMessages.DynamicFieldOrBuilder getValueOrBuilder();
 
-    // optional double numeric_value = 4;
+    // optional .openxc.DynamicField event = 4;
     /**
-     * <code>optional double numeric_value = 4;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    boolean hasNumericValue();
+    boolean hasEvent();
     /**
-     * <code>optional double numeric_value = 4;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    double getNumericValue();
-
-    // optional bool boolean_value = 5;
+    com.openxc.BinaryMessages.DynamicField getEvent();
     /**
-     * <code>optional bool boolean_value = 5;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    boolean hasBooleanValue();
-    /**
-     * <code>optional bool boolean_value = 5;</code>
-     */
-    boolean getBooleanValue();
-
-    // optional string string_event = 6;
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    boolean hasStringEvent();
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    java.lang.String getStringEvent();
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getStringEventBytes();
-
-    // optional double numeric_event = 7;
-    /**
-     * <code>optional double numeric_event = 7;</code>
-     */
-    boolean hasNumericEvent();
-    /**
-     * <code>optional double numeric_event = 7;</code>
-     */
-    double getNumericEvent();
-
-    // optional bool boolean_event = 8;
-    /**
-     * <code>optional bool boolean_event = 8;</code>
-     */
-    boolean hasBooleanEvent();
-    /**
-     * <code>optional bool boolean_event = 8;</code>
-     */
-    boolean getBooleanEvent();
+    com.openxc.BinaryMessages.DynamicFieldOrBuilder getEventOrBuilder();
   }
   /**
    * Protobuf type {@code openxc.TranslatedMessage}
@@ -4789,33 +5561,29 @@ public final class BinaryMessages {
               break;
             }
             case 26: {
+              com.openxc.BinaryMessages.DynamicField.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = value_.toBuilder();
+              }
+              value_ = input.readMessage(com.openxc.BinaryMessages.DynamicField.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(value_);
+                value_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000004;
-              stringValue_ = input.readBytes();
               break;
             }
-            case 33: {
+            case 34: {
+              com.openxc.BinaryMessages.DynamicField.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = event_.toBuilder();
+              }
+              event_ = input.readMessage(com.openxc.BinaryMessages.DynamicField.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(event_);
+                event_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000008;
-              numericValue_ = input.readDouble();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              booleanValue_ = input.readBool();
-              break;
-            }
-            case 50: {
-              bitField0_ |= 0x00000020;
-              stringEvent_ = input.readBytes();
-              break;
-            }
-            case 57: {
-              bitField0_ |= 0x00000040;
-              numericEvent_ = input.readDouble();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              booleanEvent_ = input.readBool();
               break;
             }
           }
@@ -5035,165 +5803,55 @@ public final class BinaryMessages {
       }
     }
 
-    // optional string string_value = 3;
-    public static final int STRING_VALUE_FIELD_NUMBER = 3;
-    private java.lang.Object stringValue_;
+    // optional .openxc.DynamicField value = 3;
+    public static final int VALUE_FIELD_NUMBER = 3;
+    private com.openxc.BinaryMessages.DynamicField value_;
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    public boolean hasStringValue() {
+    public boolean hasValue() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    public java.lang.String getStringValue() {
-      java.lang.Object ref = stringValue_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          stringValue_ = s;
-        }
-        return s;
-      }
+    public com.openxc.BinaryMessages.DynamicField getValue() {
+      return value_;
     }
     /**
-     * <code>optional string string_value = 3;</code>
+     * <code>optional .openxc.DynamicField value = 3;</code>
      */
-    public com.google.protobuf.ByteString
-        getStringValueBytes() {
-      java.lang.Object ref = stringValue_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        stringValue_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.openxc.BinaryMessages.DynamicFieldOrBuilder getValueOrBuilder() {
+      return value_;
     }
 
-    // optional double numeric_value = 4;
-    public static final int NUMERIC_VALUE_FIELD_NUMBER = 4;
-    private double numericValue_;
+    // optional .openxc.DynamicField event = 4;
+    public static final int EVENT_FIELD_NUMBER = 4;
+    private com.openxc.BinaryMessages.DynamicField event_;
     /**
-     * <code>optional double numeric_value = 4;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    public boolean hasNumericValue() {
+    public boolean hasEvent() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional double numeric_value = 4;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    public double getNumericValue() {
-      return numericValue_;
-    }
-
-    // optional bool boolean_value = 5;
-    public static final int BOOLEAN_VALUE_FIELD_NUMBER = 5;
-    private boolean booleanValue_;
-    /**
-     * <code>optional bool boolean_value = 5;</code>
-     */
-    public boolean hasBooleanValue() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+    public com.openxc.BinaryMessages.DynamicField getEvent() {
+      return event_;
     }
     /**
-     * <code>optional bool boolean_value = 5;</code>
+     * <code>optional .openxc.DynamicField event = 4;</code>
      */
-    public boolean getBooleanValue() {
-      return booleanValue_;
-    }
-
-    // optional string string_event = 6;
-    public static final int STRING_EVENT_FIELD_NUMBER = 6;
-    private java.lang.Object stringEvent_;
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    public boolean hasStringEvent() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    public java.lang.String getStringEvent() {
-      java.lang.Object ref = stringEvent_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          stringEvent_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string string_event = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStringEventBytes() {
-      java.lang.Object ref = stringEvent_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        stringEvent_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional double numeric_event = 7;
-    public static final int NUMERIC_EVENT_FIELD_NUMBER = 7;
-    private double numericEvent_;
-    /**
-     * <code>optional double numeric_event = 7;</code>
-     */
-    public boolean hasNumericEvent() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional double numeric_event = 7;</code>
-     */
-    public double getNumericEvent() {
-      return numericEvent_;
-    }
-
-    // optional bool boolean_event = 8;
-    public static final int BOOLEAN_EVENT_FIELD_NUMBER = 8;
-    private boolean booleanEvent_;
-    /**
-     * <code>optional bool boolean_event = 8;</code>
-     */
-    public boolean hasBooleanEvent() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional bool boolean_event = 8;</code>
-     */
-    public boolean getBooleanEvent() {
-      return booleanEvent_;
+    public com.openxc.BinaryMessages.DynamicFieldOrBuilder getEventOrBuilder() {
+      return event_;
     }
 
     private void initFields() {
       type_ = com.openxc.BinaryMessages.TranslatedMessage.Type.STRING;
       name_ = "";
-      stringValue_ = "";
-      numericValue_ = 0D;
-      booleanValue_ = false;
-      stringEvent_ = "";
-      numericEvent_ = 0D;
-      booleanEvent_ = false;
+      value_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+      event_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5214,22 +5872,10 @@ public final class BinaryMessages {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getStringValueBytes());
+        output.writeMessage(3, value_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeDouble(4, numericValue_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBool(5, booleanValue_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(6, getStringEventBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeDouble(7, numericEvent_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBool(8, booleanEvent_);
+        output.writeMessage(4, event_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5250,27 +5896,11 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getStringValueBytes());
+          .computeMessageSize(3, value_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, numericValue_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, booleanValue_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getStringEventBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, numericEvent_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, booleanEvent_);
+          .computeMessageSize(4, event_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5380,6 +6010,8 @@ public final class BinaryMessages {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getValueFieldBuilder();
+          getEventFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5392,18 +6024,18 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        stringValue_ = "";
+        if (valueBuilder_ == null) {
+          value_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+        } else {
+          valueBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
-        numericValue_ = 0D;
+        if (eventBuilder_ == null) {
+          event_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+        } else {
+          eventBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
-        booleanValue_ = false;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        stringEvent_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
-        numericEvent_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        booleanEvent_ = false;
-        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -5443,27 +6075,19 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.stringValue_ = stringValue_;
+        if (valueBuilder_ == null) {
+          result.value_ = value_;
+        } else {
+          result.value_ = valueBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.numericValue_ = numericValue_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
+        if (eventBuilder_ == null) {
+          result.event_ = event_;
+        } else {
+          result.event_ = eventBuilder_.build();
         }
-        result.booleanValue_ = booleanValue_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.stringEvent_ = stringEvent_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.numericEvent_ = numericEvent_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.booleanEvent_ = booleanEvent_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5488,27 +6112,11 @@ public final class BinaryMessages {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasStringValue()) {
-          bitField0_ |= 0x00000004;
-          stringValue_ = other.stringValue_;
-          onChanged();
+        if (other.hasValue()) {
+          mergeValue(other.getValue());
         }
-        if (other.hasNumericValue()) {
-          setNumericValue(other.getNumericValue());
-        }
-        if (other.hasBooleanValue()) {
-          setBooleanValue(other.getBooleanValue());
-        }
-        if (other.hasStringEvent()) {
-          bitField0_ |= 0x00000020;
-          stringEvent_ = other.stringEvent_;
-          onChanged();
-        }
-        if (other.hasNumericEvent()) {
-          setNumericEvent(other.getNumericEvent());
-        }
-        if (other.hasBooleanEvent()) {
-          setBooleanEvent(other.getBooleanEvent());
+        if (other.hasEvent()) {
+          mergeEvent(other.getEvent());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5647,284 +6255,238 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional string string_value = 3;
-      private java.lang.Object stringValue_ = "";
+      // optional .openxc.DynamicField value = 3;
+      private com.openxc.BinaryMessages.DynamicField value_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder> valueBuilder_;
       /**
-       * <code>optional string string_value = 3;</code>
+       * <code>optional .openxc.DynamicField value = 3;</code>
        */
-      public boolean hasStringValue() {
+      public boolean hasValue() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string string_value = 3;</code>
+       * <code>optional .openxc.DynamicField value = 3;</code>
        */
-      public java.lang.String getStringValue() {
-        java.lang.Object ref = stringValue_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          stringValue_ = s;
-          return s;
+      public com.openxc.BinaryMessages.DynamicField getValue() {
+        if (valueBuilder_ == null) {
+          return value_;
         } else {
-          return (java.lang.String) ref;
+          return valueBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional string string_value = 3;</code>
+       * <code>optional .openxc.DynamicField value = 3;</code>
        */
-      public com.google.protobuf.ByteString
-          getStringValueBytes() {
-        java.lang.Object ref = stringValue_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          stringValue_ = b;
-          return b;
+      public Builder setValue(com.openxc.BinaryMessages.DynamicField value) {
+        if (valueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          value_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          valueBuilder_.setMessage(value);
         }
-      }
-      /**
-       * <code>optional string string_value = 3;</code>
-       */
-      public Builder setStringValue(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        stringValue_ = value;
-        onChanged();
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional string string_value = 3;</code>
+       * <code>optional .openxc.DynamicField value = 3;</code>
        */
-      public Builder clearStringValue() {
+      public Builder setValue(
+          com.openxc.BinaryMessages.DynamicField.Builder builderForValue) {
+        if (valueBuilder_ == null) {
+          value_ = builderForValue.build();
+          onChanged();
+        } else {
+          valueBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DynamicField value = 3;</code>
+       */
+      public Builder mergeValue(com.openxc.BinaryMessages.DynamicField value) {
+        if (valueBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              value_ != com.openxc.BinaryMessages.DynamicField.getDefaultInstance()) {
+            value_ =
+              com.openxc.BinaryMessages.DynamicField.newBuilder(value_).mergeFrom(value).buildPartial();
+          } else {
+            value_ = value;
+          }
+          onChanged();
+        } else {
+          valueBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DynamicField value = 3;</code>
+       */
+      public Builder clearValue() {
+        if (valueBuilder_ == null) {
+          value_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+          onChanged();
+        } else {
+          valueBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
-        stringValue_ = getDefaultInstance().getStringValue();
-        onChanged();
         return this;
       }
       /**
-       * <code>optional string string_value = 3;</code>
+       * <code>optional .openxc.DynamicField value = 3;</code>
        */
-      public Builder setStringValueBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        stringValue_ = value;
+      public com.openxc.BinaryMessages.DynamicField.Builder getValueBuilder() {
+        bitField0_ |= 0x00000004;
         onChanged();
-        return this;
+        return getValueFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .openxc.DynamicField value = 3;</code>
+       */
+      public com.openxc.BinaryMessages.DynamicFieldOrBuilder getValueOrBuilder() {
+        if (valueBuilder_ != null) {
+          return valueBuilder_.getMessageOrBuilder();
+        } else {
+          return value_;
+        }
+      }
+      /**
+       * <code>optional .openxc.DynamicField value = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder> 
+          getValueFieldBuilder() {
+        if (valueBuilder_ == null) {
+          valueBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder>(
+                  value_,
+                  getParentForChildren(),
+                  isClean());
+          value_ = null;
+        }
+        return valueBuilder_;
       }
 
-      // optional double numeric_value = 4;
-      private double numericValue_ ;
+      // optional .openxc.DynamicField event = 4;
+      private com.openxc.BinaryMessages.DynamicField event_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder> eventBuilder_;
       /**
-       * <code>optional double numeric_value = 4;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public boolean hasNumericValue() {
+      public boolean hasEvent() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional double numeric_value = 4;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public double getNumericValue() {
-        return numericValue_;
+      public com.openxc.BinaryMessages.DynamicField getEvent() {
+        if (eventBuilder_ == null) {
+          return event_;
+        } else {
+          return eventBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional double numeric_value = 4;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public Builder setNumericValue(double value) {
+      public Builder setEvent(com.openxc.BinaryMessages.DynamicField value) {
+        if (eventBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          event_ = value;
+          onChanged();
+        } else {
+          eventBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000008;
-        numericValue_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional double numeric_value = 4;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public Builder clearNumericValue() {
+      public Builder setEvent(
+          com.openxc.BinaryMessages.DynamicField.Builder builderForValue) {
+        if (eventBuilder_ == null) {
+          event_ = builderForValue.build();
+          onChanged();
+        } else {
+          eventBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DynamicField event = 4;</code>
+       */
+      public Builder mergeEvent(com.openxc.BinaryMessages.DynamicField value) {
+        if (eventBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              event_ != com.openxc.BinaryMessages.DynamicField.getDefaultInstance()) {
+            event_ =
+              com.openxc.BinaryMessages.DynamicField.newBuilder(event_).mergeFrom(value).buildPartial();
+          } else {
+            event_ = value;
+          }
+          onChanged();
+        } else {
+          eventBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DynamicField event = 4;</code>
+       */
+      public Builder clearEvent() {
+        if (eventBuilder_ == null) {
+          event_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
+          onChanged();
+        } else {
+          eventBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
-        numericValue_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      // optional bool boolean_value = 5;
-      private boolean booleanValue_ ;
-      /**
-       * <code>optional bool boolean_value = 5;</code>
-       */
-      public boolean hasBooleanValue() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional bool boolean_value = 5;</code>
-       */
-      public boolean getBooleanValue() {
-        return booleanValue_;
-      }
-      /**
-       * <code>optional bool boolean_value = 5;</code>
-       */
-      public Builder setBooleanValue(boolean value) {
-        bitField0_ |= 0x00000010;
-        booleanValue_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional bool boolean_value = 5;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public Builder clearBooleanValue() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        booleanValue_ = false;
+      public com.openxc.BinaryMessages.DynamicField.Builder getEventBuilder() {
+        bitField0_ |= 0x00000008;
         onChanged();
-        return this;
-      }
-
-      // optional string string_event = 6;
-      private java.lang.Object stringEvent_ = "";
-      /**
-       * <code>optional string string_event = 6;</code>
-       */
-      public boolean hasStringEvent() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return getEventFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional string string_event = 6;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public java.lang.String getStringEvent() {
-        java.lang.Object ref = stringEvent_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          stringEvent_ = s;
-          return s;
+      public com.openxc.BinaryMessages.DynamicFieldOrBuilder getEventOrBuilder() {
+        if (eventBuilder_ != null) {
+          return eventBuilder_.getMessageOrBuilder();
         } else {
-          return (java.lang.String) ref;
+          return event_;
         }
       }
       /**
-       * <code>optional string string_event = 6;</code>
+       * <code>optional .openxc.DynamicField event = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getStringEventBytes() {
-        java.lang.Object ref = stringEvent_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          stringEvent_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder> 
+          getEventFieldBuilder() {
+        if (eventBuilder_ == null) {
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.DynamicField, com.openxc.BinaryMessages.DynamicField.Builder, com.openxc.BinaryMessages.DynamicFieldOrBuilder>(
+                  event_,
+                  getParentForChildren(),
+                  isClean());
+          event_ = null;
         }
-      }
-      /**
-       * <code>optional string string_event = 6;</code>
-       */
-      public Builder setStringEvent(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        stringEvent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string string_event = 6;</code>
-       */
-      public Builder clearStringEvent() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        stringEvent_ = getDefaultInstance().getStringEvent();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string string_event = 6;</code>
-       */
-      public Builder setStringEventBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        stringEvent_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional double numeric_event = 7;
-      private double numericEvent_ ;
-      /**
-       * <code>optional double numeric_event = 7;</code>
-       */
-      public boolean hasNumericEvent() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional double numeric_event = 7;</code>
-       */
-      public double getNumericEvent() {
-        return numericEvent_;
-      }
-      /**
-       * <code>optional double numeric_event = 7;</code>
-       */
-      public Builder setNumericEvent(double value) {
-        bitField0_ |= 0x00000040;
-        numericEvent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double numeric_event = 7;</code>
-       */
-      public Builder clearNumericEvent() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        numericEvent_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      // optional bool boolean_event = 8;
-      private boolean booleanEvent_ ;
-      /**
-       * <code>optional bool boolean_event = 8;</code>
-       */
-      public boolean hasBooleanEvent() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional bool boolean_event = 8;</code>
-       */
-      public boolean getBooleanEvent() {
-        return booleanEvent_;
-      }
-      /**
-       * <code>optional bool boolean_event = 8;</code>
-       */
-      public Builder setBooleanEvent(boolean value) {
-        bitField0_ |= 0x00000080;
-        booleanEvent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool boolean_event = 8;</code>
-       */
-      public Builder clearBooleanEvent() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        booleanEvent_ = false;
-        onChanged();
-        return this;
+        return eventBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:openxc.TranslatedMessage)
@@ -5964,6 +6526,11 @@ public final class BinaryMessages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_openxc_DiagnosticResponse_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_openxc_DynamicField_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_openxc_DynamicField_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_openxc_TranslatedMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6000,15 +6567,18 @@ public final class BinaryMessages {
       "essage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001" +
       "(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_response" +
       "_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 " +
-      "\001(\001\"\265\002\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162" +
-      "\036.openxc.TranslatedMessage.Type\022\014\n\004name\030" +
-      "\002 \001(\t\022\024\n\014string_value\030\003 \001(\t\022\025\n\rnumeric_v" +
-      "alue\030\004 \001(\001\022\025\n\rboolean_value\030\005 \001(\010\022\024\n\014str" +
-      "ing_event\030\006 \001(\t\022\025\n\rnumeric_event\030\007 \001(\001\022\025" +
-      "\n\rboolean_event\030\010 \001(\010\"\\\n\004Type\022\n\n\006STRING\020" +
-      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004",
-      "\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\nc" +
-      "om.openxcB\016BinaryMessages"
+      "\001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.ope" +
+      "nxc.DynamicField.Type\022\024\n\014string_value\030\002 " +
+      "\001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_va" +
+      "lue\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010" +
+      "\n\004BOOL\020\003\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001" +
+      " \001(\0162\036.openxc.TranslatedMessage.Type\022\014\n\004" +
+      "name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.Dynam",
+      "icField\022#\n\005event\030\004 \001(\0132\024.openxc.DynamicF" +
+      "ield\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOO" +
+      "L\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005" +
+      "\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.openxcB\016Binary" +
+      "Messages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6045,12 +6615,18 @@ public final class BinaryMessages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticResponse_descriptor,
               new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Success", "NegativeResponseCode", "Payload", "Value", });
-          internal_static_openxc_TranslatedMessage_descriptor =
+          internal_static_openxc_DynamicField_descriptor =
             getDescriptor().getMessageTypes().get(5);
+          internal_static_openxc_DynamicField_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_openxc_DynamicField_descriptor,
+              new java.lang.String[] { "Type", "StringValue", "NumericValue", "BooleanValue", });
+          internal_static_openxc_TranslatedMessage_descriptor =
+            getDescriptor().getMessageTypes().get(6);
           internal_static_openxc_TranslatedMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_TranslatedMessage_descriptor,
-              new java.lang.String[] { "Type", "Name", "StringValue", "NumericValue", "BooleanValue", "StringEvent", "NumericEvent", "BooleanEvent", });
+              new java.lang.String[] { "Type", "Name", "Value", "Event", });
           return null;
         }
       };

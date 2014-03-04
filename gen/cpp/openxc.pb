@@ -1,5 +1,6 @@
 
-ñ	
+Ø
+
 openxc.protoopenxc"Ë
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -48,16 +49,22 @@ message_id (
 success (
 negative_response_code (
 payload (
-value ("µ
+value ("¢
+DynamicField'
+type (2.openxc.DynamicField.Type
+string_value (	
+numeric_value (
+boolean_value ("%
+Type
+
+STRING
+NUM
+BOOL"÷
 TranslatedMessage,
 type (2.openxc.TranslatedMessage.Type
-name (	
-string_value (	
-numeric_value (
-boolean_value (
-string_event (	
-numeric_event (
-boolean_event ("\
+name (	#
+value (2.openxc.DynamicField#
+event (2.openxc.DynamicField"\
 Type
 
 STRING
