@@ -1,20 +1,21 @@
 
-Ø
-
-openxc.protoopenxc"Ë
+ð
+openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
 raw_message (2.openxc.RawMessage5
 translated_message (2.openxc.TranslatedMessage7
 diagnostic_response (2.openxc.DiagnosticResponse/
-control_command (2.openxc.ControlCommand"D
+control_command (2.openxc.ControlCommand1
+command_response (2.openxc.CommandResponse"Z
 Type
 RAW
 
 TRANSLATED
 
 DIAGNOSTIC
-CONTROL_COMMAND";
+CONTROL_COMMAND
+COMMAND_RESPONSE";
 
 RawMessage
 bus (
@@ -28,7 +29,10 @@ message_id (
 VERSION
 	DEVICE_ID
 
-DIAGNOSTIC"ª
+DIAGNOSTIC"M
+CommandResponse)
+type (2.openxc.ControlCommand.Type
+message (	"ª
 DiagnosticRequest
 bus (
 
