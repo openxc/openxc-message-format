@@ -42,9 +42,11 @@ message DiagnosticRequest {
     // support multi-frame responses
     optional bytes payload = 5;
     optional bool parse_payload = 6;
-    optional double factor = 7;
-    optional double offset = 8;
-    optional double frequency = 9;
+    optional bool multiple_responses = 7;
+    optional double factor = 8;
+    optional double offset = 9;
+    optional double frequency = 10;
+    optional string name = 11;
 }
 
 message DiagnosticResponse {

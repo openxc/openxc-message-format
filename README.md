@@ -57,9 +57,11 @@ with this command format:
           "pid": 5,
           "payload": "0x1234",
           "parse_payload": true,
+          "multiple_response": false,
           "factor": 1.0,
           "offset": 0,
-          "frequency": 1
+          "frequency": 1,
+          "name": "my_pid"
         }
       }
     }
@@ -83,6 +85,14 @@ with this command format:
     the response. The 'payload' field will be omitted in responses with a
     'value'.
 
+**multiple_response** - (optional, false by default) if true, request will stay
+  active for a full 100ms, even after receiving a diagnostic response message.
+  This is useful for requests to the functional broadcast arbitration ID
+  (`0x7df`) when you need to get responses from multiple modules. It's possible
+  to set this to `true` for non-broadcast requests, but in practice you won't
+  see any additional responses after the first and it will just take up memory
+  in the VI for longer.
+
 **factor** - (optional, 1.0 by default) if `parse_payload` is true, the value in
     the payload will be multiplied by this factor before returning. The `factor`
     is applied before the `offset`.
@@ -93,6 +103,11 @@ with this command format:
 
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
     request. To send a single request, set this to 0 or leave it out.
+
+**name** - (optional, defaults to nothing) A human readable, string name for
+    this request. If provided, the response will have a `name` field (much like a
+    normal translated message) in place of the request details (i.e. the bus,
+    id, mode and pid).  TODO elaborate on this.
 
 The `bus+id+mode+pid` key is unique, so if you send a create request with that
 key twice, it'll overwrite the existing one (i.e. it will change the frequency,

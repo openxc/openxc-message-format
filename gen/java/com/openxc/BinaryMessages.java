@@ -3365,35 +3365,60 @@ public final class BinaryMessages {
      */
     boolean getParsePayload();
 
-    // optional double factor = 7;
+    // optional bool multiple_responses = 7;
     /**
-     * <code>optional double factor = 7;</code>
+     * <code>optional bool multiple_responses = 7;</code>
+     */
+    boolean hasMultipleResponses();
+    /**
+     * <code>optional bool multiple_responses = 7;</code>
+     */
+    boolean getMultipleResponses();
+
+    // optional double factor = 8;
+    /**
+     * <code>optional double factor = 8;</code>
      */
     boolean hasFactor();
     /**
-     * <code>optional double factor = 7;</code>
+     * <code>optional double factor = 8;</code>
      */
     double getFactor();
 
-    // optional double offset = 8;
+    // optional double offset = 9;
     /**
-     * <code>optional double offset = 8;</code>
+     * <code>optional double offset = 9;</code>
      */
     boolean hasOffset();
     /**
-     * <code>optional double offset = 8;</code>
+     * <code>optional double offset = 9;</code>
      */
     double getOffset();
 
-    // optional double frequency = 9;
+    // optional double frequency = 10;
     /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 10;</code>
      */
     boolean hasFrequency();
     /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 10;</code>
      */
     double getFrequency();
+
+    // optional string name = 11;
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code openxc.DiagnosticRequest}
@@ -3476,19 +3501,29 @@ public final class BinaryMessages {
               parsePayload_ = input.readBool();
               break;
             }
-            case 57: {
+            case 56: {
               bitField0_ |= 0x00000040;
-              factor_ = input.readDouble();
+              multipleResponses_ = input.readBool();
               break;
             }
             case 65: {
               bitField0_ |= 0x00000080;
-              offset_ = input.readDouble();
+              factor_ = input.readDouble();
               break;
             }
             case 73: {
               bitField0_ |= 0x00000100;
+              offset_ = input.readDouble();
+              break;
+            }
+            case 81: {
+              bitField0_ |= 0x00000200;
               frequency_ = input.readDouble();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000400;
+              name_ = input.readBytes();
               break;
             }
           }
@@ -3637,52 +3672,111 @@ public final class BinaryMessages {
       return parsePayload_;
     }
 
-    // optional double factor = 7;
-    public static final int FACTOR_FIELD_NUMBER = 7;
-    private double factor_;
+    // optional bool multiple_responses = 7;
+    public static final int MULTIPLE_RESPONSES_FIELD_NUMBER = 7;
+    private boolean multipleResponses_;
     /**
-     * <code>optional double factor = 7;</code>
+     * <code>optional bool multiple_responses = 7;</code>
      */
-    public boolean hasFactor() {
+    public boolean hasMultipleResponses() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional double factor = 7;</code>
+     * <code>optional bool multiple_responses = 7;</code>
+     */
+    public boolean getMultipleResponses() {
+      return multipleResponses_;
+    }
+
+    // optional double factor = 8;
+    public static final int FACTOR_FIELD_NUMBER = 8;
+    private double factor_;
+    /**
+     * <code>optional double factor = 8;</code>
+     */
+    public boolean hasFactor() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional double factor = 8;</code>
      */
     public double getFactor() {
       return factor_;
     }
 
-    // optional double offset = 8;
-    public static final int OFFSET_FIELD_NUMBER = 8;
+    // optional double offset = 9;
+    public static final int OFFSET_FIELD_NUMBER = 9;
     private double offset_;
     /**
-     * <code>optional double offset = 8;</code>
+     * <code>optional double offset = 9;</code>
      */
     public boolean hasOffset() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional double offset = 8;</code>
+     * <code>optional double offset = 9;</code>
      */
     public double getOffset() {
       return offset_;
     }
 
-    // optional double frequency = 9;
-    public static final int FREQUENCY_FIELD_NUMBER = 9;
+    // optional double frequency = 10;
+    public static final int FREQUENCY_FIELD_NUMBER = 10;
     private double frequency_;
     /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 10;</code>
      */
     public boolean hasFrequency() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 10;</code>
      */
     public double getFrequency() {
       return frequency_;
+    }
+
+    // optional string name = 11;
+    public static final int NAME_FIELD_NUMBER = 11;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
@@ -3692,9 +3786,11 @@ public final class BinaryMessages {
       pid_ = 0;
       payload_ = com.google.protobuf.ByteString.EMPTY;
       parsePayload_ = false;
+      multipleResponses_ = false;
       factor_ = 0D;
       offset_ = 0D;
       frequency_ = 0D;
+      name_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3727,13 +3823,19 @@ public final class BinaryMessages {
         output.writeBool(6, parsePayload_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeDouble(7, factor_);
+        output.writeBool(7, multipleResponses_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeDouble(8, offset_);
+        output.writeDouble(8, factor_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeDouble(9, frequency_);
+        output.writeDouble(9, offset_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeDouble(10, frequency_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(11, getNameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3770,15 +3872,23 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, factor_);
+          .computeBoolSize(7, multipleResponses_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, offset_);
+          .computeDoubleSize(8, factor_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(9, frequency_);
+          .computeDoubleSize(9, offset_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, frequency_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3908,12 +4018,16 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000010);
         parsePayload_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
-        factor_ = 0D;
+        multipleResponses_ = false;
         bitField0_ = (bitField0_ & ~0x00000040);
-        offset_ = 0D;
+        factor_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000080);
-        frequency_ = 0D;
+        offset_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000100);
+        frequency_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -3969,15 +4083,23 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.factor_ = factor_;
+        result.multipleResponses_ = multipleResponses_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.offset_ = offset_;
+        result.factor_ = factor_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
+        result.offset_ = offset_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.frequency_ = frequency_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.name_ = name_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4012,6 +4134,9 @@ public final class BinaryMessages {
         if (other.hasParsePayload()) {
           setParsePayload(other.getParsePayload());
         }
+        if (other.hasMultipleResponses()) {
+          setMultipleResponses(other.getMultipleResponses());
+        }
         if (other.hasFactor()) {
           setFactor(other.getFactor());
         }
@@ -4020,6 +4145,11 @@ public final class BinaryMessages {
         }
         if (other.hasFrequency()) {
           setFrequency(other.getFrequency());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000400;
+          name_ = other.name_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4269,101 +4399,208 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional double factor = 7;
-      private double factor_ ;
+      // optional bool multiple_responses = 7;
+      private boolean multipleResponses_ ;
       /**
-       * <code>optional double factor = 7;</code>
+       * <code>optional bool multiple_responses = 7;</code>
        */
-      public boolean hasFactor() {
+      public boolean hasMultipleResponses() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional double factor = 7;</code>
+       * <code>optional bool multiple_responses = 7;</code>
+       */
+      public boolean getMultipleResponses() {
+        return multipleResponses_;
+      }
+      /**
+       * <code>optional bool multiple_responses = 7;</code>
+       */
+      public Builder setMultipleResponses(boolean value) {
+        bitField0_ |= 0x00000040;
+        multipleResponses_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool multiple_responses = 7;</code>
+       */
+      public Builder clearMultipleResponses() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        multipleResponses_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional double factor = 8;
+      private double factor_ ;
+      /**
+       * <code>optional double factor = 8;</code>
+       */
+      public boolean hasFactor() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional double factor = 8;</code>
        */
       public double getFactor() {
         return factor_;
       }
       /**
-       * <code>optional double factor = 7;</code>
+       * <code>optional double factor = 8;</code>
        */
       public Builder setFactor(double value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         factor_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double factor = 7;</code>
+       * <code>optional double factor = 8;</code>
        */
       public Builder clearFactor() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         factor_ = 0D;
         onChanged();
         return this;
       }
 
-      // optional double offset = 8;
+      // optional double offset = 9;
       private double offset_ ;
       /**
-       * <code>optional double offset = 8;</code>
+       * <code>optional double offset = 9;</code>
        */
       public boolean hasOffset() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional double offset = 8;</code>
+       * <code>optional double offset = 9;</code>
        */
       public double getOffset() {
         return offset_;
       }
       /**
-       * <code>optional double offset = 8;</code>
+       * <code>optional double offset = 9;</code>
        */
       public Builder setOffset(double value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         offset_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double offset = 8;</code>
+       * <code>optional double offset = 9;</code>
        */
       public Builder clearOffset() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         offset_ = 0D;
         onChanged();
         return this;
       }
 
-      // optional double frequency = 9;
+      // optional double frequency = 10;
       private double frequency_ ;
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 10;</code>
        */
       public boolean hasFrequency() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 10;</code>
        */
       public double getFrequency() {
         return frequency_;
       }
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 10;</code>
        */
       public Builder setFrequency(double value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         frequency_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 10;</code>
        */
       public Builder clearFrequency() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         frequency_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional string name = 11;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 11;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -7329,26 +7566,28 @@ public final class BinaryMessages {
       "Request\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_I" +
       "D\020\002\022\016\n\nDIAGNOSTIC\020\003\"M\n\017CommandResponse\022)" +
       "\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Typ" +
-      "e\022\017\n\007message\030\002 \001(\t\"\252\001\n\021DiagnosticRequest" +
+      "e\022\017\n\007message\030\002 \001(\t\"\324\001\n\021DiagnosticRequest" +
       "\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mod",
       "e\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014\022\025\n" +
-      "\rparse_payload\030\006 \001(\010\022\016\n\006factor\030\007 \001(\001\022\016\n\006" +
-      "offset\030\010 \001(\001\022\021\n\tfrequency\030\t \001(\001\"\241\001\n\022Diag" +
-      "nosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_i" +
-      "d\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007su" +
-      "ccess\030\005 \001(\010\022\036\n\026negative_response_code\030\006 " +
-      "\001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"\242\001\n\014" +
-      "DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc.Dyna" +
-      "micField.Type\022\024\n\014string_value\030\002 \001(\t\022\025\n\rn" +
-      "umeric_value\030\003 \001(\001\022\025\n\rboolean_value\030\004 \001(",
-      "\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003" +
-      "\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162\036.o" +
-      "penxc.TranslatedMessage.Type\022\014\n\004name\030\002 \001" +
-      "(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicField\022" +
-      "#\n\005event\030\004 \001(\0132\024.openxc.DynamicField\"\\\n\004" +
-      "Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016E" +
-      "VENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EVEN" +
-      "TED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMessages"
+      "\rparse_payload\030\006 \001(\010\022\032\n\022multiple_respons" +
+      "es\030\007 \001(\010\022\016\n\006factor\030\010 \001(\001\022\016\n\006offset\030\t \001(\001" +
+      "\022\021\n\tfrequency\030\n \001(\001\022\014\n\004name\030\013 \001(\t\"\241\001\n\022Di" +
+      "agnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage" +
+      "_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007" +
+      "success\030\005 \001(\010\022\036\n\026negative_response_code\030" +
+      "\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"\242\001" +
+      "\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc.Dy" +
+      "namicField.Type\022\024\n\014string_value\030\002 \001(\t\022\025\n",
+      "\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_value\030\004 " +
+      "\001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL" +
+      "\020\003\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162\036" +
+      ".openxc.TranslatedMessage.Type\022\014\n\004name\030\002" +
+      " \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicFiel" +
+      "d\022#\n\005event\030\004 \001(\0132\024.openxc.DynamicField\"\\" +
+      "\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n" +
+      "\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EV" +
+      "ENTED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMessag" +
+      "es"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7384,7 +7623,7 @@ public final class BinaryMessages {
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticRequest_descriptor,
-              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "ParsePayload", "Factor", "Offset", "Frequency", });
+              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "ParsePayload", "MultipleResponses", "Factor", "Offset", "Frequency", "Name", });
           internal_static_openxc_DiagnosticResponse_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new
