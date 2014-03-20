@@ -40,7 +40,9 @@ is sent as a JSON object, separated by newlines. The format of each object is:
 
 **data** - up to 8 bytes of data from the CAN message's payload, represented as
   a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
-  integers, which is why we are not using a numerical data type.
+  integers, which is why we are not using a numerical data type. Each byte in
+  the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
+  complete string must have an even number of characters.
 
 ## Diagnostic Messages
 
@@ -79,6 +81,8 @@ with this command format:
 **payload** - (optional) up to 7 bytes of data for the request's payload
     represented as a hexidecimal number in a string. Many JSON parser cannot
     handle 64-bit integers, which is why we are not using a numerical data type.
+    Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
+    is `0x01` - the complete string must have an even number of characters.
 
 **parse_payload** - (optional, false by default) if true, the complete payload in the
     response message will be parsed as a number and returned in the 'value' field of
