@@ -163,7 +163,7 @@ Finally, the `payload` and `value` fields are mutually exclusive:
 
 The response to a simple PID request would look like this:
 
-    {"bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
+    {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
 ## Commands
 
