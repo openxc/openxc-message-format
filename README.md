@@ -118,9 +118,6 @@ key twice, it'll overwrite the existing one (i.e. it will change the frequency,
 the only other parameter). To cancel a recurring request, send this command with
 the frequency set to 0.
 
-TODO it'd be nice to have the OBD-II PIDs built in, with the proper conversion
-functions - that may need a different output format
-
 If you're just requesting a PID, you can use this minimal field set for the
 `request` object:
 
@@ -168,9 +165,33 @@ The response to a simple PID request would look like this:
 
     {"bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
-TODO again, it'd be nice to have the OBD-II PIDs built in, with the proper
-conversion functions so the response here included the actual transformed value
-of the pid and a human readable name
+## Commands
+
+### Version Query
+
+The `version` command triggers the VI to inject a firmware version identifier
+response into the outgoing data stream.
+
+**Request**
+
+    { "command": "version"}
+
+**Response**
+
+    { "command_response": "version", "message": "v6.0-dev (default)"}
+
+### Device ID Query
+
+The `device_id` command triggers the VI to inject a unique device ID (e.g. the
+MAC address of an included Bluetooth module) into into the outgoing data stream.
+
+**Request**
+
+    { "command": "device_id"}
+
+**Response**
+
+    { "command_response": "device_id", "message": "0012345678"}
 
 ## Trace File Format
 
