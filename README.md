@@ -59,7 +59,7 @@ with this command format:
           "pid": 5,
           "payload": "0x1234",
           "parse_payload": true,
-          "multiple_response": false,
+          "multiple_responses": false,
           "factor": 1.0,
           "offset": 0,
           "frequency": 1,
@@ -89,7 +89,7 @@ with this command format:
     the response. The 'payload' field will be omitted in responses with a
     'value'.
 
-**multiple_response** - (optional, false by default) if true, request will stay
+**multiple_responses** - (optional, false by default) if true, request will stay
   active for a full 100ms, even after receiving a diagnostic response message.
   This is useful for requests to the functional broadcast arbitration ID
   (`0x7df`) when you need to get responses from multiple modules. It's possible
@@ -125,14 +125,24 @@ If you're just requesting a PID, you can use this minimal field set for the
 
 ### Responses
 
+The response to a successful request:
+
     {"bus": 1,
       "id": 1234,
       "mode": 1,
       "pid": 5,
       "success": true,
-      "negative_response_code": 17,
       "payload": "0x1234",
-      "parsed_payload": 4660}
+      "value": 4660}
+
+and to an unsuccessful request, with the `negative_response_code` and no `pid`
+echo:
+
+    {"bus": 1,
+      "id": 1234,
+      "mode": 1,
+      "success": false,
+      "negative_response_code": 17}
 
 **bus** - the numerical identifier of the CAN bus where this response was
     received.
