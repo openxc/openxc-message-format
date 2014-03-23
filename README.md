@@ -84,10 +84,15 @@ with this command format:
     Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
     is `0x01` - the complete string must have an even number of characters.
 
-**parse_payload** - (optional, false by default) if true, the complete payload in the
-    response message will be parsed as a number and returned in the 'value' field of
-    the response. The 'payload' field will be omitted in responses with a
-    'value'.
+**parse_payload** - (optional, false by default) if `true`, the complete payload
+    in the response message will be parsed as a number and returned in the
+    `value` field of the response. The `payload` field will be omitted in
+    responses with a `value`.
+
+**name** - (optional, defaults to nothing) A human readable, string name for
+  this request. If provided, the response will have a `name` field (much like a
+  normal translated message) with this value in place of `bus`, `id`, `mode` and
+  `pid`.
 
 **multiple_responses** - (optional, false by default) if true, request will stay
   active for a full 100ms, even after receiving a diagnostic response message.
@@ -107,11 +112,6 @@ with this command format:
 
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
     request. To send a single request, set this to 0 or leave it out.
-
-**name** - (optional, defaults to nothing) A human readable, string name for
-    this request. If provided, the response will have a `name` field (much like a
-    normal translated message) in place of the request details (i.e. the bus,
-    id, mode and pid).  TODO elaborate on this.
 
 The `bus+id+mode+pid` key is unique, so if you send a create request with that
 key twice, it'll overwrite the existing one (i.e. it will change the frequency,
