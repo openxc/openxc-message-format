@@ -58,7 +58,6 @@ with this command format:
           "mode": 1,
           "pid": 5,
           "payload": "0x1234",
-          "parse_payload": true,
           "multiple_responses": false,
           "factor": 1.0,
           "offset": 0,
@@ -84,11 +83,6 @@ with this command format:
     Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
     is `0x01` - the complete string must have an even number of characters.
 
-**parse_payload** - (optional, false by default) if `true`, the complete payload
-    in the response message will be parsed as a number and returned in the
-    `value` field of the response. The `payload` field will be omitted in
-    responses with a `value`.
-
 **name** - (optional, defaults to nothing) A human readable, string name for
   this request. If provided, the response will have a `name` field (much like a
   normal translated message) with this value in place of `bus`, `id`, `mode` and
@@ -102,16 +96,14 @@ with this command format:
   see any additional responses after the first and it will just take up memory
   in the VI for longer.
 
-**factor** - (optional, 1.0 by default) if `parse_payload` is true, the value in
-    the payload will be multiplied by this factor before returning. The `factor`
-    is applied before the `offset`.
-
-**offset** - (optional, 0 by default) if `parse_payload` is true, this offset
-    will be added to the value in the payload before returning. The `offset` is
-    applied after the `factor`.
-
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
     request. To send a single request, set this to 0 or leave it out.
+
+**decoded_type** - (optional, defaults to "obd2" if the request is a recognized
+OBD-II mode 1 request, otherwise "none") If specified, the valid values are
+`"none"` and `"obd2"`. If `obd2`, the payload will be decoded according to the
+OBD-II specification and returned in the `value` field. Set this to `none` to
+manually override the OBD-II decoding feature for a known PID.
 
 The `bus+id+mode+pid` key is unique, so if you send a create request with that
 key twice, it'll overwrite the existing one (i.e. it will change the frequency,
@@ -168,8 +160,7 @@ Finally, the `payload` and `value` fields are mutually exclusive:
     handle 64-bit integers, which is why we are not using a numerical data type.
 
 **value** - (optional) if the response had a payload, this may be the
-    payload interpreted as an integer and transformed with a factor and offset
-    provided with the request.
+    payload interpreted as an integer.
 
 The response to a simple PID request would look like this:
 

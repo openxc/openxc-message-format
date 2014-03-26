@@ -34,6 +34,8 @@ message CommandResponse {
 }
 
 message DiagnosticRequest {
+    enum DecodedType { NONE = 1; OBD2 = 2; }
+
     optional int32 bus = 1;
     optional uint32 message_id = 2;
     optional uint32 mode = 3;
@@ -42,10 +44,9 @@ message DiagnosticRequest {
     // support multi-frame responses
     optional bytes payload = 5;
     optional bool multiple_responses = 6;
-    optional double factor = 7;
-    optional double offset = 8;
-    optional double frequency = 9;
-    optional string name = 10;
+    optional double frequency = 7;
+    optional string name = 8;
+    optional DecodedType decoded_type = 9;
 }
 
 message DiagnosticResponse {

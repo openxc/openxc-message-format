@@ -3365,50 +3365,40 @@ public final class BinaryMessages {
      */
     boolean getMultipleResponses();
 
-    // optional double factor = 7;
+    // optional double frequency = 7;
     /**
-     * <code>optional double factor = 7;</code>
-     */
-    boolean hasFactor();
-    /**
-     * <code>optional double factor = 7;</code>
-     */
-    double getFactor();
-
-    // optional double offset = 8;
-    /**
-     * <code>optional double offset = 8;</code>
-     */
-    boolean hasOffset();
-    /**
-     * <code>optional double offset = 8;</code>
-     */
-    double getOffset();
-
-    // optional double frequency = 9;
-    /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 7;</code>
      */
     boolean hasFrequency();
     /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 7;</code>
      */
     double getFrequency();
 
-    // optional string name = 10;
+    // optional string name = 8;
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     boolean hasName();
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
+
+    // optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;
+    /**
+     * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+     */
+    boolean hasDecodedType();
+    /**
+     * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+     */
+    com.openxc.BinaryMessages.DiagnosticRequest.DecodedType getDecodedType();
   }
   /**
    * Protobuf type {@code openxc.DiagnosticRequest}
@@ -3493,22 +3483,23 @@ public final class BinaryMessages {
             }
             case 57: {
               bitField0_ |= 0x00000040;
-              factor_ = input.readDouble();
-              break;
-            }
-            case 65: {
-              bitField0_ |= 0x00000080;
-              offset_ = input.readDouble();
-              break;
-            }
-            case 73: {
-              bitField0_ |= 0x00000100;
               frequency_ = input.readDouble();
               break;
             }
-            case 82: {
-              bitField0_ |= 0x00000200;
+            case 66: {
+              bitField0_ |= 0x00000080;
               name_ = input.readBytes();
+              break;
+            }
+            case 72: {
+              int rawValue = input.readEnum();
+              com.openxc.BinaryMessages.DiagnosticRequest.DecodedType value = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(9, rawValue);
+              } else {
+                bitField0_ |= 0x00000100;
+                decodedType_ = value;
+              }
               break;
             }
           }
@@ -3548,6 +3539,88 @@ public final class BinaryMessages {
     @java.lang.Override
     public com.google.protobuf.Parser<DiagnosticRequest> getParserForType() {
       return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code openxc.DiagnosticRequest.DecodedType}
+     */
+    public enum DecodedType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 1;</code>
+       */
+      NONE(0, 1),
+      /**
+       * <code>OBD2 = 2;</code>
+       */
+      OBD2(1, 2),
+      ;
+
+      /**
+       * <code>NONE = 1;</code>
+       */
+      public static final int NONE_VALUE = 1;
+      /**
+       * <code>OBD2 = 2;</code>
+       */
+      public static final int OBD2_VALUE = 2;
+
+
+      public final int getNumber() { return value; }
+
+      public static DecodedType valueOf(int value) {
+        switch (value) {
+          case 1: return NONE;
+          case 2: return OBD2;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DecodedType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<DecodedType>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DecodedType>() {
+              public DecodedType findValueByNumber(int number) {
+                return DecodedType.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.DiagnosticRequest.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DecodedType[] VALUES = values();
+
+      public static DecodedType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private DecodedType(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:openxc.DiagnosticRequest.DecodedType)
     }
 
     private int bitField0_;
@@ -3657,65 +3730,33 @@ public final class BinaryMessages {
       return multipleResponses_;
     }
 
-    // optional double factor = 7;
-    public static final int FACTOR_FIELD_NUMBER = 7;
-    private double factor_;
+    // optional double frequency = 7;
+    public static final int FREQUENCY_FIELD_NUMBER = 7;
+    private double frequency_;
     /**
-     * <code>optional double factor = 7;</code>
+     * <code>optional double frequency = 7;</code>
      */
-    public boolean hasFactor() {
+    public boolean hasFrequency() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional double factor = 7;</code>
-     */
-    public double getFactor() {
-      return factor_;
-    }
-
-    // optional double offset = 8;
-    public static final int OFFSET_FIELD_NUMBER = 8;
-    private double offset_;
-    /**
-     * <code>optional double offset = 8;</code>
-     */
-    public boolean hasOffset() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional double offset = 8;</code>
-     */
-    public double getOffset() {
-      return offset_;
-    }
-
-    // optional double frequency = 9;
-    public static final int FREQUENCY_FIELD_NUMBER = 9;
-    private double frequency_;
-    /**
-     * <code>optional double frequency = 9;</code>
-     */
-    public boolean hasFrequency() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional double frequency = 9;</code>
+     * <code>optional double frequency = 7;</code>
      */
     public double getFrequency() {
       return frequency_;
     }
 
-    // optional string name = 10;
-    public static final int NAME_FIELD_NUMBER = 10;
+    // optional string name = 8;
+    public static final int NAME_FIELD_NUMBER = 8;
     private java.lang.Object name_;
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     public boolean hasName() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -3732,7 +3773,7 @@ public final class BinaryMessages {
       }
     }
     /**
-     * <code>optional string name = 10;</code>
+     * <code>optional string name = 8;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -3748,6 +3789,22 @@ public final class BinaryMessages {
       }
     }
 
+    // optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;
+    public static final int DECODED_TYPE_FIELD_NUMBER = 9;
+    private com.openxc.BinaryMessages.DiagnosticRequest.DecodedType decodedType_;
+    /**
+     * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+     */
+    public boolean hasDecodedType() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+     */
+    public com.openxc.BinaryMessages.DiagnosticRequest.DecodedType getDecodedType() {
+      return decodedType_;
+    }
+
     private void initFields() {
       bus_ = 0;
       messageId_ = 0;
@@ -3755,10 +3812,9 @@ public final class BinaryMessages {
       pid_ = 0;
       payload_ = com.google.protobuf.ByteString.EMPTY;
       multipleResponses_ = false;
-      factor_ = 0D;
-      offset_ = 0D;
       frequency_ = 0D;
       name_ = "";
+      decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3791,16 +3847,13 @@ public final class BinaryMessages {
         output.writeBool(6, multipleResponses_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeDouble(7, factor_);
+        output.writeDouble(7, frequency_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeDouble(8, offset_);
+        output.writeBytes(8, getNameBytes());
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeDouble(9, frequency_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeBytes(10, getNameBytes());
+        output.writeEnum(9, decodedType_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3837,19 +3890,15 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, factor_);
+          .computeDoubleSize(7, frequency_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, offset_);
+          .computeBytesSize(8, getNameBytes());
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(9, frequency_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, getNameBytes());
+          .computeEnumSize(9, decodedType_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3979,14 +4028,12 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000010);
         multipleResponses_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
-        factor_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        offset_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000080);
         frequency_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000080);
+        decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -4042,19 +4089,15 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.factor_ = factor_;
+        result.frequency_ = frequency_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.offset_ = offset_;
+        result.name_ = name_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.frequency_ = frequency_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.name_ = name_;
+        result.decodedType_ = decodedType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4089,19 +4132,16 @@ public final class BinaryMessages {
         if (other.hasMultipleResponses()) {
           setMultipleResponses(other.getMultipleResponses());
         }
-        if (other.hasFactor()) {
-          setFactor(other.getFactor());
-        }
-        if (other.hasOffset()) {
-          setOffset(other.getOffset());
-        }
         if (other.hasFrequency()) {
           setFrequency(other.getFrequency());
         }
         if (other.hasName()) {
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000080;
           name_ = other.name_;
           onChanged();
+        }
+        if (other.hasDecodedType()) {
+          setDecodedType(other.getDecodedType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4351,115 +4391,49 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional double factor = 7;
-      private double factor_ ;
+      // optional double frequency = 7;
+      private double frequency_ ;
       /**
-       * <code>optional double factor = 7;</code>
+       * <code>optional double frequency = 7;</code>
        */
-      public boolean hasFactor() {
+      public boolean hasFrequency() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional double factor = 7;</code>
-       */
-      public double getFactor() {
-        return factor_;
-      }
-      /**
-       * <code>optional double factor = 7;</code>
-       */
-      public Builder setFactor(double value) {
-        bitField0_ |= 0x00000040;
-        factor_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double factor = 7;</code>
-       */
-      public Builder clearFactor() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        factor_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      // optional double offset = 8;
-      private double offset_ ;
-      /**
-       * <code>optional double offset = 8;</code>
-       */
-      public boolean hasOffset() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional double offset = 8;</code>
-       */
-      public double getOffset() {
-        return offset_;
-      }
-      /**
-       * <code>optional double offset = 8;</code>
-       */
-      public Builder setOffset(double value) {
-        bitField0_ |= 0x00000080;
-        offset_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double offset = 8;</code>
-       */
-      public Builder clearOffset() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        offset_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      // optional double frequency = 9;
-      private double frequency_ ;
-      /**
-       * <code>optional double frequency = 9;</code>
-       */
-      public boolean hasFrequency() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 7;</code>
        */
       public double getFrequency() {
         return frequency_;
       }
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 7;</code>
        */
       public Builder setFrequency(double value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000040;
         frequency_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double frequency = 9;</code>
+       * <code>optional double frequency = 7;</code>
        */
       public Builder clearFrequency() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         frequency_ = 0D;
         onChanged();
         return this;
       }
 
-      // optional string name = 10;
+      // optional string name = 8;
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public boolean hasName() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -4473,7 +4447,7 @@ public final class BinaryMessages {
         }
       }
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -4489,37 +4463,73 @@ public final class BinaryMessages {
         }
       }
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000080;
         name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000080);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string name = 10;</code>
+       * <code>optional string name = 8;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000080;
         name_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;
+      private com.openxc.BinaryMessages.DiagnosticRequest.DecodedType decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
+      /**
+       * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+       */
+      public boolean hasDecodedType() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticRequest.DecodedType getDecodedType() {
+        return decodedType_;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+       */
+      public Builder setDecodedType(com.openxc.BinaryMessages.DiagnosticRequest.DecodedType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000100;
+        decodedType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
+       */
+      public Builder clearDecodedType() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
         onChanged();
         return this;
       }
@@ -7485,27 +7495,29 @@ public final class BinaryMessages {
       "Request\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_I" +
       "D\020\002\022\016\n\nDIAGNOSTIC\020\003\"M\n\017CommandResponse\022)" +
       "\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Typ" +
-      "e\022\017\n\007message\030\002 \001(\t\"\275\001\n\021DiagnosticRequest" +
+      "e\022\017\n\007message\030\002 \001(\t\"\375\001\n\021DiagnosticRequest" +
       "\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mod",
       "e\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014\022\032\n" +
-      "\022multiple_responses\030\006 \001(\010\022\016\n\006factor\030\007 \001(" +
-      "\001\022\016\n\006offset\030\010 \001(\001\022\021\n\tfrequency\030\t \001(\001\022\014\n\004" +
-      "name\030\n \001(\t\"\241\001\n\022DiagnosticResponse\022\013\n\003bus" +
-      "\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r" +
-      "\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negati" +
-      "ve_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022" +
-      "\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030" +
-      "\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014stri" +
-      "ng_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n",
-      "\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001" +
-      "\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessag" +
-      "e\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMessa" +
-      "ge.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.o" +
-      "penxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.open" +
-      "xc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003N" +
-      "UM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EV" +
-      "ENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.ope" +
-      "nxcB\016BinaryMessages"
+      "\022multiple_responses\030\006 \001(\010\022\021\n\tfrequency\030\007" +
+      " \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030\t \001(\016" +
+      "2%.openxc.DiagnosticRequest.DecodedType\"" +
+      "!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\241\001\n\022D" +
+      "iagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
+      "e_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n" +
+      "\007success\030\005 \001(\010\022\036\n\026negative_response_code" +
+      "\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"\242" +
+      "\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc.D",
+      "ynamicField.Type\022\024\n\014string_value\030\002 \001(\t\022\025" +
+      "\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_value\030\004" +
+      " \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOO" +
+      "L\020\003\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162" +
+      "\036.openxc.TranslatedMessage.Type\022\014\n\004name\030" +
+      "\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicFie" +
+      "ld\022#\n\005event\030\004 \001(\0132\024.openxc.DynamicField\"" +
+      "\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022" +
+      "\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014E" +
+      "VENTED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMessa",
+      "ges"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7541,7 +7553,7 @@ public final class BinaryMessages {
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticRequest_descriptor,
-              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "MultipleResponses", "Factor", "Offset", "Frequency", "Name", });
+              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "MultipleResponses", "Frequency", "Name", "DecodedType", });
           internal_static_openxc_DiagnosticResponse_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new
