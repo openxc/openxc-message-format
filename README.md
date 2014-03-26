@@ -97,7 +97,8 @@ with this command format:
   in the VI for longer.
 
 **frequency** - (optional, defaults to 0) The frequency in Hz to send this
-    request. To send a single request, set this to 0 or leave it out.
+    request. To send a single non-recurring request, set this to 0 or leave it
+    out.
 
 **decoded_type** - (optional, defaults to "obd2" if the request is a recognized
 OBD-II mode 1 request, otherwise "none") If specified, the valid values are
@@ -105,10 +106,23 @@ OBD-II mode 1 request, otherwise "none") If specified, the valid values are
 OBD-II specification and returned in the `value` field. Set this to `none` to
 manually override the OBD-II decoding feature for a known PID.
 
-The `bus+id+mode+pid` key is unique, so if you send a create request with that
-key twice, it'll overwrite the existing one (i.e. it will change the frequency,
-the only other parameter). To cancel a recurring request, send this command with
-the frequency set to 0.
+A diagnostic request's `bus`, `id`, `mode` and `pid` (or lack of a `pid`)
+combine to create a unique key to identify a recurring request. This means that
+you cannot simultaneosly have recurring requests at 2Hz and 5Hz for the same PID
+from the same ID.
+
+If you send a new `diagnostic_request` command with a `bus + id + mode + pid`
+key matching an existing recurring request, it will update it with whatever
+other parameters you've provided (e.g. it will change the frequency if you
+specify one).
+
+To cancel a recurring request, send a `diagnostic_request` command with the
+matching request information (i.e. the `bus`, `id`, `mode` and `pid`) but a
+frequency of 0.
+
+Non-recurring requests may have the same `bus+id+mode(+pid)` key as a recurring
+request, and they will co-exist without issue. As soon as a non-recurring
+request is either completed or times out, it is removed from the active list.
 
 If you're just requesting a PID, you can use this minimal field set for the
 `request` object:
