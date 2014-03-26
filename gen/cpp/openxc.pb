@@ -1,5 +1,5 @@
 
-š
+ƒ
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -32,21 +32,20 @@ message_id (
 DIAGNOSTIC"M
 CommandResponse)
 type (2.openxc.ControlCommand.Type
-message (	"Ô
+message (	"½
 DiagnosticRequest
 bus (
 
 message_id (
 mode (
 pid (
-payload (
-parse_payload (
-multiple_responses (
-factor (
-offset	 (
-	frequency
- (
-name (	"¡
+payload (
+multiple_responses (
+factor (
+offset (
+	frequency	 (
+name
+ (	"¡
 DiagnosticResponse
 bus (
 
