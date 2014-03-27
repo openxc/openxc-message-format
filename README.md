@@ -3,15 +3,21 @@
 This specification is a part of the [OpenXC platform][OpenXC].
 
 An OpenXC vehicle interface sends generic vehicle data over one or more output
-interfaces (e.g. USB or Bluetooth) as JSON objects, separated by newlines.
+interfaces (e.g. USB or Bluetooth) as JSON or Protocol Buffers (protobuf).
 
-There are two valid message types - single valued and evented.
+This document describes the JSON format and includes a high level description of
+each type and field. Each JSON message published by a VI is delimited with a
+`\0` character.
+
+The Protocol Buffer format is specified in the file `openxc.proto`. Those are
+published using the standard length-delimited method (any protobuf library
+should support this).
+
+## Single Valued
 
 There may not be a 1:1 relationship between input and output signals - i.e. raw
 engine timing CAN signals may be summarized in an "engine performance" metric on
 the abstract side of the interface.
-
-## Single Valued
 
 The expected format of a single valued message is:
 
