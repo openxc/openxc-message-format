@@ -34,8 +34,7 @@ discrete pieces of information in the measurement.
 
 ## Raw CAN Message format
 
-An OpenXC vehicle interface may also output raw CAN messages. Each CAN message
-is sent as a JSON object, separated by newlines. The format of each object is:
+The format for a raw CAN message:
 
     {"bus": 1, "id": 1234, "value": "0x12345678"}
 
@@ -217,7 +216,8 @@ MAC address of an included Bluetooth module) into into the outgoing data stream.
 ## Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
-separated by newlines.
+separated by newlines (which may be either `\r\n` or `\n`, depending on the
+platform the trace file was recorded).
 
 The first line may be a metadata object, although this is optional:
 
