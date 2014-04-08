@@ -102,11 +102,11 @@ manufacturers may support custom message names.
     * 1Hz, but sent immediately on change
 * transmission_gear_position
     * states: first, second, third, fourth, fifth, sixth, seventh, eighth,
-      reverse, neutral
+      ninth, tenth, reverse, neutral
     * 1Hz, but sent immediately on change
 * gear_lever_position
     * states: neutral, park, reverse, drive, sport, low, first, second, third,
-      fourth, fifth, sixth
+      fourth, fifth, sixth, seventh, eighth, ninth, tenth
     * 1Hz, but sent immediately on change
 * odometer
     * Numerical, km
