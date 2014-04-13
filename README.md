@@ -314,6 +314,27 @@ manufacturers may support custom message names.
     * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
     * 1Hz
 
+### Signals from Diagnostics Messages
+
+This set of signals is often retreived from OBD-II requests. The units can be
+found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01).
+
+* engine_load
+* engine_coolant_temperature
+* barometric_pressure
+* commanded_throttle_position
+* throttle_position
+* fuel_level
+* intake_air_temperature
+* intake_manifold_pressure
+* running_time
+* fuel_pressure
+* mass_airflow
+* accelerator_pedal_position
+* ethanol_fuel_percentage
+* engine_oil_temperature
+* engine_torque
+
 License
 =======
 
