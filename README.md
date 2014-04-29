@@ -1,5 +1,7 @@
 # OpenXC Message Format Specification
 
+Version: v0.2
+
 This specification is a part of the [OpenXC platform][OpenXC].
 
 An OpenXC vehicle interface sends generic vehicle data over one or more output
