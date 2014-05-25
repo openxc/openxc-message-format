@@ -38,7 +38,7 @@ discrete pieces of information in the measurement.
 
 The format for a raw CAN message:
 
-    {"bus": 1, "id": 1234, "value": "0x12345678"}
+    {"bus": 1, "id": 1234, "data": "0x12345678"}
 
 **bus** - the numerical identifier of the CAN bus where this message originated,
   most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
