@@ -66,8 +66,6 @@ with this command format:
           "pid": 5,
           "payload": "0x1234",
           "multiple_responses": false,
-          "factor": 1.0,
-          "offset": 0,
           "frequency": 1,
           "name": "my_pid"
         }
