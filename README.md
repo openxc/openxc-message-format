@@ -17,7 +17,20 @@ should support this).
 
 This document describes the JSON format and includes a high level description of
 each type and field. Each JSON message published by a VI is delimited with a
-`\0` character.
+`\0 ` character.
+
+### Extra Values
+
+Any of the following JSON objects may optionally include an `extras`
+field. The value may be any valid JSON object or array. The client libraries
+will do their best to parse this information into a generic format and pass it
+to your application. For example:
+
+    {"name": "steering_wheel_angle", "value": 45,
+        "extras": {
+            "calibrated": false
+        }
+    }
 
 ### Single Valued
 

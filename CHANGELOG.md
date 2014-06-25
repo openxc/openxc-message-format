@@ -5,6 +5,7 @@
 * Removed factor and offset from diagnostic requests to minimize the number of
   fields, and since this is such an uncommon use case and one that can be
   handled by the client receiving the data. We may add them back in the future.
+* Add `extras` field to JSON messages.
 
 ## v0.3
 
