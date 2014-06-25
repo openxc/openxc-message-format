@@ -1,6 +1,6 @@
 # OpenXC Message Format Changelog
 
-## v0.3.1-dev
+## v0.4-dev
 
 * Removed factor and offset from diagnostic requests to minimize the number of
   fields, and since this is such an uncommon use case and one that can be

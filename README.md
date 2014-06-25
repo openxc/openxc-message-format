@@ -7,15 +7,19 @@ This specification is a part of the [OpenXC platform][OpenXC].
 An OpenXC vehicle interface sends generic vehicle data over one or more output
 interfaces (e.g. USB or Bluetooth) as JSON or Protocol Buffers (protobuf).
 
-This document describes the JSON format and includes a high level description of
-each type and field. Each JSON message published by a VI is delimited with a
-`\0` character.
+## Binary (Protocol Buffers)
 
 The Protocol Buffer format is specified in the file `openxc.proto`. Those are
 published using the standard length-delimited method (any protobuf library
 should support this).
 
-## Single Valued
+## JSON
+
+This document describes the JSON format and includes a high level description of
+each type and field. Each JSON message published by a VI is delimited with a
+`\0` character.
+
+### Single Valued
 
 There may not be a 1:1 relationship between input and output signals - i.e. raw
 engine timing CAN signals may be summarized in an "engine performance" metric on
@@ -25,7 +29,7 @@ The expected format of a single valued message is:
 
     {"name": "steering_wheel_angle", "value": 45}
 
-## Evented
+### Evented
 
 The expected format of an event message is:
 
@@ -34,7 +38,7 @@ The expected format of an event message is:
 This format is good for something like a button event, where there are two
 discrete pieces of information in the measurement.
 
-## Raw CAN Message format
+### Raw CAN Message format
 
 The format for a raw CAN message:
 
@@ -51,9 +55,9 @@ The format for a raw CAN message:
   the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
   complete string must have an even number of characters.
 
-## Diagnostic Messages
+### Diagnostic Messages
 
-### Requests
+#### Requests
 
 A request to add or update a diagnostic request is sent to a vehicle interface
 with this command format:
@@ -134,7 +138,7 @@ If you're just requesting a PID, you can use this minimal field set for the
 
     {"bus": 1, "id": 1234, "mode": 1, "pid": 5}
 
-### Responses
+#### Responses
 
 The response to a successful request:
 
@@ -185,9 +189,9 @@ The response to a simple PID request would look like this:
 
     {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
-## Commands
+### Commands
 
-### Version Query
+#### Version Query
 
 The `version` command triggers the VI to inject a firmware version identifier
 response into the outgoing data stream.
@@ -200,7 +204,7 @@ response into the outgoing data stream.
 
     { "command_response": "version", "message": "v6.0-dev (default)"}
 
-### Device ID Query
+#### Device ID Query
 
 The `device_id` command triggers the VI to inject a unique device ID (e.g. the
 MAC address of an included Bluetooth module) into into the outgoing data stream.
@@ -213,7 +217,7 @@ MAC address of an included Bluetooth module) into into the outgoing data stream.
 
     { "command_response": "device_id", "message": "0012345678"}
 
-## Trace File Format
+### Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
 separated by newlines (which may be either `\r\n` or `\n`, depending on the
