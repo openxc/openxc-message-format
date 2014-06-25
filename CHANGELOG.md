@@ -1,5 +1,11 @@
 # OpenXC Message Format Changelog
 
+## v0.3.1-dev
+
+* Removed factor and offset from diagnostic requests to minimize the number of
+  fields, and since this is such an uncommon use case and one that can be
+  handled by the client receiving the data. We may add them back in the future.
+
 ## v0.3
 
 * Add diagnostic message request/response format.
