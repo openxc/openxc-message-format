@@ -94,8 +94,8 @@ with this command format:
 
 **id** - the CAN arbitration ID for the request.
 
-**mode** - the OBD-II mode of the request - 1 through 15 (1 through 9 are the
-    standardized modes).
+**mode** - the OBD-II mode of the request - 1 through 255 (1 through 9 are the
+    standardized modes and 0x22 is a common proprietary mode).
 
 **pid** - (optional) the PID for the request, if applicable.
 

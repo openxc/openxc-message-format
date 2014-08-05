@@ -6,6 +6,7 @@
   fields, and since this is such an uncommon use case and one that can be
   handled by the client receiving the data. We may add them back in the future.
 * Add `extras` field to JSON messages.
+* Expand range of mode field to a full byte (#10)
 
 ## v0.3
 
