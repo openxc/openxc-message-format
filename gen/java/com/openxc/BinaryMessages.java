@@ -3399,6 +3399,16 @@ public final class BinaryMessages {
      * <code>optional .openxc.DiagnosticRequest.DecodedType decoded_type = 9;</code>
      */
     com.openxc.BinaryMessages.DiagnosticRequest.DecodedType getDecodedType();
+
+    // optional .openxc.DiagnosticRequest.Action action = 10;
+    /**
+     * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+     */
+    boolean hasAction();
+    /**
+     * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+     */
+    com.openxc.BinaryMessages.DiagnosticRequest.Action getAction();
   }
   /**
    * Protobuf type {@code openxc.DiagnosticRequest}
@@ -3499,6 +3509,17 @@ public final class BinaryMessages {
               } else {
                 bitField0_ |= 0x00000100;
                 decodedType_ = value;
+              }
+              break;
+            }
+            case 80: {
+              int rawValue = input.readEnum();
+              com.openxc.BinaryMessages.DiagnosticRequest.Action value = com.openxc.BinaryMessages.DiagnosticRequest.Action.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(10, rawValue);
+              } else {
+                bitField0_ |= 0x00000200;
+                action_ = value;
               }
               break;
             }
@@ -3621,6 +3642,97 @@ public final class BinaryMessages {
       }
 
       // @@protoc_insertion_point(enum_scope:openxc.DiagnosticRequest.DecodedType)
+    }
+
+    /**
+     * Protobuf enum {@code openxc.DiagnosticRequest.Action}
+     */
+    public enum Action
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>CREATE = 1;</code>
+       */
+      CREATE(0, 1),
+      /**
+       * <code>UPDATE = 2;</code>
+       */
+      UPDATE(1, 2),
+      /**
+       * <code>DELETE = 3;</code>
+       */
+      DELETE(2, 3),
+      ;
+
+      /**
+       * <code>CREATE = 1;</code>
+       */
+      public static final int CREATE_VALUE = 1;
+      /**
+       * <code>UPDATE = 2;</code>
+       */
+      public static final int UPDATE_VALUE = 2;
+      /**
+       * <code>DELETE = 3;</code>
+       */
+      public static final int DELETE_VALUE = 3;
+
+
+      public final int getNumber() { return value; }
+
+      public static Action valueOf(int value) {
+        switch (value) {
+          case 1: return CREATE;
+          case 2: return UPDATE;
+          case 3: return DELETE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Action>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<Action>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Action>() {
+              public Action findValueByNumber(int number) {
+                return Action.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.DiagnosticRequest.getDescriptor().getEnumTypes().get(1);
+      }
+
+      private static final Action[] VALUES = values();
+
+      public static Action valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private Action(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:openxc.DiagnosticRequest.Action)
     }
 
     private int bitField0_;
@@ -3805,6 +3917,22 @@ public final class BinaryMessages {
       return decodedType_;
     }
 
+    // optional .openxc.DiagnosticRequest.Action action = 10;
+    public static final int ACTION_FIELD_NUMBER = 10;
+    private com.openxc.BinaryMessages.DiagnosticRequest.Action action_;
+    /**
+     * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+     */
+    public boolean hasAction() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+     */
+    public com.openxc.BinaryMessages.DiagnosticRequest.Action getAction() {
+      return action_;
+    }
+
     private void initFields() {
       bus_ = 0;
       messageId_ = 0;
@@ -3815,6 +3943,7 @@ public final class BinaryMessages {
       frequency_ = 0D;
       name_ = "";
       decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
+      action_ = com.openxc.BinaryMessages.DiagnosticRequest.Action.CREATE;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3854,6 +3983,9 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeEnum(9, decodedType_.getNumber());
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeEnum(10, action_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3899,6 +4031,10 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(9, decodedType_.getNumber());
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(10, action_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4034,6 +4170,8 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000080);
         decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
         bitField0_ = (bitField0_ & ~0x00000100);
+        action_ = com.openxc.BinaryMessages.DiagnosticRequest.Action.CREATE;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -4098,6 +4236,10 @@ public final class BinaryMessages {
           to_bitField0_ |= 0x00000100;
         }
         result.decodedType_ = decodedType_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.action_ = action_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4142,6 +4284,9 @@ public final class BinaryMessages {
         }
         if (other.hasDecodedType()) {
           setDecodedType(other.getDecodedType());
+        }
+        if (other.hasAction()) {
+          setAction(other.getAction());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4530,6 +4675,42 @@ public final class BinaryMessages {
       public Builder clearDecodedType() {
         bitField0_ = (bitField0_ & ~0x00000100);
         decodedType_ = com.openxc.BinaryMessages.DiagnosticRequest.DecodedType.NONE;
+        onChanged();
+        return this;
+      }
+
+      // optional .openxc.DiagnosticRequest.Action action = 10;
+      private com.openxc.BinaryMessages.DiagnosticRequest.Action action_ = com.openxc.BinaryMessages.DiagnosticRequest.Action.CREATE;
+      /**
+       * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+       */
+      public boolean hasAction() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticRequest.Action getAction() {
+        return action_;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+       */
+      public Builder setAction(com.openxc.BinaryMessages.DiagnosticRequest.Action value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000200;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest.Action action = 10;</code>
+       */
+      public Builder clearAction() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        action_ = com.openxc.BinaryMessages.DiagnosticRequest.Action.CREATE;
         onChanged();
         return this;
       }
@@ -7495,29 +7676,31 @@ public final class BinaryMessages {
       "Request\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_I" +
       "D\020\002\022\016\n\nDIAGNOSTIC\020\003\"M\n\017CommandResponse\022)" +
       "\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Typ" +
-      "e\022\017\n\007message\030\002 \001(\t\"\375\001\n\021DiagnosticRequest" +
+      "e\022\017\n\007message\030\002 \001(\t\"\335\002\n\021DiagnosticRequest" +
       "\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mod",
       "e\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014\022\032\n" +
       "\022multiple_responses\030\006 \001(\010\022\021\n\tfrequency\030\007" +
       " \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030\t \001(\016" +
-      "2%.openxc.DiagnosticRequest.DecodedType\"" +
-      "!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\241\001\n\022D" +
-      "iagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
-      "e_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n" +
-      "\007success\030\005 \001(\010\022\036\n\026negative_response_code" +
-      "\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"\242" +
-      "\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc.D",
-      "ynamicField.Type\022\024\n\014string_value\030\002 \001(\t\022\025" +
-      "\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_value\030\004" +
-      " \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOO" +
-      "L\020\003\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001 \001(\0162" +
-      "\036.openxc.TranslatedMessage.Type\022\014\n\004name\030" +
-      "\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicFie" +
-      "ld\022#\n\005event\030\004 \001(\0132\024.openxc.DynamicField\"" +
-      "\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022" +
-      "\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014E" +
-      "VENTED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMessa",
-      "ges"
+      "2%.openxc.DiagnosticRequest.DecodedType\022" +
+      "0\n\006action\030\n \001(\0162 .openxc.DiagnosticReque" +
+      "st.Action\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OB" +
+      "D2\020\002\",\n\006Action\022\n\n\006CREATE\020\001\022\n\n\006UPDATE\020\002\022\n" +
+      "\n\006DELETE\020\003\"\241\001\n\022DiagnosticResponse\022\013\n\003bus" +
+      "\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r" +
+      "\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negati",
+      "ve_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022" +
+      "\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030" +
+      "\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014stri" +
+      "ng_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n" +
+      "\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001" +
+      "\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessag" +
+      "e\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMessa" +
+      "ge.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.o" +
+      "penxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.open" +
+      "xc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003N",
+      "UM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EV" +
+      "ENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.ope" +
+      "nxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7553,7 +7736,7 @@ public final class BinaryMessages {
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticRequest_descriptor,
-              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "MultipleResponses", "Frequency", "Name", "DecodedType", });
+              new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "MultipleResponses", "Frequency", "Name", "DecodedType", "Action", });
           internal_static_openxc_DiagnosticResponse_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new

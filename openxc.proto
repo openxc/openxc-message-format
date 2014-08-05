@@ -35,6 +35,7 @@ message CommandResponse {
 
 message DiagnosticRequest {
     enum DecodedType { NONE = 1; OBD2 = 2; }
+    enum Action { CREATE = 1; UPDATE = 2; DELETE = 3; }
 
     optional int32 bus = 1;
     optional uint32 message_id = 2;
@@ -47,6 +48,7 @@ message DiagnosticRequest {
     optional double frequency = 7;
     optional string name = 8;
     optional DecodedType decoded_type = 9;
+    optional Action action = 10;
 }
 
 message DiagnosticResponse {

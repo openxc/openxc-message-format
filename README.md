@@ -33,7 +33,8 @@ field. The value may be any valid JSON object or array. The client libraries
 will do their best to parse this information into a generic format and pass it
 to your application. For example:
 
-    {"name": "steering_wheel_angle", "value": 45,
+    {"name": "steering_wheel_angle",
+        "value": 45,
         "extras": {
             "calibrated": false
         }
@@ -79,10 +80,11 @@ The format for a raw CAN message:
 
 #### Requests
 
-A request to add or update a diagnostic request is sent to a vehicle interface
-with this command format:
+A diagnostic request is created, update and deleted with a JSON object like this
+example:
 
     { "command": "diagnostic_request",
+      "action": "create",
       "request": {
           "bus": 1,
           "id": 1234,
@@ -96,6 +98,83 @@ with this command format:
       }
     }
 
+* The `command` must be `diagnostic_request.`
+* The `action` must be included, and must be one of:
+    * `create` - create a new one-off or recurring diagnostic request.
+    * `update` - update an existing request.
+    * `delete` - delete an existing request.
+* The details of the request must be included in the `request` field, using
+  the sub-fields defined below.
+
+A diagnostic request's `bus`, `id`, `mode` and `pid` (or lack of a `pid`)
+combine to create a unique key to identify a request. These four fields will be
+referred to as the key of the diagnostic request. For example, to create a
+simple one-time diagnostic request:
+
+    { "command": "diagnostic_request",
+      "action": "create",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5
+        }
+      }
+    }
+
+Requests are completed after any responses are received (unless
+`multiple_responses` is set), or the request has timed out after a certain
+number of seconds. After a request is completed, you can re-`create` the same
+key to make another request.
+
+Requests with a `frequency` are added as *recurring* requests, e.g. to add the
+previous example as a recurring request at 1Hz:
+
+    { "command": "diagnostic_request",
+      "action": "create",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5,
+          "frequency": 1
+        }
+      }
+    }
+
+To cancel a recurring request, send a `cancel` action with the same key, e.g.:
+
+    { "command": "diagnostic_request",
+      "action": "delete",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5
+        }
+      }
+    }
+
+To update one of the fields of a recurring request, send an `update` action with
+the same key, plus the field to update. For example, to change the frequency of
+the example request to 2Hz:
+
+    { "command": "diagnostic_request",
+      "action": "update",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5,
+          "frequency": 2
+        }
+      }
+    }
+
+Simultaneous recurring requests for the same key at different rates (e.g. 1Hz
+*and* 2Hz) is not supported. However, non-recurring ("one-off") requests may
+exist in parallel with a recurring request for the same key.
+
 **bus** - the numerical identifier of the CAN bus where this request should be
     sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
 
@@ -107,7 +186,7 @@ with this command format:
 **pid** - (optional) the PID for the request, if applicable.
 
 **payload** - (optional) up to 7 bytes of data for the request's payload
-    represented as a hexidecimal number in a string. Many JSON parser cannot
+    represented as a hexadecimal number in a string. Many JSON parser cannot
     handle 64-bit integers, which is why we are not using a numerical data type.
     Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
     is `0x01` - the complete string must have an even number of characters.
@@ -125,38 +204,14 @@ with this command format:
   see any additional responses after the first and it will just take up memory
   in the VI for longer.
 
-**frequency** - (optional, defaults to 0) The frequency in Hz to send this
-    request. To send a single non-recurring request, set this to 0 or leave it
-    out.
+**frequency** - (optional) Make this request a recurring request, at a this
+  frequency in Hz. To send a single non-recurring request, leave this field out.
 
 **decoded_type** - (optional, defaults to "obd2" if the request is a recognized
 OBD-II mode 1 request, otherwise "none") If specified, the valid values are
 `"none"` and `"obd2"`. If `obd2`, the payload will be decoded according to the
 OBD-II specification and returned in the `value` field. Set this to `none` to
 manually override the OBD-II decoding feature for a known PID.
-
-A diagnostic request's `bus`, `id`, `mode` and `pid` (or lack of a `pid`)
-combine to create a unique key to identify a recurring request. This means that
-you cannot simultaneosly have recurring requests at 2Hz and 5Hz for the same PID
-from the same ID.
-
-If you send a new `diagnostic_request` command with a `bus + id + mode + pid`
-key matching an existing recurring request, it will update it with whatever
-other parameters you've provided (e.g. it will change the frequency if you
-specify one).
-
-To cancel a recurring request, send a `diagnostic_request` command with the
-matching request information (i.e. the `bus`, `id`, `mode` and `pid`) but a
-frequency of 0.
-
-Non-recurring requests may have the same `bus+id+mode(+pid)` key as a recurring
-request, and they will co-exist without issue. As soon as a non-recurring
-request is either completed or times out, it is removed from the active list.
-
-If you're just requesting a PID, you can use this minimal field set for the
-`request` object:
-
-    {"bus": 1, "id": 1234, "mode": 1, "pid": 5}
 
 #### Responses
 
@@ -210,6 +265,9 @@ The response to a simple PID request would look like this:
     {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
 ### Commands
+
+In addition to the `diagnostic_request` command described earlier, there are
+other possible values for the `command` field.
 
 #### Version Query
 
