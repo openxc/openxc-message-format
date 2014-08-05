@@ -9,15 +9,22 @@ interfaces (e.g. USB or Bluetooth) as JSON or Protocol Buffers (protobuf).
 
 ## Binary (Protocol Buffers)
 
-The Protocol Buffer format is specified in the file `openxc.proto`. Those are
-published using the standard length-delimited method (any protobuf library
-should support this).
+The binary format is encoded using [Google Protocol
+Buffers](https://code.google.com/p/protobuf/). The format is specified in the
+file `openxc.proto`. Those are published using the standard length-delimited
+method (any protobuf library should support this).
+
+The binary format is best if you need to maximize the amount of data that can be
+sent from the VI, trading off flexibility for efficiency.
 
 ## JSON
 
 This document describes the JSON format and includes a high level description of
 each type and field. Each JSON message published by a VI is delimited with a
 `\0 ` character.
+
+The JSON format is best for most developers, as it is fairly efficient and very
+flexible.
 
 ### Extra Values
 
