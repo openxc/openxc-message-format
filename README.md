@@ -80,11 +80,10 @@ The format for a raw CAN message:
 
 #### Requests
 
-A diagnostic request is created, update and deleted with a JSON object like this
-example:
+A diagnostic request is added or cancelled with a JSON object like this example:
 
     { "command": "diagnostic_request",
-      "action": "create",
+      "action": "add",
       "request": {
           "bus": 1,
           "id": 1234,
@@ -100,9 +99,8 @@ example:
 
 * The `command` must be `diagnostic_request.`
 * The `action` must be included, and must be one of:
-    * `create` - create a new one-off or recurring diagnostic request.
-    * `update` - update an existing request.
-    * `delete` - delete an existing request.
+    * `add` - create a new one-off or recurring diagnostic request.
+    * `cancel` - cancel an existing request.
 * The details of the request must be included in the `request` field, using
   the sub-fields defined below.
 
@@ -112,7 +110,7 @@ referred to as the key of the diagnostic request. For example, to create a
 simple one-time diagnostic request:
 
     { "command": "diagnostic_request",
-      "action": "create",
+      "action": "add",
       "request": {
           "bus": 1,
           "id": 1234,
@@ -131,7 +129,7 @@ Requests with a `frequency` are added as *recurring* requests, e.g. to add the
 previous example as a recurring request at 1Hz:
 
     { "command": "diagnostic_request",
-      "action": "create",
+      "action": "add",
       "request": {
           "bus": 1,
           "id": 1234,
@@ -145,28 +143,12 @@ previous example as a recurring request at 1Hz:
 To cancel a recurring request, send a `cancel` action with the same key, e.g.:
 
     { "command": "diagnostic_request",
-      "action": "delete",
+      "action": "cancel",
       "request": {
           "bus": 1,
           "id": 1234,
           "mode": 1,
           "pid": 5
-        }
-      }
-    }
-
-To update one of the fields of a recurring request, send an `update` action with
-the same key, plus the field to update. For example, to change the frequency of
-the example request to 2Hz:
-
-    { "command": "diagnostic_request",
-      "action": "update",
-      "request": {
-          "bus": 1,
-          "id": 1234,
-          "mode": 1,
-          "pid": 5,
-          "frequency": 2
         }
       }
     }

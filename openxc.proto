@@ -35,7 +35,7 @@ message CommandResponse {
 
 message DiagnosticRequest {
     enum DecodedType { NONE = 1; OBD2 = 2; }
-    enum Action { CREATE = 1; UPDATE = 2; DELETE = 3; }
+    enum Action { ADD = 1; CANCEL = 3; }
 
     optional int32 bus = 1;
     optional uint32 message_id = 2;

@@ -1,5 +1,5 @@
 
-£
+”
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -32,7 +32,7 @@ message_id (
 DIAGNOSTIC"M
 CommandResponse)
 type (2.openxc.ControlCommand.Type
-message (	"Ý
+message (	"Î
 DiagnosticRequest
 bus (
 
@@ -48,14 +48,11 @@ message_id (
  (2 .openxc.DiagnosticRequest.Action"!
 DecodedType
 NONE
-OBD2",
-Action
+OBD2"
+Action
+ADD
 
-CREATE
-
-UPDATE
-
-DELETE"¡
+CANCEL"¡
 DiagnosticResponse
 bus (
 
