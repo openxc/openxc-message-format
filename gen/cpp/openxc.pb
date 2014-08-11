@@ -1,5 +1,5 @@
 
-”
+¤
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -29,10 +29,11 @@ message_id (
 VERSION
 	DEVICE_ID
 
-DIAGNOSTIC"M
+DIAGNOSTIC"]
 CommandResponse)
 type (2.openxc.ControlCommand.Type
-message (	"Î
+message (	
+status ("Î
 DiagnosticRequest
 bus (
 

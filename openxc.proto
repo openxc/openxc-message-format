@@ -31,6 +31,7 @@ message ControlCommand {
 message CommandResponse {
     optional ControlCommand.Type type = 1;
     optional string message = 2;
+    optional bool status = 3;
 }
 
 message DiagnosticRequest {

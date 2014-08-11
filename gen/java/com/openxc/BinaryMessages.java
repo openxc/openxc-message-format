@@ -2758,6 +2758,16 @@ public final class BinaryMessages {
      */
     com.google.protobuf.ByteString
         getMessageBytes();
+
+    // optional bool status = 3;
+    /**
+     * <code>optional bool status = 3;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>optional bool status = 3;</code>
+     */
+    boolean getStatus();
   }
   /**
    * Protobuf type {@code openxc.CommandResponse}
@@ -2824,6 +2834,11 @@ public final class BinaryMessages {
             case 18: {
               bitField0_ |= 0x00000002;
               message_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              status_ = input.readBool();
               break;
             }
           }
@@ -2925,9 +2940,26 @@ public final class BinaryMessages {
       }
     }
 
+    // optional bool status = 3;
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private boolean status_;
+    /**
+     * <code>optional bool status = 3;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bool status = 3;</code>
+     */
+    public boolean getStatus() {
+      return status_;
+    }
+
     private void initFields() {
       type_ = com.openxc.BinaryMessages.ControlCommand.Type.VERSION;
       message_ = "";
+      status_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2947,6 +2979,9 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getMessageBytes());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(3, status_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2963,6 +2998,10 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getMessageBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, status_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3084,6 +3123,8 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000001);
         message_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        status_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -3120,6 +3161,10 @@ public final class BinaryMessages {
           to_bitField0_ |= 0x00000002;
         }
         result.message_ = message_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.status_ = status_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3143,6 +3188,9 @@ public final class BinaryMessages {
           bitField0_ |= 0x00000002;
           message_ = other.message_;
           onChanged();
+        }
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3277,6 +3325,39 @@ public final class BinaryMessages {
   }
   bitField0_ |= 0x00000002;
         message_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional bool status = 3;
+      private boolean status_ ;
+      /**
+       * <code>optional bool status = 3;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bool status = 3;</code>
+       */
+      public boolean getStatus() {
+        return status_;
+      }
+      /**
+       * <code>optional bool status = 3;</code>
+       */
+      public Builder setStatus(boolean value) {
+        bitField0_ |= 0x00000004;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool status = 3;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        status_ = false;
         onChanged();
         return this;
       }
@@ -7665,33 +7746,33 @@ public final class BinaryMessages {
       "\001(\0162\033.openxc.ControlCommand.Type\0225\n\022diag" +
       "nostic_request\030\002 \001(\0132\031.openxc.Diagnostic" +
       "Request\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_I" +
-      "D\020\002\022\016\n\nDIAGNOSTIC\020\003\"M\n\017CommandResponse\022)" +
+      "D\020\002\022\016\n\nDIAGNOSTIC\020\003\"]\n\017CommandResponse\022)" +
       "\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Typ" +
-      "e\022\017\n\007message\030\002 \001(\t\"\316\002\n\021DiagnosticRequest" +
-      "\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mod",
-      "e\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014\022\032\n" +
-      "\022multiple_responses\030\006 \001(\010\022\021\n\tfrequency\030\007" +
-      " \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030\t \001(\016" +
-      "2%.openxc.DiagnosticRequest.DecodedType\022" +
-      "0\n\006action\030\n \001(\0162 .openxc.DiagnosticReque" +
-      "st.Action\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OB" +
-      "D2\020\002\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\003\"\241\001\n\022" +
-      "DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessa" +
-      "ge_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017" +
-      "\n\007success\030\005 \001(\010\022\036\n\026negative_response_cod",
-      "e\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"" +
-      "\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc." +
-      "DynamicField.Type\022\024\n\014string_value\030\002 \001(\t\022" +
-      "\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_value\030" +
-      "\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BO" +
-      "OL\020\003\"\367\001\n\021TranslatedMessage\022,\n\004type\030\001 \001(\016" +
-      "2\036.openxc.TranslatedMessage.Type\022\014\n\004name" +
-      "\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicFi" +
-      "eld\022#\n\005event\030\004 \001(\0132\024.openxc.DynamicField" +
-      "\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022",
-      "\022\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014" +
-      "EVENTED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMess" +
-      "ages"
+      "e\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\316\002\n\021D" +
+      "iagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage",
+      "_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007" +
+      "payload\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001(" +
+      "\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014de" +
+      "coded_type\030\t \001(\0162%.openxc.DiagnosticRequ" +
+      "est.DecodedType\0220\n\006action\030\n \001(\0162 .openxc" +
+      ".DiagnosticRequest.Action\"!\n\013DecodedType" +
+      "\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\035\n\006Action\022\007\n\003ADD\020\001\022" +
+      "\n\n\006CANCEL\020\003\"\241\001\n\022DiagnosticResponse\022\013\n\003bu" +
+      "s\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(" +
+      "\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negat",
+      "ive_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014" +
+      "\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type" +
+      "\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014str" +
+      "ing_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025" +
+      "\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020" +
+      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessa" +
+      "ge\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMess" +
+      "age.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024." +
+      "openxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.ope" +
+      "nxc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003",
+      "NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013E" +
+      "VENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.op" +
+      "enxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7721,7 +7802,7 @@ public final class BinaryMessages {
           internal_static_openxc_CommandResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_CommandResponse_descriptor,
-              new java.lang.String[] { "Type", "Message", });
+              new java.lang.String[] { "Type", "Message", "Status", });
           internal_static_openxc_DiagnosticRequest_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
