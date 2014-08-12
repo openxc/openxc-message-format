@@ -1,5 +1,5 @@
 
-¤
+¡
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -21,19 +21,24 @@ RawMessage
 bus (
 
 message_id (
-data ("¦
+data ("ô
 ControlCommand)
 type (2.openxc.ControlCommand.Type5
-diagnostic_request (2.openxc.DiagnosticRequest"2
+diagnostic_request (2.openxc.DiagnosticRequest-
+action (2.openxc.ControlCommand.Action"2
 Type
 VERSION
 	DEVICE_ID
 
-DIAGNOSTIC"]
+DIAGNOSTIC"
+Action
+ADD
+
+CANCEL"]
 CommandResponse)
 type (2.openxc.ControlCommand.Type
 message (	
-status ("Î
+status ("ý
 DiagnosticRequest
 bus (
 
@@ -44,16 +49,10 @@ message_id (
 multiple_responses (
 	frequency (
 name (	;
-decoded_type	 (2%.openxc.DiagnosticRequest.DecodedType0
-action
- (2 .openxc.DiagnosticRequest.Action"!
+decoded_type	 (2%.openxc.DiagnosticRequest.DecodedType"!
 DecodedType
 NONE
-OBD2"
-Action
-ADD
-
-CANCEL"¡
+OBD2"¡
 DiagnosticResponse
 bus (
 

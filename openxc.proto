@@ -23,9 +23,11 @@ message RawMessage {
 
 message ControlCommand {
     enum Type { VERSION = 1; DEVICE_ID = 2; DIAGNOSTIC = 3; }
+    enum Action { ADD = 1; CANCEL = 2; }
 
     optional Type type = 1;
     optional DiagnosticRequest diagnostic_request = 2;
+    optional Action action = 3;
 }
 
 message CommandResponse {
@@ -36,7 +38,6 @@ message CommandResponse {
 
 message DiagnosticRequest {
     enum DecodedType { NONE = 1; OBD2 = 2; }
-    enum Action { ADD = 1; CANCEL = 3; }
 
     optional int32 bus = 1;
     optional uint32 message_id = 2;
@@ -49,7 +50,6 @@ message DiagnosticRequest {
     optional double frequency = 7;
     optional string name = 8;
     optional DecodedType decoded_type = 9;
-    optional Action action = 10;
 }
 
 message DiagnosticResponse {
