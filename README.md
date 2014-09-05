@@ -74,7 +74,8 @@ The format for a raw CAN message:
   a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
   integers, which is why we are not using a numerical data type. Each byte in
   the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
-  complete string must have an even number of characters.
+  complete string must have an even number of characters. The `0x` prefix is
+  optional.
 
 ### Diagnostic Messages
 
@@ -162,7 +163,7 @@ exist in parallel with a recurring request for the same key.
 
 **id** - the CAN arbitration ID for the request.
 
-**mode** - the OBD-II mode of the request - 1 through 255 (1 through 9 are the
+**mode** - the OBD-II mode of the request - 0x1 through 0xff (1 through 9 are the
     standardized modes and 0x22 is a common proprietary mode).
 
 **pid** - (optional) the PID for the request, if applicable.
@@ -171,7 +172,8 @@ exist in parallel with a recurring request for the same key.
     represented as a hexadecimal number in a string. Many JSON parser cannot
     handle 64-bit integers, which is why we are not using a numerical data type.
     Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
-    is `0x01` - the complete string must have an even number of characters.
+    is `0x01` - the complete string must have an even number of characters. The
+    `0x` prefix is optional.
 
 **name** - (optional, defaults to nothing) A human readable, string name for
   this request. If provided, the response will have a `name` field (much like a
