@@ -80,6 +80,3 @@ message TranslatedMessage {
     optional DynamicField value = 3;
     optional DynamicField event = 4;
 }
-
-// TODO we should also consider having an enum type, having each specific
-// message defined as a protobuf
