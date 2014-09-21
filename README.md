@@ -290,7 +290,7 @@ forwarded.
 
 **Request**
 
-    { "command": "passthrough"
+    { "command": "passthrough",
       "bus": 1,
       "enabled": true
     }
