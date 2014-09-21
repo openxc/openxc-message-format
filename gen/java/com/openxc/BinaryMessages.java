@@ -2056,29 +2056,33 @@ public final class BinaryMessages {
      */
     com.openxc.BinaryMessages.ControlCommand.Type getType();
 
-    // optional .openxc.DiagnosticRequest diagnostic_request = 2;
+    // optional .openxc.DiagnosticControlCommand diagnostic_request = 2;
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
     boolean hasDiagnosticRequest();
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
-    com.openxc.BinaryMessages.DiagnosticRequest getDiagnosticRequest();
+    com.openxc.BinaryMessages.DiagnosticControlCommand getDiagnosticRequest();
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
-    com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getDiagnosticRequestOrBuilder();
+    com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder getDiagnosticRequestOrBuilder();
 
-    // optional .openxc.ControlCommand.Action action = 3;
+    // optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;
     /**
-     * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
      */
-    boolean hasAction();
+    boolean hasPassthroughModeRequest();
     /**
-     * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
      */
-    com.openxc.BinaryMessages.ControlCommand.Action getAction();
+    com.openxc.BinaryMessages.PassthroughModeControlCommand getPassthroughModeRequest();
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+     */
+    com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder getPassthroughModeRequestOrBuilder();
   }
   /**
    * Protobuf type {@code openxc.ControlCommand}
@@ -2143,11 +2147,11 @@ public final class BinaryMessages {
               break;
             }
             case 18: {
-              com.openxc.BinaryMessages.DiagnosticRequest.Builder subBuilder = null;
+              com.openxc.BinaryMessages.DiagnosticControlCommand.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = diagnosticRequest_.toBuilder();
               }
-              diagnosticRequest_ = input.readMessage(com.openxc.BinaryMessages.DiagnosticRequest.PARSER, extensionRegistry);
+              diagnosticRequest_ = input.readMessage(com.openxc.BinaryMessages.DiagnosticControlCommand.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(diagnosticRequest_);
                 diagnosticRequest_ = subBuilder.buildPartial();
@@ -2155,15 +2159,17 @@ public final class BinaryMessages {
               bitField0_ |= 0x00000002;
               break;
             }
-            case 24: {
-              int rawValue = input.readEnum();
-              com.openxc.BinaryMessages.ControlCommand.Action value = com.openxc.BinaryMessages.ControlCommand.Action.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(3, rawValue);
-              } else {
-                bitField0_ |= 0x00000004;
-                action_ = value;
+            case 26: {
+              com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = passthroughModeRequest_.toBuilder();
               }
+              passthroughModeRequest_ = input.readMessage(com.openxc.BinaryMessages.PassthroughModeControlCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(passthroughModeRequest_);
+                passthroughModeRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
           }
@@ -2222,6 +2228,10 @@ public final class BinaryMessages {
        * <code>DIAGNOSTIC = 3;</code>
        */
       DIAGNOSTIC(2, 3),
+      /**
+       * <code>PASSTHROUGH = 4;</code>
+       */
+      PASSTHROUGH(3, 4),
       ;
 
       /**
@@ -2236,6 +2246,10 @@ public final class BinaryMessages {
        * <code>DIAGNOSTIC = 3;</code>
        */
       public static final int DIAGNOSTIC_VALUE = 3;
+      /**
+       * <code>PASSTHROUGH = 4;</code>
+       */
+      public static final int PASSTHROUGH_VALUE = 4;
 
 
       public final int getNumber() { return value; }
@@ -2245,6 +2259,7 @@ public final class BinaryMessages {
           case 1: return VERSION;
           case 2: return DEVICE_ID;
           case 3: return DIAGNOSTIC;
+          case 4: return PASSTHROUGH;
           default: return null;
         }
       }
@@ -2296,88 +2311,6 @@ public final class BinaryMessages {
       // @@protoc_insertion_point(enum_scope:openxc.ControlCommand.Type)
     }
 
-    /**
-     * Protobuf enum {@code openxc.ControlCommand.Action}
-     */
-    public enum Action
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>ADD = 1;</code>
-       */
-      ADD(0, 1),
-      /**
-       * <code>CANCEL = 2;</code>
-       */
-      CANCEL(1, 2),
-      ;
-
-      /**
-       * <code>ADD = 1;</code>
-       */
-      public static final int ADD_VALUE = 1;
-      /**
-       * <code>CANCEL = 2;</code>
-       */
-      public static final int CANCEL_VALUE = 2;
-
-
-      public final int getNumber() { return value; }
-
-      public static Action valueOf(int value) {
-        switch (value) {
-          case 1: return ADD;
-          case 2: return CANCEL;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<Action>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<Action>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<Action>() {
-              public Action findValueByNumber(int number) {
-                return Action.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.openxc.BinaryMessages.ControlCommand.getDescriptor().getEnumTypes().get(1);
-      }
-
-      private static final Action[] VALUES = values();
-
-      public static Action valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private Action(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:openxc.ControlCommand.Action)
-    }
-
     private int bitField0_;
     // optional .openxc.ControlCommand.Type type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
@@ -2395,48 +2328,54 @@ public final class BinaryMessages {
       return type_;
     }
 
-    // optional .openxc.DiagnosticRequest diagnostic_request = 2;
+    // optional .openxc.DiagnosticControlCommand diagnostic_request = 2;
     public static final int DIAGNOSTIC_REQUEST_FIELD_NUMBER = 2;
-    private com.openxc.BinaryMessages.DiagnosticRequest diagnosticRequest_;
+    private com.openxc.BinaryMessages.DiagnosticControlCommand diagnosticRequest_;
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
     public boolean hasDiagnosticRequest() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
-    public com.openxc.BinaryMessages.DiagnosticRequest getDiagnosticRequest() {
+    public com.openxc.BinaryMessages.DiagnosticControlCommand getDiagnosticRequest() {
       return diagnosticRequest_;
     }
     /**
-     * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+     * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
      */
-    public com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getDiagnosticRequestOrBuilder() {
+    public com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder getDiagnosticRequestOrBuilder() {
       return diagnosticRequest_;
     }
 
-    // optional .openxc.ControlCommand.Action action = 3;
-    public static final int ACTION_FIELD_NUMBER = 3;
-    private com.openxc.BinaryMessages.ControlCommand.Action action_;
+    // optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;
+    public static final int PASSTHROUGH_MODE_REQUEST_FIELD_NUMBER = 3;
+    private com.openxc.BinaryMessages.PassthroughModeControlCommand passthroughModeRequest_;
     /**
-     * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
      */
-    public boolean hasAction() {
+    public boolean hasPassthroughModeRequest() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
      */
-    public com.openxc.BinaryMessages.ControlCommand.Action getAction() {
-      return action_;
+    public com.openxc.BinaryMessages.PassthroughModeControlCommand getPassthroughModeRequest() {
+      return passthroughModeRequest_;
+    }
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+     */
+    public com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder getPassthroughModeRequestOrBuilder() {
+      return passthroughModeRequest_;
     }
 
     private void initFields() {
       type_ = com.openxc.BinaryMessages.ControlCommand.Type.VERSION;
-      diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
-      action_ = com.openxc.BinaryMessages.ControlCommand.Action.ADD;
+      diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
+      passthroughModeRequest_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2457,7 +2396,7 @@ public final class BinaryMessages {
         output.writeMessage(2, diagnosticRequest_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeEnum(3, action_.getNumber());
+        output.writeMessage(3, passthroughModeRequest_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2478,7 +2417,7 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, action_.getNumber());
+          .computeMessageSize(3, passthroughModeRequest_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2589,6 +2528,7 @@ public final class BinaryMessages {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getDiagnosticRequestFieldBuilder();
+          getPassthroughModeRequestFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2600,12 +2540,16 @@ public final class BinaryMessages {
         type_ = com.openxc.BinaryMessages.ControlCommand.Type.VERSION;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (diagnosticRequestBuilder_ == null) {
-          diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+          diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
         } else {
           diagnosticRequestBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
-        action_ = com.openxc.BinaryMessages.ControlCommand.Action.ADD;
+        if (passthroughModeRequestBuilder_ == null) {
+          passthroughModeRequest_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance();
+        } else {
+          passthroughModeRequestBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -2650,7 +2594,11 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.action_ = action_;
+        if (passthroughModeRequestBuilder_ == null) {
+          result.passthroughModeRequest_ = passthroughModeRequest_;
+        } else {
+          result.passthroughModeRequest_ = passthroughModeRequestBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2673,8 +2621,8 @@ public final class BinaryMessages {
         if (other.hasDiagnosticRequest()) {
           mergeDiagnosticRequest(other.getDiagnosticRequest());
         }
-        if (other.hasAction()) {
-          setAction(other.getAction());
+        if (other.hasPassthroughModeRequest()) {
+          mergePassthroughModeRequest(other.getPassthroughModeRequest());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2739,20 +2687,20 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional .openxc.DiagnosticRequest diagnostic_request = 2;
-      private com.openxc.BinaryMessages.DiagnosticRequest diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+      // optional .openxc.DiagnosticControlCommand diagnostic_request = 2;
+      private com.openxc.BinaryMessages.DiagnosticControlCommand diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder> diagnosticRequestBuilder_;
+          com.openxc.BinaryMessages.DiagnosticControlCommand, com.openxc.BinaryMessages.DiagnosticControlCommand.Builder, com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder> diagnosticRequestBuilder_;
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
       public boolean hasDiagnosticRequest() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
-      public com.openxc.BinaryMessages.DiagnosticRequest getDiagnosticRequest() {
+      public com.openxc.BinaryMessages.DiagnosticControlCommand getDiagnosticRequest() {
         if (diagnosticRequestBuilder_ == null) {
           return diagnosticRequest_;
         } else {
@@ -2760,9 +2708,9 @@ public final class BinaryMessages {
         }
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
-      public Builder setDiagnosticRequest(com.openxc.BinaryMessages.DiagnosticRequest value) {
+      public Builder setDiagnosticRequest(com.openxc.BinaryMessages.DiagnosticControlCommand value) {
         if (diagnosticRequestBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2776,10 +2724,10 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
       public Builder setDiagnosticRequest(
-          com.openxc.BinaryMessages.DiagnosticRequest.Builder builderForValue) {
+          com.openxc.BinaryMessages.DiagnosticControlCommand.Builder builderForValue) {
         if (diagnosticRequestBuilder_ == null) {
           diagnosticRequest_ = builderForValue.build();
           onChanged();
@@ -2790,14 +2738,14 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
-      public Builder mergeDiagnosticRequest(com.openxc.BinaryMessages.DiagnosticRequest value) {
+      public Builder mergeDiagnosticRequest(com.openxc.BinaryMessages.DiagnosticControlCommand value) {
         if (diagnosticRequestBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              diagnosticRequest_ != com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance()) {
+              diagnosticRequest_ != com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance()) {
             diagnosticRequest_ =
-              com.openxc.BinaryMessages.DiagnosticRequest.newBuilder(diagnosticRequest_).mergeFrom(value).buildPartial();
+              com.openxc.BinaryMessages.DiagnosticControlCommand.newBuilder(diagnosticRequest_).mergeFrom(value).buildPartial();
           } else {
             diagnosticRequest_ = value;
           }
@@ -2809,11 +2757,11 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
       public Builder clearDiagnosticRequest() {
         if (diagnosticRequestBuilder_ == null) {
-          diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+          diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
           onChanged();
         } else {
           diagnosticRequestBuilder_.clear();
@@ -2822,17 +2770,17 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
-      public com.openxc.BinaryMessages.DiagnosticRequest.Builder getDiagnosticRequestBuilder() {
+      public com.openxc.BinaryMessages.DiagnosticControlCommand.Builder getDiagnosticRequestBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getDiagnosticRequestFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
-      public com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getDiagnosticRequestOrBuilder() {
+      public com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder getDiagnosticRequestOrBuilder() {
         if (diagnosticRequestBuilder_ != null) {
           return diagnosticRequestBuilder_.getMessageOrBuilder();
         } else {
@@ -2840,14 +2788,14 @@ public final class BinaryMessages {
         }
       }
       /**
-       * <code>optional .openxc.DiagnosticRequest diagnostic_request = 2;</code>
+       * <code>optional .openxc.DiagnosticControlCommand diagnostic_request = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder> 
+          com.openxc.BinaryMessages.DiagnosticControlCommand, com.openxc.BinaryMessages.DiagnosticControlCommand.Builder, com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder> 
           getDiagnosticRequestFieldBuilder() {
         if (diagnosticRequestBuilder_ == null) {
           diagnosticRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder>(
+              com.openxc.BinaryMessages.DiagnosticControlCommand, com.openxc.BinaryMessages.DiagnosticControlCommand.Builder, com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder>(
                   diagnosticRequest_,
                   getParentForChildren(),
                   isClean());
@@ -2856,40 +2804,121 @@ public final class BinaryMessages {
         return diagnosticRequestBuilder_;
       }
 
-      // optional .openxc.ControlCommand.Action action = 3;
-      private com.openxc.BinaryMessages.ControlCommand.Action action_ = com.openxc.BinaryMessages.ControlCommand.Action.ADD;
+      // optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;
+      private com.openxc.BinaryMessages.PassthroughModeControlCommand passthroughModeRequest_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.PassthroughModeControlCommand, com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder, com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder> passthroughModeRequestBuilder_;
       /**
-       * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
        */
-      public boolean hasAction() {
+      public boolean hasPassthroughModeRequest() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
        */
-      public com.openxc.BinaryMessages.ControlCommand.Action getAction() {
-        return action_;
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand getPassthroughModeRequest() {
+        if (passthroughModeRequestBuilder_ == null) {
+          return passthroughModeRequest_;
+        } else {
+          return passthroughModeRequestBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
        */
-      public Builder setAction(com.openxc.BinaryMessages.ControlCommand.Action value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public Builder setPassthroughModeRequest(com.openxc.BinaryMessages.PassthroughModeControlCommand value) {
+        if (passthroughModeRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          passthroughModeRequest_ = value;
+          onChanged();
+        } else {
+          passthroughModeRequestBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000004;
-        action_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional .openxc.ControlCommand.Action action = 3;</code>
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
        */
-      public Builder clearAction() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        action_ = com.openxc.BinaryMessages.ControlCommand.Action.ADD;
-        onChanged();
+      public Builder setPassthroughModeRequest(
+          com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder builderForValue) {
+        if (passthroughModeRequestBuilder_ == null) {
+          passthroughModeRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          passthroughModeRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
         return this;
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+       */
+      public Builder mergePassthroughModeRequest(com.openxc.BinaryMessages.PassthroughModeControlCommand value) {
+        if (passthroughModeRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              passthroughModeRequest_ != com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance()) {
+            passthroughModeRequest_ =
+              com.openxc.BinaryMessages.PassthroughModeControlCommand.newBuilder(passthroughModeRequest_).mergeFrom(value).buildPartial();
+          } else {
+            passthroughModeRequest_ = value;
+          }
+          onChanged();
+        } else {
+          passthroughModeRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+       */
+      public Builder clearPassthroughModeRequest() {
+        if (passthroughModeRequestBuilder_ == null) {
+          passthroughModeRequest_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          passthroughModeRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+       */
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder getPassthroughModeRequestBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getPassthroughModeRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+       */
+      public com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder getPassthroughModeRequestOrBuilder() {
+        if (passthroughModeRequestBuilder_ != null) {
+          return passthroughModeRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return passthroughModeRequest_;
+        }
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand passthrough_mode_request = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.PassthroughModeControlCommand, com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder, com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder> 
+          getPassthroughModeRequestFieldBuilder() {
+        if (passthroughModeRequestBuilder_ == null) {
+          passthroughModeRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.PassthroughModeControlCommand, com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder, com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder>(
+                  passthroughModeRequest_,
+                  getParentForChildren(),
+                  isClean());
+          passthroughModeRequest_ = null;
+        }
+        return passthroughModeRequestBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:openxc.ControlCommand)
@@ -2901,6 +2930,1262 @@ public final class BinaryMessages {
     }
 
     // @@protoc_insertion_point(class_scope:openxc.ControlCommand)
+  }
+
+  public interface DiagnosticControlCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .openxc.DiagnosticRequest request = 1;
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    boolean hasRequest();
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    com.openxc.BinaryMessages.DiagnosticRequest getRequest();
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getRequestOrBuilder();
+
+    // optional .openxc.DiagnosticControlCommand.Action action = 2;
+    /**
+     * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+     */
+    boolean hasAction();
+    /**
+     * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+     */
+    com.openxc.BinaryMessages.DiagnosticControlCommand.Action getAction();
+  }
+  /**
+   * Protobuf type {@code openxc.DiagnosticControlCommand}
+   */
+  public static final class DiagnosticControlCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements DiagnosticControlCommandOrBuilder {
+    // Use DiagnosticControlCommand.newBuilder() to construct.
+    private DiagnosticControlCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DiagnosticControlCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DiagnosticControlCommand defaultInstance;
+    public static DiagnosticControlCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DiagnosticControlCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DiagnosticControlCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.openxc.BinaryMessages.DiagnosticRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = request_.toBuilder();
+              }
+              request_ = input.readMessage(com.openxc.BinaryMessages.DiagnosticRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(request_);
+                request_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.openxc.BinaryMessages.DiagnosticControlCommand.Action value = com.openxc.BinaryMessages.DiagnosticControlCommand.Action.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                action_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.openxc.BinaryMessages.internal_static_openxc_DiagnosticControlCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.openxc.BinaryMessages.internal_static_openxc_DiagnosticControlCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.openxc.BinaryMessages.DiagnosticControlCommand.class, com.openxc.BinaryMessages.DiagnosticControlCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DiagnosticControlCommand> PARSER =
+        new com.google.protobuf.AbstractParser<DiagnosticControlCommand>() {
+      public DiagnosticControlCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DiagnosticControlCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DiagnosticControlCommand> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code openxc.DiagnosticControlCommand.Action}
+     */
+    public enum Action
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>ADD = 1;</code>
+       */
+      ADD(0, 1),
+      /**
+       * <code>CANCEL = 2;</code>
+       */
+      CANCEL(1, 2),
+      ;
+
+      /**
+       * <code>ADD = 1;</code>
+       */
+      public static final int ADD_VALUE = 1;
+      /**
+       * <code>CANCEL = 2;</code>
+       */
+      public static final int CANCEL_VALUE = 2;
+
+
+      public final int getNumber() { return value; }
+
+      public static Action valueOf(int value) {
+        switch (value) {
+          case 1: return ADD;
+          case 2: return CANCEL;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Action>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<Action>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Action>() {
+              public Action findValueByNumber(int number) {
+                return Action.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.DiagnosticControlCommand.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Action[] VALUES = values();
+
+      public static Action valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private Action(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:openxc.DiagnosticControlCommand.Action)
+    }
+
+    private int bitField0_;
+    // optional .openxc.DiagnosticRequest request = 1;
+    public static final int REQUEST_FIELD_NUMBER = 1;
+    private com.openxc.BinaryMessages.DiagnosticRequest request_;
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    public boolean hasRequest() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    public com.openxc.BinaryMessages.DiagnosticRequest getRequest() {
+      return request_;
+    }
+    /**
+     * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+     */
+    public com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getRequestOrBuilder() {
+      return request_;
+    }
+
+    // optional .openxc.DiagnosticControlCommand.Action action = 2;
+    public static final int ACTION_FIELD_NUMBER = 2;
+    private com.openxc.BinaryMessages.DiagnosticControlCommand.Action action_;
+    /**
+     * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+     */
+    public boolean hasAction() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+     */
+    public com.openxc.BinaryMessages.DiagnosticControlCommand.Action getAction() {
+      return action_;
+    }
+
+    private void initFields() {
+      request_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+      action_ = com.openxc.BinaryMessages.DiagnosticControlCommand.Action.ADD;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, request_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, action_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, request_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, action_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.DiagnosticControlCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.openxc.BinaryMessages.DiagnosticControlCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code openxc.DiagnosticControlCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.openxc.BinaryMessages.DiagnosticControlCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DiagnosticControlCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DiagnosticControlCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.openxc.BinaryMessages.DiagnosticControlCommand.class, com.openxc.BinaryMessages.DiagnosticControlCommand.Builder.class);
+      }
+
+      // Construct using com.openxc.BinaryMessages.DiagnosticControlCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRequestFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (requestBuilder_ == null) {
+          request_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+        } else {
+          requestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        action_ = com.openxc.BinaryMessages.DiagnosticControlCommand.Action.ADD;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.openxc.BinaryMessages.internal_static_openxc_DiagnosticControlCommand_descriptor;
+      }
+
+      public com.openxc.BinaryMessages.DiagnosticControlCommand getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
+      }
+
+      public com.openxc.BinaryMessages.DiagnosticControlCommand build() {
+        com.openxc.BinaryMessages.DiagnosticControlCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.openxc.BinaryMessages.DiagnosticControlCommand buildPartial() {
+        com.openxc.BinaryMessages.DiagnosticControlCommand result = new com.openxc.BinaryMessages.DiagnosticControlCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (requestBuilder_ == null) {
+          result.request_ = request_;
+        } else {
+          result.request_ = requestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.action_ = action_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.openxc.BinaryMessages.DiagnosticControlCommand) {
+          return mergeFrom((com.openxc.BinaryMessages.DiagnosticControlCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.openxc.BinaryMessages.DiagnosticControlCommand other) {
+        if (other == com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance()) return this;
+        if (other.hasRequest()) {
+          mergeRequest(other.getRequest());
+        }
+        if (other.hasAction()) {
+          setAction(other.getAction());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.openxc.BinaryMessages.DiagnosticControlCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.openxc.BinaryMessages.DiagnosticControlCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .openxc.DiagnosticRequest request = 1;
+      private com.openxc.BinaryMessages.DiagnosticRequest request_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder> requestBuilder_;
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public boolean hasRequest() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticRequest getRequest() {
+        if (requestBuilder_ == null) {
+          return request_;
+        } else {
+          return requestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public Builder setRequest(com.openxc.BinaryMessages.DiagnosticRequest value) {
+        if (requestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          request_ = value;
+          onChanged();
+        } else {
+          requestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public Builder setRequest(
+          com.openxc.BinaryMessages.DiagnosticRequest.Builder builderForValue) {
+        if (requestBuilder_ == null) {
+          request_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public Builder mergeRequest(com.openxc.BinaryMessages.DiagnosticRequest value) {
+        if (requestBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              request_ != com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance()) {
+            request_ =
+              com.openxc.BinaryMessages.DiagnosticRequest.newBuilder(request_).mergeFrom(value).buildPartial();
+          } else {
+            request_ = value;
+          }
+          onChanged();
+        } else {
+          requestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public Builder clearRequest() {
+        if (requestBuilder_ == null) {
+          request_ = com.openxc.BinaryMessages.DiagnosticRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          requestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticRequest.Builder getRequestBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticRequestOrBuilder getRequestOrBuilder() {
+        if (requestBuilder_ != null) {
+          return requestBuilder_.getMessageOrBuilder();
+        } else {
+          return request_;
+        }
+      }
+      /**
+       * <code>optional .openxc.DiagnosticRequest request = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder> 
+          getRequestFieldBuilder() {
+        if (requestBuilder_ == null) {
+          requestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.DiagnosticRequest, com.openxc.BinaryMessages.DiagnosticRequest.Builder, com.openxc.BinaryMessages.DiagnosticRequestOrBuilder>(
+                  request_,
+                  getParentForChildren(),
+                  isClean());
+          request_ = null;
+        }
+        return requestBuilder_;
+      }
+
+      // optional .openxc.DiagnosticControlCommand.Action action = 2;
+      private com.openxc.BinaryMessages.DiagnosticControlCommand.Action action_ = com.openxc.BinaryMessages.DiagnosticControlCommand.Action.ADD;
+      /**
+       * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+       */
+      public boolean hasAction() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+       */
+      public com.openxc.BinaryMessages.DiagnosticControlCommand.Action getAction() {
+        return action_;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+       */
+      public Builder setAction(com.openxc.BinaryMessages.DiagnosticControlCommand.Action value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        action_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .openxc.DiagnosticControlCommand.Action action = 2;</code>
+       */
+      public Builder clearAction() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        action_ = com.openxc.BinaryMessages.DiagnosticControlCommand.Action.ADD;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:openxc.DiagnosticControlCommand)
+    }
+
+    static {
+      defaultInstance = new DiagnosticControlCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:openxc.DiagnosticControlCommand)
+  }
+
+  public interface PassthroughModeControlCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 bus = 1;
+    /**
+     * <code>optional int32 bus = 1;</code>
+     */
+    boolean hasBus();
+    /**
+     * <code>optional int32 bus = 1;</code>
+     */
+    int getBus();
+
+    // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     */
+    boolean hasMode();
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     */
+    com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode();
+  }
+  /**
+   * Protobuf type {@code openxc.PassthroughModeControlCommand}
+   */
+  public static final class PassthroughModeControlCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements PassthroughModeControlCommandOrBuilder {
+    // Use PassthroughModeControlCommand.newBuilder() to construct.
+    private PassthroughModeControlCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PassthroughModeControlCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PassthroughModeControlCommand defaultInstance;
+    public static PassthroughModeControlCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PassthroughModeControlCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PassthroughModeControlCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              bus_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode value = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                mode_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.openxc.BinaryMessages.internal_static_openxc_PassthroughModeControlCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.openxc.BinaryMessages.internal_static_openxc_PassthroughModeControlCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.openxc.BinaryMessages.PassthroughModeControlCommand.class, com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PassthroughModeControlCommand> PARSER =
+        new com.google.protobuf.AbstractParser<PassthroughModeControlCommand>() {
+      public PassthroughModeControlCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PassthroughModeControlCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PassthroughModeControlCommand> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code openxc.PassthroughModeControlCommand.PassthroughMode}
+     */
+    public enum PassthroughMode
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>OFF = 1;</code>
+       */
+      OFF(0, 1),
+      /**
+       * <code>FILTERED = 2;</code>
+       */
+      FILTERED(1, 2),
+      /**
+       * <code>UNFILTERED = 3;</code>
+       */
+      UNFILTERED(2, 3),
+      ;
+
+      /**
+       * <code>OFF = 1;</code>
+       */
+      public static final int OFF_VALUE = 1;
+      /**
+       * <code>FILTERED = 2;</code>
+       */
+      public static final int FILTERED_VALUE = 2;
+      /**
+       * <code>UNFILTERED = 3;</code>
+       */
+      public static final int UNFILTERED_VALUE = 3;
+
+
+      public final int getNumber() { return value; }
+
+      public static PassthroughMode valueOf(int value) {
+        switch (value) {
+          case 1: return OFF;
+          case 2: return FILTERED;
+          case 3: return UNFILTERED;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>() {
+              public PassthroughMode findValueByNumber(int number) {
+                return PassthroughMode.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.PassthroughModeControlCommand.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final PassthroughMode[] VALUES = values();
+
+      public static PassthroughMode valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private PassthroughMode(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:openxc.PassthroughModeControlCommand.PassthroughMode)
+    }
+
+    private int bitField0_;
+    // optional int32 bus = 1;
+    public static final int BUS_FIELD_NUMBER = 1;
+    private int bus_;
+    /**
+     * <code>optional int32 bus = 1;</code>
+     */
+    public boolean hasBus() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 bus = 1;</code>
+     */
+    public int getBus() {
+      return bus_;
+    }
+
+    // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
+    public static final int MODE_FIELD_NUMBER = 2;
+    private com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode mode_;
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     */
+    public boolean hasMode() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     */
+    public com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode() {
+      return mode_;
+    }
+
+    private void initFields() {
+      bus_ = 0;
+      mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, bus_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, mode_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, bus_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, mode_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.openxc.BinaryMessages.PassthroughModeControlCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.openxc.BinaryMessages.PassthroughModeControlCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code openxc.PassthroughModeControlCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.openxc.BinaryMessages.PassthroughModeControlCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.internal_static_openxc_PassthroughModeControlCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.openxc.BinaryMessages.internal_static_openxc_PassthroughModeControlCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.openxc.BinaryMessages.PassthroughModeControlCommand.class, com.openxc.BinaryMessages.PassthroughModeControlCommand.Builder.class);
+      }
+
+      // Construct using com.openxc.BinaryMessages.PassthroughModeControlCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        bus_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.openxc.BinaryMessages.internal_static_openxc_PassthroughModeControlCommand_descriptor;
+      }
+
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance();
+      }
+
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand build() {
+        com.openxc.BinaryMessages.PassthroughModeControlCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand buildPartial() {
+        com.openxc.BinaryMessages.PassthroughModeControlCommand result = new com.openxc.BinaryMessages.PassthroughModeControlCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bus_ = bus_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.mode_ = mode_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.openxc.BinaryMessages.PassthroughModeControlCommand) {
+          return mergeFrom((com.openxc.BinaryMessages.PassthroughModeControlCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.openxc.BinaryMessages.PassthroughModeControlCommand other) {
+        if (other == com.openxc.BinaryMessages.PassthroughModeControlCommand.getDefaultInstance()) return this;
+        if (other.hasBus()) {
+          setBus(other.getBus());
+        }
+        if (other.hasMode()) {
+          setMode(other.getMode());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.openxc.BinaryMessages.PassthroughModeControlCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.openxc.BinaryMessages.PassthroughModeControlCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 bus = 1;
+      private int bus_ ;
+      /**
+       * <code>optional int32 bus = 1;</code>
+       */
+      public boolean hasBus() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 bus = 1;</code>
+       */
+      public int getBus() {
+        return bus_;
+      }
+      /**
+       * <code>optional int32 bus = 1;</code>
+       */
+      public Builder setBus(int value) {
+        bitField0_ |= 0x00000001;
+        bus_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bus = 1;</code>
+       */
+      public Builder clearBus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        bus_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
+      private com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       */
+      public boolean hasMode() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       */
+      public com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode() {
+        return mode_;
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       */
+      public Builder setMode(com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       */
+      public Builder clearMode() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:openxc.PassthroughModeControlCommand)
+    }
+
+    static {
+      defaultInstance = new PassthroughModeControlCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:openxc.PassthroughModeControlCommand)
   }
 
   public interface CommandResponseOrBuilder
@@ -7697,6 +8982,16 @@ public final class BinaryMessages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_openxc_ControlCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_openxc_DiagnosticControlCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_openxc_DiagnosticControlCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_openxc_PassthroughModeControlCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_openxc_PassthroughModeControlCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_openxc_CommandResponse_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -7742,37 +9037,46 @@ public final class BinaryMessages {
       "ANSLATED\020\002\022\016\n\nDIAGNOSTIC\020\003\022\023\n\017CONTROL_CO",
       "MMAND\020\004\022\024\n\020COMMAND_RESPONSE\020\005\";\n\nRawMess" +
       "age\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004" +
-      "data\030\003 \001(\014\"\364\001\n\016ControlCommand\022)\n\004type\030\001 " +
-      "\001(\0162\033.openxc.ControlCommand.Type\0225\n\022diag" +
-      "nostic_request\030\002 \001(\0132\031.openxc.Diagnostic" +
-      "Request\022-\n\006action\030\003 \001(\0162\035.openxc.Control" +
-      "Command.Action\"2\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tD" +
-      "EVICE_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\"\035\n\006Action\022\007\n\003" +
-      "ADD\020\001\022\n\n\006CANCEL\020\002\"]\n\017CommandResponse\022)\n\004" +
-      "type\030\001 \001(\0162\033.openxc.ControlCommand.Type\022",
-      "\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021Dia" +
-      "gnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_i" +
-      "d\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007pa" +
-      "yload\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001(\010\022" +
-      "\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014deco" +
-      "ded_type\030\t \001(\0162%.openxc.DiagnosticReques" +
-      "t.DecodedType\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010" +
-      "\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001" +
-      " \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013" +
-      "\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative",
-      "_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n" +
-      "\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 " +
-      "\001(\0162\031.openxc.DynamicField.Type\022\024\n\014string" +
-      "_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rb" +
-      "oolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007" +
-      "\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessage\022" +
-      ",\n\004type\030\001 \001(\0162\036.openxc.TranslatedMessage" +
-      ".Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.ope" +
-      "nxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.openxc" +
-      ".DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM",
-      "\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EVEN" +
-      "TED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.openx" +
-      "cB\016BinaryMessages"
+      "data\030\003 \001(\014\"\207\002\n\016ControlCommand\022)\n\004type\030\001 " +
+      "\001(\0162\033.openxc.ControlCommand.Type\022<\n\022diag" +
+      "nostic_request\030\002 \001(\0132 .openxc.Diagnostic" +
+      "ControlCommand\022G\n\030passthrough_mode_reque" +
+      "st\030\003 \001(\0132%.openxc.PassthroughModeControl" +
+      "Command\"C\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_I" +
+      "D\020\002\022\016\n\nDIAGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\"\236\001\n" +
+      "\030DiagnosticControlCommand\022*\n\007request\030\001 \001",
+      "(\0132\031.openxc.DiagnosticRequest\0227\n\006action\030" +
+      "\002 \001(\0162\'.openxc.DiagnosticControlCommand." +
+      "Action\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"\253\001" +
+      "\n\035PassthroughModeControlCommand\022\013\n\003bus\030\001" +
+      " \001(\005\022C\n\004mode\030\002 \001(\01625.openxc.PassthroughM" +
+      "odeControlCommand.PassthroughMode\"8\n\017Pas" +
+      "sthroughMode\022\007\n\003OFF\020\001\022\014\n\010FILTERED\020\002\022\016\n\nU" +
+      "NFILTERED\020\003\"]\n\017CommandResponse\022)\n\004type\030\001" +
+      " \001(\0162\033.openxc.ControlCommand.Type\022\017\n\007mes" +
+      "sage\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021Diagnosti",
+      "cRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(" +
+      "\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030" +
+      "\005 \001(\014\022\032\n\022multiple_responses\030\006 \001(\010\022\021\n\tfre" +
+      "quency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_ty" +
+      "pe\030\t \001(\0162%.openxc.DiagnosticRequest.Deco" +
+      "dedType\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2" +
+      "\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022" +
+      "\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030" +
+      "\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_respo" +
+      "nse_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value",
+      "\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031." +
+      "openxc.DynamicField.Type\022\024\n\014string_value" +
+      "\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean" +
+      "_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020" +
+      "\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessage\022,\n\004typ" +
+      "e\030\001 \001(\0162\036.openxc.TranslatedMessage.Type\022" +
+      "\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.Dy" +
+      "namicField\022#\n\005event\030\004 \001(\0132\024.openxc.Dynam" +
+      "icField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004" +
+      "BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NU",
+      "M\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.openxcB\016Bin" +
+      "aryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7796,33 +9100,45 @@ public final class BinaryMessages {
           internal_static_openxc_ControlCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_ControlCommand_descriptor,
-              new java.lang.String[] { "Type", "DiagnosticRequest", "Action", });
-          internal_static_openxc_CommandResponse_descriptor =
+              new java.lang.String[] { "Type", "DiagnosticRequest", "PassthroughModeRequest", });
+          internal_static_openxc_DiagnosticControlCommand_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_openxc_DiagnosticControlCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_openxc_DiagnosticControlCommand_descriptor,
+              new java.lang.String[] { "Request", "Action", });
+          internal_static_openxc_PassthroughModeControlCommand_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_openxc_PassthroughModeControlCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_openxc_PassthroughModeControlCommand_descriptor,
+              new java.lang.String[] { "Bus", "Mode", });
+          internal_static_openxc_CommandResponse_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_openxc_CommandResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_CommandResponse_descriptor,
               new java.lang.String[] { "Type", "Message", "Status", });
           internal_static_openxc_DiagnosticRequest_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticRequest_descriptor,
               new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Payload", "MultipleResponses", "Frequency", "Name", "DecodedType", });
           internal_static_openxc_DiagnosticResponse_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticResponse_descriptor,
               new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Success", "NegativeResponseCode", "Payload", "Value", });
           internal_static_openxc_DynamicField_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_openxc_DynamicField_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DynamicField_descriptor,
               new java.lang.String[] { "Type", "StringValue", "NumericValue", "BooleanValue", });
           internal_static_openxc_TranslatedMessage_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_openxc_TranslatedMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_TranslatedMessage_descriptor,

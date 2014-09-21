@@ -279,6 +279,33 @@ MAC address of an included Bluetooth module) into into the outgoing data stream.
 
     { "command_response": "device_id", "message": "0012345678"}
 
+#### Passthrough CAN Mode
+
+The `passthrough` command controls the passthrough mode for each of the CAN
+buses. There are three passthrough modes:
+
+* `off` - Only the specified simple vehicle messages are processed and output
+  from the VI.
+* `filtered` - If the CAN acceptance filter is not otherwise disabled, only the
+  pre-defined CAN messages (i.e. those compiled with the firmware) will be
+  output in the low-level CAN format from VI.
+* `unfiltered` - All received CAN messages will be passed through from the bus
+  to the VI's output.
+
+**Request**
+
+    { "command": "passthrough"
+      "bus": 1,
+      "mode":
+    }
+
+**Response**
+
+If the bus and mode in the request were recognized, the `status` field in the
+response will be `true`. If `false`, the passthrough mode was not changed.
+
+    { "command_response": "passthrough", "status": true}
+
 ### Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,

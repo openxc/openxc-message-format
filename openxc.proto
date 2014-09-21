@@ -22,12 +22,34 @@ message RawMessage {
 }
 
 message ControlCommand {
-    enum Type { VERSION = 1; DEVICE_ID = 2; DIAGNOSTIC = 3; }
-    enum Action { ADD = 1; CANCEL = 2; }
+    enum Type {
+        VERSION = 1;
+        DEVICE_ID = 2;
+        DIAGNOSTIC = 3;
+        PASSTHROUGH = 4;
+    }
 
     optional Type type = 1;
-    optional DiagnosticRequest diagnostic_request = 2;
-    optional Action action = 3;
+    optional DiagnosticControlCommand diagnostic_request = 2;
+    optional PassthroughModeControlCommand passthrough_mode_request = 3;
+}
+
+message DiagnosticControlCommand {
+    enum Action { ADD = 1; CANCEL = 2; }
+
+    optional DiagnosticRequest request = 1;
+    optional Action action = 2;
+}
+
+message PassthroughModeControlCommand {
+    enum PassthroughMode {
+        OFF = 1;
+        FILTERED = 2;
+        UNFILTERED = 3;
+    }
+
+    optional int32 bus = 1;
+    optional PassthroughMode mode = 2;
 }
 
 message CommandResponse {
