@@ -281,22 +281,18 @@ MAC address of an included Bluetooth module) into into the outgoing data stream.
 
 #### Passthrough CAN Mode
 
-The `passthrough` command controls the passthrough mode for each of the CAN
-buses. There are three passthrough modes:
-
-* `off` - Only the specified simple vehicle messages are processed and output
-  from the VI.
-* `filtered` - If the CAN acceptance filter is not otherwise disabled, only the
-  pre-defined CAN messages (i.e. those compiled with the firmware) will be
-  output in the low-level CAN format from VI.
-* `unfiltered` - All received CAN messages will be passed through from the bus
-  to the VI's output.
+The `passthrough` command controls whether low-level CAN messages are passed
+through from the CAN bus through the VI to the output stream. If the CAN
+acceptance filter is in bypass mode and passthrough is enabled, the output
+stream will include all received CAN messages. If the bypass filter is enabled,
+only those CAN messages that have been pre-defined in the firmware are
+forwarded.
 
 **Request**
 
     { "command": "passthrough"
       "bus": 1,
-      "mode":
+      "enabled": true
     }
 
 **Response**

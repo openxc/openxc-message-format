@@ -3624,15 +3624,15 @@ public final class BinaryMessages {
      */
     int getBus();
 
-    // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
+    // optional bool enabled = 2;
     /**
-     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     * <code>optional bool enabled = 2;</code>
      */
-    boolean hasMode();
+    boolean hasEnabled();
     /**
-     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     * <code>optional bool enabled = 2;</code>
      */
-    com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode();
+    boolean getEnabled();
   }
   /**
    * Protobuf type {@code openxc.PassthroughModeControlCommand}
@@ -3691,14 +3691,8 @@ public final class BinaryMessages {
               break;
             }
             case 16: {
-              int rawValue = input.readEnum();
-              com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode value = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                mode_ = value;
-              }
+              bitField0_ |= 0x00000002;
+              enabled_ = input.readBool();
               break;
             }
           }
@@ -3740,97 +3734,6 @@ public final class BinaryMessages {
       return PARSER;
     }
 
-    /**
-     * Protobuf enum {@code openxc.PassthroughModeControlCommand.PassthroughMode}
-     */
-    public enum PassthroughMode
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>OFF = 1;</code>
-       */
-      OFF(0, 1),
-      /**
-       * <code>FILTERED = 2;</code>
-       */
-      FILTERED(1, 2),
-      /**
-       * <code>UNFILTERED = 3;</code>
-       */
-      UNFILTERED(2, 3),
-      ;
-
-      /**
-       * <code>OFF = 1;</code>
-       */
-      public static final int OFF_VALUE = 1;
-      /**
-       * <code>FILTERED = 2;</code>
-       */
-      public static final int FILTERED_VALUE = 2;
-      /**
-       * <code>UNFILTERED = 3;</code>
-       */
-      public static final int UNFILTERED_VALUE = 3;
-
-
-      public final int getNumber() { return value; }
-
-      public static PassthroughMode valueOf(int value) {
-        switch (value) {
-          case 1: return OFF;
-          case 2: return FILTERED;
-          case 3: return UNFILTERED;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<PassthroughMode>() {
-              public PassthroughMode findValueByNumber(int number) {
-                return PassthroughMode.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.openxc.BinaryMessages.PassthroughModeControlCommand.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final PassthroughMode[] VALUES = values();
-
-      public static PassthroughMode valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private PassthroughMode(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:openxc.PassthroughModeControlCommand.PassthroughMode)
-    }
-
     private int bitField0_;
     // optional int32 bus = 1;
     public static final int BUS_FIELD_NUMBER = 1;
@@ -3848,25 +3751,25 @@ public final class BinaryMessages {
       return bus_;
     }
 
-    // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
-    public static final int MODE_FIELD_NUMBER = 2;
-    private com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode mode_;
+    // optional bool enabled = 2;
+    public static final int ENABLED_FIELD_NUMBER = 2;
+    private boolean enabled_;
     /**
-     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     * <code>optional bool enabled = 2;</code>
      */
-    public boolean hasMode() {
+    public boolean hasEnabled() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+     * <code>optional bool enabled = 2;</code>
      */
-    public com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode() {
-      return mode_;
+    public boolean getEnabled() {
+      return enabled_;
     }
 
     private void initFields() {
       bus_ = 0;
-      mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+      enabled_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3884,7 +3787,7 @@ public final class BinaryMessages {
         output.writeInt32(1, bus_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, mode_.getNumber());
+        output.writeBool(2, enabled_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3901,7 +3804,7 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, mode_.getNumber());
+          .computeBoolSize(2, enabled_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4021,7 +3924,7 @@ public final class BinaryMessages {
         super.clear();
         bus_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+        enabled_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -4058,7 +3961,7 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.mode_ = mode_;
+        result.enabled_ = enabled_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4078,8 +3981,8 @@ public final class BinaryMessages {
         if (other.hasBus()) {
           setBus(other.getBus());
         }
-        if (other.hasMode()) {
-          setMode(other.getMode());
+        if (other.hasEnabled()) {
+          setEnabled(other.getEnabled());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4141,38 +4044,35 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;
-      private com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+      // optional bool enabled = 2;
+      private boolean enabled_ ;
       /**
-       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       * <code>optional bool enabled = 2;</code>
        */
-      public boolean hasMode() {
+      public boolean hasEnabled() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       * <code>optional bool enabled = 2;</code>
        */
-      public com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode getMode() {
-        return mode_;
+      public boolean getEnabled() {
+        return enabled_;
       }
       /**
-       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       * <code>optional bool enabled = 2;</code>
        */
-      public Builder setMode(com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
+      public Builder setEnabled(boolean value) {
         bitField0_ |= 0x00000002;
-        mode_ = value;
+        enabled_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .openxc.PassthroughModeControlCommand.PassthroughMode mode = 2;</code>
+       * <code>optional bool enabled = 2;</code>
        */
-      public Builder clearMode() {
+      public Builder clearEnabled() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        mode_ = com.openxc.BinaryMessages.PassthroughModeControlCommand.PassthroughMode.OFF;
+        enabled_ = false;
         onChanged();
         return this;
       }
@@ -9047,36 +8947,33 @@ public final class BinaryMessages {
       "\030DiagnosticControlCommand\022*\n\007request\030\001 \001",
       "(\0132\031.openxc.DiagnosticRequest\0227\n\006action\030" +
       "\002 \001(\0162\'.openxc.DiagnosticControlCommand." +
-      "Action\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"\253\001" +
-      "\n\035PassthroughModeControlCommand\022\013\n\003bus\030\001" +
-      " \001(\005\022C\n\004mode\030\002 \001(\01625.openxc.PassthroughM" +
-      "odeControlCommand.PassthroughMode\"8\n\017Pas" +
-      "sthroughMode\022\007\n\003OFF\020\001\022\014\n\010FILTERED\020\002\022\016\n\nU" +
-      "NFILTERED\020\003\"]\n\017CommandResponse\022)\n\004type\030\001" +
-      " \001(\0162\033.openxc.ControlCommand.Type\022\017\n\007mes" +
-      "sage\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021Diagnosti",
-      "cRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(" +
-      "\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030" +
-      "\005 \001(\014\022\032\n\022multiple_responses\030\006 \001(\010\022\021\n\tfre" +
-      "quency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_ty" +
-      "pe\030\t \001(\0162%.openxc.DiagnosticRequest.Deco" +
-      "dedType\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2" +
-      "\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022" +
-      "\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030" +
-      "\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_respo" +
-      "nse_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value",
-      "\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031." +
-      "openxc.DynamicField.Type\022\024\n\014string_value" +
-      "\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean" +
-      "_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020" +
-      "\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessage\022,\n\004typ" +
-      "e\030\001 \001(\0162\036.openxc.TranslatedMessage.Type\022" +
-      "\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc.Dy" +
-      "namicField\022#\n\005event\030\004 \001(\0132\024.openxc.Dynam" +
-      "icField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004" +
-      "BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED_NU",
-      "M\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.openxcB\016Bin" +
-      "aryMessages"
+      "Action\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"=\n" +
+      "\035PassthroughModeControlCommand\022\013\n\003bus\030\001 " +
+      "\001(\005\022\017\n\007enabled\030\002 \001(\010\"]\n\017CommandResponse\022" +
+      ")\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Ty" +
+      "pe\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021" +
+      "DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
+      "e_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n" +
+      "\007payload\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001",
+      "(\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014d" +
+      "ecoded_type\030\t \001(\0162%.openxc.DiagnosticReq" +
+      "uest.DecodedType\"!\n\013DecodedType\022\010\n\004NONE\020" +
+      "\001\022\010\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bu" +
+      "s\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(" +
+      "\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negat" +
+      "ive_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014" +
+      "\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type" +
+      "\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014str" +
+      "ing_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025",
+      "\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020" +
+      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessa" +
+      "ge\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMess" +
+      "age.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024." +
+      "openxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.ope" +
+      "nxc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003" +
+      "NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013E" +
+      "VENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.op" +
+      "enxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9112,7 +9009,7 @@ public final class BinaryMessages {
           internal_static_openxc_PassthroughModeControlCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_PassthroughModeControlCommand_descriptor,
-              new java.lang.String[] { "Bus", "Mode", });
+              new java.lang.String[] { "Bus", "Enabled", });
           internal_static_openxc_CommandResponse_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_openxc_CommandResponse_fieldAccessorTable = new

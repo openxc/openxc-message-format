@@ -1,5 +1,5 @@
 
-ƒ
+”
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -38,15 +38,10 @@ DIAGNOSTIC
 Action
 ADD
 
-CANCEL"«
+CANCEL"=
 PassthroughModeControlCommand
-bus (C
-mode (25.openxc.PassthroughModeControlCommand.PassthroughMode"8
-PassthroughMode
-OFF
-FILTERED
-
-UNFILTERED"]
+bus (
+enabled ("]
 CommandResponse)
 type (2.openxc.ControlCommand.Type
 message (	

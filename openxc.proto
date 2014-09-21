@@ -42,14 +42,8 @@ message DiagnosticControlCommand {
 }
 
 message PassthroughModeControlCommand {
-    enum PassthroughMode {
-        OFF = 1;
-        FILTERED = 2;
-        UNFILTERED = 3;
-    }
-
     optional int32 bus = 1;
-    optional PassthroughMode mode = 2;
+    optional bool enabled = 2;
 }
 
 message CommandResponse {
