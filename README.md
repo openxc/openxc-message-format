@@ -328,6 +328,28 @@ changed.
 
     { "command_response": "af_bypass", "status": true}
 
+#### Message Format Control
+
+The `message_format` command determines the format for output data from the VI
+and also the expected format of commands sent to the VI.
+
+Valid formats are `json` and `binary`.
+
+**Request**
+
+    { "command": "message_format",
+      "bus": 1,
+      "format": "json"
+    }
+
+**Response**
+
+If the format was changed successfully, the `status` in the response will be
+`true`. The response will be in the new message format.
+
+    { "command_response": "message_format", "status": true}
+
+
 ### Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
