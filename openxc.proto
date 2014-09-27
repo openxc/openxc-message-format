@@ -27,11 +27,13 @@ message ControlCommand {
         DEVICE_ID = 2;
         DIAGNOSTIC = 3;
         PASSTHROUGH = 4;
+        ACCEPTANCE_FILTER_BYPASS = 5;
     }
 
     optional Type type = 1;
     optional DiagnosticControlCommand diagnostic_request = 2;
     optional PassthroughModeControlCommand passthrough_mode_request = 3;
+    optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
 }
 
 message DiagnosticControlCommand {
@@ -44,6 +46,11 @@ message DiagnosticControlCommand {
 message PassthroughModeControlCommand {
     optional int32 bus = 1;
     optional bool enabled = 2;
+}
+
+message AcceptanceFilterBypassCommand {
+    optional int32 bus = 1;
+    optional bool bypass = 2;
 }
 
 message CommandResponse {

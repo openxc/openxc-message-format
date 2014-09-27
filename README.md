@@ -297,10 +297,36 @@ forwarded.
 
 **Response**
 
-If the bus and mode in the request were recognized, the `status` field in the
-response will be `true`. If `false`, the passthrough mode was not changed.
+If the bus in the request was valid and the passthrough mode was changed, the
+`status` field in the response will be `true`. If `false`, the passthrough mode
+was not changed.
 
     { "command_response": "passthrough", "status": true}
+
+#### Acceptance Filter Bypass
+
+The `af_bypass` command controls whether the CAN message acceptance filter is
+bypassed for each CAN controller. By default, hardware acceptance filter (AF) is
+enabled in the VI - only previously defined CAN message IDs will be received.
+Send this command with `bypass: true` to force the filters to bypassed.
+
+If `passthrough` mode is also enabled, when the AF is bypassed, the output will
+include all CAN messages received.
+
+**Request**
+
+    { "command": "af_bypass",
+      "bus": 1,
+      "bypass": true
+    }
+
+**Response**
+
+If the bus in the request was valid and the AF mode was changed, the `status`
+field in the response will be `true`. If `false`, the passthrough mode was not
+changed.
+
+    { "command_response": "af_bypass", "status": true}
 
 ### Trace File Format
 
