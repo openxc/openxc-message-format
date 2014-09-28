@@ -338,7 +338,6 @@ Valid formats are `json` and `binary`.
 **Request**
 
     { "command": "message_format",
-      "bus": 1,
       "format": "json"
     }
 

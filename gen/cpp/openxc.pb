@@ -1,5 +1,5 @@
 
-œ
+Ž
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -48,10 +48,9 @@ DIAGNOSTIC
 enabled ("<
 AcceptanceFilterBypassCommand
 bus (
-bypass ("†
-MessageFormatCommand
-bus (:
-format (2*.openxc.MessageFormatCommand.MessageFormat"%
+bypass ("y
+MessageFormatCommand:
+format (2*.openxc.MessageFormatCommand.MessageFormat"%
 MessageFormat
 JSON
 

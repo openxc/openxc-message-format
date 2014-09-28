@@ -61,8 +61,7 @@ message MessageFormatCommand {
         BINARY = 2;
     }
 
-    optional int32 bus = 1;
-    optional MessageFormat format = 2;
+    optional MessageFormat format = 1;
 }
 
 message CommandResponse {
