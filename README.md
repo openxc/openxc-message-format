@@ -345,7 +345,8 @@ Valid formats are `json` and `binary`.
 **Response**
 
 If the format was changed successfully, the `status` in the response will be
-`true`. The response will be in the new message format.
+`true`. The response will be in the original message format, and all subsequent
+messages will be in the new format.
 
     { "command_response": "message_format", "status": true}
 
