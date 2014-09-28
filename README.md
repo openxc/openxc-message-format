@@ -328,16 +328,16 @@ changed.
 
     { "command_response": "af_bypass", "status": true}
 
-#### Message Format Control
+#### Payload Format Control
 
-The `message_format` command determines the format for output data from the VI
-and also the expected format of commands sent to the VI.
+The `payload_format` command determines the format for output data from the VI
+and the expected format of commands sent to the VI.
 
-Valid formats are `json` and `binary`.
+Valid formats are `json` and `protobuf`.
 
 **Request**
 
-    { "command": "message_format",
+    { "command": "payload_format",
       "format": "json"
     }
 
@@ -347,7 +347,7 @@ If the format was changed successfully, the `status` in the response will be
 `true`. The response will be in the original message format, and all subsequent
 messages will be in the new format.
 
-    { "command_response": "message_format", "status": true}
+    { "command_response": "payload_format", "status": true}
 
 
 ### Trace File Format

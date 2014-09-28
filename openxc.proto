@@ -28,14 +28,14 @@ message ControlCommand {
         DIAGNOSTIC = 3;
         PASSTHROUGH = 4;
         ACCEPTANCE_FILTER_BYPASS = 5;
-        MESSAGE_FORMAT = 6;
+        PAYLOAD_FORMAT = 6;
     }
 
     optional Type type = 1;
     optional DiagnosticControlCommand diagnostic_request = 2;
     optional PassthroughModeControlCommand passthrough_mode_request = 3;
     optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
-    optional MessageFormatCommand message_format_command = 5;
+    optional PayloadFormatCommand payload_format_command = 5;
 }
 
 message DiagnosticControlCommand {
@@ -55,13 +55,13 @@ message AcceptanceFilterBypassCommand {
     optional bool bypass = 2;
 }
 
-message MessageFormatCommand {
-    enum MessageFormat {
+message PayloadFormatCommand {
+    enum PayloadFormat {
         JSON = 1;
-        BINARY = 2;
+        PROTOBUF = 2;
     }
 
-    optional MessageFormat format = 1;
+    optional PayloadFormat format = 1;
 }
 
 message CommandResponse {
