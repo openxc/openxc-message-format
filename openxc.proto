@@ -29,6 +29,7 @@ message ControlCommand {
         PASSTHROUGH = 4;
         ACCEPTANCE_FILTER_BYPASS = 5;
         PAYLOAD_FORMAT = 6;
+        PREDEFINED_OBD2_REQUESTS = 7;
     }
 
     optional Type type = 1;
@@ -36,6 +37,7 @@ message ControlCommand {
     optional PassthroughModeControlCommand passthrough_mode_request = 3;
     optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
     optional PayloadFormatCommand payload_format_command = 5;
+    optional PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
 }
 
 message DiagnosticControlCommand {
@@ -62,6 +64,10 @@ message PayloadFormatCommand {
     }
 
     optional PayloadFormat format = 1;
+}
+
+message PredefinedObd2RequestsCommand {
+    optional bool enabled = 1;
 }
 
 message CommandResponse {

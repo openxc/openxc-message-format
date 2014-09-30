@@ -1,5 +1,5 @@
 
-ê
+≤
 openxc.protoopenxc"î
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -21,13 +21,14 @@ RawMessage
 bus (
 
 message_id (
-data ("»
+data ("∏
 ControlCommand)
 type (2.openxc.ControlCommand.Type<
 diagnostic_request (2 .openxc.DiagnosticControlCommandG
 passthrough_mode_request (2%.openxc.PassthroughModeControlCommandO
  acceptance_filter_bypass_command (2%.openxc.AcceptanceFilterBypassCommand<
-payload_format_command (2.openxc.PayloadFormatCommand"u
+payload_format_command (2.openxc.PayloadFormatCommandO
+ predefined_obd2_requests_command (2%.openxc.PredefinedObd2RequestsCommand"ì
 Type
 VERSION
 	DEVICE_ID
@@ -35,7 +36,8 @@ message_id (
 DIAGNOSTIC
 PASSTHROUGH
 ACCEPTANCE_FILTER_BYPASS
-PAYLOAD_FORMAT"û
+PAYLOAD_FORMAT
+PREDEFINED_OBD2_REQUESTS"û
 DiagnosticControlCommand*
 request (2.openxc.DiagnosticRequest7
 action (2'.openxc.DiagnosticControlCommand.Action"
@@ -53,7 +55,9 @@ DIAGNOSTIC
 format (2*.openxc.PayloadFormatCommand.PayloadFormat"'
 PayloadFormat
 JSON
-PROTOBUF"]
+PROTOBUF"0
+PredefinedObd2RequestsCommand
+enabled ("]
 CommandResponse)
 type (2.openxc.ControlCommand.Type
 message (	

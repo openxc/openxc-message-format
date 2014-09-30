@@ -349,6 +349,27 @@ messages will be in the new format.
 
     { "command_response": "payload_format", "status": true}
 
+#### Automatic Pre-Defined OBD-II PID Requests
+
+The `predefined_obd2` command enables and disables the querying for and
+translating of a set of pre-defined OBD-II PIDs from the attached vehicle. When
+enabled, the VI will query the vehicle to see if these PIDs are claimed to be
+supported and for those that are, it will set up recurring requests. The
+responses will be output as simple vehicle messages, with the names defined in
+the "Signals Defined from Diagnostic Messages" section below.
+
+**Request**
+
+    { "command": "predefined_obd2",
+      "enabled": true
+    }
+
+**Response**
+
+f the predefined requests were enabled or disabled successfully, the `status` in
+the response will be `true`.
+
+    { "command_response": "predefined_obd2", "status": true}
 
 ### Trace File Format
 
@@ -451,7 +472,7 @@ manufacturers may support custom message names.
     * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
     * 1Hz
 
-### Signals from Diagnostics Messages
+### Signals from Diagnostic Messages
 
 This set of signals is often retreived from OBD-II requests. The units can be
 found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01).
