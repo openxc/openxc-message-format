@@ -179,7 +179,16 @@ manually override the OBD-II decoding feature for a known PID.
 
 ### Responses
 
-The response to a successful request:
+Requests to add or cancel a diagnostic request are first acknowledged by the VI,
+before any responses to the request are returned. The response uses the standard
+command response format:
+
+    { "command_response": "diagnostic_request", "status": true}
+
+**status** - true if the request was successfully created or cancelled.
+
+When a node on the network response to the request and the result is published
+by the VI, the result looks like:
 
     {"bus": 1,
       "id": 1234,
@@ -233,6 +242,17 @@ The response to a simple PID request would look like this:
 In addition to the `diagnostic_request` command described earlier, there are
 other possible values for the `command` field.
 
+All commands immediately return a `command_response`, e.g.:
+
+    { "command_response": "version", "message": "v6.0-dev (default)", "status": true}
+
+**command_response** - an echo of the command this is a ACKing.
+
+**status** - true if the command was understood and performed succesfully.
+
+**message** - (optional) a string message from the VI, e.g. to return a version
+    descriptor or error message.
+
 ### Version Query
 
 The `version` command triggers the VI to inject a firmware version identifier
@@ -244,7 +264,7 @@ response into the outgoing data stream.
 
 **Response**
 
-    { "command_response": "version", "message": "v6.0-dev (default)"}
+    { "command_response": "version", "message": "v6.0-dev (default)", "status": true}
 
 ### Device ID Query
 
@@ -257,7 +277,7 @@ MAC address of an included Bluetooth module) into into the outgoing data stream.
 
 **Response**
 
-    { "command_response": "device_id", "message": "0012345678"}
+    { "command_response": "device_id", "message": "0012345678", "status": true}
 
 ### Passthrough CAN Mode
 
