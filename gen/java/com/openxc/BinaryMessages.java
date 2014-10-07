@@ -1515,15 +1515,15 @@ public final class BinaryMessages {
      */
     com.google.protobuf.ByteString getData();
 
-    // optional .openxc.RawMessage.FrameFormat format = 4;
+    // optional .openxc.RawMessage.FrameFormat frame_format = 4;
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
      */
-    boolean hasFormat();
+    boolean hasFrameFormat();
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
      */
-    com.openxc.BinaryMessages.RawMessage.FrameFormat getFormat();
+    com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat();
   }
   /**
    * Protobuf type {@code openxc.RawMessage}
@@ -1598,7 +1598,7 @@ public final class BinaryMessages {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
                 bitField0_ |= 0x00000008;
-                format_ = value;
+                frameFormat_ = value;
               }
               break;
             }
@@ -1772,27 +1772,27 @@ public final class BinaryMessages {
       return data_;
     }
 
-    // optional .openxc.RawMessage.FrameFormat format = 4;
-    public static final int FORMAT_FIELD_NUMBER = 4;
-    private com.openxc.BinaryMessages.RawMessage.FrameFormat format_;
+    // optional .openxc.RawMessage.FrameFormat frame_format = 4;
+    public static final int FRAME_FORMAT_FIELD_NUMBER = 4;
+    private com.openxc.BinaryMessages.RawMessage.FrameFormat frameFormat_;
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
      */
-    public boolean hasFormat() {
+    public boolean hasFrameFormat() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
      */
-    public com.openxc.BinaryMessages.RawMessage.FrameFormat getFormat() {
-      return format_;
+    public com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat() {
+      return frameFormat_;
     }
 
     private void initFields() {
       bus_ = 0;
       messageId_ = 0;
       data_ = com.google.protobuf.ByteString.EMPTY;
-      format_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+      frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1816,7 +1816,7 @@ public final class BinaryMessages {
         output.writeBytes(3, data_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(4, format_.getNumber());
+        output.writeEnum(4, frameFormat_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1841,7 +1841,7 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, format_.getNumber());
+          .computeEnumSize(4, frameFormat_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1965,7 +1965,7 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000002);
         data_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        format_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+        frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -2010,7 +2010,7 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.format_ = format_;
+        result.frameFormat_ = frameFormat_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2036,8 +2036,8 @@ public final class BinaryMessages {
         if (other.hasData()) {
           setData(other.getData());
         }
-        if (other.hasFormat()) {
-          setFormat(other.getFormat());
+        if (other.hasFrameFormat()) {
+          setFrameFormat(other.getFrameFormat());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2168,38 +2168,38 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional .openxc.RawMessage.FrameFormat format = 4;
-      private com.openxc.BinaryMessages.RawMessage.FrameFormat format_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+      // optional .openxc.RawMessage.FrameFormat frame_format = 4;
+      private com.openxc.BinaryMessages.RawMessage.FrameFormat frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
        */
-      public boolean hasFormat() {
+      public boolean hasFrameFormat() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
        */
-      public com.openxc.BinaryMessages.RawMessage.FrameFormat getFormat() {
-        return format_;
+      public com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat() {
+        return frameFormat_;
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
        */
-      public Builder setFormat(com.openxc.BinaryMessages.RawMessage.FrameFormat value) {
+      public Builder setFrameFormat(com.openxc.BinaryMessages.RawMessage.FrameFormat value) {
         if (value == null) {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000008;
-        format_ = value;
+        frameFormat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat format = 4;</code>
+       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
        */
-      public Builder clearFormat() {
+      public Builder clearFrameFormat() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        format_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+        frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
         onChanged();
         return this;
       }
@@ -11085,61 +11085,61 @@ public final class BinaryMessages {
       "ommand\0221\n\020command_response\030\006 \001(\0132\027.openx" +
       "c.CommandResponse\"Z\n\004Type\022\007\n\003RAW\020\001\022\016\n\nTR" +
       "ANSLATED\020\002\022\016\n\nDIAGNOSTIC\020\003\022\023\n\017CONTROL_CO",
-      "MMAND\020\004\022\024\n\020COMMAND_RESPONSE\020\005\"\226\001\n\nRawMes" +
+      "MMAND\020\004\022\024\n\020COMMAND_RESPONSE\020\005\"\234\001\n\nRawMes" +
       "sage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n" +
-      "\004data\030\003 \001(\014\022.\n\006format\030\004 \001(\0162\036.openxc.Raw" +
-      "Message.FrameFormat\")\n\013FrameFormat\022\014\n\010ST" +
-      "ANDARD\020\001\022\014\n\010EXTENDED\020\002\"\270\004\n\016ControlComman" +
-      "d\022)\n\004type\030\001 \001(\0162\033.openxc.ControlCommand." +
-      "Type\022<\n\022diagnostic_request\030\002 \001(\0132 .openx" +
-      "c.DiagnosticControlCommand\022G\n\030passthroug" +
-      "h_mode_request\030\003 \001(\0132%.openxc.Passthroug" +
-      "hModeControlCommand\022O\n acceptance_filter",
-      "_bypass_command\030\004 \001(\0132%.openxc.Acceptanc" +
-      "eFilterBypassCommand\022<\n\026payload_format_c" +
-      "ommand\030\005 \001(\0132\034.openxc.PayloadFormatComma" +
-      "nd\022O\n predefined_obd2_requests_command\030\006" +
-      " \001(\0132%.openxc.PredefinedObd2RequestsComm" +
-      "and\"\223\001\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_ID\020\002" +
-      "\022\016\n\nDIAGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\022\034\n\030ACC" +
-      "EPTANCE_FILTER_BYPASS\020\005\022\022\n\016PAYLOAD_FORMA" +
-      "T\020\006\022\034\n\030PREDEFINED_OBD2_REQUESTS\020\007\"\236\001\n\030Di" +
-      "agnosticControlCommand\022*\n\007request\030\001 \001(\0132",
-      "\031.openxc.DiagnosticRequest\0227\n\006action\030\002 \001" +
-      "(\0162\'.openxc.DiagnosticControlCommand.Act" +
-      "ion\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"=\n\035Pa" +
-      "ssthroughModeControlCommand\022\013\n\003bus\030\001 \001(\005" +
-      "\022\017\n\007enabled\030\002 \001(\010\"<\n\035AcceptanceFilterByp" +
-      "assCommand\022\013\n\003bus\030\001 \001(\005\022\016\n\006bypass\030\002 \001(\010\"" +
-      "{\n\024PayloadFormatCommand\022:\n\006format\030\001 \001(\0162" +
-      "*.openxc.PayloadFormatCommand.PayloadFor" +
-      "mat\"\'\n\rPayloadFormat\022\010\n\004JSON\020\001\022\014\n\010PROTOB" +
-      "UF\020\002\"0\n\035PredefinedObd2RequestsCommand\022\017\n",
-      "\007enabled\030\001 \001(\010\"]\n\017CommandResponse\022)\n\004typ" +
-      "e\030\001 \001(\0162\033.openxc.ControlCommand.Type\022\017\n\007" +
-      "message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021Diagno" +
-      "sticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002" +
-      " \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007paylo" +
-      "ad\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001(\010\022\021\n\t" +
-      "frequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded" +
-      "_type\030\t \001(\0162%.openxc.DiagnosticRequest.D" +
-      "ecodedType\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004O" +
-      "BD2\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(",
-      "\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003p" +
-      "id\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_re" +
-      "sponse_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005va" +
-      "lue\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\016" +
-      "2\031.openxc.DynamicField.Type\022\024\n\014string_va" +
-      "lue\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rbool" +
-      "ean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003N" +
-      "UM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessage\022,\n\004" +
-      "type\030\001 \001(\0162\036.openxc.TranslatedMessage.Ty" +
-      "pe\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.openxc",
-      ".DynamicField\022#\n\005event\030\004 \001(\0132\024.openxc.Dy" +
-      "namicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022" +
-      "\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013EVENTED" +
-      "_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.openxcB\016" +
-      "BinaryMessages"
+      "\004data\030\003 \001(\014\0224\n\014frame_format\030\004 \001(\0162\036.open" +
+      "xc.RawMessage.FrameFormat\")\n\013FrameFormat" +
+      "\022\014\n\010STANDARD\020\001\022\014\n\010EXTENDED\020\002\"\270\004\n\016Control" +
+      "Command\022)\n\004type\030\001 \001(\0162\033.openxc.ControlCo" +
+      "mmand.Type\022<\n\022diagnostic_request\030\002 \001(\0132 " +
+      ".openxc.DiagnosticControlCommand\022G\n\030pass" +
+      "through_mode_request\030\003 \001(\0132%.openxc.Pass" +
+      "throughModeControlCommand\022O\n acceptance_",
+      "filter_bypass_command\030\004 \001(\0132%.openxc.Acc" +
+      "eptanceFilterBypassCommand\022<\n\026payload_fo" +
+      "rmat_command\030\005 \001(\0132\034.openxc.PayloadForma" +
+      "tCommand\022O\n predefined_obd2_requests_com" +
+      "mand\030\006 \001(\0132%.openxc.PredefinedObd2Reques" +
+      "tsCommand\"\223\001\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVIC" +
+      "E_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\022" +
+      "\034\n\030ACCEPTANCE_FILTER_BYPASS\020\005\022\022\n\016PAYLOAD" +
+      "_FORMAT\020\006\022\034\n\030PREDEFINED_OBD2_REQUESTS\020\007\"" +
+      "\236\001\n\030DiagnosticControlCommand\022*\n\007request\030",
+      "\001 \001(\0132\031.openxc.DiagnosticRequest\0227\n\006acti" +
+      "on\030\002 \001(\0162\'.openxc.DiagnosticControlComma" +
+      "nd.Action\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002" +
+      "\"=\n\035PassthroughModeControlCommand\022\013\n\003bus" +
+      "\030\001 \001(\005\022\017\n\007enabled\030\002 \001(\010\"<\n\035AcceptanceFil" +
+      "terBypassCommand\022\013\n\003bus\030\001 \001(\005\022\016\n\006bypass\030" +
+      "\002 \001(\010\"{\n\024PayloadFormatCommand\022:\n\006format\030" +
+      "\001 \001(\0162*.openxc.PayloadFormatCommand.Payl" +
+      "oadFormat\"\'\n\rPayloadFormat\022\010\n\004JSON\020\001\022\014\n\010" +
+      "PROTOBUF\020\002\"0\n\035PredefinedObd2RequestsComm",
+      "and\022\017\n\007enabled\030\001 \001(\010\"]\n\017CommandResponse\022" +
+      ")\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Ty" +
+      "pe\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021" +
+      "DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
+      "e_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n" +
+      "\007payload\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001" +
+      "(\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014d" +
+      "ecoded_type\030\t \001(\0162%.openxc.DiagnosticReq" +
+      "uest.DecodedType\"!\n\013DecodedType\022\010\n\004NONE\020" +
+      "\001\022\010\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bu",
+      "s\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(" +
+      "\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negat" +
+      "ive_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014" +
+      "\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type" +
+      "\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014str" +
+      "ing_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025" +
+      "\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020" +
+      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessa" +
+      "ge\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMess" +
+      "age.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.",
+      "openxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.ope" +
+      "nxc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003" +
+      "NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013E" +
+      "VENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.op" +
+      "enxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11157,7 +11157,7 @@ public final class BinaryMessages {
           internal_static_openxc_RawMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_RawMessage_descriptor,
-              new java.lang.String[] { "Bus", "MessageId", "Data", "Format", });
+              new java.lang.String[] { "Bus", "MessageId", "Data", "FrameFormat", });
           internal_static_openxc_ControlCommand_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_openxc_ControlCommand_fieldAccessorTable = new

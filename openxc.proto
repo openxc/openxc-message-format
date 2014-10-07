@@ -23,7 +23,7 @@ message RawMessage {
     optional int32 bus = 1;
     optional uint32 message_id = 2;
     optional bytes data = 3;
-    optional FrameFormat format = 4;
+    optional FrameFormat frame_format = 4;
 }
 
 message ControlCommand {
