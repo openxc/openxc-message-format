@@ -1,5 +1,5 @@
 
-€
+÷
 openxc.protoopenxc"ˆ
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -99,19 +99,10 @@ message_id (
 
 STRING
 NUM
-BOOL"ï
-SimpleMessage(
-type (2.openxc.SimpleMessage.Type
-name (	#
-value (2.openxc.DynamicField#
-event (2.openxc.DynamicField"\
-Type
-
-STRING
-NUM
-BOOL
-EVENTED_STRING
-EVENTED_NUM
-EVENTED_BOOLB
+BOOL"g
+SimpleMessage
+name (	#
+value (2.openxc.DynamicField#
+event (2.openxc.DynamicFieldB
 
 com.openxcBBinaryMessages

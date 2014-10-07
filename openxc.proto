@@ -120,13 +120,9 @@ message DynamicField {
 }
 
 message SimpleMessage {
-    enum Type { STRING = 1; NUM = 2; BOOL = 3;
-        EVENTED_STRING = 4; EVENTED_NUM = 5; EVENTED_BOOL = 6;}
-
-    optional Type type = 1;
-    optional string name = 2;
-    optional DynamicField value = 3;
-    optional DynamicField event = 4;
+    optional string name = 1;
+    optional DynamicField value = 2;
+    optional DynamicField event = 3;
 }
 
 // TODO we should also consider having an enum type, having each specific
