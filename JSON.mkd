@@ -1,0 +1,349 @@
+# OpenXC JSON Message Format
+
+Each JSON message published by a VI is delimited with a `\0 ` character.
+
+## Extra Values
+
+Any of the following JSON objects may optionally include an `extras`
+field. The value may be any valid JSON object or array. The client libraries
+will do their best to parse this information into a generic format and pass it
+to your application. For example:
+
+    {"name": "steering_wheel_angle",
+        "value": 45,
+        "extras": {
+            "calibrated": false
+        }
+    }
+
+## Single Valued
+
+There may not be a 1:1 relationship between input and output signals - i.e. raw
+engine timing CAN signals may be summarized in an "engine performance" metric on
+the abstract side of the interface.
+
+The expected format of a single valued message is:
+
+    {"name": "steering_wheel_angle", "value": 45}
+
+## Evented
+
+The expected format of an event message is:
+
+    {"name": "button_event", "value": "up", "event": "pressed"}
+
+This format is good for something like a button event, where there are two
+discrete pieces of information in the measurement.
+
+## Raw CAN Message format
+
+The format for a raw CAN message:
+
+    {"bus": 1, "id": 1234, "data": "0x12345678"}
+
+**bus** - the numerical identifier of the CAN bus where this message originated,
+  most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
+
+**id** - the CAN message ID
+
+**data** - up to 8 bytes of data from the CAN message's payload, represented as
+  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
+  integers, which is why we are not using a numerical data type. Each byte in
+  the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
+  complete string must have an even number of characters. The `0x` prefix is
+  optional.
+
+## Diagnostic Messages
+
+### Requests
+
+A diagnostic request is added or cancelled with a JSON object like this example:
+
+    { "command": "diagnostic_request",
+      "action": "add",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5,
+          "payload": "0x1234",
+          "multiple_responses": false,
+          "frequency": 1,
+          "name": "my_pid"
+        }
+      }
+    }
+
+* The `command` must be `diagnostic_request.`
+* The `action` must be included, and must be one of:
+    * `add` - create a new one-off or recurring diagnostic request.
+    * `cancel` - cancel an existing request.
+* The details of the request must be included in the `request` field, using
+  the sub-fields defined below.
+
+A diagnostic request's `bus`, `id`, `mode` and `pid` (or lack of a `pid`)
+combine to create a unique key to identify a request. These four fields will be
+referred to as the key of the diagnostic request. For example, to create a
+simple one-time diagnostic request:
+
+    { "command": "diagnostic_request",
+      "action": "add",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5
+        }
+      }
+    }
+
+Requests are completed after any responses are received (unless
+`multiple_responses` is set), or the request has timed out after a certain
+number of seconds. After a request is completed, you can re-`create` the same
+key to make another request.
+
+Requests with a `frequency` are added as *recurring* requests, e.g. to add the
+previous example as a recurring request at 1Hz:
+
+    { "command": "diagnostic_request",
+      "action": "add",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5,
+          "frequency": 1
+        }
+      }
+    }
+
+To cancel a recurring request, send a `cancel` action with the same key, e.g.:
+
+    { "command": "diagnostic_request",
+      "action": "cancel",
+      "request": {
+          "bus": 1,
+          "id": 1234,
+          "mode": 1,
+          "pid": 5
+        }
+      }
+    }
+
+Simultaneous recurring requests for the same key at different rates (e.g. 1Hz
+*and* 2Hz) is not supported. However, non-recurring ("one-off") requests may
+exist in parallel with a recurring request for the same key.
+
+**bus** - the numerical identifier of the CAN bus where this request should be
+    sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
+
+**id** - the CAN arbitration ID for the request.
+
+**mode** - the OBD-II mode of the request - 0x1 through 0xff (1 through 9 are the
+    standardized modes and 0x22 is a common proprietary mode).
+
+**pid** - (optional) the PID for the request, if applicable.
+
+**payload** - (optional) up to 7 bytes of data for the request's payload
+    represented as a hexadecimal number in a string. Many JSON parser cannot
+    handle 64-bit integers, which is why we are not using a numerical data type.
+    Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
+    is `0x01` - the complete string must have an even number of characters. The
+    `0x` prefix is optional.
+
+**name** - (optional, defaults to nothing) A human readable, string name for
+  this request. If provided, the response will have a `name` field (much like a
+  normal translated message) with this value in place of `bus`, `id`, `mode` and
+  `pid`.
+
+**multiple_responses** - (optional, false by default) if true, request will stay
+  active for a full 100ms, even after receiving a diagnostic response message.
+  This is useful for requests to the functional broadcast arbitration ID
+  (`0x7df`) when you need to get responses from multiple modules. It's possible
+  to set this to `true` for non-broadcast requests, but in practice you won't
+  see any additional responses after the first and it will just take up memory
+  in the VI for longer.
+
+**frequency** - (optional) Make this request a recurring request, at a this
+  frequency in Hz. To send a single non-recurring request, leave this field out.
+
+**decoded_type** - (optional, defaults to "obd2" if the request is a recognized
+OBD-II mode 1 request, otherwise "none") If specified, the valid values are
+`"none"` and `"obd2"`. If `obd2`, the payload will be decoded according to the
+OBD-II specification and returned in the `value` field. Set this to `none` to
+manually override the OBD-II decoding feature for a known PID.
+
+### Responses
+
+The response to a successful request:
+
+    {"bus": 1,
+      "id": 1234,
+      "mode": 1,
+      "pid": 5,
+      "success": true,
+      "payload": "0x1234",
+      "value": 4660}
+
+and to an unsuccessful request, with the `negative_response_code` and no `pid`
+echo:
+
+    {"bus": 1,
+      "id": 1234,
+      "mode": 1,
+      "success": false,
+      "negative_response_code": 17}
+
+**bus** - the numerical identifier of the CAN bus where this response was
+    received.
+
+**id** - the CAN arbitration ID for this response.
+
+**mode** - the OBD-II mode of the original diagnostic request.
+
+**pid** - (optional) the PID for the request, if applicable.
+
+**success** -  true if the response received was a positive response. If this
+  field is false, the remote node returned an error and the
+  `negative_response_code` field should be populated.
+
+**negative_response_code** - (optional)  If requested node returned an error,
+    `success` will be `false` and this field will contain the negative response
+    code (NRC).
+
+Finally, the `payload` and `value` fields are mutually exclusive:
+
+**payload** - (optional) up to 7 bytes of data returned in the response,
+    represented as a hexadecimal number in a string. Many JSON parser cannot
+    handle 64-bit integers, which is why we are not using a numerical data type.
+
+**value** - (optional) if the response had a payload, this may be the
+    payload interpreted as an integer.
+
+The response to a simple PID request would look like this:
+
+    {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
+
+## Commands
+
+In addition to the `diagnostic_request` command described earlier, there are
+other possible values for the `command` field.
+
+### Version Query
+
+The `version` command triggers the VI to inject a firmware version identifier
+response into the outgoing data stream.
+
+**Request**
+
+    { "command": "version"}
+
+**Response**
+
+    { "command_response": "version", "message": "v6.0-dev (default)"}
+
+### Device ID Query
+
+The `device_id` command triggers the VI to inject a unique device ID (e.g. the
+MAC address of an included Bluetooth module) into into the outgoing data stream.
+
+**Request**
+
+    { "command": "device_id"}
+
+**Response**
+
+    { "command_response": "device_id", "message": "0012345678"}
+
+### Passthrough CAN Mode
+
+The `passthrough` command controls whether low-level CAN messages are passed
+through from the CAN bus through the VI to the output stream. If the CAN
+acceptance filter is in bypass mode and passthrough is enabled, the output
+stream will include all received CAN messages. If the bypass filter is enabled,
+only those CAN messages that have been pre-defined in the firmware are
+forwarded.
+
+**Request**
+
+    { "command": "passthrough",
+      "bus": 1,
+      "enabled": true
+    }
+
+**Response**
+
+If the bus in the request was valid and the passthrough mode was changed, the
+`status` field in the response will be `true`. If `false`, the passthrough mode
+was not changed.
+
+    { "command_response": "passthrough", "status": true}
+
+### Acceptance Filter Bypass
+
+The `af_bypass` command controls whether the CAN message acceptance filter is
+bypassed for each CAN controller. By default, hardware acceptance filter (AF) is
+enabled in the VI - only previously defined CAN message IDs will be received.
+Send this command with `bypass: true` to force the filters to bypassed.
+
+If `passthrough` mode is also enabled, when the AF is bypassed, the output will
+include all CAN messages received.
+
+**Request**
+
+    { "command": "af_bypass",
+      "bus": 1,
+      "bypass": true
+    }
+
+**Response**
+
+If the bus in the request was valid and the AF mode was changed, the `status`
+field in the response will be `true`. If `false`, the passthrough mode was not
+changed.
+
+    { "command_response": "af_bypass", "status": true}
+
+### Payload Format Control
+
+The `payload_format` command determines the format for output data from the VI
+and the expected format of commands sent to the VI.
+
+Valid formats are `json` and `protobuf`.
+
+**Request**
+
+    { "command": "payload_format",
+      "format": "json"
+    }
+
+**Response**
+
+If the format was changed successfully, the `status` in the response will be
+`true`. The response will be in the original message format, and all subsequent
+messages will be in the new format.
+
+    { "command_response": "payload_format", "status": true}
+
+### Automatic Pre-Defined OBD-II PID Requests
+
+The `predefined_obd2` command enables and disables the querying for and
+translating of a set of pre-defined OBD-II PIDs from the attached vehicle. When
+enabled, the VI will query the vehicle to see if these PIDs are claimed to be
+supported and for those that are, it will set up recurring requests. The
+responses will be output as simple vehicle messages, with the names defined in
+the "Signals Defined from Diagnostic Messages" section below.
+
+**Request**
+
+    { "command": "predefined_obd2",
+      "enabled": true
+    }
+
+**Response**
+
+f the predefined requests were enabled or disabled successfully, the `status` in
+the response will be `true`.
+
+    { "command_response": "predefined_obd2", "status": true}
+
