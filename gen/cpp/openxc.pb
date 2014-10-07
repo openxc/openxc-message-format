@@ -1,28 +1,28 @@
 
-”
-openxc.protoopenxc"”
+€
+openxc.protoopenxc"ˆ
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
-raw_message (2.openxc.RawMessage5
-translated_message (2.openxc.TranslatedMessage7
+can_message (2.openxc.CanMessage-
+simple_message (2.openxc.SimpleMessage7
 diagnostic_response (2.openxc.DiagnosticResponse/
 control_command (2.openxc.ControlCommand1
-command_response (2.openxc.CommandResponse"Z
+command_response (2.openxc.CommandResponse"V
 Type
-RAW
+CAN
 
-TRANSLATED
+SIMPLE
 
 DIAGNOSTIC
 CONTROL_COMMAND
 COMMAND_RESPONSE"œ
 
-RawMessage
+CanMessage
 bus (
 
 message_id (
 data (4
-frame_format (2.openxc.RawMessage.FrameFormat")
+frame_format (2.openxc.CanMessage.FrameFormat")
 FrameFormat
 STANDARD
 EXTENDED"¸
@@ -99,9 +99,9 @@ message_id (
 
 STRING
 NUM
-BOOL"÷
-TranslatedMessage,
-type (2.openxc.TranslatedMessage.Type
+BOOL"ï
+SimpleMessage(
+type (2.openxc.SimpleMessage.Type
 name (	#
 value (2.openxc.DynamicField#
 event (2.openxc.DynamicField"\

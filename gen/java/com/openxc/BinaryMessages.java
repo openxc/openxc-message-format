@@ -21,33 +21,33 @@ public final class BinaryMessages {
      */
     com.openxc.BinaryMessages.VehicleMessage.Type getType();
 
-    // optional .openxc.RawMessage raw_message = 2;
+    // optional .openxc.CanMessage can_message = 2;
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    boolean hasRawMessage();
+    boolean hasCanMessage();
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    com.openxc.BinaryMessages.RawMessage getRawMessage();
+    com.openxc.BinaryMessages.CanMessage getCanMessage();
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    com.openxc.BinaryMessages.RawMessageOrBuilder getRawMessageOrBuilder();
+    com.openxc.BinaryMessages.CanMessageOrBuilder getCanMessageOrBuilder();
 
-    // optional .openxc.TranslatedMessage translated_message = 3;
+    // optional .openxc.SimpleMessage simple_message = 3;
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    boolean hasTranslatedMessage();
+    boolean hasSimpleMessage();
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    com.openxc.BinaryMessages.TranslatedMessage getTranslatedMessage();
+    com.openxc.BinaryMessages.SimpleMessage getSimpleMessage();
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    com.openxc.BinaryMessages.TranslatedMessageOrBuilder getTranslatedMessageOrBuilder();
+    com.openxc.BinaryMessages.SimpleMessageOrBuilder getSimpleMessageOrBuilder();
 
     // optional .openxc.DiagnosticResponse diagnostic_response = 4;
     /**
@@ -154,27 +154,27 @@ public final class BinaryMessages {
               break;
             }
             case 18: {
-              com.openxc.BinaryMessages.RawMessage.Builder subBuilder = null;
+              com.openxc.BinaryMessages.CanMessage.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = rawMessage_.toBuilder();
+                subBuilder = canMessage_.toBuilder();
               }
-              rawMessage_ = input.readMessage(com.openxc.BinaryMessages.RawMessage.PARSER, extensionRegistry);
+              canMessage_ = input.readMessage(com.openxc.BinaryMessages.CanMessage.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(rawMessage_);
-                rawMessage_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(canMessage_);
+                canMessage_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
               break;
             }
             case 26: {
-              com.openxc.BinaryMessages.TranslatedMessage.Builder subBuilder = null;
+              com.openxc.BinaryMessages.SimpleMessage.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = translatedMessage_.toBuilder();
+                subBuilder = simpleMessage_.toBuilder();
               }
-              translatedMessage_ = input.readMessage(com.openxc.BinaryMessages.TranslatedMessage.PARSER, extensionRegistry);
+              simpleMessage_ = input.readMessage(com.openxc.BinaryMessages.SimpleMessage.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(translatedMessage_);
-                translatedMessage_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(simpleMessage_);
+                simpleMessage_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
               break;
@@ -263,13 +263,13 @@ public final class BinaryMessages {
     public enum Type
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>RAW = 1;</code>
+       * <code>CAN = 1;</code>
        */
-      RAW(0, 1),
+      CAN(0, 1),
       /**
-       * <code>TRANSLATED = 2;</code>
+       * <code>SIMPLE = 2;</code>
        */
-      TRANSLATED(1, 2),
+      SIMPLE(1, 2),
       /**
        * <code>DIAGNOSTIC = 3;</code>
        */
@@ -285,13 +285,13 @@ public final class BinaryMessages {
       ;
 
       /**
-       * <code>RAW = 1;</code>
+       * <code>CAN = 1;</code>
        */
-      public static final int RAW_VALUE = 1;
+      public static final int CAN_VALUE = 1;
       /**
-       * <code>TRANSLATED = 2;</code>
+       * <code>SIMPLE = 2;</code>
        */
-      public static final int TRANSLATED_VALUE = 2;
+      public static final int SIMPLE_VALUE = 2;
       /**
        * <code>DIAGNOSTIC = 3;</code>
        */
@@ -310,8 +310,8 @@ public final class BinaryMessages {
 
       public static Type valueOf(int value) {
         switch (value) {
-          case 1: return RAW;
-          case 2: return TRANSLATED;
+          case 1: return CAN;
+          case 2: return SIMPLE;
           case 3: return DIAGNOSTIC;
           case 4: return CONTROL_COMMAND;
           case 5: return COMMAND_RESPONSE;
@@ -383,48 +383,48 @@ public final class BinaryMessages {
       return type_;
     }
 
-    // optional .openxc.RawMessage raw_message = 2;
-    public static final int RAW_MESSAGE_FIELD_NUMBER = 2;
-    private com.openxc.BinaryMessages.RawMessage rawMessage_;
+    // optional .openxc.CanMessage can_message = 2;
+    public static final int CAN_MESSAGE_FIELD_NUMBER = 2;
+    private com.openxc.BinaryMessages.CanMessage canMessage_;
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    public boolean hasRawMessage() {
+    public boolean hasCanMessage() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    public com.openxc.BinaryMessages.RawMessage getRawMessage() {
-      return rawMessage_;
+    public com.openxc.BinaryMessages.CanMessage getCanMessage() {
+      return canMessage_;
     }
     /**
-     * <code>optional .openxc.RawMessage raw_message = 2;</code>
+     * <code>optional .openxc.CanMessage can_message = 2;</code>
      */
-    public com.openxc.BinaryMessages.RawMessageOrBuilder getRawMessageOrBuilder() {
-      return rawMessage_;
+    public com.openxc.BinaryMessages.CanMessageOrBuilder getCanMessageOrBuilder() {
+      return canMessage_;
     }
 
-    // optional .openxc.TranslatedMessage translated_message = 3;
-    public static final int TRANSLATED_MESSAGE_FIELD_NUMBER = 3;
-    private com.openxc.BinaryMessages.TranslatedMessage translatedMessage_;
+    // optional .openxc.SimpleMessage simple_message = 3;
+    public static final int SIMPLE_MESSAGE_FIELD_NUMBER = 3;
+    private com.openxc.BinaryMessages.SimpleMessage simpleMessage_;
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    public boolean hasTranslatedMessage() {
+    public boolean hasSimpleMessage() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    public com.openxc.BinaryMessages.TranslatedMessage getTranslatedMessage() {
-      return translatedMessage_;
+    public com.openxc.BinaryMessages.SimpleMessage getSimpleMessage() {
+      return simpleMessage_;
     }
     /**
-     * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+     * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
      */
-    public com.openxc.BinaryMessages.TranslatedMessageOrBuilder getTranslatedMessageOrBuilder() {
-      return translatedMessage_;
+    public com.openxc.BinaryMessages.SimpleMessageOrBuilder getSimpleMessageOrBuilder() {
+      return simpleMessage_;
     }
 
     // optional .openxc.DiagnosticResponse diagnostic_response = 4;
@@ -494,9 +494,9 @@ public final class BinaryMessages {
     }
 
     private void initFields() {
-      type_ = com.openxc.BinaryMessages.VehicleMessage.Type.RAW;
-      rawMessage_ = com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
-      translatedMessage_ = com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
+      type_ = com.openxc.BinaryMessages.VehicleMessage.Type.CAN;
+      canMessage_ = com.openxc.BinaryMessages.CanMessage.getDefaultInstance();
+      simpleMessage_ = com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance();
       diagnosticResponse_ = com.openxc.BinaryMessages.DiagnosticResponse.getDefaultInstance();
       controlCommand_ = com.openxc.BinaryMessages.ControlCommand.getDefaultInstance();
       commandResponse_ = com.openxc.BinaryMessages.CommandResponse.getDefaultInstance();
@@ -517,10 +517,10 @@ public final class BinaryMessages {
         output.writeEnum(1, type_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, rawMessage_);
+        output.writeMessage(2, canMessage_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, translatedMessage_);
+        output.writeMessage(3, simpleMessage_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, diagnosticResponse_);
@@ -546,11 +546,11 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, rawMessage_);
+          .computeMessageSize(2, canMessage_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, translatedMessage_);
+          .computeMessageSize(3, simpleMessage_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -672,8 +672,8 @@ public final class BinaryMessages {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRawMessageFieldBuilder();
-          getTranslatedMessageFieldBuilder();
+          getCanMessageFieldBuilder();
+          getSimpleMessageFieldBuilder();
           getDiagnosticResponseFieldBuilder();
           getControlCommandFieldBuilder();
           getCommandResponseFieldBuilder();
@@ -685,18 +685,18 @@ public final class BinaryMessages {
 
       public Builder clear() {
         super.clear();
-        type_ = com.openxc.BinaryMessages.VehicleMessage.Type.RAW;
+        type_ = com.openxc.BinaryMessages.VehicleMessage.Type.CAN;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (rawMessageBuilder_ == null) {
-          rawMessage_ = com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
+        if (canMessageBuilder_ == null) {
+          canMessage_ = com.openxc.BinaryMessages.CanMessage.getDefaultInstance();
         } else {
-          rawMessageBuilder_.clear();
+          canMessageBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
-        if (translatedMessageBuilder_ == null) {
-          translatedMessage_ = com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
+        if (simpleMessageBuilder_ == null) {
+          simpleMessage_ = com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance();
         } else {
-          translatedMessageBuilder_.clear();
+          simpleMessageBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         if (diagnosticResponseBuilder_ == null) {
@@ -752,18 +752,18 @@ public final class BinaryMessages {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        if (rawMessageBuilder_ == null) {
-          result.rawMessage_ = rawMessage_;
+        if (canMessageBuilder_ == null) {
+          result.canMessage_ = canMessage_;
         } else {
-          result.rawMessage_ = rawMessageBuilder_.build();
+          result.canMessage_ = canMessageBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        if (translatedMessageBuilder_ == null) {
-          result.translatedMessage_ = translatedMessage_;
+        if (simpleMessageBuilder_ == null) {
+          result.simpleMessage_ = simpleMessage_;
         } else {
-          result.translatedMessage_ = translatedMessageBuilder_.build();
+          result.simpleMessage_ = simpleMessageBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
@@ -808,11 +808,11 @@ public final class BinaryMessages {
         if (other.hasType()) {
           setType(other.getType());
         }
-        if (other.hasRawMessage()) {
-          mergeRawMessage(other.getRawMessage());
+        if (other.hasCanMessage()) {
+          mergeCanMessage(other.getCanMessage());
         }
-        if (other.hasTranslatedMessage()) {
-          mergeTranslatedMessage(other.getTranslatedMessage());
+        if (other.hasSimpleMessage()) {
+          mergeSimpleMessage(other.getSimpleMessage());
         }
         if (other.hasDiagnosticResponse()) {
           mergeDiagnosticResponse(other.getDiagnosticResponse());
@@ -851,7 +851,7 @@ public final class BinaryMessages {
       private int bitField0_;
 
       // optional .openxc.VehicleMessage.Type type = 1;
-      private com.openxc.BinaryMessages.VehicleMessage.Type type_ = com.openxc.BinaryMessages.VehicleMessage.Type.RAW;
+      private com.openxc.BinaryMessages.VehicleMessage.Type type_ = com.openxc.BinaryMessages.VehicleMessage.Type.CAN;
       /**
        * <code>optional .openxc.VehicleMessage.Type type = 1;</code>
        */
@@ -881,243 +881,243 @@ public final class BinaryMessages {
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.openxc.BinaryMessages.VehicleMessage.Type.RAW;
+        type_ = com.openxc.BinaryMessages.VehicleMessage.Type.CAN;
         onChanged();
         return this;
       }
 
-      // optional .openxc.RawMessage raw_message = 2;
-      private com.openxc.BinaryMessages.RawMessage rawMessage_ = com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
+      // optional .openxc.CanMessage can_message = 2;
+      private com.openxc.BinaryMessages.CanMessage canMessage_ = com.openxc.BinaryMessages.CanMessage.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.RawMessage, com.openxc.BinaryMessages.RawMessage.Builder, com.openxc.BinaryMessages.RawMessageOrBuilder> rawMessageBuilder_;
+          com.openxc.BinaryMessages.CanMessage, com.openxc.BinaryMessages.CanMessage.Builder, com.openxc.BinaryMessages.CanMessageOrBuilder> canMessageBuilder_;
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public boolean hasRawMessage() {
+      public boolean hasCanMessage() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public com.openxc.BinaryMessages.RawMessage getRawMessage() {
-        if (rawMessageBuilder_ == null) {
-          return rawMessage_;
+      public com.openxc.BinaryMessages.CanMessage getCanMessage() {
+        if (canMessageBuilder_ == null) {
+          return canMessage_;
         } else {
-          return rawMessageBuilder_.getMessage();
+          return canMessageBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public Builder setRawMessage(com.openxc.BinaryMessages.RawMessage value) {
-        if (rawMessageBuilder_ == null) {
+      public Builder setCanMessage(com.openxc.BinaryMessages.CanMessage value) {
+        if (canMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          rawMessage_ = value;
+          canMessage_ = value;
           onChanged();
         } else {
-          rawMessageBuilder_.setMessage(value);
+          canMessageBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public Builder setRawMessage(
-          com.openxc.BinaryMessages.RawMessage.Builder builderForValue) {
-        if (rawMessageBuilder_ == null) {
-          rawMessage_ = builderForValue.build();
+      public Builder setCanMessage(
+          com.openxc.BinaryMessages.CanMessage.Builder builderForValue) {
+        if (canMessageBuilder_ == null) {
+          canMessage_ = builderForValue.build();
           onChanged();
         } else {
-          rawMessageBuilder_.setMessage(builderForValue.build());
+          canMessageBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public Builder mergeRawMessage(com.openxc.BinaryMessages.RawMessage value) {
-        if (rawMessageBuilder_ == null) {
+      public Builder mergeCanMessage(com.openxc.BinaryMessages.CanMessage value) {
+        if (canMessageBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              rawMessage_ != com.openxc.BinaryMessages.RawMessage.getDefaultInstance()) {
-            rawMessage_ =
-              com.openxc.BinaryMessages.RawMessage.newBuilder(rawMessage_).mergeFrom(value).buildPartial();
+              canMessage_ != com.openxc.BinaryMessages.CanMessage.getDefaultInstance()) {
+            canMessage_ =
+              com.openxc.BinaryMessages.CanMessage.newBuilder(canMessage_).mergeFrom(value).buildPartial();
           } else {
-            rawMessage_ = value;
+            canMessage_ = value;
           }
           onChanged();
         } else {
-          rawMessageBuilder_.mergeFrom(value);
+          canMessageBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public Builder clearRawMessage() {
-        if (rawMessageBuilder_ == null) {
-          rawMessage_ = com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
+      public Builder clearCanMessage() {
+        if (canMessageBuilder_ == null) {
+          canMessage_ = com.openxc.BinaryMessages.CanMessage.getDefaultInstance();
           onChanged();
         } else {
-          rawMessageBuilder_.clear();
+          canMessageBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public com.openxc.BinaryMessages.RawMessage.Builder getRawMessageBuilder() {
+      public com.openxc.BinaryMessages.CanMessage.Builder getCanMessageBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
-        return getRawMessageFieldBuilder().getBuilder();
+        return getCanMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
-      public com.openxc.BinaryMessages.RawMessageOrBuilder getRawMessageOrBuilder() {
-        if (rawMessageBuilder_ != null) {
-          return rawMessageBuilder_.getMessageOrBuilder();
+      public com.openxc.BinaryMessages.CanMessageOrBuilder getCanMessageOrBuilder() {
+        if (canMessageBuilder_ != null) {
+          return canMessageBuilder_.getMessageOrBuilder();
         } else {
-          return rawMessage_;
+          return canMessage_;
         }
       }
       /**
-       * <code>optional .openxc.RawMessage raw_message = 2;</code>
+       * <code>optional .openxc.CanMessage can_message = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.RawMessage, com.openxc.BinaryMessages.RawMessage.Builder, com.openxc.BinaryMessages.RawMessageOrBuilder> 
-          getRawMessageFieldBuilder() {
-        if (rawMessageBuilder_ == null) {
-          rawMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.openxc.BinaryMessages.RawMessage, com.openxc.BinaryMessages.RawMessage.Builder, com.openxc.BinaryMessages.RawMessageOrBuilder>(
-                  rawMessage_,
+          com.openxc.BinaryMessages.CanMessage, com.openxc.BinaryMessages.CanMessage.Builder, com.openxc.BinaryMessages.CanMessageOrBuilder> 
+          getCanMessageFieldBuilder() {
+        if (canMessageBuilder_ == null) {
+          canMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.CanMessage, com.openxc.BinaryMessages.CanMessage.Builder, com.openxc.BinaryMessages.CanMessageOrBuilder>(
+                  canMessage_,
                   getParentForChildren(),
                   isClean());
-          rawMessage_ = null;
+          canMessage_ = null;
         }
-        return rawMessageBuilder_;
+        return canMessageBuilder_;
       }
 
-      // optional .openxc.TranslatedMessage translated_message = 3;
-      private com.openxc.BinaryMessages.TranslatedMessage translatedMessage_ = com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
+      // optional .openxc.SimpleMessage simple_message = 3;
+      private com.openxc.BinaryMessages.SimpleMessage simpleMessage_ = com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.TranslatedMessage, com.openxc.BinaryMessages.TranslatedMessage.Builder, com.openxc.BinaryMessages.TranslatedMessageOrBuilder> translatedMessageBuilder_;
+          com.openxc.BinaryMessages.SimpleMessage, com.openxc.BinaryMessages.SimpleMessage.Builder, com.openxc.BinaryMessages.SimpleMessageOrBuilder> simpleMessageBuilder_;
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public boolean hasTranslatedMessage() {
+      public boolean hasSimpleMessage() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public com.openxc.BinaryMessages.TranslatedMessage getTranslatedMessage() {
-        if (translatedMessageBuilder_ == null) {
-          return translatedMessage_;
+      public com.openxc.BinaryMessages.SimpleMessage getSimpleMessage() {
+        if (simpleMessageBuilder_ == null) {
+          return simpleMessage_;
         } else {
-          return translatedMessageBuilder_.getMessage();
+          return simpleMessageBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public Builder setTranslatedMessage(com.openxc.BinaryMessages.TranslatedMessage value) {
-        if (translatedMessageBuilder_ == null) {
+      public Builder setSimpleMessage(com.openxc.BinaryMessages.SimpleMessage value) {
+        if (simpleMessageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          translatedMessage_ = value;
+          simpleMessage_ = value;
           onChanged();
         } else {
-          translatedMessageBuilder_.setMessage(value);
+          simpleMessageBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public Builder setTranslatedMessage(
-          com.openxc.BinaryMessages.TranslatedMessage.Builder builderForValue) {
-        if (translatedMessageBuilder_ == null) {
-          translatedMessage_ = builderForValue.build();
+      public Builder setSimpleMessage(
+          com.openxc.BinaryMessages.SimpleMessage.Builder builderForValue) {
+        if (simpleMessageBuilder_ == null) {
+          simpleMessage_ = builderForValue.build();
           onChanged();
         } else {
-          translatedMessageBuilder_.setMessage(builderForValue.build());
+          simpleMessageBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public Builder mergeTranslatedMessage(com.openxc.BinaryMessages.TranslatedMessage value) {
-        if (translatedMessageBuilder_ == null) {
+      public Builder mergeSimpleMessage(com.openxc.BinaryMessages.SimpleMessage value) {
+        if (simpleMessageBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              translatedMessage_ != com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance()) {
-            translatedMessage_ =
-              com.openxc.BinaryMessages.TranslatedMessage.newBuilder(translatedMessage_).mergeFrom(value).buildPartial();
+              simpleMessage_ != com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance()) {
+            simpleMessage_ =
+              com.openxc.BinaryMessages.SimpleMessage.newBuilder(simpleMessage_).mergeFrom(value).buildPartial();
           } else {
-            translatedMessage_ = value;
+            simpleMessage_ = value;
           }
           onChanged();
         } else {
-          translatedMessageBuilder_.mergeFrom(value);
+          simpleMessageBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public Builder clearTranslatedMessage() {
-        if (translatedMessageBuilder_ == null) {
-          translatedMessage_ = com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
+      public Builder clearSimpleMessage() {
+        if (simpleMessageBuilder_ == null) {
+          simpleMessage_ = com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance();
           onChanged();
         } else {
-          translatedMessageBuilder_.clear();
+          simpleMessageBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public com.openxc.BinaryMessages.TranslatedMessage.Builder getTranslatedMessageBuilder() {
+      public com.openxc.BinaryMessages.SimpleMessage.Builder getSimpleMessageBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
-        return getTranslatedMessageFieldBuilder().getBuilder();
+        return getSimpleMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
-      public com.openxc.BinaryMessages.TranslatedMessageOrBuilder getTranslatedMessageOrBuilder() {
-        if (translatedMessageBuilder_ != null) {
-          return translatedMessageBuilder_.getMessageOrBuilder();
+      public com.openxc.BinaryMessages.SimpleMessageOrBuilder getSimpleMessageOrBuilder() {
+        if (simpleMessageBuilder_ != null) {
+          return simpleMessageBuilder_.getMessageOrBuilder();
         } else {
-          return translatedMessage_;
+          return simpleMessage_;
         }
       }
       /**
-       * <code>optional .openxc.TranslatedMessage translated_message = 3;</code>
+       * <code>optional .openxc.SimpleMessage simple_message = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.openxc.BinaryMessages.TranslatedMessage, com.openxc.BinaryMessages.TranslatedMessage.Builder, com.openxc.BinaryMessages.TranslatedMessageOrBuilder> 
-          getTranslatedMessageFieldBuilder() {
-        if (translatedMessageBuilder_ == null) {
-          translatedMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.openxc.BinaryMessages.TranslatedMessage, com.openxc.BinaryMessages.TranslatedMessage.Builder, com.openxc.BinaryMessages.TranslatedMessageOrBuilder>(
-                  translatedMessage_,
+          com.openxc.BinaryMessages.SimpleMessage, com.openxc.BinaryMessages.SimpleMessage.Builder, com.openxc.BinaryMessages.SimpleMessageOrBuilder> 
+          getSimpleMessageFieldBuilder() {
+        if (simpleMessageBuilder_ == null) {
+          simpleMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.SimpleMessage, com.openxc.BinaryMessages.SimpleMessage.Builder, com.openxc.BinaryMessages.SimpleMessageOrBuilder>(
+                  simpleMessage_,
                   getParentForChildren(),
                   isClean());
-          translatedMessage_ = null;
+          simpleMessage_ = null;
         }
-        return translatedMessageBuilder_;
+        return simpleMessageBuilder_;
       }
 
       // optional .openxc.DiagnosticResponse diagnostic_response = 4;
@@ -1482,7 +1482,7 @@ public final class BinaryMessages {
     // @@protoc_insertion_point(class_scope:openxc.VehicleMessage)
   }
 
-  public interface RawMessageOrBuilder
+  public interface CanMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional int32 bus = 1;
@@ -1515,35 +1515,35 @@ public final class BinaryMessages {
      */
     com.google.protobuf.ByteString getData();
 
-    // optional .openxc.RawMessage.FrameFormat frame_format = 4;
+    // optional .openxc.CanMessage.FrameFormat frame_format = 4;
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+     * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
      */
     boolean hasFrameFormat();
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+     * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
      */
-    com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat();
+    com.openxc.BinaryMessages.CanMessage.FrameFormat getFrameFormat();
   }
   /**
-   * Protobuf type {@code openxc.RawMessage}
+   * Protobuf type {@code openxc.CanMessage}
    */
-  public static final class RawMessage extends
+  public static final class CanMessage extends
       com.google.protobuf.GeneratedMessage
-      implements RawMessageOrBuilder {
-    // Use RawMessage.newBuilder() to construct.
-    private RawMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements CanMessageOrBuilder {
+    // Use CanMessage.newBuilder() to construct.
+    private CanMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private RawMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private CanMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final RawMessage defaultInstance;
-    public static RawMessage getDefaultInstance() {
+    private static final CanMessage defaultInstance;
+    public static CanMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public RawMessage getDefaultInstanceForType() {
+    public CanMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1553,7 +1553,7 @@ public final class BinaryMessages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private RawMessage(
+    private CanMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1593,7 +1593,7 @@ public final class BinaryMessages {
             }
             case 32: {
               int rawValue = input.readEnum();
-              com.openxc.BinaryMessages.RawMessage.FrameFormat value = com.openxc.BinaryMessages.RawMessage.FrameFormat.valueOf(rawValue);
+              com.openxc.BinaryMessages.CanMessage.FrameFormat value = com.openxc.BinaryMessages.CanMessage.FrameFormat.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
@@ -1616,33 +1616,33 @@ public final class BinaryMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.openxc.BinaryMessages.internal_static_openxc_RawMessage_descriptor;
+      return com.openxc.BinaryMessages.internal_static_openxc_CanMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.openxc.BinaryMessages.internal_static_openxc_RawMessage_fieldAccessorTable
+      return com.openxc.BinaryMessages.internal_static_openxc_CanMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.openxc.BinaryMessages.RawMessage.class, com.openxc.BinaryMessages.RawMessage.Builder.class);
+              com.openxc.BinaryMessages.CanMessage.class, com.openxc.BinaryMessages.CanMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<RawMessage> PARSER =
-        new com.google.protobuf.AbstractParser<RawMessage>() {
-      public RawMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<CanMessage> PARSER =
+        new com.google.protobuf.AbstractParser<CanMessage>() {
+      public CanMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RawMessage(input, extensionRegistry);
+        return new CanMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<RawMessage> getParserForType() {
+    public com.google.protobuf.Parser<CanMessage> getParserForType() {
       return PARSER;
     }
 
     /**
-     * Protobuf enum {@code openxc.RawMessage.FrameFormat}
+     * Protobuf enum {@code openxc.CanMessage.FrameFormat}
      */
     public enum FrameFormat
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -1698,7 +1698,7 @@ public final class BinaryMessages {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return com.openxc.BinaryMessages.RawMessage.getDescriptor().getEnumTypes().get(0);
+        return com.openxc.BinaryMessages.CanMessage.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final FrameFormat[] VALUES = values();
@@ -1720,7 +1720,7 @@ public final class BinaryMessages {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:openxc.RawMessage.FrameFormat)
+      // @@protoc_insertion_point(enum_scope:openxc.CanMessage.FrameFormat)
     }
 
     private int bitField0_;
@@ -1772,19 +1772,19 @@ public final class BinaryMessages {
       return data_;
     }
 
-    // optional .openxc.RawMessage.FrameFormat frame_format = 4;
+    // optional .openxc.CanMessage.FrameFormat frame_format = 4;
     public static final int FRAME_FORMAT_FIELD_NUMBER = 4;
-    private com.openxc.BinaryMessages.RawMessage.FrameFormat frameFormat_;
+    private com.openxc.BinaryMessages.CanMessage.FrameFormat frameFormat_;
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+     * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
      */
     public boolean hasFrameFormat() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+     * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
      */
-    public com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat() {
+    public com.openxc.BinaryMessages.CanMessage.FrameFormat getFrameFormat() {
       return frameFormat_;
     }
 
@@ -1792,7 +1792,7 @@ public final class BinaryMessages {
       bus_ = 0;
       messageId_ = 0;
       data_ = com.google.protobuf.ByteString.EMPTY;
-      frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+      frameFormat_ = com.openxc.BinaryMessages.CanMessage.FrameFormat.STANDARD;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1855,53 +1855,53 @@ public final class BinaryMessages {
       return super.writeReplace();
     }
 
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(byte[] data)
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(java.io.InputStream input)
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseDelimitedFrom(java.io.InputStream input)
+    public static com.openxc.BinaryMessages.CanMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseDelimitedFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.openxc.BinaryMessages.RawMessage parseFrom(
+    public static com.openxc.BinaryMessages.CanMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1910,7 +1910,7 @@ public final class BinaryMessages {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.openxc.BinaryMessages.RawMessage prototype) {
+    public static Builder newBuilder(com.openxc.BinaryMessages.CanMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1922,24 +1922,24 @@ public final class BinaryMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code openxc.RawMessage}
+     * Protobuf type {@code openxc.CanMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.openxc.BinaryMessages.RawMessageOrBuilder {
+       implements com.openxc.BinaryMessages.CanMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.openxc.BinaryMessages.internal_static_openxc_RawMessage_descriptor;
+        return com.openxc.BinaryMessages.internal_static_openxc_CanMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.openxc.BinaryMessages.internal_static_openxc_RawMessage_fieldAccessorTable
+        return com.openxc.BinaryMessages.internal_static_openxc_CanMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.openxc.BinaryMessages.RawMessage.class, com.openxc.BinaryMessages.RawMessage.Builder.class);
+                com.openxc.BinaryMessages.CanMessage.class, com.openxc.BinaryMessages.CanMessage.Builder.class);
       }
 
-      // Construct using com.openxc.BinaryMessages.RawMessage.newBuilder()
+      // Construct using com.openxc.BinaryMessages.CanMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1965,7 +1965,7 @@ public final class BinaryMessages {
         bitField0_ = (bitField0_ & ~0x00000002);
         data_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+        frameFormat_ = com.openxc.BinaryMessages.CanMessage.FrameFormat.STANDARD;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -1976,23 +1976,23 @@ public final class BinaryMessages {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.openxc.BinaryMessages.internal_static_openxc_RawMessage_descriptor;
+        return com.openxc.BinaryMessages.internal_static_openxc_CanMessage_descriptor;
       }
 
-      public com.openxc.BinaryMessages.RawMessage getDefaultInstanceForType() {
-        return com.openxc.BinaryMessages.RawMessage.getDefaultInstance();
+      public com.openxc.BinaryMessages.CanMessage getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.CanMessage.getDefaultInstance();
       }
 
-      public com.openxc.BinaryMessages.RawMessage build() {
-        com.openxc.BinaryMessages.RawMessage result = buildPartial();
+      public com.openxc.BinaryMessages.CanMessage build() {
+        com.openxc.BinaryMessages.CanMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.openxc.BinaryMessages.RawMessage buildPartial() {
-        com.openxc.BinaryMessages.RawMessage result = new com.openxc.BinaryMessages.RawMessage(this);
+      public com.openxc.BinaryMessages.CanMessage buildPartial() {
+        com.openxc.BinaryMessages.CanMessage result = new com.openxc.BinaryMessages.CanMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2017,16 +2017,16 @@ public final class BinaryMessages {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.openxc.BinaryMessages.RawMessage) {
-          return mergeFrom((com.openxc.BinaryMessages.RawMessage)other);
+        if (other instanceof com.openxc.BinaryMessages.CanMessage) {
+          return mergeFrom((com.openxc.BinaryMessages.CanMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.openxc.BinaryMessages.RawMessage other) {
-        if (other == com.openxc.BinaryMessages.RawMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.openxc.BinaryMessages.CanMessage other) {
+        if (other == com.openxc.BinaryMessages.CanMessage.getDefaultInstance()) return this;
         if (other.hasBus()) {
           setBus(other.getBus());
         }
@@ -2051,11 +2051,11 @@ public final class BinaryMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.openxc.BinaryMessages.RawMessage parsedMessage = null;
+        com.openxc.BinaryMessages.CanMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.openxc.BinaryMessages.RawMessage) e.getUnfinishedMessage();
+          parsedMessage = (com.openxc.BinaryMessages.CanMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2168,24 +2168,24 @@ public final class BinaryMessages {
         return this;
       }
 
-      // optional .openxc.RawMessage.FrameFormat frame_format = 4;
-      private com.openxc.BinaryMessages.RawMessage.FrameFormat frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+      // optional .openxc.CanMessage.FrameFormat frame_format = 4;
+      private com.openxc.BinaryMessages.CanMessage.FrameFormat frameFormat_ = com.openxc.BinaryMessages.CanMessage.FrameFormat.STANDARD;
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+       * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
        */
       public boolean hasFrameFormat() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+       * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
        */
-      public com.openxc.BinaryMessages.RawMessage.FrameFormat getFrameFormat() {
+      public com.openxc.BinaryMessages.CanMessage.FrameFormat getFrameFormat() {
         return frameFormat_;
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+       * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
        */
-      public Builder setFrameFormat(com.openxc.BinaryMessages.RawMessage.FrameFormat value) {
+      public Builder setFrameFormat(com.openxc.BinaryMessages.CanMessage.FrameFormat value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2195,24 +2195,24 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.RawMessage.FrameFormat frame_format = 4;</code>
+       * <code>optional .openxc.CanMessage.FrameFormat frame_format = 4;</code>
        */
       public Builder clearFrameFormat() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        frameFormat_ = com.openxc.BinaryMessages.RawMessage.FrameFormat.STANDARD;
+        frameFormat_ = com.openxc.BinaryMessages.CanMessage.FrameFormat.STANDARD;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:openxc.RawMessage)
+      // @@protoc_insertion_point(builder_scope:openxc.CanMessage)
     }
 
     static {
-      defaultInstance = new RawMessage(true);
+      defaultInstance = new CanMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:openxc.RawMessage)
+    // @@protoc_insertion_point(class_scope:openxc.CanMessage)
   }
 
   public interface ControlCommandOrBuilder
@@ -9938,18 +9938,18 @@ public final class BinaryMessages {
     // @@protoc_insertion_point(class_scope:openxc.DynamicField)
   }
 
-  public interface TranslatedMessageOrBuilder
+  public interface SimpleMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional .openxc.TranslatedMessage.Type type = 1;
+    // optional .openxc.SimpleMessage.Type type = 1;
     /**
-     * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+     * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
      */
     boolean hasType();
     /**
-     * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+     * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
      */
-    com.openxc.BinaryMessages.TranslatedMessage.Type getType();
+    com.openxc.BinaryMessages.SimpleMessage.Type getType();
 
     // optional string name = 2;
     /**
@@ -9995,24 +9995,24 @@ public final class BinaryMessages {
     com.openxc.BinaryMessages.DynamicFieldOrBuilder getEventOrBuilder();
   }
   /**
-   * Protobuf type {@code openxc.TranslatedMessage}
+   * Protobuf type {@code openxc.SimpleMessage}
    */
-  public static final class TranslatedMessage extends
+  public static final class SimpleMessage extends
       com.google.protobuf.GeneratedMessage
-      implements TranslatedMessageOrBuilder {
-    // Use TranslatedMessage.newBuilder() to construct.
-    private TranslatedMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SimpleMessageOrBuilder {
+    // Use SimpleMessage.newBuilder() to construct.
+    private SimpleMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private TranslatedMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SimpleMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final TranslatedMessage defaultInstance;
-    public static TranslatedMessage getDefaultInstance() {
+    private static final SimpleMessage defaultInstance;
+    public static SimpleMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public TranslatedMessage getDefaultInstanceForType() {
+    public SimpleMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -10022,7 +10022,7 @@ public final class BinaryMessages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private TranslatedMessage(
+    private SimpleMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10047,7 +10047,7 @@ public final class BinaryMessages {
             }
             case 8: {
               int rawValue = input.readEnum();
-              com.openxc.BinaryMessages.TranslatedMessage.Type value = com.openxc.BinaryMessages.TranslatedMessage.Type.valueOf(rawValue);
+              com.openxc.BinaryMessages.SimpleMessage.Type value = com.openxc.BinaryMessages.SimpleMessage.Type.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -10101,33 +10101,33 @@ public final class BinaryMessages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.openxc.BinaryMessages.internal_static_openxc_TranslatedMessage_descriptor;
+      return com.openxc.BinaryMessages.internal_static_openxc_SimpleMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.openxc.BinaryMessages.internal_static_openxc_TranslatedMessage_fieldAccessorTable
+      return com.openxc.BinaryMessages.internal_static_openxc_SimpleMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.openxc.BinaryMessages.TranslatedMessage.class, com.openxc.BinaryMessages.TranslatedMessage.Builder.class);
+              com.openxc.BinaryMessages.SimpleMessage.class, com.openxc.BinaryMessages.SimpleMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<TranslatedMessage> PARSER =
-        new com.google.protobuf.AbstractParser<TranslatedMessage>() {
-      public TranslatedMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<SimpleMessage> PARSER =
+        new com.google.protobuf.AbstractParser<SimpleMessage>() {
+      public SimpleMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TranslatedMessage(input, extensionRegistry);
+        return new SimpleMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<TranslatedMessage> getParserForType() {
+    public com.google.protobuf.Parser<SimpleMessage> getParserForType() {
       return PARSER;
     }
 
     /**
-     * Protobuf enum {@code openxc.TranslatedMessage.Type}
+     * Protobuf enum {@code openxc.SimpleMessage.Type}
      */
     public enum Type
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -10219,7 +10219,7 @@ public final class BinaryMessages {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return com.openxc.BinaryMessages.TranslatedMessage.getDescriptor().getEnumTypes().get(0);
+        return com.openxc.BinaryMessages.SimpleMessage.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final Type[] VALUES = values();
@@ -10241,23 +10241,23 @@ public final class BinaryMessages {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:openxc.TranslatedMessage.Type)
+      // @@protoc_insertion_point(enum_scope:openxc.SimpleMessage.Type)
     }
 
     private int bitField0_;
-    // optional .openxc.TranslatedMessage.Type type = 1;
+    // optional .openxc.SimpleMessage.Type type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private com.openxc.BinaryMessages.TranslatedMessage.Type type_;
+    private com.openxc.BinaryMessages.SimpleMessage.Type type_;
     /**
-     * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+     * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+     * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
      */
-    public com.openxc.BinaryMessages.TranslatedMessage.Type getType() {
+    public com.openxc.BinaryMessages.SimpleMessage.Type getType() {
       return type_;
     }
 
@@ -10349,7 +10349,7 @@ public final class BinaryMessages {
     }
 
     private void initFields() {
-      type_ = com.openxc.BinaryMessages.TranslatedMessage.Type.STRING;
+      type_ = com.openxc.BinaryMessages.SimpleMessage.Type.STRING;
       name_ = "";
       value_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
       event_ = com.openxc.BinaryMessages.DynamicField.getDefaultInstance();
@@ -10415,53 +10415,53 @@ public final class BinaryMessages {
       return super.writeReplace();
     }
 
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(byte[] data)
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(java.io.InputStream input)
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseDelimitedFrom(java.io.InputStream input)
+    public static com.openxc.BinaryMessages.SimpleMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseDelimitedFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.openxc.BinaryMessages.TranslatedMessage parseFrom(
+    public static com.openxc.BinaryMessages.SimpleMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10470,7 +10470,7 @@ public final class BinaryMessages {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.openxc.BinaryMessages.TranslatedMessage prototype) {
+    public static Builder newBuilder(com.openxc.BinaryMessages.SimpleMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -10482,24 +10482,24 @@ public final class BinaryMessages {
       return builder;
     }
     /**
-     * Protobuf type {@code openxc.TranslatedMessage}
+     * Protobuf type {@code openxc.SimpleMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.openxc.BinaryMessages.TranslatedMessageOrBuilder {
+       implements com.openxc.BinaryMessages.SimpleMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.openxc.BinaryMessages.internal_static_openxc_TranslatedMessage_descriptor;
+        return com.openxc.BinaryMessages.internal_static_openxc_SimpleMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.openxc.BinaryMessages.internal_static_openxc_TranslatedMessage_fieldAccessorTable
+        return com.openxc.BinaryMessages.internal_static_openxc_SimpleMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.openxc.BinaryMessages.TranslatedMessage.class, com.openxc.BinaryMessages.TranslatedMessage.Builder.class);
+                com.openxc.BinaryMessages.SimpleMessage.class, com.openxc.BinaryMessages.SimpleMessage.Builder.class);
       }
 
-      // Construct using com.openxc.BinaryMessages.TranslatedMessage.newBuilder()
+      // Construct using com.openxc.BinaryMessages.SimpleMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10521,7 +10521,7 @@ public final class BinaryMessages {
 
       public Builder clear() {
         super.clear();
-        type_ = com.openxc.BinaryMessages.TranslatedMessage.Type.STRING;
+        type_ = com.openxc.BinaryMessages.SimpleMessage.Type.STRING;
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -10546,23 +10546,23 @@ public final class BinaryMessages {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.openxc.BinaryMessages.internal_static_openxc_TranslatedMessage_descriptor;
+        return com.openxc.BinaryMessages.internal_static_openxc_SimpleMessage_descriptor;
       }
 
-      public com.openxc.BinaryMessages.TranslatedMessage getDefaultInstanceForType() {
-        return com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance();
+      public com.openxc.BinaryMessages.SimpleMessage getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance();
       }
 
-      public com.openxc.BinaryMessages.TranslatedMessage build() {
-        com.openxc.BinaryMessages.TranslatedMessage result = buildPartial();
+      public com.openxc.BinaryMessages.SimpleMessage build() {
+        com.openxc.BinaryMessages.SimpleMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.openxc.BinaryMessages.TranslatedMessage buildPartial() {
-        com.openxc.BinaryMessages.TranslatedMessage result = new com.openxc.BinaryMessages.TranslatedMessage(this);
+      public com.openxc.BinaryMessages.SimpleMessage buildPartial() {
+        com.openxc.BinaryMessages.SimpleMessage result = new com.openxc.BinaryMessages.SimpleMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -10595,16 +10595,16 @@ public final class BinaryMessages {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.openxc.BinaryMessages.TranslatedMessage) {
-          return mergeFrom((com.openxc.BinaryMessages.TranslatedMessage)other);
+        if (other instanceof com.openxc.BinaryMessages.SimpleMessage) {
+          return mergeFrom((com.openxc.BinaryMessages.SimpleMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.openxc.BinaryMessages.TranslatedMessage other) {
-        if (other == com.openxc.BinaryMessages.TranslatedMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.openxc.BinaryMessages.SimpleMessage other) {
+        if (other == com.openxc.BinaryMessages.SimpleMessage.getDefaultInstance()) return this;
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -10631,11 +10631,11 @@ public final class BinaryMessages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.openxc.BinaryMessages.TranslatedMessage parsedMessage = null;
+        com.openxc.BinaryMessages.SimpleMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.openxc.BinaryMessages.TranslatedMessage) e.getUnfinishedMessage();
+          parsedMessage = (com.openxc.BinaryMessages.SimpleMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -10646,24 +10646,24 @@ public final class BinaryMessages {
       }
       private int bitField0_;
 
-      // optional .openxc.TranslatedMessage.Type type = 1;
-      private com.openxc.BinaryMessages.TranslatedMessage.Type type_ = com.openxc.BinaryMessages.TranslatedMessage.Type.STRING;
+      // optional .openxc.SimpleMessage.Type type = 1;
+      private com.openxc.BinaryMessages.SimpleMessage.Type type_ = com.openxc.BinaryMessages.SimpleMessage.Type.STRING;
       /**
-       * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+       * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
        */
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+       * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
        */
-      public com.openxc.BinaryMessages.TranslatedMessage.Type getType() {
+      public com.openxc.BinaryMessages.SimpleMessage.Type getType() {
         return type_;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+       * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
        */
-      public Builder setType(com.openxc.BinaryMessages.TranslatedMessage.Type value) {
+      public Builder setType(com.openxc.BinaryMessages.SimpleMessage.Type value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -10673,11 +10673,11 @@ public final class BinaryMessages {
         return this;
       }
       /**
-       * <code>optional .openxc.TranslatedMessage.Type type = 1;</code>
+       * <code>optional .openxc.SimpleMessage.Type type = 1;</code>
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.openxc.BinaryMessages.TranslatedMessage.Type.STRING;
+        type_ = com.openxc.BinaryMessages.SimpleMessage.Type.STRING;
         onChanged();
         return this;
       }
@@ -10990,15 +10990,15 @@ public final class BinaryMessages {
         return eventBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:openxc.TranslatedMessage)
+      // @@protoc_insertion_point(builder_scope:openxc.SimpleMessage)
     }
 
     static {
-      defaultInstance = new TranslatedMessage(true);
+      defaultInstance = new SimpleMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:openxc.TranslatedMessage)
+    // @@protoc_insertion_point(class_scope:openxc.SimpleMessage)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -11007,10 +11007,10 @@ public final class BinaryMessages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_openxc_VehicleMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_openxc_RawMessage_descriptor;
+    internal_static_openxc_CanMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_openxc_RawMessage_fieldAccessorTable;
+      internal_static_openxc_CanMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_openxc_ControlCommand_descriptor;
   private static
@@ -11062,10 +11062,10 @@ public final class BinaryMessages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_openxc_DynamicField_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_openxc_TranslatedMessage_descriptor;
+    internal_static_openxc_SimpleMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_openxc_TranslatedMessage_fieldAccessorTable;
+      internal_static_openxc_SimpleMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11075,71 +11075,70 @@ public final class BinaryMessages {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014openxc.proto\022\006openxc\"\224\003\n\016VehicleMessag" +
+      "\n\014openxc.proto\022\006openxc\"\210\003\n\016VehicleMessag" +
       "e\022)\n\004type\030\001 \001(\0162\033.openxc.VehicleMessage." +
-      "Type\022\'\n\013raw_message\030\002 \001(\0132\022.openxc.RawMe" +
-      "ssage\0225\n\022translated_message\030\003 \001(\0132\031.open" +
-      "xc.TranslatedMessage\0227\n\023diagnostic_respo" +
-      "nse\030\004 \001(\0132\032.openxc.DiagnosticResponse\022/\n" +
-      "\017control_command\030\005 \001(\0132\026.openxc.ControlC" +
-      "ommand\0221\n\020command_response\030\006 \001(\0132\027.openx" +
-      "c.CommandResponse\"Z\n\004Type\022\007\n\003RAW\020\001\022\016\n\nTR" +
-      "ANSLATED\020\002\022\016\n\nDIAGNOSTIC\020\003\022\023\n\017CONTROL_CO",
-      "MMAND\020\004\022\024\n\020COMMAND_RESPONSE\020\005\"\234\001\n\nRawMes" +
-      "sage\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n" +
-      "\004data\030\003 \001(\014\0224\n\014frame_format\030\004 \001(\0162\036.open" +
-      "xc.RawMessage.FrameFormat\")\n\013FrameFormat" +
-      "\022\014\n\010STANDARD\020\001\022\014\n\010EXTENDED\020\002\"\270\004\n\016Control" +
-      "Command\022)\n\004type\030\001 \001(\0162\033.openxc.ControlCo" +
-      "mmand.Type\022<\n\022diagnostic_request\030\002 \001(\0132 " +
-      ".openxc.DiagnosticControlCommand\022G\n\030pass" +
-      "through_mode_request\030\003 \001(\0132%.openxc.Pass" +
-      "throughModeControlCommand\022O\n acceptance_",
-      "filter_bypass_command\030\004 \001(\0132%.openxc.Acc" +
-      "eptanceFilterBypassCommand\022<\n\026payload_fo" +
-      "rmat_command\030\005 \001(\0132\034.openxc.PayloadForma" +
-      "tCommand\022O\n predefined_obd2_requests_com" +
-      "mand\030\006 \001(\0132%.openxc.PredefinedObd2Reques" +
-      "tsCommand\"\223\001\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVIC" +
-      "E_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\022" +
-      "\034\n\030ACCEPTANCE_FILTER_BYPASS\020\005\022\022\n\016PAYLOAD" +
-      "_FORMAT\020\006\022\034\n\030PREDEFINED_OBD2_REQUESTS\020\007\"" +
-      "\236\001\n\030DiagnosticControlCommand\022*\n\007request\030",
-      "\001 \001(\0132\031.openxc.DiagnosticRequest\0227\n\006acti" +
-      "on\030\002 \001(\0162\'.openxc.DiagnosticControlComma" +
-      "nd.Action\"\035\n\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002" +
-      "\"=\n\035PassthroughModeControlCommand\022\013\n\003bus" +
-      "\030\001 \001(\005\022\017\n\007enabled\030\002 \001(\010\"<\n\035AcceptanceFil" +
-      "terBypassCommand\022\013\n\003bus\030\001 \001(\005\022\016\n\006bypass\030" +
-      "\002 \001(\010\"{\n\024PayloadFormatCommand\022:\n\006format\030" +
-      "\001 \001(\0162*.openxc.PayloadFormatCommand.Payl" +
-      "oadFormat\"\'\n\rPayloadFormat\022\010\n\004JSON\020\001\022\014\n\010" +
-      "PROTOBUF\020\002\"0\n\035PredefinedObd2RequestsComm",
-      "and\022\017\n\007enabled\030\001 \001(\010\"]\n\017CommandResponse\022" +
-      ")\n\004type\030\001 \001(\0162\033.openxc.ControlCommand.Ty" +
-      "pe\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021" +
-      "DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessag" +
-      "e_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n" +
-      "\007payload\030\005 \001(\014\022\032\n\022multiple_responses\030\006 \001" +
-      "(\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014d" +
-      "ecoded_type\030\t \001(\0162%.openxc.DiagnosticReq" +
-      "uest.DecodedType\"!\n\013DecodedType\022\010\n\004NONE\020" +
-      "\001\022\010\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013\n\003bu",
-      "s\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(" +
-      "\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negat" +
-      "ive_response_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014" +
-      "\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004type" +
-      "\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n\014str" +
-      "ing_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025" +
-      "\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020" +
-      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"\367\001\n\021TranslatedMessa" +
-      "ge\022,\n\004type\030\001 \001(\0162\036.openxc.TranslatedMess" +
-      "age.Type\022\014\n\004name\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.",
-      "openxc.DynamicField\022#\n\005event\030\004 \001(\0132\024.ope" +
-      "nxc.DynamicField\"\\\n\004Type\022\n\n\006STRING\020\001\022\007\n\003" +
-      "NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016EVENTED_STRING\020\004\022\017\n\013E" +
-      "VENTED_NUM\020\005\022\020\n\014EVENTED_BOOL\020\006B\034\n\ncom.op" +
-      "enxcB\016BinaryMessages"
+      "Type\022\'\n\013can_message\030\002 \001(\0132\022.openxc.CanMe" +
+      "ssage\022-\n\016simple_message\030\003 \001(\0132\025.openxc.S" +
+      "impleMessage\0227\n\023diagnostic_response\030\004 \001(" +
+      "\0132\032.openxc.DiagnosticResponse\022/\n\017control" +
+      "_command\030\005 \001(\0132\026.openxc.ControlCommand\0221" +
+      "\n\020command_response\030\006 \001(\0132\027.openxc.Comman" +
+      "dResponse\"V\n\004Type\022\007\n\003CAN\020\001\022\n\n\006SIMPLE\020\002\022\016" +
+      "\n\nDIAGNOSTIC\020\003\022\023\n\017CONTROL_COMMAND\020\004\022\024\n\020C",
+      "OMMAND_RESPONSE\020\005\"\234\001\n\nCanMessage\022\013\n\003bus\030" +
+      "\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004data\030\003 \001(\014\022" +
+      "4\n\014frame_format\030\004 \001(\0162\036.openxc.CanMessag" +
+      "e.FrameFormat\")\n\013FrameFormat\022\014\n\010STANDARD" +
+      "\020\001\022\014\n\010EXTENDED\020\002\"\270\004\n\016ControlCommand\022)\n\004t" +
+      "ype\030\001 \001(\0162\033.openxc.ControlCommand.Type\022<" +
+      "\n\022diagnostic_request\030\002 \001(\0132 .openxc.Diag" +
+      "nosticControlCommand\022G\n\030passthrough_mode" +
+      "_request\030\003 \001(\0132%.openxc.PassthroughModeC" +
+      "ontrolCommand\022O\n acceptance_filter_bypas",
+      "s_command\030\004 \001(\0132%.openxc.AcceptanceFilte" +
+      "rBypassCommand\022<\n\026payload_format_command" +
+      "\030\005 \001(\0132\034.openxc.PayloadFormatCommand\022O\n " +
+      "predefined_obd2_requests_command\030\006 \001(\0132%" +
+      ".openxc.PredefinedObd2RequestsCommand\"\223\001" +
+      "\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_ID\020\002\022\016\n\nDI" +
+      "AGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\022\034\n\030ACCEPTANC" +
+      "E_FILTER_BYPASS\020\005\022\022\n\016PAYLOAD_FORMAT\020\006\022\034\n" +
+      "\030PREDEFINED_OBD2_REQUESTS\020\007\"\236\001\n\030Diagnost" +
+      "icControlCommand\022*\n\007request\030\001 \001(\0132\031.open",
+      "xc.DiagnosticRequest\0227\n\006action\030\002 \001(\0162\'.o" +
+      "penxc.DiagnosticControlCommand.Action\"\035\n" +
+      "\006Action\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"=\n\035Passthro" +
+      "ughModeControlCommand\022\013\n\003bus\030\001 \001(\005\022\017\n\007en" +
+      "abled\030\002 \001(\010\"<\n\035AcceptanceFilterBypassCom" +
+      "mand\022\013\n\003bus\030\001 \001(\005\022\016\n\006bypass\030\002 \001(\010\"{\n\024Pay" +
+      "loadFormatCommand\022:\n\006format\030\001 \001(\0162*.open" +
+      "xc.PayloadFormatCommand.PayloadFormat\"\'\n" +
+      "\rPayloadFormat\022\010\n\004JSON\020\001\022\014\n\010PROTOBUF\020\002\"0" +
+      "\n\035PredefinedObd2RequestsCommand\022\017\n\007enabl",
+      "ed\030\001 \001(\010\"]\n\017CommandResponse\022)\n\004type\030\001 \001(" +
+      "\0162\033.openxc.ControlCommand.Type\022\017\n\007messag" +
+      "e\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021DiagnosticRe" +
+      "quest\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014" +
+      "\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001" +
+      "(\014\022\032\n\022multiple_responses\030\006 \001(\010\022\021\n\tfreque" +
+      "ncy\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030" +
+      "\t \001(\0162%.openxc.DiagnosticRequest.Decoded" +
+      "Type\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"" +
+      "\241\001\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nm",
+      "essage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001" +
+      "(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_response" +
+      "_code\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 " +
+      "\001(\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.ope" +
+      "nxc.DynamicField.Type\022\024\n\014string_value\030\002 " +
+      "\001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_va" +
+      "lue\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010" +
+      "\n\004BOOL\020\003\"\357\001\n\rSimpleMessage\022(\n\004type\030\001 \001(\016" +
+      "2\032.openxc.SimpleMessage.Type\022\014\n\004name\030\002 \001" +
+      "(\t\022#\n\005value\030\003 \001(\0132\024.openxc.DynamicField\022",
+      "#\n\005event\030\004 \001(\0132\024.openxc.DynamicField\"\\\n\004" +
+      "Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\022\022\n\016E" +
+      "VENTED_STRING\020\004\022\017\n\013EVENTED_NUM\020\005\022\020\n\014EVEN" +
+      "TED_BOOL\020\006B\034\n\ncom.openxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11151,12 +11150,12 @@ public final class BinaryMessages {
           internal_static_openxc_VehicleMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_VehicleMessage_descriptor,
-              new java.lang.String[] { "Type", "RawMessage", "TranslatedMessage", "DiagnosticResponse", "ControlCommand", "CommandResponse", });
-          internal_static_openxc_RawMessage_descriptor =
+              new java.lang.String[] { "Type", "CanMessage", "SimpleMessage", "DiagnosticResponse", "ControlCommand", "CommandResponse", });
+          internal_static_openxc_CanMessage_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_openxc_RawMessage_fieldAccessorTable = new
+          internal_static_openxc_CanMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_openxc_RawMessage_descriptor,
+              internal_static_openxc_CanMessage_descriptor,
               new java.lang.String[] { "Bus", "MessageId", "Data", "FrameFormat", });
           internal_static_openxc_ControlCommand_descriptor =
             getDescriptor().getMessageTypes().get(2);
@@ -11218,11 +11217,11 @@ public final class BinaryMessages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DynamicField_descriptor,
               new java.lang.String[] { "Type", "StringValue", "NumericValue", "BooleanValue", });
-          internal_static_openxc_TranslatedMessage_descriptor =
+          internal_static_openxc_SimpleMessage_descriptor =
             getDescriptor().getMessageTypes().get(12);
-          internal_static_openxc_TranslatedMessage_fieldAccessorTable = new
+          internal_static_openxc_SimpleMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_openxc_TranslatedMessage_descriptor,
+              internal_static_openxc_SimpleMessage_descriptor,
               new java.lang.String[] { "Type", "Name", "Value", "Event", });
           return null;
         }
