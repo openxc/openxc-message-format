@@ -39,12 +39,12 @@ discrete pieces of information in the measurement.
 
 The format for a plain CAN message:
 
-    {"bus": 1, "id": 1234, "data": "0x12345678"}
+    {"bus": 1, "message_id": 1234, "data": "0x12345678"}
 
 **bus** - the numerical identifier of the CAN bus where this message originated,
   most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
 
-**id** - the CAN message ID
+**message_id** - the CAN message ID
 
 **data** - up to 8 bytes of data from the CAN message's payload, represented as
   a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
@@ -67,7 +67,7 @@ A diagnostic request is added or cancelled with a JSON object like this example:
       "action": "add",
       "diagnostic_request": {
           "bus": 1,
-          "id": 1234,
+          "message_id": 1234,
           "mode": 1,
           "pid": 5,
           "payload": "0x1234",
@@ -94,7 +94,7 @@ simple one-time diagnostic request:
       "action": "add",
       "diagnostic_request": {
           "bus": 1,
-          "id": 1234,
+          "message_id": 1234,
           "mode": 1,
           "pid": 5
         }
@@ -113,7 +113,7 @@ previous example as a recurring request at 1Hz:
       "action": "add",
       "diagnostic_request": {
           "bus": 1,
-          "id": 1234,
+          "message_id": 1234,
           "mode": 1,
           "pid": 5,
           "frequency": 1
@@ -127,7 +127,7 @@ To cancel a recurring request, send a `cancel` action with the same key, e.g.:
       "action": "cancel",
       "diagnostic_request": {
           "bus": 1,
-          "id": 1234,
+          "message_id": 1234,
           "mode": 1,
           "pid": 5
         }
@@ -141,7 +141,7 @@ exist in parallel with a recurring request for the same key.
 **bus** - the numerical identifier of the CAN bus where this request should be
     sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
 
-**id** - the CAN arbitration ID for the request.
+**message_id** - the CAN message ID for the request.
 
 **mode** - the OBD-II mode of the request - 0x1 through 0xff (1 through 9 are the
     standardized modes and 0x22 is a common proprietary mode).
@@ -162,7 +162,7 @@ exist in parallel with a recurring request for the same key.
 
 **multiple_responses** - (optional, false by default) if true, request will stay
   active for a full 100ms, even after receiving a diagnostic response message.
-  This is useful for requests to the functional broadcast arbitration ID
+  This is useful for requests to the functional broadcast message ID
   (`0x7df`) when you need to get responses from multiple modules. It's possible
   to set this to `true` for non-broadcast requests, but in practice you won't
   see any additional responses after the first and it will just take up memory
@@ -191,7 +191,7 @@ When a node on the network response to the request and the result is published
 by the VI, the result looks like:
 
     {"bus": 1,
-      "id": 1234,
+      "message_id": 1234,
       "mode": 1,
       "pid": 5,
       "success": true,
@@ -202,7 +202,7 @@ and to an unsuccessful request, with the `negative_response_code` and no `pid`
 echo:
 
     {"bus": 1,
-      "id": 1234,
+      "message_id": 1234,
       "mode": 1,
       "success": false,
       "negative_response_code": 17}
@@ -210,7 +210,7 @@ echo:
 **bus** - the numerical identifier of the CAN bus where this response was
     received.
 
-**id** - the CAN arbitration ID for this response.
+**message_id** - the CAN message ID for this response.
 
 **mode** - the OBD-II mode of the original diagnostic request.
 
@@ -235,7 +235,7 @@ Finally, the `payload` and `value` fields are mutually exclusive:
 
 The response to a simple PID request would look like this:
 
-    {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
+    {"success": true, "bus": 1, "message_id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
 ## Commands
 
