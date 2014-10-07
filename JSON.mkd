@@ -53,6 +53,10 @@ The format for a raw CAN message:
   complete string must have an even number of characters. The `0x` prefix is
   optional.
 
+**format** - (optional) explicitly set the frame format for the CAN message, one
+  of `standard` or `extended`. If the `id` is greater than `0x7ff`, the extended
+  frame format will be selected automatically.
+
 ## Diagnostic Messages
 
 ### Requests

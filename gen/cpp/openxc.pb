@@ -1,5 +1,5 @@
 
-²
+Ž
 openxc.protoopenxc"”
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -15,13 +15,17 @@ TRANSLATED
 
 DIAGNOSTIC
 CONTROL_COMMAND
-COMMAND_RESPONSE";
+COMMAND_RESPONSE"–
 
 RawMessage
 bus (
 
 message_id (
-data ("¸
+data (.
+format (2.openxc.RawMessage.FrameFormat")
+FrameFormat
+STANDARD
+EXTENDED"¸
 ControlCommand)
 type (2.openxc.ControlCommand.Type<
 diagnostic_request (2 .openxc.DiagnosticControlCommandG
