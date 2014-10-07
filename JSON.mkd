@@ -65,7 +65,7 @@ A diagnostic request is added or cancelled with a JSON object like this example:
 
     { "command": "diagnostic_request",
       "action": "add",
-      "request": {
+      "diagnostic_request": {
           "bus": 1,
           "id": 1234,
           "mode": 1,
@@ -92,7 +92,7 @@ simple one-time diagnostic request:
 
     { "command": "diagnostic_request",
       "action": "add",
-      "request": {
+      "diagnostic_request": {
           "bus": 1,
           "id": 1234,
           "mode": 1,
@@ -111,7 +111,7 @@ previous example as a recurring request at 1Hz:
 
     { "command": "diagnostic_request",
       "action": "add",
-      "request": {
+      "diagnostic_request": {
           "bus": 1,
           "id": 1234,
           "mode": 1,
@@ -125,7 +125,7 @@ To cancel a recurring request, send a `cancel` action with the same key, e.g.:
 
     { "command": "diagnostic_request",
       "action": "cancel",
-      "request": {
+      "diagnostic_request": {
           "bus": 1,
           "id": 1234,
           "mode": 1,
