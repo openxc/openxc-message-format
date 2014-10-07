@@ -39,23 +39,21 @@ discrete pieces of information in the measurement.
 
 The format for a plain CAN message:
 
-    {"bus": 1, "message_id": 1234, "data": "0x12345678"}
+    {"bus": 1, "message_id": 1234, "data": [1, 2, 3, 4, 5, 6, 7, 8]}
 
 **bus** - the numerical identifier of the CAN bus where this message originated,
   most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
 
 **message_id** - the CAN message ID
 
-**data** - up to 8 bytes of data from the CAN message's payload, represented as
-  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
-  integers, which is why we are not using a numerical data type. Each byte in
-  the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
-  complete string must have an even number of characters. The `0x` prefix is
-  optional.
+**data** - an array of up to 8 integers representing the bytes of the CAN
+    message's payload. If less than 8 bytes are included in the array, they will
+    be left aligned in the CAN message (e.g. `[1, 2]` becomes the message
+    `0x0102000000000000`).
 
 **format** - (optional) explicitly set the frame format for the CAN message, one
-  of `standard` or `extended`. If the `id` is greater than `0x7ff`, the extended
-  frame format will be selected automatically.
+    of `standard` or `extended`. If the `id` is greater than `0x7ff`, the
+    extended frame format will be selected automatically.
 
 ## Diagnostic Messages
 
@@ -70,7 +68,7 @@ A diagnostic request is added or cancelled with a JSON object like this example:
           "message_id": 1234,
           "mode": 1,
           "pid": 5,
-          "payload": "0x1234",
+          "payload": [1, 2, 3, 4],
           "multiple_responses": false,
           "frequency": 1,
           "name": "my_pid"
@@ -148,12 +146,10 @@ exist in parallel with a recurring request for the same key.
 
 **pid** - (optional) the PID for the request, if applicable.
 
-**payload** - (optional) up to 7 bytes of data for the request's payload
-    represented as a hexadecimal number in a string. Many JSON parser cannot
-    handle 64-bit integers, which is why we are not using a numerical data type.
-    Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
-    is `0x01` - the complete string must have an even number of characters. The
-    `0x` prefix is optional.
+**payload** - (optional) an array of up to 6 integers representing bytes to be
+    included in the request's payload. If less than 6 bytes are included in the
+    array, they will be left aligned as with the `data` field in CAN messages
+    (see above).
 
 **name** - (optional, defaults to nothing) A human readable, string name for
   this request. If provided, the response will have a `name` field (much like a
@@ -195,7 +191,7 @@ by the VI, the result looks like:
       "mode": 1,
       "pid": 5,
       "success": true,
-      "payload": "0x1234",
+      "payload": [1, 2, 3, 4],
       "value": 4660}
 
 and to an unsuccessful request, with the `negative_response_code` and no `pid`
@@ -226,16 +222,15 @@ echo:
 
 Finally, the `payload` and `value` fields are mutually exclusive:
 
-**payload** - (optional) up to 7 bytes of data returned in the response,
-    represented as a hexadecimal number in a string. Many JSON parser cannot
-    handle 64-bit integers, which is why we are not using a numerical data type.
+**payload** - (optional) an array of up to 6 integers representing the payload
+    returned in the response, if any.
 
 **value** - (optional) if the response had a payload, this may be the
     payload interpreted as an integer.
 
 The response to a simple PID request would look like this:
 
-    {"success": true, "bus": 1, "message_id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
+    {"success": true, "bus": 1, "message_id": 1234, "mode": 1, "pid": 5, "payload": [2]"}
 
 ## Commands
 
