@@ -271,6 +271,8 @@ response into the outgoing data stream.
 The `device_id` command triggers the VI to inject a unique device ID (e.g. the
 MAC address of an included Bluetooth module) into into the outgoing data stream.
 
+If no device ID is available, the response message will be "Unknown".
+
 **Request**
 
     { "command": "device_id"}
