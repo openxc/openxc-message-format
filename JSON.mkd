@@ -39,12 +39,12 @@ discrete pieces of information in the measurement.
 
 The format for a plain CAN message:
 
-    {"bus": 1, "message_id": 1234, "data": "0x12345678"}
+    {"bus": 1, "id": 1234, "data": "0x12345678"}
 
 **bus** - the numerical identifier of the CAN bus where this message originated,
   most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
 
-**message_id** - the CAN message ID
+**id** - the CAN message ID
 
 **data** - up to 8 bytes of data from the CAN message's payload, represented as
   a hexidecimal number in a string. Many JSON parser cannot handle 64-bit

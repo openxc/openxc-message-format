@@ -8,8 +8,6 @@
 * BREAKING: Require an 'action' to diagnostic request commands, e.g. cancel or add.
 * BREAKING: Rename "raw" messages to the more precise "CAN messages".
 * BREAKING: Rename "translated" messages to "simple messages".
-* BREAKING: Rename CAN message ID field from just `id` to `message_id` to be
-  standard across all other types
 * BREAKING: Remove redundant `type` field from simple messages (formerly
   translated messages). The type can be inferred implicitly through the types of
   the value and event fields.

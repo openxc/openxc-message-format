@@ -1,5 +1,5 @@
 
-÷
+ï
 openxc.protoopenxc"ˆ
 VehicleMessage)
 type (2.openxc.VehicleMessage.Type'
@@ -15,12 +15,12 @@
 
 DIAGNOSTIC
 CONTROL_COMMAND
-COMMAND_RESPONSE"œ
+COMMAND_RESPONSE"”
 
 CanMessage
-bus (
+bus (
 
-message_id (
+id (
 data (4
 frame_format (2.openxc.CanMessage.FrameFormat")
 FrameFormat
