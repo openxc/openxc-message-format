@@ -1,6 +1,6 @@
 # OpenXC Message Format Specification
 
-Version: v0.4-dev
+Version: v0.4
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
