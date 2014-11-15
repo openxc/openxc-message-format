@@ -1,5 +1,7 @@
 # OpenXC Message Format Changelog
 
+## v0.5.0-dev
+
 ## v0.4
 
 * BREAKING: Removed factor and offset from diagnostic requests to minimize the number of
