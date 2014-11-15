@@ -4,33 +4,81 @@ option java_package = "com.openxc";
 option java_outer_classname = "BinaryMessages";
 
 message VehicleMessage {
-    enum Type { RAW = 1; TRANSLATED = 2; DIAGNOSTIC = 3; CONTROL_COMMAND = 4;
+    enum Type { CAN = 1; SIMPLE = 2; DIAGNOSTIC = 3; CONTROL_COMMAND = 4;
             COMMAND_RESPONSE = 5; }
 
     optional Type type = 1;
-    optional RawMessage raw_message = 2;
-    optional TranslatedMessage translated_message = 3;
+    optional CanMessage can_message = 2;
+    optional SimpleMessage simple_message = 3;
     optional DiagnosticResponse diagnostic_response = 4;
     optional ControlCommand control_command = 5;
     optional CommandResponse command_response = 6;
 }
 
-message RawMessage {
+message CanMessage {
+    enum FrameFormat {
+        STANDARD = 1;
+        EXTENDED = 2;
+    }
     optional int32 bus = 1;
-    optional uint32 message_id = 2;
+    optional uint32 id = 2;
     optional bytes data = 3;
+    optional FrameFormat frame_format = 4;
 }
 
 message ControlCommand {
-    enum Type { VERSION = 1; DEVICE_ID = 2; DIAGNOSTIC = 3; }
+    enum Type {
+        VERSION = 1;
+        DEVICE_ID = 2;
+        DIAGNOSTIC = 3;
+        PASSTHROUGH = 4;
+        ACCEPTANCE_FILTER_BYPASS = 5;
+        PAYLOAD_FORMAT = 6;
+        PREDEFINED_OBD2_REQUESTS = 7;
+    }
 
     optional Type type = 1;
-    optional DiagnosticRequest diagnostic_request = 2;
+    optional DiagnosticControlCommand diagnostic_request = 2;
+    optional PassthroughModeControlCommand passthrough_mode_request = 3;
+    optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
+    optional PayloadFormatCommand payload_format_command = 5;
+    optional PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
+}
+
+message DiagnosticControlCommand {
+    enum Action { ADD = 1; CANCEL = 2; }
+
+    optional DiagnosticRequest request = 1;
+    optional Action action = 2;
+}
+
+message PassthroughModeControlCommand {
+    optional int32 bus = 1;
+    optional bool enabled = 2;
+}
+
+message AcceptanceFilterBypassCommand {
+    optional int32 bus = 1;
+    optional bool bypass = 2;
+}
+
+message PayloadFormatCommand {
+    enum PayloadFormat {
+        JSON = 1;
+        PROTOBUF = 2;
+    }
+
+    optional PayloadFormat format = 1;
+}
+
+message PredefinedObd2RequestsCommand {
+    optional bool enabled = 1;
 }
 
 message CommandResponse {
     optional ControlCommand.Type type = 1;
     optional string message = 2;
+    optional bool status = 3;
 }
 
 message DiagnosticRequest {
@@ -71,12 +119,8 @@ message DynamicField {
     optional bool boolean_value = 4;
 }
 
-message TranslatedMessage {
-    enum Type { STRING = 1; NUM = 2; BOOL = 3;
-        EVENTED_STRING = 4; EVENTED_NUM = 5; EVENTED_BOOL = 6;}
-
-    optional Type type = 1;
-    optional string name = 2;
-    optional DynamicField value = 3;
-    optional DynamicField event = 4;
+message SimpleMessage {
+    optional string name = 1;
+    optional DynamicField value = 2;
+    optional DynamicField event = 3;
 }

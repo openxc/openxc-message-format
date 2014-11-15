@@ -1,217 +1,34 @@
 # OpenXC Message Format Specification
 
-Version: v0.3
+Version: v0.4-dev
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
 An OpenXC vehicle interface sends generic vehicle data over one or more output
 interfaces (e.g. USB or Bluetooth) as JSON or Protocol Buffers (protobuf).
 
-This document describes the JSON format and includes a high level description of
-each type and field. Each JSON message published by a VI is delimited with a
-`\0` character.
+## JSON
 
-The Protocol Buffer format is specified in the file `openxc.proto`. Those are
-published using the standard length-delimited method (any protobuf library
-should support this).
+The JSON format is the most flexible and easiest to use. The format is fully
+specified in the [JSON.mkd](JSON.mkd) file in this repository.
+a more flexible option than binary, but is less compact and
+therefore takes more bandwidth and processing power.
 
-## Single Valued
+The JSON format is best for most developers, as it is fairly efficient and very
+flexible.
 
-There may not be a 1:1 relationship between input and output signals - i.e. raw
-engine timing CAN signals may be summarized in an "engine performance" metric on
-the abstract side of the interface.
+## Binary (Protocol Buffers)
 
-The expected format of a single valued message is:
+The binary format is encoded using [Google Protocol
+Buffers](https://code.google.com/p/protobuf/). The format is specified in the
+file [openxc.proto](openxc.proto). The descriptions of the messages can be foud
+in the JSON specs - the binary format mirrors this.
 
-    {"name": "steering_wheel_angle", "value": 45}
+The binary messages are published by the VI using the standard length-delimited
+method (any protobuf library should support this).
 
-## Evented
-
-The expected format of an event message is:
-
-    {"name": "button_event", "value": "up", "event": "pressed"}
-
-This format is good for something like a button event, where there are two
-discrete pieces of information in the measurement.
-
-## Raw CAN Message format
-
-The format for a raw CAN message:
-
-    {"bus": 1, "id": 1234, "data": "0x12345678"}
-
-**bus** - the numerical identifier of the CAN bus where this message originated,
-  most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
-
-**id** - the CAN message ID
-
-**data** - up to 8 bytes of data from the CAN message's payload, represented as
-  a hexidecimal number in a string. Many JSON parser cannot handle 64-bit
-  integers, which is why we are not using a numerical data type. Each byte in
-  the string *must* be represented with 2 characters, e.g. `0x1` is `0x01` - the
-  complete string must have an even number of characters.
-
-## Diagnostic Messages
-
-### Requests
-
-A request to add or update a diagnostic request is sent to a vehicle interface
-with this command format:
-
-    { "command": "diagnostic_request",
-      "request": {
-          "bus": 1,
-          "id": 1234,
-          "mode": 1,
-          "pid": 5,
-          "payload": "0x1234",
-          "multiple_responses": false,
-          "frequency": 1,
-          "name": "my_pid"
-        }
-      }
-    }
-
-**bus** - the numerical identifier of the CAN bus where this request should be
-    sent, most likely 1 or 2 (for a vehicle interface with 2 CAN controllers).
-
-**id** - the CAN arbitration ID for the request.
-
-**mode** - the OBD-II mode of the request - 1 through 15 (1 through 9 are the
-    standardized modes).
-
-**pid** - (optional) the PID for the request, if applicable.
-
-**payload** - (optional) up to 7 bytes of data for the request's payload
-    represented as a hexidecimal number in a string. Many JSON parser cannot
-    handle 64-bit integers, which is why we are not using a numerical data type.
-    Each byte in the string *must* be represented with 2 characters, e.g. `0x1`
-    is `0x01` - the complete string must have an even number of characters.
-
-**name** - (optional, defaults to nothing) A human readable, string name for
-  this request. If provided, the response will have a `name` field (much like a
-  normal translated message) with this value in place of `bus`, `id`, `mode` and
-  `pid`.
-
-**multiple_responses** - (optional, false by default) if true, request will stay
-  active for a full 100ms, even after receiving a diagnostic response message.
-  This is useful for requests to the functional broadcast arbitration ID
-  (`0x7df`) when you need to get responses from multiple modules. It's possible
-  to set this to `true` for non-broadcast requests, but in practice you won't
-  see any additional responses after the first and it will just take up memory
-  in the VI for longer.
-
-**frequency** - (optional, defaults to 0) The frequency in Hz to send this
-    request. To send a single non-recurring request, set this to 0 or leave it
-    out.
-
-**decoded_type** - (optional, defaults to "obd2" if the request is a recognized
-OBD-II mode 1 request, otherwise "none") If specified, the valid values are
-`"none"` and `"obd2"`. If `obd2`, the payload will be decoded according to the
-OBD-II specification and returned in the `value` field. Set this to `none` to
-manually override the OBD-II decoding feature for a known PID.
-
-A diagnostic request's `bus`, `id`, `mode` and `pid` (or lack of a `pid`)
-combine to create a unique key to identify a recurring request. This means that
-you cannot simultaneosly have recurring requests at 2Hz and 5Hz for the same PID
-from the same ID.
-
-If you send a new `diagnostic_request` command with a `bus + id + mode + pid`
-key matching an existing recurring request, it will update it with whatever
-other parameters you've provided (e.g. it will change the frequency if you
-specify one).
-
-To cancel a recurring request, send a `diagnostic_request` command with the
-matching request information (i.e. the `bus`, `id`, `mode` and `pid`) but a
-frequency of 0.
-
-Non-recurring requests may have the same `bus+id+mode(+pid)` key as a recurring
-request, and they will co-exist without issue. As soon as a non-recurring
-request is either completed or times out, it is removed from the active list.
-
-If you're just requesting a PID, you can use this minimal field set for the
-`request` object:
-
-    {"bus": 1, "id": 1234, "mode": 1, "pid": 5}
-
-### Responses
-
-The response to a successful request:
-
-    {"bus": 1,
-      "id": 1234,
-      "mode": 1,
-      "pid": 5,
-      "success": true,
-      "payload": "0x1234",
-      "value": 4660}
-
-and to an unsuccessful request, with the `negative_response_code` and no `pid`
-echo:
-
-    {"bus": 1,
-      "id": 1234,
-      "mode": 1,
-      "success": false,
-      "negative_response_code": 17}
-
-**bus** - the numerical identifier of the CAN bus where this response was
-    received.
-
-**id** - the CAN arbitration ID for this response.
-
-**mode** - the OBD-II mode of the original diagnostic request.
-
-**pid** - (optional) the PID for the request, if applicable.
-
-**success** -  true if the response received was a positive response. If this
-  field is false, the remote node returned an error and the
-  `negative_response_code` field should be populated.
-
-**negative_response_code** - (optional)  If requested node returned an error,
-    `success` will be `false` and this field will contain the negative response
-    code (NRC).
-
-Finally, the `payload` and `value` fields are mutually exclusive:
-
-**payload** - (optional) up to 7 bytes of data returned in the response,
-    represented as a hexadecimal number in a string. Many JSON parser cannot
-    handle 64-bit integers, which is why we are not using a numerical data type.
-
-**value** - (optional) if the response had a payload, this may be the
-    payload interpreted as an integer.
-
-The response to a simple PID request would look like this:
-
-    {"success": true, "bus": 1, "id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
-
-## Commands
-
-### Version Query
-
-The `version` command triggers the VI to inject a firmware version identifier
-response into the outgoing data stream.
-
-**Request**
-
-    { "command": "version"}
-
-**Response**
-
-    { "command_response": "version", "message": "v6.0-dev (default)"}
-
-### Device ID Query
-
-The `device_id` command triggers the VI to inject a unique device ID (e.g. the
-MAC address of an included Bluetooth module) into into the outgoing data stream.
-
-**Request**
-
-    { "command": "device_id"}
-
-**Response**
-
-    { "command_response": "device_id", "message": "0012345678"}
+The binary format is best if you need to maximize the amount of data that can be
+sent from the VI, trading off flexibility for efficiency.
 
 ## Trace File Format
 
@@ -314,7 +131,7 @@ manufacturers may support custom message names.
     * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
     * 1Hz
 
-### Signals from Diagnostics Messages
+## Signals from Diagnostic Messages
 
 This set of signals is often retreived from OBD-II requests. The units can be
 found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01).
