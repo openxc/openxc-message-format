@@ -373,7 +373,7 @@ the response will be `true`.
 
     { "command_response": "predefined_obd2", "status": true}
 
-### CELLULAR C5 CONFIGURATION
+### Celluar C5 Configuration
 
 The ModemConfigurationCommand message allows users to change certain aspects of modem operation on-the-fly (at runtime). The modem configuration settings are stored in flash memory and are untouched by the bootloader during a software update (assuming the correct cellular_c5 linker file is used during compilation of vi-firmware). Thus, new modem settings persistent across power cycles.
 
