@@ -368,8 +368,30 @@ the "Signals Defined from Diagnostic Messages" section below.
 
 **Response**
 
-f the predefined requests were enabled or disabled successfully, the `status` in
+If the predefined requests were enabled or disabled successfully, the `status` in
 the response will be `true`.
 
     { "command_response": "predefined_obd2", "status": true}
 
+### Celluar C5 Configuration
+
+The ModemConfigurationCommand message allows users to change certain aspects of modem operation on-the-fly (at runtime). The modem configuration settings are stored in flash memory and are untouched by the bootloader during a software update (assuming the correct cellular_c5 linker file is used during compilation of vi-firmware). Thus, new modem settings persistent across power cycles.
+
+The ModemConfigurationCommand message provides three sub-messages for particular groups of modem settings. These are NetworkOperatorSettings, NetworkDataSettings, and ServerConnectSettings. These configuration messages are described in great detail within the [cellular_c5_config](https://github.com/openxc/vi-firmware/docs/advanced/cellular_c5_config.mkd) documentation. 
+
+Currently, only the ServerConnectSettings sub-message is supported in the vi-firmware's command interpreter. All other settings are currently compile-time only.
+
+The ServerConnectSettings part of ModemConfigurationCommand allows the user to set the host server name and port that the device will use when opening a TCP socket to upload data. This destination must be running an HTTP server similar to [OpenXCWebServer](https://github.com/openxc/openxc-azure-webserver), which defines a set of supported HTTP transactions where the body is comprised of data in the familiar OpenXC Message Format.
+
+**Request**
+
+    { "command": "modem_configuration",
+      "server": {
+		"host": "www.myhost.com",
+		"port": 10000
+	  }
+    }
+
+**Response**
+
+	{ "command_response": "modem_configuration", "status": true}

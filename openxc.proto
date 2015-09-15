@@ -13,6 +13,7 @@ message VehicleMessage {
     optional DiagnosticResponse diagnostic_response = 4;
     optional ControlCommand control_command = 5;
     optional CommandResponse command_response = 6;
+	optional uint32 uptime = 7;
 }
 
 message CanMessage {
@@ -35,6 +36,7 @@ message ControlCommand {
         ACCEPTANCE_FILTER_BYPASS = 5;
         PAYLOAD_FORMAT = 6;
         PREDEFINED_OBD2_REQUESTS = 7;
+		MODEM_CONFIGURATION = 8;
     }
 
     optional Type type = 1;
@@ -43,6 +45,7 @@ message ControlCommand {
     optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
     optional PayloadFormatCommand payload_format_command = 5;
     optional PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
+	optional ModemConfigurationCommand modem_configuration_command = 7;
 }
 
 message DiagnosticControlCommand {
@@ -73,6 +76,42 @@ message PayloadFormatCommand {
 
 message PredefinedObd2RequestsCommand {
     optional bool enabled = 1;
+}
+
+message NetworkOperatorSettings {
+	enum OperatorSelectMode {
+		AUTOMATIC = 0;
+		MANUAL = 1;
+		DEREGISTER = 2;
+		SET_ONLY = 3;
+		MANUAL_AUTOMATIC = 4;
+	}
+	message NetworkDescriptor {
+		enum NetworkType {
+			GSM = 0;
+			UTRAN = 2;
+		}
+		optional uint32 PLMN = 1;
+		optional NetworkType networkType = 2;
+	}
+	optional bool allowDataRoaming = 1;
+	optional OperatorSelectMode operatorSelectMode = 2;
+	optional NetworkDescriptor networkDescriptor = 3;
+}
+
+message NetworkDataSettings {
+	optional string APN = 1;
+}
+
+message ServerConnectSettings {
+	optional string host = 1;
+	optional uint32 port = 2;
+}
+
+message ModemConfigurationCommand {
+	optional NetworkOperatorSettings networkOperatorSettings = 1;
+	optional NetworkDataSettings networkDataSettings = 2;
+	optional ServerConnectSettings serverConnectSettings = 3;
 }
 
 message CommandResponse {
