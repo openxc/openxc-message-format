@@ -381,7 +381,7 @@ The ModemConfigurationCommand message provides three sub-messages for particular
 
 Currently, only the ServerConnectSettings sub-message is supported in the vi-firmware's command interpreter. All other settings are currently compile-time only.
 
-The ServerConnectSettings part of ModemConfigurationCommand allows the user to set the host server name and port that the device will use when opening a TCP socket to upload data. This destination must be running an HTTP server similar to OpenXCWebServer, which defines a set of supported HTTP transactions where the body is comprised of data in the familiar OpenXC Message Format.
+The ServerConnectSettings part of ModemConfigurationCommand allows the user to set the host server name and port that the device will use when opening a TCP socket to upload data. This destination must be running an HTTP server similar to [OpenXCWebServer](https://github.com/openxc/openxc-azure-webserver), which defines a set of supported HTTP transactions where the body is comprised of data in the familiar OpenXC Message Format.
 
 **Request**
 
