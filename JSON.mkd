@@ -368,7 +368,7 @@ the "Signals Defined from Diagnostic Messages" section below.
 
 **Response**
 
-f the predefined requests were enabled or disabled successfully, the `status` in
+If the predefined requests were enabled or disabled successfully, the `status` in
 the response will be `true`.
 
     { "command_response": "predefined_obd2", "status": true}
@@ -377,7 +377,7 @@ the response will be `true`.
 
 The ModemConfigurationCommand message allows users to change certain aspects of modem operation on-the-fly (at runtime). The modem configuration settings are stored in flash memory and are untouched by the bootloader during a software update (assuming the correct cellular_c5 linker file is used during compilation of vi-firmware). Thus, new modem settings persistent across power cycles.
 
-The ModemConfigurationCommand message provides three sub-messages for particular groups of modem settings. These are NetworkOperatorSettings, NetworkDataSettings, and ServerConnectSettings. These configuration messages are described in great detail within the cellular_c5_config documentation. 
+The ModemConfigurationCommand message provides three sub-messages for particular groups of modem settings. These are NetworkOperatorSettings, NetworkDataSettings, and ServerConnectSettings. These configuration messages are described in great detail within the [cellular_c5_config](vi-firmware/docs/advanced/cellular_c5_config.mkd) documentation. 
 
 Currently, only the ServerConnectSettings sub-message is supported in the vi-firmware's command interpreter. All other settings are currently compile-time only.
 
