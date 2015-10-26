@@ -69,6 +69,7 @@ message PayloadFormatCommand {
     enum PayloadFormat {
         JSON = 1;
         PROTOBUF = 2;
+		MESSAGEPACK = 3;
     }
 
     optional PayloadFormat format = 1;

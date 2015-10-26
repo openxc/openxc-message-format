@@ -4475,10 +4475,12 @@ public final class BinaryMessages {
         implements com.google.protobuf.ProtocolMessageEnum {
       JSON(0, 1),
       PROTOBUF(1, 2),
+      MESSAGEPACK(2, 3),
       ;
       
       public static final int JSON_VALUE = 1;
       public static final int PROTOBUF_VALUE = 2;
+      public static final int MESSAGEPACK_VALUE = 3;
       
       
       public final int getNumber() { return value; }
@@ -4487,6 +4489,7 @@ public final class BinaryMessages {
         switch (value) {
           case 1: return JSON;
           case 2: return PROTOBUF;
+          case 3: return MESSAGEPACK;
           default: return null;
         }
       }
@@ -4517,7 +4520,7 @@ public final class BinaryMessages {
       }
       
       private static final PayloadFormat[] VALUES = {
-        JSON, PROTOBUF, 
+        JSON, PROTOBUF, MESSAGEPACK, 
       };
       
       public static PayloadFormat valueOf(
@@ -11380,51 +11383,51 @@ public final class BinaryMessages {
       "\001\022\n\n\006CANCEL\020\002\"=\n\035PassthroughModeControlC" +
       "ommand\022\013\n\003bus\030\001 \001(\005\022\017\n\007enabled\030\002 \001(\010\"<\n\035" +
       "AcceptanceFilterBypassCommand\022\013\n\003bus\030\001 \001" +
-      "(\005\022\016\n\006bypass\030\002 \001(\010\"{\n\024PayloadFormatComma" +
-      "nd\022:\n\006format\030\001 \001(\0162*.openxc.PayloadForma",
-      "tCommand.PayloadFormat\"\'\n\rPayloadFormat\022" +
-      "\010\n\004JSON\020\001\022\014\n\010PROTOBUF\020\002\"0\n\035PredefinedObd" +
-      "2RequestsCommand\022\017\n\007enabled\030\001 \001(\010\"\321\003\n\027Ne" +
-      "tworkOperatorSettings\022\030\n\020allowDataRoamin" +
-      "g\030\001 \001(\010\022N\n\022operatorSelectMode\030\002 \001(\01622.op" +
-      "enxc.NetworkOperatorSettings.OperatorSel" +
-      "ectMode\022L\n\021networkDescriptor\030\003 \001(\01321.ope" +
-      "nxc.NetworkOperatorSettings.NetworkDescr" +
-      "iptor\032\230\001\n\021NetworkDescriptor\022\014\n\004PLMN\030\001 \001(" +
-      "\r\022R\n\013networkType\030\002 \001(\0162=.openxc.NetworkO",
-      "peratorSettings.NetworkDescriptor.Networ" +
-      "kType\"!\n\013NetworkType\022\007\n\003GSM\020\000\022\t\n\005UTRAN\020\002" +
-      "\"c\n\022OperatorSelectMode\022\r\n\tAUTOMATIC\020\000\022\n\n" +
-      "\006MANUAL\020\001\022\016\n\nDEREGISTER\020\002\022\014\n\010SET_ONLY\020\003\022" +
-      "\024\n\020MANUAL_AUTOMATIC\020\004\"\"\n\023NetworkDataSett" +
-      "ings\022\013\n\003APN\030\001 \001(\t\"3\n\025ServerConnectSettin" +
-      "gs\022\014\n\004host\030\001 \001(\t\022\014\n\004port\030\002 \001(\r\"\325\001\n\031Modem" +
-      "ConfigurationCommand\022@\n\027networkOperatorS" +
-      "ettings\030\001 \001(\0132\037.openxc.NetworkOperatorSe" +
-      "ttings\0228\n\023networkDataSettings\030\002 \001(\0132\033.op",
-      "enxc.NetworkDataSettings\022<\n\025serverConnec" +
-      "tSettings\030\003 \001(\0132\035.openxc.ServerConnectSe" +
-      "ttings\"]\n\017CommandResponse\022)\n\004type\030\001 \001(\0162" +
-      "\033.openxc.ControlCommand.Type\022\017\n\007message\030" +
-      "\002 \001(\t\022\016\n\006status\030\003 \001(\010\"\375\001\n\021DiagnosticRequ" +
-      "est\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004" +
-      "mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014" +
-      "\022\032\n\022multiple_responses\030\006 \001(\010\022\021\n\tfrequenc" +
-      "y\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030\t " +
-      "\001(\0162%.openxc.DiagnosticRequest.DecodedTy",
-      "pe\"!\n\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\241\001" +
-      "\n\022DiagnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmes" +
-      "sage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r" +
-      "\022\017\n\007success\030\005 \001(\010\022\036\n\026negative_response_c" +
-      "ode\030\006 \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(" +
-      "\001\"\242\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openx" +
-      "c.DynamicField.Type\022\024\n\014string_value\030\002 \001(" +
-      "\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_valu" +
-      "e\030\004 \001(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004" +
-      "BOOL\020\003\"g\n\rSimpleMessage\022\014\n\004name\030\001 \001(\t\022#\n",
-      "\005value\030\002 \001(\0132\024.openxc.DynamicField\022#\n\005ev" +
-      "ent\030\003 \001(\0132\024.openxc.DynamicFieldB\034\n\ncom.o" +
-      "penxcB\016BinaryMessages"
+      "(\005\022\016\n\006bypass\030\002 \001(\010\"\214\001\n\024PayloadFormatComm" +
+      "and\022:\n\006format\030\001 \001(\0162*.openxc.PayloadForm",
+      "atCommand.PayloadFormat\"8\n\rPayloadFormat" +
+      "\022\010\n\004JSON\020\001\022\014\n\010PROTOBUF\020\002\022\017\n\013MESSAGEPACK\020" +
+      "\003\"0\n\035PredefinedObd2RequestsCommand\022\017\n\007en" +
+      "abled\030\001 \001(\010\"\321\003\n\027NetworkOperatorSettings\022" +
+      "\030\n\020allowDataRoaming\030\001 \001(\010\022N\n\022operatorSel" +
+      "ectMode\030\002 \001(\01622.openxc.NetworkOperatorSe" +
+      "ttings.OperatorSelectMode\022L\n\021networkDesc" +
+      "riptor\030\003 \001(\01321.openxc.NetworkOperatorSet" +
+      "tings.NetworkDescriptor\032\230\001\n\021NetworkDescr" +
+      "iptor\022\014\n\004PLMN\030\001 \001(\r\022R\n\013networkType\030\002 \001(\016",
+      "2=.openxc.NetworkOperatorSettings.Networ" +
+      "kDescriptor.NetworkType\"!\n\013NetworkType\022\007" +
+      "\n\003GSM\020\000\022\t\n\005UTRAN\020\002\"c\n\022OperatorSelectMode" +
+      "\022\r\n\tAUTOMATIC\020\000\022\n\n\006MANUAL\020\001\022\016\n\nDEREGISTE" +
+      "R\020\002\022\014\n\010SET_ONLY\020\003\022\024\n\020MANUAL_AUTOMATIC\020\004\"" +
+      "\"\n\023NetworkDataSettings\022\013\n\003APN\030\001 \001(\t\"3\n\025S" +
+      "erverConnectSettings\022\014\n\004host\030\001 \001(\t\022\014\n\004po" +
+      "rt\030\002 \001(\r\"\325\001\n\031ModemConfigurationCommand\022@" +
+      "\n\027networkOperatorSettings\030\001 \001(\0132\037.openxc" +
+      ".NetworkOperatorSettings\0228\n\023networkDataS",
+      "ettings\030\002 \001(\0132\033.openxc.NetworkDataSettin" +
+      "gs\022<\n\025serverConnectSettings\030\003 \001(\0132\035.open" +
+      "xc.ServerConnectSettings\"]\n\017CommandRespo" +
+      "nse\022)\n\004type\030\001 \001(\0162\033.openxc.ControlComman" +
+      "d.Type\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"" +
+      "\375\001\n\021DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nme" +
+      "ssage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(" +
+      "\r\022\017\n\007payload\030\005 \001(\014\022\032\n\022multiple_responses" +
+      "\030\006 \001(\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022" +
+      ";\n\014decoded_type\030\t \001(\0162%.openxc.Diagnosti",
+      "cRequest.DecodedType\"!\n\013DecodedType\022\010\n\004N" +
+      "ONE\020\001\022\010\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013" +
+      "\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030" +
+      "\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026n" +
+      "egative_response_code\030\006 \001(\r\022\017\n\007payload\030\007" +
+      " \001(\014\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004" +
+      "type\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n" +
+      "\014string_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001" +
+      "(\001\022\025\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STR" +
+      "ING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"g\n\rSimpleMessag",
+      "e\022\014\n\004name\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.openxc." +
+      "DynamicField\022#\n\005event\030\003 \001(\0132\024.openxc.Dyn" +
+      "amicFieldB\034\n\ncom.openxcB\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
