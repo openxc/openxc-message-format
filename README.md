@@ -30,6 +30,13 @@ method (any protobuf library should support this).
 The binary format is best if you need to maximize the amount of data that can be
 sent from the VI, trading off flexibility for efficiency.
 
+## Message Pack
+MessagePack is an efficient binary serialization format. It lets you exchange data
+among multiple languages like JSON. But it's faster and smaller. Small integers are 
+encoded into a single byte, and typical short strings require only one extra byte
+in addition to the strings themselves
+For protocol specification visit https://github.com/msgpack/msgpack/blob/master/spec.md
+
 ## Trace File Format
 
 An OpenXC vehicle trace file is a plaintext file that contains JSON objects,
