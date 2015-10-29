@@ -1,5 +1,7 @@
 # OpenXC Message Format Changelog
 
+## v0.5.0-dev
+
 ## v0.5.0
 
 * Feature: Support for C5 Cellular device. New uptime message.
