@@ -1831,6 +1831,11 @@ public final class BinaryMessages {
     boolean hasModemConfigurationCommand();
     com.openxc.BinaryMessages.ModemConfigurationCommand getModemConfigurationCommand();
     com.openxc.BinaryMessages.ModemConfigurationCommandOrBuilder getModemConfigurationCommandOrBuilder();
+    
+    // optional .openxc.RTCConfigurationCommand rtc_configuration_command = 8;
+    boolean hasRtcConfigurationCommand();
+    com.openxc.BinaryMessages.RTCConfigurationCommand getRtcConfigurationCommand();
+    com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder getRtcConfigurationCommandOrBuilder();
   }
   public static final class ControlCommand extends
       com.google.protobuf.GeneratedMessage
@@ -1870,6 +1875,7 @@ public final class BinaryMessages {
       PAYLOAD_FORMAT(5, 6),
       PREDEFINED_OBD2_REQUESTS(6, 7),
       MODEM_CONFIGURATION(7, 8),
+      RTC_CONFIGURATION(8, 9),
       ;
       
       public static final int VERSION_VALUE = 1;
@@ -1880,6 +1886,7 @@ public final class BinaryMessages {
       public static final int PAYLOAD_FORMAT_VALUE = 6;
       public static final int PREDEFINED_OBD2_REQUESTS_VALUE = 7;
       public static final int MODEM_CONFIGURATION_VALUE = 8;
+      public static final int RTC_CONFIGURATION_VALUE = 9;
       
       
       public final int getNumber() { return value; }
@@ -1894,6 +1901,7 @@ public final class BinaryMessages {
           case 6: return PAYLOAD_FORMAT;
           case 7: return PREDEFINED_OBD2_REQUESTS;
           case 8: return MODEM_CONFIGURATION;
+          case 9: return RTC_CONFIGURATION;
           default: return null;
         }
       }
@@ -1924,7 +1932,7 @@ public final class BinaryMessages {
       }
       
       private static final Type[] VALUES = {
-        VERSION, DEVICE_ID, DIAGNOSTIC, PASSTHROUGH, ACCEPTANCE_FILTER_BYPASS, PAYLOAD_FORMAT, PREDEFINED_OBD2_REQUESTS, MODEM_CONFIGURATION, 
+        VERSION, DEVICE_ID, DIAGNOSTIC, PASSTHROUGH, ACCEPTANCE_FILTER_BYPASS, PAYLOAD_FORMAT, PREDEFINED_OBD2_REQUESTS, MODEM_CONFIGURATION, RTC_CONFIGURATION, 
       };
       
       public static Type valueOf(
@@ -2036,6 +2044,19 @@ public final class BinaryMessages {
       return modemConfigurationCommand_;
     }
     
+    // optional .openxc.RTCConfigurationCommand rtc_configuration_command = 8;
+    public static final int RTC_CONFIGURATION_COMMAND_FIELD_NUMBER = 8;
+    private com.openxc.BinaryMessages.RTCConfigurationCommand rtcConfigurationCommand_;
+    public boolean hasRtcConfigurationCommand() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public com.openxc.BinaryMessages.RTCConfigurationCommand getRtcConfigurationCommand() {
+      return rtcConfigurationCommand_;
+    }
+    public com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder getRtcConfigurationCommandOrBuilder() {
+      return rtcConfigurationCommand_;
+    }
+    
     private void initFields() {
       type_ = com.openxc.BinaryMessages.ControlCommand.Type.VERSION;
       diagnosticRequest_ = com.openxc.BinaryMessages.DiagnosticControlCommand.getDefaultInstance();
@@ -2044,6 +2065,7 @@ public final class BinaryMessages {
       payloadFormatCommand_ = com.openxc.BinaryMessages.PayloadFormatCommand.getDefaultInstance();
       predefinedObd2RequestsCommand_ = com.openxc.BinaryMessages.PredefinedObd2RequestsCommand.getDefaultInstance();
       modemConfigurationCommand_ = com.openxc.BinaryMessages.ModemConfigurationCommand.getDefaultInstance();
+      rtcConfigurationCommand_ = com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2077,6 +2099,9 @@ public final class BinaryMessages {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(7, modemConfigurationCommand_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(8, rtcConfigurationCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2114,6 +2139,10 @@ public final class BinaryMessages {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, modemConfigurationCommand_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, rtcConfigurationCommand_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2237,6 +2266,7 @@ public final class BinaryMessages {
           getPayloadFormatCommandFieldBuilder();
           getPredefinedObd2RequestsCommandFieldBuilder();
           getModemConfigurationCommandFieldBuilder();
+          getRtcConfigurationCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2283,6 +2313,12 @@ public final class BinaryMessages {
           modemConfigurationCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
+        if (rtcConfigurationCommandBuilder_ == null) {
+          rtcConfigurationCommand_ = com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance();
+        } else {
+          rtcConfigurationCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       
@@ -2373,6 +2409,14 @@ public final class BinaryMessages {
         } else {
           result.modemConfigurationCommand_ = modemConfigurationCommandBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        if (rtcConfigurationCommandBuilder_ == null) {
+          result.rtcConfigurationCommand_ = rtcConfigurationCommand_;
+        } else {
+          result.rtcConfigurationCommand_ = rtcConfigurationCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2409,6 +2453,9 @@ public final class BinaryMessages {
         }
         if (other.hasModemConfigurationCommand()) {
           mergeModemConfigurationCommand(other.getModemConfigurationCommand());
+        }
+        if (other.hasRtcConfigurationCommand()) {
+          mergeRtcConfigurationCommand(other.getRtcConfigurationCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2504,6 +2551,15 @@ public final class BinaryMessages {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setModemConfigurationCommand(subBuilder.buildPartial());
+              break;
+            }
+            case 66: {
+              com.openxc.BinaryMessages.RTCConfigurationCommand.Builder subBuilder = com.openxc.BinaryMessages.RTCConfigurationCommand.newBuilder();
+              if (hasRtcConfigurationCommand()) {
+                subBuilder.mergeFrom(getRtcConfigurationCommand());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setRtcConfigurationCommand(subBuilder.buildPartial());
               break;
             }
           }
@@ -3074,6 +3130,96 @@ public final class BinaryMessages {
           modemConfigurationCommand_ = null;
         }
         return modemConfigurationCommandBuilder_;
+      }
+      
+      // optional .openxc.RTCConfigurationCommand rtc_configuration_command = 8;
+      private com.openxc.BinaryMessages.RTCConfigurationCommand rtcConfigurationCommand_ = com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.RTCConfigurationCommand, com.openxc.BinaryMessages.RTCConfigurationCommand.Builder, com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder> rtcConfigurationCommandBuilder_;
+      public boolean hasRtcConfigurationCommand() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      public com.openxc.BinaryMessages.RTCConfigurationCommand getRtcConfigurationCommand() {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          return rtcConfigurationCommand_;
+        } else {
+          return rtcConfigurationCommandBuilder_.getMessage();
+        }
+      }
+      public Builder setRtcConfigurationCommand(com.openxc.BinaryMessages.RTCConfigurationCommand value) {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          rtcConfigurationCommand_ = value;
+          onChanged();
+        } else {
+          rtcConfigurationCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      public Builder setRtcConfigurationCommand(
+          com.openxc.BinaryMessages.RTCConfigurationCommand.Builder builderForValue) {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          rtcConfigurationCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          rtcConfigurationCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      public Builder mergeRtcConfigurationCommand(com.openxc.BinaryMessages.RTCConfigurationCommand value) {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              rtcConfigurationCommand_ != com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance()) {
+            rtcConfigurationCommand_ =
+              com.openxc.BinaryMessages.RTCConfigurationCommand.newBuilder(rtcConfigurationCommand_).mergeFrom(value).buildPartial();
+          } else {
+            rtcConfigurationCommand_ = value;
+          }
+          onChanged();
+        } else {
+          rtcConfigurationCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      public Builder clearRtcConfigurationCommand() {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          rtcConfigurationCommand_ = com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          rtcConfigurationCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      public com.openxc.BinaryMessages.RTCConfigurationCommand.Builder getRtcConfigurationCommandBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getRtcConfigurationCommandFieldBuilder().getBuilder();
+      }
+      public com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder getRtcConfigurationCommandOrBuilder() {
+        if (rtcConfigurationCommandBuilder_ != null) {
+          return rtcConfigurationCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return rtcConfigurationCommand_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          com.openxc.BinaryMessages.RTCConfigurationCommand, com.openxc.BinaryMessages.RTCConfigurationCommand.Builder, com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder> 
+          getRtcConfigurationCommandFieldBuilder() {
+        if (rtcConfigurationCommandBuilder_ == null) {
+          rtcConfigurationCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.openxc.BinaryMessages.RTCConfigurationCommand, com.openxc.BinaryMessages.RTCConfigurationCommand.Builder, com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder>(
+                  rtcConfigurationCommand_,
+                  getParentForChildren(),
+                  isClean());
+          rtcConfigurationCommand_ = null;
+        }
+        return rtcConfigurationCommandBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:openxc.ControlCommand)
@@ -7808,6 +7954,344 @@ public final class BinaryMessages {
     // @@protoc_insertion_point(class_scope:openxc.ModemConfigurationCommand)
   }
   
+  public interface RTCConfigurationCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // optional uint32 unix_time = 1;
+    boolean hasUnixTime();
+    int getUnixTime();
+  }
+  public static final class RTCConfigurationCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RTCConfigurationCommandOrBuilder {
+    // Use RTCConfigurationCommand.newBuilder() to construct.
+    private RTCConfigurationCommand(Builder builder) {
+      super(builder);
+    }
+    private RTCConfigurationCommand(boolean noInit) {}
+    
+    private static final RTCConfigurationCommand defaultInstance;
+    public static RTCConfigurationCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public RTCConfigurationCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.openxc.BinaryMessages.internal_static_openxc_RTCConfigurationCommand_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.openxc.BinaryMessages.internal_static_openxc_RTCConfigurationCommand_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // optional uint32 unix_time = 1;
+    public static final int UNIX_TIME_FIELD_NUMBER = 1;
+    private int unixTime_;
+    public boolean hasUnixTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getUnixTime() {
+      return unixTime_;
+    }
+    
+    private void initFields() {
+      unixTime_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, unixTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, unixTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.openxc.BinaryMessages.RTCConfigurationCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.openxc.BinaryMessages.RTCConfigurationCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.openxc.BinaryMessages.RTCConfigurationCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.openxc.BinaryMessages.internal_static_openxc_RTCConfigurationCommand_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.openxc.BinaryMessages.internal_static_openxc_RTCConfigurationCommand_fieldAccessorTable;
+      }
+      
+      // Construct using com.openxc.BinaryMessages.RTCConfigurationCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        unixTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.openxc.BinaryMessages.RTCConfigurationCommand.getDescriptor();
+      }
+      
+      public com.openxc.BinaryMessages.RTCConfigurationCommand getDefaultInstanceForType() {
+        return com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance();
+      }
+      
+      public com.openxc.BinaryMessages.RTCConfigurationCommand build() {
+        com.openxc.BinaryMessages.RTCConfigurationCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.openxc.BinaryMessages.RTCConfigurationCommand buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.openxc.BinaryMessages.RTCConfigurationCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.openxc.BinaryMessages.RTCConfigurationCommand buildPartial() {
+        com.openxc.BinaryMessages.RTCConfigurationCommand result = new com.openxc.BinaryMessages.RTCConfigurationCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.unixTime_ = unixTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.openxc.BinaryMessages.RTCConfigurationCommand) {
+          return mergeFrom((com.openxc.BinaryMessages.RTCConfigurationCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.openxc.BinaryMessages.RTCConfigurationCommand other) {
+        if (other == com.openxc.BinaryMessages.RTCConfigurationCommand.getDefaultInstance()) return this;
+        if (other.hasUnixTime()) {
+          setUnixTime(other.getUnixTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              unixTime_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // optional uint32 unix_time = 1;
+      private int unixTime_ ;
+      public boolean hasUnixTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getUnixTime() {
+        return unixTime_;
+      }
+      public Builder setUnixTime(int value) {
+        bitField0_ |= 0x00000001;
+        unixTime_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearUnixTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        unixTime_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:openxc.RTCConfigurationCommand)
+    }
+    
+    static {
+      defaultInstance = new RTCConfigurationCommand(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:openxc.RTCConfigurationCommand)
+  }
+  
   public interface CommandResponseOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -11312,6 +11796,11 @@ public final class BinaryMessages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_openxc_ModemConfigurationCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_openxc_RTCConfigurationCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_openxc_RTCConfigurationCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_openxc_CommandResponse_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -11359,7 +11848,7 @@ public final class BinaryMessages {
       "nMessage\022\013\n\003bus\030\001 \001(\005\022\n\n\002id\030\002 \001(\r\022\014\n\004dat" +
       "a\030\003 \001(\014\0224\n\014frame_format\030\004 \001(\0162\036.openxc.C" +
       "anMessage.FrameFormat\")\n\013FrameFormat\022\014\n\010" +
-      "STANDARD\020\001\022\014\n\010EXTENDED\020\002\"\231\005\n\016ControlComm" +
+      "STANDARD\020\001\022\014\n\010EXTENDED\020\002\"\364\005\n\016ControlComm" +
       "and\022)\n\004type\030\001 \001(\0162\033.openxc.ControlComman" +
       "d.Type\022<\n\022diagnostic_request\030\002 \001(\0132 .ope" +
       "nxc.DiagnosticControlCommand\022G\n\030passthro" +
@@ -11371,63 +11860,67 @@ public final class BinaryMessages {
       "mand\022O\n predefined_obd2_requests_command" +
       "\030\006 \001(\0132%.openxc.PredefinedObd2RequestsCo" +
       "mmand\022F\n\033modem_configuration_command\030\007 \001" +
-      "(\0132!.openxc.ModemConfigurationCommand\"\254\001" +
-      "\n\004Type\022\013\n\007VERSION\020\001\022\r\n\tDEVICE_ID\020\002\022\016\n\nDI" +
-      "AGNOSTIC\020\003\022\017\n\013PASSTHROUGH\020\004\022\034\n\030ACCEPTANC" +
-      "E_FILTER_BYPASS\020\005\022\022\n\016PAYLOAD_FORMAT\020\006\022\034\n",
-      "\030PREDEFINED_OBD2_REQUESTS\020\007\022\027\n\023MODEM_CON" +
-      "FIGURATION\020\010\"\236\001\n\030DiagnosticControlComman" +
-      "d\022*\n\007request\030\001 \001(\0132\031.openxc.DiagnosticRe" +
-      "quest\0227\n\006action\030\002 \001(\0162\'.openxc.Diagnosti" +
-      "cControlCommand.Action\"\035\n\006Action\022\007\n\003ADD\020" +
-      "\001\022\n\n\006CANCEL\020\002\"=\n\035PassthroughModeControlC" +
-      "ommand\022\013\n\003bus\030\001 \001(\005\022\017\n\007enabled\030\002 \001(\010\"<\n\035" +
-      "AcceptanceFilterBypassCommand\022\013\n\003bus\030\001 \001" +
-      "(\005\022\016\n\006bypass\030\002 \001(\010\"\214\001\n\024PayloadFormatComm" +
-      "and\022:\n\006format\030\001 \001(\0162*.openxc.PayloadForm",
-      "atCommand.PayloadFormat\"8\n\rPayloadFormat" +
-      "\022\010\n\004JSON\020\001\022\014\n\010PROTOBUF\020\002\022\017\n\013MESSAGEPACK\020" +
-      "\003\"0\n\035PredefinedObd2RequestsCommand\022\017\n\007en" +
-      "abled\030\001 \001(\010\"\321\003\n\027NetworkOperatorSettings\022" +
-      "\030\n\020allowDataRoaming\030\001 \001(\010\022N\n\022operatorSel" +
-      "ectMode\030\002 \001(\01622.openxc.NetworkOperatorSe" +
-      "ttings.OperatorSelectMode\022L\n\021networkDesc" +
-      "riptor\030\003 \001(\01321.openxc.NetworkOperatorSet" +
-      "tings.NetworkDescriptor\032\230\001\n\021NetworkDescr" +
-      "iptor\022\014\n\004PLMN\030\001 \001(\r\022R\n\013networkType\030\002 \001(\016",
-      "2=.openxc.NetworkOperatorSettings.Networ" +
-      "kDescriptor.NetworkType\"!\n\013NetworkType\022\007" +
-      "\n\003GSM\020\000\022\t\n\005UTRAN\020\002\"c\n\022OperatorSelectMode" +
-      "\022\r\n\tAUTOMATIC\020\000\022\n\n\006MANUAL\020\001\022\016\n\nDEREGISTE" +
-      "R\020\002\022\014\n\010SET_ONLY\020\003\022\024\n\020MANUAL_AUTOMATIC\020\004\"" +
-      "\"\n\023NetworkDataSettings\022\013\n\003APN\030\001 \001(\t\"3\n\025S" +
-      "erverConnectSettings\022\014\n\004host\030\001 \001(\t\022\014\n\004po" +
-      "rt\030\002 \001(\r\"\325\001\n\031ModemConfigurationCommand\022@" +
-      "\n\027networkOperatorSettings\030\001 \001(\0132\037.openxc" +
-      ".NetworkOperatorSettings\0228\n\023networkDataS",
-      "ettings\030\002 \001(\0132\033.openxc.NetworkDataSettin" +
-      "gs\022<\n\025serverConnectSettings\030\003 \001(\0132\035.open" +
-      "xc.ServerConnectSettings\"]\n\017CommandRespo" +
-      "nse\022)\n\004type\030\001 \001(\0162\033.openxc.ControlComman" +
-      "d.Type\022\017\n\007message\030\002 \001(\t\022\016\n\006status\030\003 \001(\010\"" +
-      "\375\001\n\021DiagnosticRequest\022\013\n\003bus\030\001 \001(\005\022\022\n\nme" +
-      "ssage_id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(" +
-      "\r\022\017\n\007payload\030\005 \001(\014\022\032\n\022multiple_responses" +
-      "\030\006 \001(\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022" +
-      ";\n\014decoded_type\030\t \001(\0162%.openxc.Diagnosti",
-      "cRequest.DecodedType\"!\n\013DecodedType\022\010\n\004N" +
-      "ONE\020\001\022\010\n\004OBD2\020\002\"\241\001\n\022DiagnosticResponse\022\013" +
-      "\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030" +
-      "\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001(\010\022\036\n\026n" +
-      "egative_response_code\030\006 \001(\r\022\017\n\007payload\030\007" +
-      " \001(\014\022\r\n\005value\030\010 \001(\001\"\242\001\n\014DynamicField\022\'\n\004" +
-      "type\030\001 \001(\0162\031.openxc.DynamicField.Type\022\024\n" +
-      "\014string_value\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001" +
-      "(\001\022\025\n\rboolean_value\030\004 \001(\010\"%\n\004Type\022\n\n\006STR" +
-      "ING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"g\n\rSimpleMessag",
-      "e\022\014\n\004name\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.openxc." +
-      "DynamicField\022#\n\005event\030\003 \001(\0132\024.openxc.Dyn" +
-      "amicFieldB\034\n\ncom.openxcB\016BinaryMessages"
+      "(\0132!.openxc.ModemConfigurationCommand\022B\n" +
+      "\031rtc_configuration_command\030\010 \001(\0132\037.openx" +
+      "c.RTCConfigurationCommand\"\303\001\n\004Type\022\013\n\007VE" +
+      "RSION\020\001\022\r\n\tDEVICE_ID\020\002\022\016\n\nDIAGNOSTIC\020\003\022\017",
+      "\n\013PASSTHROUGH\020\004\022\034\n\030ACCEPTANCE_FILTER_BYP" +
+      "ASS\020\005\022\022\n\016PAYLOAD_FORMAT\020\006\022\034\n\030PREDEFINED_" +
+      "OBD2_REQUESTS\020\007\022\027\n\023MODEM_CONFIGURATION\020\010" +
+      "\022\025\n\021RTC_CONFIGURATION\020\t\"\236\001\n\030DiagnosticCo" +
+      "ntrolCommand\022*\n\007request\030\001 \001(\0132\031.openxc.D" +
+      "iagnosticRequest\0227\n\006action\030\002 \001(\0162\'.openx" +
+      "c.DiagnosticControlCommand.Action\"\035\n\006Act" +
+      "ion\022\007\n\003ADD\020\001\022\n\n\006CANCEL\020\002\"=\n\035PassthroughM" +
+      "odeControlCommand\022\013\n\003bus\030\001 \001(\005\022\017\n\007enable" +
+      "d\030\002 \001(\010\"<\n\035AcceptanceFilterBypassCommand",
+      "\022\013\n\003bus\030\001 \001(\005\022\016\n\006bypass\030\002 \001(\010\"\214\001\n\024Payloa" +
+      "dFormatCommand\022:\n\006format\030\001 \001(\0162*.openxc." +
+      "PayloadFormatCommand.PayloadFormat\"8\n\rPa" +
+      "yloadFormat\022\010\n\004JSON\020\001\022\014\n\010PROTOBUF\020\002\022\017\n\013M" +
+      "ESSAGEPACK\020\003\"0\n\035PredefinedObd2RequestsCo" +
+      "mmand\022\017\n\007enabled\030\001 \001(\010\"\321\003\n\027NetworkOperat" +
+      "orSettings\022\030\n\020allowDataRoaming\030\001 \001(\010\022N\n\022" +
+      "operatorSelectMode\030\002 \001(\01622.openxc.Networ" +
+      "kOperatorSettings.OperatorSelectMode\022L\n\021" +
+      "networkDescriptor\030\003 \001(\01321.openxc.Network",
+      "OperatorSettings.NetworkDescriptor\032\230\001\n\021N" +
+      "etworkDescriptor\022\014\n\004PLMN\030\001 \001(\r\022R\n\013networ" +
+      "kType\030\002 \001(\0162=.openxc.NetworkOperatorSett" +
+      "ings.NetworkDescriptor.NetworkType\"!\n\013Ne" +
+      "tworkType\022\007\n\003GSM\020\000\022\t\n\005UTRAN\020\002\"c\n\022Operato" +
+      "rSelectMode\022\r\n\tAUTOMATIC\020\000\022\n\n\006MANUAL\020\001\022\016" +
+      "\n\nDEREGISTER\020\002\022\014\n\010SET_ONLY\020\003\022\024\n\020MANUAL_A" +
+      "UTOMATIC\020\004\"\"\n\023NetworkDataSettings\022\013\n\003APN" +
+      "\030\001 \001(\t\"3\n\025ServerConnectSettings\022\014\n\004host\030" +
+      "\001 \001(\t\022\014\n\004port\030\002 \001(\r\"\325\001\n\031ModemConfigurati",
+      "onCommand\022@\n\027networkOperatorSettings\030\001 \001" +
+      "(\0132\037.openxc.NetworkOperatorSettings\0228\n\023n" +
+      "etworkDataSettings\030\002 \001(\0132\033.openxc.Networ" +
+      "kDataSettings\022<\n\025serverConnectSettings\030\003" +
+      " \001(\0132\035.openxc.ServerConnectSettings\",\n\027R" +
+      "TCConfigurationCommand\022\021\n\tunix_time\030\001 \001(" +
+      "\r\"]\n\017CommandResponse\022)\n\004type\030\001 \001(\0162\033.ope" +
+      "nxc.ControlCommand.Type\022\017\n\007message\030\002 \001(\t" +
+      "\022\016\n\006status\030\003 \001(\010\"\375\001\n\021DiagnosticRequest\022\013" +
+      "\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014\n\004mode\030",
+      "\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007payload\030\005 \001(\014\022\032\n\022m" +
+      "ultiple_responses\030\006 \001(\010\022\021\n\tfrequency\030\007 \001" +
+      "(\001\022\014\n\004name\030\010 \001(\t\022;\n\014decoded_type\030\t \001(\0162%" +
+      ".openxc.DiagnosticRequest.DecodedType\"!\n" +
+      "\013DecodedType\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\241\001\n\022Dia" +
+      "gnosticResponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_" +
+      "id\030\002 \001(\r\022\014\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007s" +
+      "uccess\030\005 \001(\010\022\036\n\026negative_response_code\030\006" +
+      " \001(\r\022\017\n\007payload\030\007 \001(\014\022\r\n\005value\030\010 \001(\001\"\242\001\n" +
+      "\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.openxc.Dyn",
+      "amicField.Type\022\024\n\014string_value\030\002 \001(\t\022\025\n\r" +
+      "numeric_value\030\003 \001(\001\022\025\n\rboolean_value\030\004 \001" +
+      "(\010\"%\n\004Type\022\n\n\006STRING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020" +
+      "\003\"g\n\rSimpleMessage\022\014\n\004name\030\001 \001(\t\022#\n\005valu" +
+      "e\030\002 \001(\0132\024.openxc.DynamicField\022#\n\005event\030\003" +
+      " \001(\0132\024.openxc.DynamicFieldB\034\n\ncom.openxc" +
+      "B\016BinaryMessages"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11455,7 +11948,7 @@ public final class BinaryMessages {
           internal_static_openxc_ControlCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_ControlCommand_descriptor,
-              new java.lang.String[] { "Type", "DiagnosticRequest", "PassthroughModeRequest", "AcceptanceFilterBypassCommand", "PayloadFormatCommand", "PredefinedObd2RequestsCommand", "ModemConfigurationCommand", },
+              new java.lang.String[] { "Type", "DiagnosticRequest", "PassthroughModeRequest", "AcceptanceFilterBypassCommand", "PayloadFormatCommand", "PredefinedObd2RequestsCommand", "ModemConfigurationCommand", "RtcConfigurationCommand", },
               com.openxc.BinaryMessages.ControlCommand.class,
               com.openxc.BinaryMessages.ControlCommand.Builder.class);
           internal_static_openxc_DiagnosticControlCommand_descriptor =
@@ -11538,8 +12031,16 @@ public final class BinaryMessages {
               new java.lang.String[] { "NetworkOperatorSettings", "NetworkDataSettings", "ServerConnectSettings", },
               com.openxc.BinaryMessages.ModemConfigurationCommand.class,
               com.openxc.BinaryMessages.ModemConfigurationCommand.Builder.class);
-          internal_static_openxc_CommandResponse_descriptor =
+          internal_static_openxc_RTCConfigurationCommand_descriptor =
             getDescriptor().getMessageTypes().get(12);
+          internal_static_openxc_RTCConfigurationCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_openxc_RTCConfigurationCommand_descriptor,
+              new java.lang.String[] { "UnixTime", },
+              com.openxc.BinaryMessages.RTCConfigurationCommand.class,
+              com.openxc.BinaryMessages.RTCConfigurationCommand.Builder.class);
+          internal_static_openxc_CommandResponse_descriptor =
+            getDescriptor().getMessageTypes().get(13);
           internal_static_openxc_CommandResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_CommandResponse_descriptor,
@@ -11547,7 +12048,7 @@ public final class BinaryMessages {
               com.openxc.BinaryMessages.CommandResponse.class,
               com.openxc.BinaryMessages.CommandResponse.Builder.class);
           internal_static_openxc_DiagnosticRequest_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_openxc_DiagnosticRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticRequest_descriptor,
@@ -11555,7 +12056,7 @@ public final class BinaryMessages {
               com.openxc.BinaryMessages.DiagnosticRequest.class,
               com.openxc.BinaryMessages.DiagnosticRequest.Builder.class);
           internal_static_openxc_DiagnosticResponse_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DiagnosticResponse_descriptor,
@@ -11563,7 +12064,7 @@ public final class BinaryMessages {
               com.openxc.BinaryMessages.DiagnosticResponse.class,
               com.openxc.BinaryMessages.DiagnosticResponse.Builder.class);
           internal_static_openxc_DynamicField_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_openxc_DynamicField_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_DynamicField_descriptor,
@@ -11571,7 +12072,7 @@ public final class BinaryMessages {
               com.openxc.BinaryMessages.DynamicField.class,
               com.openxc.BinaryMessages.DynamicField.Builder.class);
           internal_static_openxc_SimpleMessage_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_openxc_SimpleMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_openxc_SimpleMessage_descriptor,
