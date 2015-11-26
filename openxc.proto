@@ -38,6 +38,7 @@ message ControlCommand {
         PREDEFINED_OBD2_REQUESTS = 7;
 		MODEM_CONFIGURATION = 8;
 		RTC_CONFIGURATION = 9;
+		SD_MOUNT_STATUS = 10;
     }
 
     optional Type type = 1;
