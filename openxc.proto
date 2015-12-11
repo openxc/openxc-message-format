@@ -13,7 +13,7 @@ message VehicleMessage {
     optional DiagnosticResponse diagnostic_response = 4;
     optional ControlCommand control_command = 5;
     optional CommandResponse command_response = 6;
-	optional uint32 uptime = 7;
+	optional uint64 timestamp = 7;
 }
 
 message CanMessage {
