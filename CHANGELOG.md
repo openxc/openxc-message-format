@@ -1,5 +1,13 @@
 # OpenXC Message Format Changelog
 
+## v0.6.0
+
+* Feature: Added MessagePack support for BTLE connections.
+* Feature: Support for vehicle message timestamps (changed previous uptime).
+* Feature: Support for C5 SD Card.
+* Feature: Support for C5 RTC.
+* Fix: Update submodule from code.google to github.
+
 ## v0.5.0
 
 * Feature: Support for C5 Cellular device. New uptime message.

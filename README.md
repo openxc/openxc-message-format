@@ -1,6 +1,6 @@
 # OpenXC Message Format Specification
 
-Version: v0.5.0
+Version: v0.6.0
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
@@ -35,7 +35,9 @@ MessagePack is an efficient binary serialization format. It lets you exchange da
 among multiple languages like JSON. But it's faster and smaller. Small integers are 
 encoded into a single byte, and typical short strings require only one extra byte
 in addition to the strings themselves
-For protocol specification visit https://github.com/msgpack/msgpack/blob/master/spec.md
+
+For protocol specification visit 
+https://github.com/msgpack/msgpack/blob/master/spec.md
 
 ## Trace File Format
 
