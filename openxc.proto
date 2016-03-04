@@ -13,7 +13,7 @@ message VehicleMessage {
     optional DiagnosticResponse diagnostic_response = 4;
     optional ControlCommand control_command = 5;
     optional CommandResponse command_response = 6;
-	optional uint64 timestamp = 7;
+    optional uint64 timestamp = 7;
 }
 
 message CanMessage {
@@ -36,9 +36,9 @@ message ControlCommand {
         ACCEPTANCE_FILTER_BYPASS = 5;
         PAYLOAD_FORMAT = 6;
         PREDEFINED_OBD2_REQUESTS = 7;
-		MODEM_CONFIGURATION = 8;
-		RTC_CONFIGURATION = 9;
-		SD_MOUNT_STATUS = 10;
+        MODEM_CONFIGURATION = 8;
+        RTC_CONFIGURATION = 9;
+        SD_MOUNT_STATUS = 10;
     }
 
     optional Type type = 1;
@@ -47,8 +47,8 @@ message ControlCommand {
     optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
     optional PayloadFormatCommand payload_format_command = 5;
     optional PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
-	optional ModemConfigurationCommand modem_configuration_command = 7;
-	optional RTCConfigurationCommand rtc_configuration_command = 8;
+    optional ModemConfigurationCommand modem_configuration_command = 7;
+    optional RTCConfigurationCommand rtc_configuration_command = 8;
 }
 
 message DiagnosticControlCommand {
@@ -72,7 +72,7 @@ message PayloadFormatCommand {
     enum PayloadFormat {
         JSON = 1;
         PROTOBUF = 2;
-		MESSAGEPACK = 3;
+    	MESSAGEPACK = 3;
     }
 
     optional PayloadFormat format = 1;
