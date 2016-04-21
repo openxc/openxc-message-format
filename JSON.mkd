@@ -2,21 +2,16 @@
 
 Each JSON message published by a VI is delimited with a `\0 ` character.
 
-## Extra Values
+## Table of Contents
+1. [Vehicle Messages](#vehicle-messages)
+2. [CAN Message](#can-message)
+3. [Diagnostic Message](#diagnostic-message)
+4. [Commands](#commands)
+5. [Extra Values](#extra-values)
 
-Any of the following JSON objects may optionally include an `extras`
-field. The value may be any valid JSON object or array. The client libraries
-will do their best to parse this information into a generic format and pass it
-to your application. For example:
+## Vehicle Messages
 
-    {"name": "steering_wheel_angle",
-        "value": 45,
-        "extras": {
-            "calibrated": false
-        }
-    }
-
-## Simple Vehicle Message
+### Simple Vehicle Message
 
 There may not be a 1:1 relationship between input and output signals - i.e.
 engine timing CAN signals may be summarized in an "engine performance" metric on
@@ -26,7 +21,7 @@ The expected format of a single valued message is:
 
     {"name": "steering_wheel_angle", "value": 45}
 
-## Evented Simple Vehicle Message
+### Evented Simple Vehicle Message
 
 The expected format of an event message is:
 
@@ -57,7 +52,7 @@ The format for a plain CAN message:
   of `standard` or `extended`. If the `id` is greater than `0x7ff`, the extended
   frame format will be selected automatically.
 
-## Diagnostic Messages
+## Diagnostic Message
 
 ### Requests
 
@@ -377,7 +372,7 @@ the response will be `true`.
 
 The ModemConfigurationCommand message allows users to change certain aspects of modem operation on-the-fly (at runtime). The modem configuration settings are stored in flash memory and are untouched by the bootloader during a software update (assuming the correct cellular_c5 linker file is used during compilation of vi-firmware). Thus, new modem settings persistent across power cycles.
 
-The ModemConfigurationCommand message provides three sub-messages for particular groups of modem settings. These are NetworkOperatorSettings, NetworkDataSettings, and ServerConnectSettings. These configuration messages are described in great detail within the [c5_cellular_config](https://github.com/openxc/vi-firmware/docs/advanced/c5_cell_config.mkd) documentation. 
+The ModemConfigurationCommand message provides three sub-messages for particular groups of modem settings. These are NetworkOperatorSettings, NetworkDataSettings, and ServerConnectSettings. These configuration messages are described in great detail within the [c5_cellular_config](https://github.com/openxc/vi-firmware/docs/advanced/c5_cell_config.html) documentation. 
 
 Currently, only the ServerConnectSettings sub-message is supported in the vi-firmware's command interpreter. All other settings are currently compile-time only.
 
@@ -395,3 +390,46 @@ The ServerConnectSettings part of ModemConfigurationCommand allows the user to s
 **Response**
 
 	{ "command_response": "modem_configuration", "status": true}
+
+## C5 SD Card Status
+
+In order to check the status of the SD card, the following command is available:
+
+    { "command": "sd_mount_status"}
+    
+Command response if the SD card is mounted correctly:
+
+    { "command_response": "sd_mount_status", "status": true}
+    
+If the SD card is full, not enabled, or connected as a MSD, the device will respond with:
+
+    { "command_response": "sd_mount_status", "status": false}
+    
+For more info see [c5_msd](https://github.com/openxc/vi-firmware/docs/advanced/msd.html).
+
+## C5 RTC Configuration
+
+To set the current time of the RTC, the following
+
+    { "command": "rtc_configuration", "unix_time": "1448551563"}
+    
+The response is
+
+    { "command_response": "rtc_configuration", "status": true}
+
+For more info see [c5_rtc](https://github.com/openxc/vi-firmware/docs/advanced/rtc.html).
+
+## Extra Values
+
+Any of the following JSON objects may optionally include an `extras`
+field. The value may be any valid JSON object or array. The client libraries
+will do their best to parse this information into a generic format and pass it
+to your application. For example:
+
+    {"name": "steering_wheel_angle",
+        "value": 45,
+        "extras": {
+            "calibrated": false
+        }
+    }
+
