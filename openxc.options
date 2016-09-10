@@ -7,4 +7,4 @@ openxc.DiagnosticRequest.payload max_size:8
 openxc.CanMessage.data max_size:8
 
 openxc.ServerConnectSettings.host max_size:128
-openxc.NetworkDataSettings.apn max_size:64
+openxc.NetworkDataSettings.APN max_size:64
