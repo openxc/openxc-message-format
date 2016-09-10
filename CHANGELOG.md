@@ -1,5 +1,10 @@
 # OpenXC Message Format Changelog
 
+## v0.6.1
+
+* Improvement: Increase diagnostic response payload size to accommodate
+  multi-frame diagnostic responses.
+
 ## v0.6.0
 
 * Feature: Added MessagePack support for BTLE connections.
