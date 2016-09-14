@@ -1,5 +1,9 @@
 # OpenXC Message Format Changelog
 
+## v0.7.0
+
+* Feature: Added command to request device platform
+
 ## v0.6.1
 
 * Improvement: Increase diagnostic response payload size to accommodate
