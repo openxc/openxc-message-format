@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='openxc.proto',
   package='openxc',
-  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\x9b\x03\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0b\x63\x61n_message\x18\x02 \x01(\x0b\x32\x12.openxc.CanMessage\x12-\n\x0esimple_message\x18\x03 \x01(\x0b\x32\x15.openxc.SimpleMessage\x12\x37\n\x13\x64iagnostic_response\x18\x04 \x01(\x0b\x32\x1a.openxc.DiagnosticResponse\x12/\n\x0f\x63ontrol_command\x18\x05 \x01(\x0b\x32\x16.openxc.ControlCommand\x12\x31\n\x10\x63ommand_response\x18\x06 \x01(\x0b\x32\x17.openxc.CommandResponse\x12\x11\n\ttimestamp\x18\x07 \x01(\x04\"V\n\x04Type\x12\x07\n\x03\x43\x41N\x10\x01\x12\n\n\x06SIMPLE\x10\x02\x12\x0e\n\nDIAGNOSTIC\x10\x03\x12\x13\n\x0f\x43ONTROL_COMMAND\x10\x04\x12\x14\n\x10\x43OMMAND_RESPONSE\x10\x05\"\x94\x01\n\nCanMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\x12\x34\n\x0c\x66rame_format\x18\x04 \x01(\x0e\x32\x1e.openxc.CanMessage.FrameFormat\")\n\x0b\x46rameFormat\x12\x0c\n\x08STANDARD\x10\x01\x12\x0c\n\x08\x45XTENDED\x10\x02\"\x89\x06\n\x0e\x43ontrolCommand\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.ControlCommand.Type\x12<\n\x12\x64iagnostic_request\x18\x02 \x01(\x0b\x32 .openxc.DiagnosticControlCommand\x12G\n\x18passthrough_mode_request\x18\x03 \x01(\x0b\x32%.openxc.PassthroughModeControlCommand\x12O\n acceptance_filter_bypass_command\x18\x04 \x01(\x0b\x32%.openxc.AcceptanceFilterBypassCommand\x12<\n\x16payload_format_command\x18\x05 \x01(\x0b\x32\x1c.openxc.PayloadFormatCommand\x12O\n predefined_obd2_requests_command\x18\x06 \x01(\x0b\x32%.openxc.PredefinedObd2RequestsCommand\x12\x46\n\x1bmodem_configuration_command\x18\x07 \x01(\x0b\x32!.openxc.ModemConfigurationCommand\x12\x42\n\x19rtc_configuration_command\x18\x08 \x01(\x0b\x32\x1f.openxc.RTCConfigurationCommand\"\xd8\x01\n\x04Type\x12\x0b\n\x07VERSION\x10\x01\x12\r\n\tDEVICE_ID\x10\x02\x12\x0e\n\nDIAGNOSTIC\x10\x03\x12\x0f\n\x0bPASSTHROUGH\x10\x04\x12\x1c\n\x18\x41\x43\x43\x45PTANCE_FILTER_BYPASS\x10\x05\x12\x12\n\x0ePAYLOAD_FORMAT\x10\x06\x12\x1c\n\x18PREDEFINED_OBD2_REQUESTS\x10\x07\x12\x17\n\x13MODEM_CONFIGURATION\x10\x08\x12\x15\n\x11RTC_CONFIGURATION\x10\t\x12\x13\n\x0fSD_MOUNT_STATUS\x10\n\"\x9e\x01\n\x18\x44iagnosticControlCommand\x12*\n\x07request\x18\x01 \x01(\x0b\x32\x19.openxc.DiagnosticRequest\x12\x37\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32\'.openxc.DiagnosticControlCommand.Action\"\x1d\n\x06\x41\x63tion\x12\x07\n\x03\x41\x44\x44\x10\x01\x12\n\n\x06\x43\x41NCEL\x10\x02\"=\n\x1dPassthroughModeControlCommand\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\"<\n\x1d\x41\x63\x63\x65ptanceFilterBypassCommand\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x0e\n\x06\x62ypass\x18\x02 \x01(\x08\"\x8c\x01\n\x14PayloadFormatCommand\x12:\n\x06\x66ormat\x18\x01 \x01(\x0e\x32*.openxc.PayloadFormatCommand.PayloadFormat\"8\n\rPayloadFormat\x12\x08\n\x04JSON\x10\x01\x12\x0c\n\x08PROTOBUF\x10\x02\x12\x0f\n\x0bMESSAGEPACK\x10\x03\"0\n\x1dPredefinedObd2RequestsCommand\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\"\xd1\x03\n\x17NetworkOperatorSettings\x12\x18\n\x10\x61llowDataRoaming\x18\x01 \x01(\x08\x12N\n\x12operatorSelectMode\x18\x02 \x01(\x0e\x32\x32.openxc.NetworkOperatorSettings.OperatorSelectMode\x12L\n\x11networkDescriptor\x18\x03 \x01(\x0b\x32\x31.openxc.NetworkOperatorSettings.NetworkDescriptor\x1a\x98\x01\n\x11NetworkDescriptor\x12\x0c\n\x04PLMN\x18\x01 \x01(\r\x12R\n\x0bnetworkType\x18\x02 \x01(\x0e\x32=.openxc.NetworkOperatorSettings.NetworkDescriptor.NetworkType\"!\n\x0bNetworkType\x12\x07\n\x03GSM\x10\x00\x12\t\n\x05UTRAN\x10\x02\"c\n\x12OperatorSelectMode\x12\r\n\tAUTOMATIC\x10\x00\x12\n\n\x06MANUAL\x10\x01\x12\x0e\n\nDEREGISTER\x10\x02\x12\x0c\n\x08SET_ONLY\x10\x03\x12\x14\n\x10MANUAL_AUTOMATIC\x10\x04\"\"\n\x13NetworkDataSettings\x12\x0b\n\x03\x41PN\x18\x01 \x01(\t\"3\n\x15ServerConnectSettings\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\r\"\xd5\x01\n\x19ModemConfigurationCommand\x12@\n\x17networkOperatorSettings\x18\x01 \x01(\x0b\x32\x1f.openxc.NetworkOperatorSettings\x12\x38\n\x13networkDataSettings\x18\x02 \x01(\x0b\x32\x1b.openxc.NetworkDataSettings\x12<\n\x15serverConnectSettings\x18\x03 \x01(\x0b\x32\x1d.openxc.ServerConnectSettings\",\n\x17RTCConfigurationCommand\x12\x11\n\tunix_time\x18\x01 \x01(\r\"]\n\x0f\x43ommandResponse\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.ControlCommand.Type\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\x08\"\xfd\x01\n\x11\x44iagnosticRequest\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07payload\x18\x05 \x01(\x0c\x12\x1a\n\x12multiple_responses\x18\x06 \x01(\x08\x12\x11\n\tfrequency\x18\x07 \x01(\x01\x12\x0c\n\x04name\x18\x08 \x01(\t\x12;\n\x0c\x64\x65\x63oded_type\x18\t \x01(\x0e\x32%.openxc.DiagnosticRequest.DecodedType\"!\n\x0b\x44\x65\x63odedType\x12\x08\n\x04NONE\x10\x01\x12\x08\n\x04OBD2\x10\x02\"\xa1\x01\n\x12\x44iagnosticResponse\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07success\x18\x05 \x01(\x08\x12\x1e\n\x16negative_response_code\x18\x06 \x01(\r\x12\x0f\n\x07payload\x18\x07 \x01(\x0c\x12\r\n\x05value\x18\x08 \x01(\x01\"\xa2\x01\n\x0c\x44ynamicField\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.openxc.DynamicField.Type\x12\x14\n\x0cstring_value\x18\x02 \x01(\t\x12\x15\n\rnumeric_value\x18\x03 \x01(\x01\x12\x15\n\rboolean_value\x18\x04 \x01(\x08\"%\n\x04Type\x12\n\n\x06STRING\x10\x01\x12\x07\n\x03NUM\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\"g\n\rSimpleMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.openxc.DynamicField\x12#\n\x05\x65vent\x18\x03 \x01(\x0b\x32\x14.openxc.DynamicFieldB\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
+  serialized_pb='\n\x0copenxc.proto\x12\x06openxc\"\x9b\x03\n\x0eVehicleMessage\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.VehicleMessage.Type\x12\'\n\x0b\x63\x61n_message\x18\x02 \x01(\x0b\x32\x12.openxc.CanMessage\x12-\n\x0esimple_message\x18\x03 \x01(\x0b\x32\x15.openxc.SimpleMessage\x12\x37\n\x13\x64iagnostic_response\x18\x04 \x01(\x0b\x32\x1a.openxc.DiagnosticResponse\x12/\n\x0f\x63ontrol_command\x18\x05 \x01(\x0b\x32\x16.openxc.ControlCommand\x12\x31\n\x10\x63ommand_response\x18\x06 \x01(\x0b\x32\x17.openxc.CommandResponse\x12\x11\n\ttimestamp\x18\x07 \x01(\x04\"V\n\x04Type\x12\x07\n\x03\x43\x41N\x10\x01\x12\n\n\x06SIMPLE\x10\x02\x12\x0e\n\nDIAGNOSTIC\x10\x03\x12\x13\n\x0f\x43ONTROL_COMMAND\x10\x04\x12\x14\n\x10\x43OMMAND_RESPONSE\x10\x05\"\x94\x01\n\nCanMessage\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\x12\x34\n\x0c\x66rame_format\x18\x04 \x01(\x0e\x32\x1e.openxc.CanMessage.FrameFormat\")\n\x0b\x46rameFormat\x12\x0c\n\x08STANDARD\x10\x01\x12\x0c\n\x08\x45XTENDED\x10\x02\"\x97\x06\n\x0e\x43ontrolCommand\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.ControlCommand.Type\x12<\n\x12\x64iagnostic_request\x18\x02 \x01(\x0b\x32 .openxc.DiagnosticControlCommand\x12G\n\x18passthrough_mode_request\x18\x03 \x01(\x0b\x32%.openxc.PassthroughModeControlCommand\x12O\n acceptance_filter_bypass_command\x18\x04 \x01(\x0b\x32%.openxc.AcceptanceFilterBypassCommand\x12<\n\x16payload_format_command\x18\x05 \x01(\x0b\x32\x1c.openxc.PayloadFormatCommand\x12O\n predefined_obd2_requests_command\x18\x06 \x01(\x0b\x32%.openxc.PredefinedObd2RequestsCommand\x12\x46\n\x1bmodem_configuration_command\x18\x07 \x01(\x0b\x32!.openxc.ModemConfigurationCommand\x12\x42\n\x19rtc_configuration_command\x18\x08 \x01(\x0b\x32\x1f.openxc.RTCConfigurationCommand\"\xe6\x01\n\x04Type\x12\x0b\n\x07VERSION\x10\x01\x12\r\n\tDEVICE_ID\x10\x02\x12\x0e\n\nDIAGNOSTIC\x10\x03\x12\x0f\n\x0bPASSTHROUGH\x10\x04\x12\x1c\n\x18\x41\x43\x43\x45PTANCE_FILTER_BYPASS\x10\x05\x12\x12\n\x0ePAYLOAD_FORMAT\x10\x06\x12\x1c\n\x18PREDEFINED_OBD2_REQUESTS\x10\x07\x12\x17\n\x13MODEM_CONFIGURATION\x10\x08\x12\x15\n\x11RTC_CONFIGURATION\x10\t\x12\x13\n\x0fSD_MOUNT_STATUS\x10\n\x12\x0c\n\x08PLATFORM\x10\x0b\"\x9e\x01\n\x18\x44iagnosticControlCommand\x12*\n\x07request\x18\x01 \x01(\x0b\x32\x19.openxc.DiagnosticRequest\x12\x37\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32\'.openxc.DiagnosticControlCommand.Action\"\x1d\n\x06\x41\x63tion\x12\x07\n\x03\x41\x44\x44\x10\x01\x12\n\n\x06\x43\x41NCEL\x10\x02\"=\n\x1dPassthroughModeControlCommand\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\"<\n\x1d\x41\x63\x63\x65ptanceFilterBypassCommand\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x0e\n\x06\x62ypass\x18\x02 \x01(\x08\"\x8c\x01\n\x14PayloadFormatCommand\x12:\n\x06\x66ormat\x18\x01 \x01(\x0e\x32*.openxc.PayloadFormatCommand.PayloadFormat\"8\n\rPayloadFormat\x12\x08\n\x04JSON\x10\x01\x12\x0c\n\x08PROTOBUF\x10\x02\x12\x0f\n\x0bMESSAGEPACK\x10\x03\"0\n\x1dPredefinedObd2RequestsCommand\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\"\xd1\x03\n\x17NetworkOperatorSettings\x12\x18\n\x10\x61llowDataRoaming\x18\x01 \x01(\x08\x12N\n\x12operatorSelectMode\x18\x02 \x01(\x0e\x32\x32.openxc.NetworkOperatorSettings.OperatorSelectMode\x12L\n\x11networkDescriptor\x18\x03 \x01(\x0b\x32\x31.openxc.NetworkOperatorSettings.NetworkDescriptor\x1a\x98\x01\n\x11NetworkDescriptor\x12\x0c\n\x04PLMN\x18\x01 \x01(\r\x12R\n\x0bnetworkType\x18\x02 \x01(\x0e\x32=.openxc.NetworkOperatorSettings.NetworkDescriptor.NetworkType\"!\n\x0bNetworkType\x12\x07\n\x03GSM\x10\x00\x12\t\n\x05UTRAN\x10\x02\"c\n\x12OperatorSelectMode\x12\r\n\tAUTOMATIC\x10\x00\x12\n\n\x06MANUAL\x10\x01\x12\x0e\n\nDEREGISTER\x10\x02\x12\x0c\n\x08SET_ONLY\x10\x03\x12\x14\n\x10MANUAL_AUTOMATIC\x10\x04\"\"\n\x13NetworkDataSettings\x12\x0b\n\x03\x41PN\x18\x01 \x01(\t\"3\n\x15ServerConnectSettings\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\r\"\xd5\x01\n\x19ModemConfigurationCommand\x12@\n\x17networkOperatorSettings\x18\x01 \x01(\x0b\x32\x1f.openxc.NetworkOperatorSettings\x12\x38\n\x13networkDataSettings\x18\x02 \x01(\x0b\x32\x1b.openxc.NetworkDataSettings\x12<\n\x15serverConnectSettings\x18\x03 \x01(\x0b\x32\x1d.openxc.ServerConnectSettings\",\n\x17RTCConfigurationCommand\x12\x11\n\tunix_time\x18\x01 \x01(\r\"]\n\x0f\x43ommandResponse\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.openxc.ControlCommand.Type\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\x08\"\xfd\x01\n\x11\x44iagnosticRequest\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07payload\x18\x05 \x01(\x0c\x12\x1a\n\x12multiple_responses\x18\x06 \x01(\x08\x12\x11\n\tfrequency\x18\x07 \x01(\x01\x12\x0c\n\x04name\x18\x08 \x01(\t\x12;\n\x0c\x64\x65\x63oded_type\x18\t \x01(\x0e\x32%.openxc.DiagnosticRequest.DecodedType\"!\n\x0b\x44\x65\x63odedType\x12\x08\n\x04NONE\x10\x01\x12\x08\n\x04OBD2\x10\x02\"\xa1\x01\n\x12\x44iagnosticResponse\x12\x0b\n\x03\x62us\x18\x01 \x01(\x05\x12\x12\n\nmessage_id\x18\x02 \x01(\r\x12\x0c\n\x04mode\x18\x03 \x01(\r\x12\x0b\n\x03pid\x18\x04 \x01(\r\x12\x0f\n\x07success\x18\x05 \x01(\x08\x12\x1e\n\x16negative_response_code\x18\x06 \x01(\r\x12\x0f\n\x07payload\x18\x07 \x01(\x0c\x12\r\n\x05value\x18\x08 \x01(\x01\"\xa2\x01\n\x0c\x44ynamicField\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.openxc.DynamicField.Type\x12\x14\n\x0cstring_value\x18\x02 \x01(\t\x12\x15\n\rnumeric_value\x18\x03 \x01(\x01\x12\x15\n\rboolean_value\x18\x04 \x01(\x08\"%\n\x04Type\x12\n\n\x06STRING\x10\x01\x12\x07\n\x03NUM\x10\x02\x12\x08\n\x04\x42OOL\x10\x03\"g\n\rSimpleMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.openxc.DynamicField\x12#\n\x05\x65vent\x18\x03 \x01(\x0b\x32\x14.openxc.DynamicFieldB\x1c\n\ncom.openxcB\x0e\x42inaryMessages')
 
 
 
@@ -115,11 +115,15 @@ _CONTROLCOMMAND_TYPE = descriptor.EnumDescriptor(
       name='SD_MOUNT_STATUS', index=9, number=10,
       options=None,
       type=None),
+    descriptor.EnumValueDescriptor(
+      name='PLATFORM', index=10, number=11,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=1151,
-  serialized_end=1367,
+  serialized_end=1381,
 )
 
 _DIAGNOSTICCONTROLCOMMAND_ACTION = descriptor.EnumDescriptor(
@@ -139,8 +143,8 @@ _DIAGNOSTICCONTROLCOMMAND_ACTION = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1499,
-  serialized_end=1528,
+  serialized_start=1513,
+  serialized_end=1542,
 )
 
 _PAYLOADFORMATCOMMAND_PAYLOADFORMAT = descriptor.EnumDescriptor(
@@ -164,8 +168,8 @@ _PAYLOADFORMATCOMMAND_PAYLOADFORMAT = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1740,
-  serialized_end=1796,
+  serialized_start=1754,
+  serialized_end=1810,
 )
 
 _NETWORKOPERATORSETTINGS_NETWORKDESCRIPTOR_NETWORKTYPE = descriptor.EnumDescriptor(
@@ -185,8 +189,8 @@ _NETWORKOPERATORSETTINGS_NETWORKDESCRIPTOR_NETWORKTYPE = descriptor.EnumDescript
   ],
   containing_type=None,
   options=None,
-  serialized_start=2180,
-  serialized_end=2213,
+  serialized_start=2194,
+  serialized_end=2227,
 )
 
 _NETWORKOPERATORSETTINGS_OPERATORSELECTMODE = descriptor.EnumDescriptor(
@@ -218,8 +222,8 @@ _NETWORKOPERATORSETTINGS_OPERATORSELECTMODE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2215,
-  serialized_end=2314,
+  serialized_start=2229,
+  serialized_end=2328,
 )
 
 _DIAGNOSTICREQUEST_DECODEDTYPE = descriptor.EnumDescriptor(
@@ -239,8 +243,8 @@ _DIAGNOSTICREQUEST_DECODEDTYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2983,
-  serialized_end=3016,
+  serialized_start=2997,
+  serialized_end=3030,
 )
 
 _DYNAMICFIELD_TYPE = descriptor.EnumDescriptor(
@@ -264,8 +268,8 @@ _DYNAMICFIELD_TYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3308,
-  serialized_end=3345,
+  serialized_start=3322,
+  serialized_end=3359,
 )
 
 
@@ -464,7 +468,7 @@ _CONTROLCOMMAND = descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=590,
-  serialized_end=1367,
+  serialized_end=1381,
 )
 
 
@@ -499,8 +503,8 @@ _DIAGNOSTICCONTROLCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1370,
-  serialized_end=1528,
+  serialized_start=1384,
+  serialized_end=1542,
 )
 
 
@@ -534,8 +538,8 @@ _PASSTHROUGHMODECONTROLCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1530,
-  serialized_end=1591,
+  serialized_start=1544,
+  serialized_end=1605,
 )
 
 
@@ -569,8 +573,8 @@ _ACCEPTANCEFILTERBYPASSCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1593,
-  serialized_end=1653,
+  serialized_start=1607,
+  serialized_end=1667,
 )
 
 
@@ -598,8 +602,8 @@ _PAYLOADFORMATCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1656,
-  serialized_end=1796,
+  serialized_start=1670,
+  serialized_end=1810,
 )
 
 
@@ -626,8 +630,8 @@ _PREDEFINEDOBD2REQUESTSCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1798,
-  serialized_end=1846,
+  serialized_start=1812,
+  serialized_end=1860,
 )
 
 
@@ -662,8 +666,8 @@ _NETWORKOPERATORSETTINGS_NETWORKDESCRIPTOR = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2061,
-  serialized_end=2213,
+  serialized_start=2075,
+  serialized_end=2227,
 )
 
 _NETWORKOPERATORSETTINGS = descriptor.Descriptor(
@@ -704,8 +708,8 @@ _NETWORKOPERATORSETTINGS = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1849,
-  serialized_end=2314,
+  serialized_start=1863,
+  serialized_end=2328,
 )
 
 
@@ -732,8 +736,8 @@ _NETWORKDATASETTINGS = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2316,
-  serialized_end=2350,
+  serialized_start=2330,
+  serialized_end=2364,
 )
 
 
@@ -767,8 +771,8 @@ _SERVERCONNECTSETTINGS = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2352,
-  serialized_end=2403,
+  serialized_start=2366,
+  serialized_end=2417,
 )
 
 
@@ -809,8 +813,8 @@ _MODEMCONFIGURATIONCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2406,
-  serialized_end=2619,
+  serialized_start=2420,
+  serialized_end=2633,
 )
 
 
@@ -837,8 +841,8 @@ _RTCCONFIGURATIONCOMMAND = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2621,
-  serialized_end=2665,
+  serialized_start=2635,
+  serialized_end=2679,
 )
 
 
@@ -879,8 +883,8 @@ _COMMANDRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2667,
-  serialized_end=2760,
+  serialized_start=2681,
+  serialized_end=2774,
 )
 
 
@@ -964,8 +968,8 @@ _DIAGNOSTICREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2763,
-  serialized_end=3016,
+  serialized_start=2777,
+  serialized_end=3030,
 )
 
 
@@ -1041,8 +1045,8 @@ _DIAGNOSTICRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3019,
-  serialized_end=3180,
+  serialized_start=3033,
+  serialized_end=3194,
 )
 
 
@@ -1091,8 +1095,8 @@ _DYNAMICFIELD = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3183,
-  serialized_end=3345,
+  serialized_start=3197,
+  serialized_end=3359,
 )
 
 
@@ -1133,8 +1137,8 @@ _SIMPLEMESSAGE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3347,
-  serialized_end=3450,
+  serialized_start=3361,
+  serialized_end=3464,
 )
 
 _VEHICLEMESSAGE.fields_by_name['type'].enum_type = _VEHICLEMESSAGE_TYPE
