@@ -1,9 +1,10 @@
 # OpenXC Message Format Changelog
 
-## v0.6.1
+## v0.7.0
 
 * Improvement: Increase diagnostic response payload size to accommodate
   multi-frame diagnostic responses.
+* Feature: Added command to get device's platform
 
 ## v0.6.0
 
