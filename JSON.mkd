@@ -275,6 +275,18 @@ If no device ID is available, the response message will be "Unknown".
 **Response**
 
     { "command_response": "device_id", "message": "0012345678", "status": true}
+    
+### Platform Query
+
+The `platform` command triggers the VI to inject a platform identifier into into the outgoing data stream.
+
+**Request**
+
+    { "command": "platform"}
+
+**Response**
+
+    { "command_response": "platform", "message": "FORDBOARD", "status": true}
 
 ### Passthrough CAN Mode
 
