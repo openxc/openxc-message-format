@@ -39,6 +39,7 @@ message ControlCommand {
         MODEM_CONFIGURATION = 8;
         RTC_CONFIGURATION = 9;
         SD_MOUNT_STATUS = 10;
+        PLATFORM = 11;
     }
 
     optional Type type = 1;
