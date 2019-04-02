@@ -81,6 +81,8 @@ The timestamp is in [UNIX time](http://en.wikipedia.org/wiki/Unix_time)
 These signal names are a part of the OpenXC specification, although some
 manufacturers may support custom message names.
 
+*Note: When compiling for platforms using Bluetooth LE, all signals below will have frequencies of 0.5 Hz due to bandwidth limitations.*
+
 * steering_wheel_angle
     * numerical, -600 to +600 degrees
     * 10Hz
