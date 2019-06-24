@@ -152,6 +152,8 @@ typedef struct _openxc_DiagnosticResponse {
     openxc_DiagnosticResponse_payload_t payload;
     bool has_value;
     double value;
+    bool has_str_value;
+    const char* str_value;
 } openxc_DiagnosticResponse;
 
 typedef struct _openxc_DynamicField {
