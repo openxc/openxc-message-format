@@ -150,10 +150,10 @@ typedef struct _openxc_DiagnosticResponse {
     uint32_t negative_response_code;
     bool has_payload;
     openxc_DiagnosticResponse_payload_t payload;
-    bool has_value;
-    double value;
-    bool has_str_value;
-    const char* str_value;
+    bool has_numeric_value;
+    double numeric_value;
+    bool has_string_value;
+    const char* string_value;
 } openxc_DiagnosticResponse;
 
 typedef struct _openxc_DynamicField {
