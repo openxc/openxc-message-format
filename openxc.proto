@@ -105,7 +105,7 @@ message NetworkOperatorSettings {
 }
 
 message NetworkDataSettings {
-	optional string APN = 1;
+	optional string apn = 1;
 }
 
 message ServerConnectSettings {
@@ -136,8 +136,6 @@ message DiagnosticRequest {
     optional uint32 message_id = 2;
     optional uint32 mode = 3;
     optional uint32 pid = 4;
-    // TODO we are capping this at 8 bytes for now - need to change when we
-    // support multi-frame responses
     optional bytes payload = 5;
     optional bool multiple_responses = 6;
     optional double frequency = 7;
@@ -152,10 +150,8 @@ message DiagnosticResponse {
     optional uint32 pid = 4;
     optional bool success = 5;
     optional uint32 negative_response_code = 6;
-    // TODO we are capping this at 8 bytes for now - need to change when we
-    // support multi-frame responses
     optional bytes payload = 7;
-    optional double value = 8;
+    optional DynamicField value = 8;
 }
 
 message DynamicField {
