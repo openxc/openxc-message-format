@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package openxc;
 
@@ -6,31 +6,33 @@ option java_package = "com.openxc";
 option java_outer_classname = "BinaryMessages";
 
 message VehicleMessage {
-    enum Type { CAN = 1; SIMPLE = 2; DIAGNOSTIC = 3; CONTROL_COMMAND = 4;
+    enum Type { UNUSED = 0; CAN = 1; SIMPLE = 2; DIAGNOSTIC = 3; CONTROL_COMMAND = 4;
             COMMAND_RESPONSE = 5; }
 
-    optional Type type = 1;
-    optional CanMessage can_message = 2;
-    optional SimpleMessage simple_message = 3;
-    optional DiagnosticResponse diagnostic_response = 4;
-    optional ControlCommand control_command = 5;
-    optional CommandResponse command_response = 6;
-    optional uint64 timestamp = 7;
+    Type type = 1;
+    CanMessage can_message = 2;
+    SimpleMessage simple_message = 3;
+    DiagnosticResponse diagnostic_response = 4;
+    ControlCommand control_command = 5;
+    CommandResponse command_response = 6;
+    uint64 timestamp = 7;
 }
 
 message CanMessage {
     enum FrameFormat {
+        UNUSED = 0;
         STANDARD = 1;
         EXTENDED = 2;
     }
-    optional int32 bus = 1;
-    optional uint32 id = 2;
-    optional bytes data = 3;
-    optional FrameFormat frame_format = 4;
+    int32 bus = 1;
+    uint32 id = 2;
+    bytes data = 3;
+    FrameFormat frame_format = 4;
 }
 
 message ControlCommand {
     enum Type {
+        UNUSED = 0;
         VERSION = 1;
         DEVICE_ID = 2;
         DIAGNOSTIC = 3;
@@ -44,45 +46,46 @@ message ControlCommand {
         PLATFORM = 11;
     }
 
-    optional Type type = 1;
-    optional DiagnosticControlCommand diagnostic_request = 2;
-    optional PassthroughModeControlCommand passthrough_mode_request = 3;
-    optional AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
-    optional PayloadFormatCommand payload_format_command = 5;
-    optional PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
-    optional ModemConfigurationCommand modem_configuration_command = 7;
-    optional RTCConfigurationCommand rtc_configuration_command = 8;
+    Type type = 1;
+    DiagnosticControlCommand diagnostic_request = 2;
+    PassthroughModeControlCommand passthrough_mode_request = 3;
+    AcceptanceFilterBypassCommand acceptance_filter_bypass_command = 4;
+    PayloadFormatCommand payload_format_command = 5;
+    PredefinedObd2RequestsCommand predefined_obd2_requests_command = 6;
+    ModemConfigurationCommand modem_configuration_command = 7;
+    RTCConfigurationCommand rtc_configuration_command = 8;
 }
 
 message DiagnosticControlCommand {
-    enum Action { ADD = 1; CANCEL = 2; }
+    enum Action { UNUSED = 0; ADD = 1; CANCEL = 2; }
 
-    optional DiagnosticRequest request = 1;
-    optional Action action = 2;
+    DiagnosticRequest request = 1;
+    Action action = 2;
 }
 
 message PassthroughModeControlCommand {
-    optional int32 bus = 1;
-    optional bool enabled = 2;
+    int32 bus = 1;
+    bool enabled = 2;
 }
 
 message AcceptanceFilterBypassCommand {
-    optional int32 bus = 1;
-    optional bool bypass = 2;
+    int32 bus = 1;
+    bool bypass = 2;
 }
 
 message PayloadFormatCommand {
     enum PayloadFormat {
+        UNUSED = 0;
         JSON = 1;
         PROTOBUF = 2;
     	MESSAGEPACK = 3;
     }
 
-    optional PayloadFormat format = 1;
+    PayloadFormat format = 1;
 }
 
 message PredefinedObd2RequestsCommand {
-    optional bool enabled = 1;
+    bool enabled = 1;
 }
 
 message NetworkOperatorSettings {
@@ -98,79 +101,75 @@ message NetworkOperatorSettings {
 			GSM = 0;
 			UTRAN = 2;
 		}
-		optional uint32 PLMN = 1;
-		optional NetworkType networkType = 2;
+		uint32 PLMN = 1;
+		NetworkType networkType = 2;
 	}
-	optional bool allowDataRoaming = 1;
-	optional OperatorSelectMode operatorSelectMode = 2;
-	optional NetworkDescriptor networkDescriptor = 3;
+	bool allowDataRoaming = 1;
+	OperatorSelectMode operatorSelectMode = 2;
+	NetworkDescriptor networkDescriptor = 3;
 }
 
 message NetworkDataSettings {
-	optional string APN = 1;
+	string apn = 1;
 }
 
 message ServerConnectSettings {
-	optional string host = 1;
-	optional uint32 port = 2;
+	string host = 1;
+	uint32 port = 2;
 }
 
 message ModemConfigurationCommand {
-	optional NetworkOperatorSettings networkOperatorSettings = 1;
-	optional NetworkDataSettings networkDataSettings = 2;
-	optional ServerConnectSettings serverConnectSettings = 3;
+	NetworkOperatorSettings networkOperatorSettings = 1;
+	NetworkDataSettings networkDataSettings = 2;
+	ServerConnectSettings serverConnectSettings = 3;
 }
 
 message RTCConfigurationCommand {
-	optional uint32 unix_time = 1;
+	uint32 unix_time = 1;
 }
 
 message CommandResponse {
-    optional ControlCommand.Type type = 1;
-    optional string message = 2;
-    optional bool status = 3;
+    ControlCommand.Type type = 1;
+    string message = 2;
+    bool status = 3;
 }
 
 message DiagnosticRequest {
-    enum DecodedType { NONE = 1; OBD2 = 2; }
+    enum DecodedType { UNUSED = 0; NONE = 1; OBD2 = 2; }
 
-    optional int32 bus = 1;
-    optional uint32 message_id = 2;
-    optional uint32 mode = 3;
-    optional uint32 pid = 4;
-    // TODO we are capping this at 8 bytes for now - need to change when we
-    // support multi-frame responses
-    optional bytes payload = 5;
-    optional bool multiple_responses = 6;
-    optional double frequency = 7;
-    optional string name = 8;
-    optional DecodedType decoded_type = 9;
+    int32 bus = 1;
+    uint32 message_id = 2;
+    uint32 mode = 3;
+    uint32 pid = 4;
+    bytes payload = 5;
+    bool multiple_responses = 6;
+    double frequency = 7;
+    string name = 8;
+    DecodedType decoded_type = 9;
 }
 
 message DiagnosticResponse {
-    optional int32 bus = 1;
-    optional uint32 message_id = 2;
-    optional uint32 mode = 3;
-    optional uint32 pid = 4;
-    optional bool success = 5;
-    optional uint32 negative_response_code = 6;
-    // TODO we are capping this at 8 bytes for now - need to change when we
-    // support multi-frame responses
-    optional bytes payload = 7;
-    optional double value = 8;
+    int32 bus = 1;
+    uint32 message_id = 2;
+    uint32 mode = 3;
+    uint32 pid = 4;
+    bool success = 5;
+    uint32 negative_response_code = 6;
+    bytes payload = 7;
+    DynamicField value = 8;
 }
 
 message DynamicField {
-    enum Type { STRING = 1; NUM = 2; BOOL = 3; }
+    enum Type { UNUSED = 0; STRING = 1; NUM = 2; BOOL = 3; }
 
-    optional Type type = 1;
-    optional string string_value = 2;
-    optional double numeric_value = 3;
-    optional bool boolean_value = 4;
+    Type type = 1;
+    string string_value = 2;
+    double numeric_value = 3;
+    bool boolean_value = 4;
 }
 
 message SimpleMessage {
-    optional string name = 1;
-    optional DynamicField value = 2;
-    optional DynamicField event = 3;
+    string name = 1;
+    DynamicField value = 2;
+    DynamicField event = 3;
 }
