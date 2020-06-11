@@ -21,11 +21,12 @@ typedef enum _openxc_VehicleMessage_Type {
     openxc_VehicleMessage_Type_SIMPLE = 2,
     openxc_VehicleMessage_Type_DIAGNOSTIC = 3,
     openxc_VehicleMessage_Type_CONTROL_COMMAND = 4,
-    openxc_VehicleMessage_Type_COMMAND_RESPONSE = 5
+    openxc_VehicleMessage_Type_COMMAND_RESPONSE = 5,
+    openxc_VehicleMessage_Type_DIAGNOSTIC_STITCH = 6
 } openxc_VehicleMessage_Type;
 #define _openxc_VehicleMessage_Type_MIN openxc_VehicleMessage_Type_UNUSED
-#define _openxc_VehicleMessage_Type_MAX openxc_VehicleMessage_Type_COMMAND_RESPONSE
-#define _openxc_VehicleMessage_Type_ARRAYSIZE ((openxc_VehicleMessage_Type)(openxc_VehicleMessage_Type_COMMAND_RESPONSE+1))
+#define _openxc_VehicleMessage_Type_MAX openxc_VehicleMessage_Type_DIAGNOSTIC_STITCH
+#define _openxc_VehicleMessage_Type_ARRAYSIZE ((openxc_VehicleMessage_Type)(openxc_VehicleMessage_Type_DIAGNOSTIC_STITCH+1))
 
 typedef enum _openxc_CanMessage_FrameFormat {
     openxc_CanMessage_FrameFormat_UNUSED = 0,
@@ -227,6 +228,21 @@ typedef struct _openxc_DiagnosticResponse {
 } openxc_DiagnosticResponse;
 
 
+typedef struct _openxc_DiagnosticStitchResponse {
+    int32_t bus;
+    uint32_t message_id;
+    uint32_t mode;
+    uint32_t pid;
+    bool success;
+    uint32_t negative_response_code;
+    pb_callback_t payload;
+    openxc_DynamicField value;
+    int32_t frame;
+    uint32_t total_size;
+/* @@protoc_insertion_point(struct:openxc_DiagnosticStitchResponse) */
+} openxc_DiagnosticStitchResponse;
+
+
 typedef struct _openxc_NetworkOperatorSettings {
     bool allowDataRoaming;
     openxc_NetworkOperatorSettings_OperatorSelectMode operatorSelectMode;
@@ -271,13 +287,14 @@ typedef struct _openxc_VehicleMessage {
     openxc_DiagnosticResponse diagnostic_response;
     openxc_ControlCommand control_command;
     openxc_CommandResponse command_response;
+    openxc_DiagnosticStitchResponse diagnostic_stitch_response;
     uint64_t timestamp;
 /* @@protoc_insertion_point(struct:openxc_VehicleMessage) */
 } openxc_VehicleMessage;
 
 
 /* Initializer values for message structs */
-#define openxc_VehicleMessage_init_default       {_openxc_VehicleMessage_Type_MIN, openxc_CanMessage_init_default, openxc_SimpleMessage_init_default, openxc_DiagnosticResponse_init_default, openxc_ControlCommand_init_default, openxc_CommandResponse_init_default, 0}
+#define openxc_VehicleMessage_init_default       {_openxc_VehicleMessage_Type_MIN, openxc_CanMessage_init_default, openxc_SimpleMessage_init_default, openxc_DiagnosticResponse_init_default, openxc_ControlCommand_init_default, openxc_CommandResponse_init_default, openxc_DiagnosticStitchResponse_init_default, 0}
 #define openxc_CanMessage_init_default           {0, 0, {0, {0}}, _openxc_CanMessage_FrameFormat_MIN}
 #define openxc_ControlCommand_init_default       {_openxc_ControlCommand_Type_MIN, openxc_DiagnosticControlCommand_init_default, openxc_PassthroughModeControlCommand_init_default, openxc_AcceptanceFilterBypassCommand_init_default, openxc_PayloadFormatCommand_init_default, openxc_PredefinedObd2RequestsCommand_init_default, openxc_ModemConfigurationCommand_init_default, openxc_RTCConfigurationCommand_init_default}
 #define openxc_DiagnosticControlCommand_init_default {openxc_DiagnosticRequest_init_default, _openxc_DiagnosticControlCommand_Action_MIN}
@@ -294,9 +311,10 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_CommandResponse_init_default      {_openxc_ControlCommand_Type_MIN, "", 0}
 #define openxc_DiagnosticRequest_init_default    {0, 0, 0, 0, {0, {0}}, 0, 0, "", _openxc_DiagnosticRequest_DecodedType_MIN}
 #define openxc_DiagnosticResponse_init_default   {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_default}
+#define openxc_DiagnosticStitchResponse_init_default {0, 0, 0, 0, 0, 0, {{NULL}, NULL}, openxc_DynamicField_init_default, 0, 0}
 #define openxc_DynamicField_init_default         {_openxc_DynamicField_Type_MIN, "", 0, 0}
 #define openxc_SimpleMessage_init_default        {"", openxc_DynamicField_init_default, openxc_DynamicField_init_default}
-#define openxc_VehicleMessage_init_zero          {_openxc_VehicleMessage_Type_MIN, openxc_CanMessage_init_zero, openxc_SimpleMessage_init_zero, openxc_DiagnosticResponse_init_zero, openxc_ControlCommand_init_zero, openxc_CommandResponse_init_zero, 0}
+#define openxc_VehicleMessage_init_zero          {_openxc_VehicleMessage_Type_MIN, openxc_CanMessage_init_zero, openxc_SimpleMessage_init_zero, openxc_DiagnosticResponse_init_zero, openxc_ControlCommand_init_zero, openxc_CommandResponse_init_zero, openxc_DiagnosticStitchResponse_init_zero, 0}
 #define openxc_CanMessage_init_zero              {0, 0, {0, {0}}, _openxc_CanMessage_FrameFormat_MIN}
 #define openxc_ControlCommand_init_zero          {_openxc_ControlCommand_Type_MIN, openxc_DiagnosticControlCommand_init_zero, openxc_PassthroughModeControlCommand_init_zero, openxc_AcceptanceFilterBypassCommand_init_zero, openxc_PayloadFormatCommand_init_zero, openxc_PredefinedObd2RequestsCommand_init_zero, openxc_ModemConfigurationCommand_init_zero, openxc_RTCConfigurationCommand_init_zero}
 #define openxc_DiagnosticControlCommand_init_zero {openxc_DiagnosticRequest_init_zero, _openxc_DiagnosticControlCommand_Action_MIN}
@@ -313,6 +331,7 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_CommandResponse_init_zero         {_openxc_ControlCommand_Type_MIN, "", 0}
 #define openxc_DiagnosticRequest_init_zero       {0, 0, 0, 0, {0, {0}}, 0, 0, "", _openxc_DiagnosticRequest_DecodedType_MIN}
 #define openxc_DiagnosticResponse_init_zero      {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_zero}
+#define openxc_DiagnosticStitchResponse_init_zero {0, 0, 0, 0, 0, 0, {{NULL}, NULL}, openxc_DynamicField_init_zero, 0, 0}
 #define openxc_DynamicField_init_zero            {_openxc_DynamicField_Type_MIN, "", 0, 0}
 #define openxc_SimpleMessage_init_zero           {"", openxc_DynamicField_init_zero, openxc_DynamicField_init_zero}
 
@@ -359,6 +378,16 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_DiagnosticResponse_negative_response_code_tag 6
 #define openxc_DiagnosticResponse_payload_tag    7
 #define openxc_DiagnosticResponse_value_tag      8
+#define openxc_DiagnosticStitchResponse_bus_tag  1
+#define openxc_DiagnosticStitchResponse_message_id_tag 2
+#define openxc_DiagnosticStitchResponse_mode_tag 3
+#define openxc_DiagnosticStitchResponse_pid_tag  4
+#define openxc_DiagnosticStitchResponse_success_tag 5
+#define openxc_DiagnosticStitchResponse_negative_response_code_tag 6
+#define openxc_DiagnosticStitchResponse_payload_tag 7
+#define openxc_DiagnosticStitchResponse_value_tag 8
+#define openxc_DiagnosticStitchResponse_frame_tag 9
+#define openxc_DiagnosticStitchResponse_total_size_tag 10
 #define openxc_NetworkOperatorSettings_allowDataRoaming_tag 1
 #define openxc_NetworkOperatorSettings_operatorSelectMode_tag 2
 #define openxc_NetworkOperatorSettings_networkDescriptor_tag 3
@@ -382,7 +411,8 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_VehicleMessage_diagnostic_response_tag 4
 #define openxc_VehicleMessage_control_command_tag 5
 #define openxc_VehicleMessage_command_response_tag 6
-#define openxc_VehicleMessage_timestamp_tag      7
+#define openxc_VehicleMessage_diagnostic_stitch_response_tag 7
+#define openxc_VehicleMessage_timestamp_tag      8
 
 /* Struct field encoding specification for nanopb */
 #define openxc_VehicleMessage_FIELDLIST(X, a) \
@@ -392,7 +422,8 @@ X(a, STATIC, SINGULAR, MESSAGE, simple_message, 3) \
 X(a, STATIC, SINGULAR, MESSAGE, diagnostic_response, 4) \
 X(a, STATIC, SINGULAR, MESSAGE, control_command, 5) \
 X(a, STATIC, SINGULAR, MESSAGE, command_response, 6) \
-X(a, STATIC, SINGULAR, UINT64, timestamp, 7)
+X(a, STATIC, SINGULAR, MESSAGE, diagnostic_stitch_response, 7) \
+X(a, STATIC, SINGULAR, UINT64, timestamp, 8)
 #define openxc_VehicleMessage_CALLBACK NULL
 #define openxc_VehicleMessage_DEFAULT NULL
 #define openxc_VehicleMessage_can_message_MSGTYPE openxc_CanMessage
@@ -400,6 +431,7 @@ X(a, STATIC, SINGULAR, UINT64, timestamp, 7)
 #define openxc_VehicleMessage_diagnostic_response_MSGTYPE openxc_DiagnosticResponse
 #define openxc_VehicleMessage_control_command_MSGTYPE openxc_ControlCommand
 #define openxc_VehicleMessage_command_response_MSGTYPE openxc_CommandResponse
+#define openxc_VehicleMessage_diagnostic_stitch_response_MSGTYPE openxc_DiagnosticStitchResponse
 
 #define openxc_CanMessage_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, INT32, bus, 1) \
@@ -530,6 +562,21 @@ X(a, STATIC, SINGULAR, MESSAGE, value, 8)
 #define openxc_DiagnosticResponse_DEFAULT NULL
 #define openxc_DiagnosticResponse_value_MSGTYPE openxc_DynamicField
 
+#define openxc_DiagnosticStitchResponse_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, INT32, bus, 1) \
+X(a, STATIC, SINGULAR, UINT32, message_id, 2) \
+X(a, STATIC, SINGULAR, UINT32, mode, 3) \
+X(a, STATIC, SINGULAR, UINT32, pid, 4) \
+X(a, STATIC, SINGULAR, BOOL, success, 5) \
+X(a, STATIC, SINGULAR, UINT32, negative_response_code, 6) \
+X(a, CALLBACK, SINGULAR, BYTES, payload, 7) \
+X(a, STATIC, SINGULAR, MESSAGE, value, 8) \
+X(a, STATIC, SINGULAR, INT32, frame, 9) \
+X(a, STATIC, SINGULAR, UINT32, total_size, 10)
+#define openxc_DiagnosticStitchResponse_CALLBACK pb_default_field_callback
+#define openxc_DiagnosticStitchResponse_DEFAULT NULL
+#define openxc_DiagnosticStitchResponse_value_MSGTYPE openxc_DynamicField
+
 #define openxc_DynamicField_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UENUM, type, 1) \
 X(a, STATIC, SINGULAR, STRING, string_value, 2) \
@@ -564,6 +611,7 @@ extern const pb_msgdesc_t openxc_RTCConfigurationCommand_msg;
 extern const pb_msgdesc_t openxc_CommandResponse_msg;
 extern const pb_msgdesc_t openxc_DiagnosticRequest_msg;
 extern const pb_msgdesc_t openxc_DiagnosticResponse_msg;
+extern const pb_msgdesc_t openxc_DiagnosticStitchResponse_msg;
 extern const pb_msgdesc_t openxc_DynamicField_msg;
 extern const pb_msgdesc_t openxc_SimpleMessage_msg;
 
@@ -585,11 +633,12 @@ extern const pb_msgdesc_t openxc_SimpleMessage_msg;
 #define openxc_CommandResponse_fields &openxc_CommandResponse_msg
 #define openxc_DiagnosticRequest_fields &openxc_DiagnosticRequest_msg
 #define openxc_DiagnosticResponse_fields &openxc_DiagnosticResponse_msg
+#define openxc_DiagnosticStitchResponse_fields &openxc_DiagnosticStitchResponse_msg
 #define openxc_DynamicField_fields &openxc_DynamicField_msg
 #define openxc_SimpleMessage_fields &openxc_SimpleMessage_msg
 
 /* Maximum encoded size of messages (where known) */
-#define openxc_VehicleMessage_size               1366
+/* openxc_VehicleMessage_size depends on runtime parameters */
 #define openxc_CanMessage_size                   29
 #define openxc_ControlCommand_size               342
 #define openxc_DiagnosticControlCommand_size     67
@@ -606,6 +655,7 @@ extern const pb_msgdesc_t openxc_SimpleMessage_msg;
 #define openxc_CommandResponse_size              134
 #define openxc_DiagnosticRequest_size            63
 #define openxc_DiagnosticResponse_size           441
+/* openxc_DiagnosticStitchResponse_size depends on runtime parameters */
 #define openxc_DynamicField_size                 143
 #define openxc_SimpleMessage_size                393
 
