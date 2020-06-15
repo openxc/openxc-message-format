@@ -228,6 +228,7 @@ typedef struct _openxc_DiagnosticResponse {
 } openxc_DiagnosticResponse;
 
 
+typedef PB_BYTES_ARRAY_T(14) openxc_DiagnosticStitchResponse_payload_t;
 typedef struct _openxc_DiagnosticStitchResponse {
     int32_t bus;
     uint32_t message_id;
@@ -235,7 +236,7 @@ typedef struct _openxc_DiagnosticStitchResponse {
     uint32_t pid;
     bool success;
     uint32_t negative_response_code;
-    pb_callback_t payload;
+    openxc_DiagnosticStitchResponse_payload_t payload;
     openxc_DynamicField value;
     int32_t frame;
     uint32_t total_size;
@@ -311,7 +312,7 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_CommandResponse_init_default      {_openxc_ControlCommand_Type_MIN, "", 0}
 #define openxc_DiagnosticRequest_init_default    {0, 0, 0, 0, {0, {0}}, 0, 0, "", _openxc_DiagnosticRequest_DecodedType_MIN}
 #define openxc_DiagnosticResponse_init_default   {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_default}
-#define openxc_DiagnosticStitchResponse_init_default {0, 0, 0, 0, 0, 0, {{NULL}, NULL}, openxc_DynamicField_init_default, 0, 0}
+#define openxc_DiagnosticStitchResponse_init_default {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_default, 0, 0}
 #define openxc_DynamicField_init_default         {_openxc_DynamicField_Type_MIN, "", 0, 0}
 #define openxc_SimpleMessage_init_default        {"", openxc_DynamicField_init_default, openxc_DynamicField_init_default}
 #define openxc_VehicleMessage_init_zero          {_openxc_VehicleMessage_Type_MIN, openxc_CanMessage_init_zero, openxc_SimpleMessage_init_zero, openxc_DiagnosticResponse_init_zero, openxc_ControlCommand_init_zero, openxc_CommandResponse_init_zero, openxc_DiagnosticStitchResponse_init_zero, 0}
@@ -331,7 +332,7 @@ typedef struct _openxc_VehicleMessage {
 #define openxc_CommandResponse_init_zero         {_openxc_ControlCommand_Type_MIN, "", 0}
 #define openxc_DiagnosticRequest_init_zero       {0, 0, 0, 0, {0, {0}}, 0, 0, "", _openxc_DiagnosticRequest_DecodedType_MIN}
 #define openxc_DiagnosticResponse_init_zero      {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_zero}
-#define openxc_DiagnosticStitchResponse_init_zero {0, 0, 0, 0, 0, 0, {{NULL}, NULL}, openxc_DynamicField_init_zero, 0, 0}
+#define openxc_DiagnosticStitchResponse_init_zero {0, 0, 0, 0, 0, 0, {0, {0}}, openxc_DynamicField_init_zero, 0, 0}
 #define openxc_DynamicField_init_zero            {_openxc_DynamicField_Type_MIN, "", 0, 0}
 #define openxc_SimpleMessage_init_zero           {"", openxc_DynamicField_init_zero, openxc_DynamicField_init_zero}
 
@@ -569,11 +570,11 @@ X(a, STATIC, SINGULAR, UINT32, mode, 3) \
 X(a, STATIC, SINGULAR, UINT32, pid, 4) \
 X(a, STATIC, SINGULAR, BOOL, success, 5) \
 X(a, STATIC, SINGULAR, UINT32, negative_response_code, 6) \
-X(a, CALLBACK, SINGULAR, BYTES, payload, 7) \
+X(a, STATIC, SINGULAR, BYTES, payload, 7) \
 X(a, STATIC, SINGULAR, MESSAGE, value, 8) \
 X(a, STATIC, SINGULAR, INT32, frame, 9) \
 X(a, STATIC, SINGULAR, UINT32, total_size, 10)
-#define openxc_DiagnosticStitchResponse_CALLBACK pb_default_field_callback
+#define openxc_DiagnosticStitchResponse_CALLBACK NULL
 #define openxc_DiagnosticStitchResponse_DEFAULT NULL
 #define openxc_DiagnosticStitchResponse_value_MSGTYPE openxc_DynamicField
 
@@ -638,7 +639,7 @@ extern const pb_msgdesc_t openxc_SimpleMessage_msg;
 #define openxc_SimpleMessage_fields &openxc_SimpleMessage_msg
 
 /* Maximum encoded size of messages (where known) */
-/* openxc_VehicleMessage_size depends on runtime parameters */
+#define openxc_VehicleMessage_size               1585
 #define openxc_CanMessage_size                   29
 #define openxc_ControlCommand_size               342
 #define openxc_DiagnosticControlCommand_size     67
@@ -655,7 +656,7 @@ extern const pb_msgdesc_t openxc_SimpleMessage_msg;
 #define openxc_CommandResponse_size              134
 #define openxc_DiagnosticRequest_size            63
 #define openxc_DiagnosticResponse_size           441
-/* openxc_DiagnosticStitchResponse_size depends on runtime parameters */
+#define openxc_DiagnosticStitchResponse_size     216
 #define openxc_DynamicField_size                 143
 #define openxc_SimpleMessage_size                393
 
