@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package openxc;
 
 option java_package = "com.openxc";
