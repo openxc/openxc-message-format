@@ -249,7 +249,7 @@ a "frame" and a "total_size" field.
       "value": 4660}
 
 **frame** - A zero based index indicating which sequnential block for the
-    payload segment
+    payload segment,  A "-1" will denote that this is the last frame.
 
 **total_size** - The total size in bytes of all payload segments in this
     chain of response segments.
@@ -258,7 +258,7 @@ a "frame" and a "total_size" field.
     binary bytes of the payload.  Each payload will be preficed with a "0x"
 
 Here is an example 2 part response for a diagnostic request of message:0x7d0,
-mode:0x22, and pid:0xde00
+mode:0x22, and pid:0xde00:
 
     {"frame":0,
       "message_id":2000,
