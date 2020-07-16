@@ -324,6 +324,19 @@ If no device ID is available, the response message will be "Unknown".
 **Response**
 
     { "command_response": "device_id", "message": "0012345678", "status": true}
+
+### VIN Query
+
+The `get_vin` command triggers the VI to injest a unique vehicle VIN.
+
+**Request**
+
+    { "command": "get_vin"}
+
+**Response**
+
+    { "command_response": "device_id",
+    "message": "00000000123456789", "status": true}
     
 ### Platform Query
 
