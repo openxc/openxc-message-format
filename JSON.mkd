@@ -313,7 +313,7 @@ response into the outgoing data stream.
 ### Device ID Query
 
 The `device_id` command triggers the VI to inject a unique device ID (e.g. the
-MAC address of an included Bluetooth module) into into the outgoing data stream.
+MAC address of an included Bluetooth module) into the outgoing data stream.
 
 If no device ID is available, the response message will be "Unknown".
 
@@ -327,7 +327,8 @@ If no device ID is available, the response message will be "Unknown".
 
 ### VIN Query
 
-The `get_vin` command triggers the VI to injest a unique vehicle VIN.
+The `get_vin` command triggers the VI
+get the VIN and inject it into the outgoing data stream.
 
 **Request**
 
@@ -335,12 +336,12 @@ The `get_vin` command triggers the VI to injest a unique vehicle VIN.
 
 **Response**
 
-    { "command_response": "device_id",
+    { "command_response": "get_vin",
     "message": "00000000123456789", "status": true}
     
 ### Platform Query
 
-The `platform` command triggers the VI to inject a platform identifier into into the outgoing data stream.
+The `platform` command triggers the VI to inject a platform identifier into the outgoing data stream.
 
 **Request**
 
