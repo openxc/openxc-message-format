@@ -1,7 +1,8 @@
 openxc.SimpleMessage.name max_size:100
-openxc.DynamicField.string_value max_size:100
+openxc.DynamicField.string_value max_size:128
 openxc.CommandResponse.message max_size:128
 openxc.DiagnosticResponse.payload max_size:255
+openxc.DiagnosticStitchResponse.payload max_size:14
 openxc.DiagnosticRequest.name max_size:10
 openxc.DiagnosticRequest.payload max_size:8
 openxc.CanMessage.data max_size:8

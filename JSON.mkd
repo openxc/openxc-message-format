@@ -232,6 +232,55 @@ The response to a simple PID request would look like this:
 
     {"success": true, "bus": 1, "message_id": 1234, "mode": 1, "pid": 5, "payload": "0x2"}
 
+### Multi-frame Responses
+
+For larger Diagnostic Response payloads, the response will be returned in multiple
+messages.   In such a case, there will be two addition fields in the response,
+a "frame" and a "total_size" field.
+
+    {"bus": 1,
+      "frame": 0,
+      "message_id": 1234,
+      "mode": 1,
+      "pid": 5,
+      "success": true,
+      "payload": "0x1234",
+      "total_size": 24,
+      "value": 4660}
+
+**frame** - A zero based index indicating which sequnential block for the
+    payload segment,  A "-1" will denote that this is the last frame.
+
+**total_size** - The total size in bytes of all payload segments in this
+    chain of response segments.
+
+**payload** - The payload will be returned as Hexidecimal value representing the
+    binary bytes of the payload.  Each payload will be preficed with a "0x"
+
+Here is an example 2 part response for a diagnostic request of message:0x7d0,
+mode:0x22, and pid:0xde00:
+
+    {"frame":0,
+      "message_id":2000,
+      "bus":1,
+      "mode":34,
+      "total_size":10,
+      "pid":34,
+      "value":0,
+      "payload":"0x62DE00222a04"}
+
+    {"frame":-1,
+      "message_id":2000,
+      "bus":1,
+      "mode":34,
+      "total_size":10,
+      "pid":34,
+      "value":0,
+      "payload":"0x03000AC800008A"}
+
+Note: There are 3 leading bytes of meta data at the start of the payload that
+contain the pid, the mode and a bit field containing the size of the response.
+
 ## Commands
 
 In addition to the `diagnostic_request` command described earlier, there are

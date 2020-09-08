@@ -147,6 +147,10 @@ manufacturers may support custom message names.
 * longitude
     * numerical, -179.0 to 179.0 degrees with standard GPS accuracy
     * 1Hz
+* button_event
+    * Value is State: left, right, up, down, ok.
+    * Event is State: idle, pressed, released, held_short, held_long, stuck
+    * (The buttons this message refer to are highly dependent on the specific vehicle, but if it's supported, try the steering wheel buttons.)
 
 ## Signals from Diagnostic Messages
 
