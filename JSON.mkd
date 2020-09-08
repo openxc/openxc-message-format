@@ -261,7 +261,7 @@ Here is an example 2 part response for a diagnostic request of message:0x7d0,
 mode:0x22, and pid:0xde00:
 
     {"frame":0,
-      "message_id":2000,
+      "id":2000,
       "bus":1,
       "mode":34,
       "total_size":10,
@@ -270,7 +270,7 @@ mode:0x22, and pid:0xde00:
       "payload":"0x62DE00222a04"}
 
     {"frame":-1,
-      "message_id":2000,
+      "id":2000,
       "bus":1,
       "mode":34,
       "total_size":10,
