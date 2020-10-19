@@ -67,12 +67,9 @@ typedef enum _openxc_DiagnosticControlCommand_Action {
 typedef enum _openxc_PayloadFormatCommand_PayloadFormat {
     openxc_PayloadFormatCommand_PayloadFormat_UNUSED = 0,
     openxc_PayloadFormatCommand_PayloadFormat_JSON = 1,
-    openxc_PayloadFormatCommand_PayloadFormat_PROTOBUF = 2,
-    openxc_PayloadFormatCommand_PayloadFormat_MESSAGEPACK = 3
+    openxc_PayloadFormatCommand_PayloadFormat_PROTOBUF = 2
 } openxc_PayloadFormatCommand_PayloadFormat;
 #define _openxc_PayloadFormatCommand_PayloadFormat_MIN openxc_PayloadFormatCommand_PayloadFormat_UNUSED
-#define _openxc_PayloadFormatCommand_PayloadFormat_MAX openxc_PayloadFormatCommand_PayloadFormat_MESSAGEPACK
-#define _openxc_PayloadFormatCommand_PayloadFormat_ARRAYSIZE ((openxc_PayloadFormatCommand_PayloadFormat)(openxc_PayloadFormatCommand_PayloadFormat_MESSAGEPACK+1))
 
 typedef enum _openxc_NetworkOperatorSettings_OperatorSelectMode {
     openxc_NetworkOperatorSettings_OperatorSelectMode_AUTOMATIC = 0,
