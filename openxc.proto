@@ -79,7 +79,6 @@ message PayloadFormatCommand {
         UNUSED = 0;
         JSON = 1;
         PROTOBUF = 2;
-    	MESSAGEPACK = 3;
     }
 
     PayloadFormat format = 1;
