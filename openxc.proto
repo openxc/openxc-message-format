@@ -44,6 +44,7 @@ message ControlCommand {
         RTC_CONFIGURATION = 9;
         SD_MOUNT_STATUS = 10;
         PLATFORM = 11;
+        GET_VIN = 12;
     }
 
     Type type = 1;
