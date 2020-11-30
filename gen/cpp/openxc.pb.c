@@ -59,9 +59,6 @@ PB_BIND(openxc_DiagnosticRequest, openxc_DiagnosticRequest, AUTO)
 PB_BIND(openxc_DiagnosticResponse, openxc_DiagnosticResponse, 2)
 
 
-PB_BIND(openxc_DiagnosticStitchResponse, openxc_DiagnosticStitchResponse, AUTO)
-
-
 PB_BIND(openxc_DynamicField, openxc_DynamicField, AUTO)
 
 
