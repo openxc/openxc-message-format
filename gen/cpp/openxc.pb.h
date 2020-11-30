@@ -48,11 +48,12 @@ typedef enum _openxc_ControlCommand_Type {
     openxc_ControlCommand_Type_MODEM_CONFIGURATION = 8,
     openxc_ControlCommand_Type_RTC_CONFIGURATION = 9,
     openxc_ControlCommand_Type_SD_MOUNT_STATUS = 10,
-    openxc_ControlCommand_Type_PLATFORM = 11
+    openxc_ControlCommand_Type_PLATFORM = 11,
+    openxc_ControlCommand_Type_GET_VIN = 12
 } openxc_ControlCommand_Type;
 #define _openxc_ControlCommand_Type_MIN openxc_ControlCommand_Type_UNUSED
-#define _openxc_ControlCommand_Type_MAX openxc_ControlCommand_Type_PLATFORM
-#define _openxc_ControlCommand_Type_ARRAYSIZE ((openxc_ControlCommand_Type)(openxc_ControlCommand_Type_PLATFORM+1))
+#define _openxc_ControlCommand_Type_MAX openxc_ControlCommand_Type_GET_VIN
+#define _openxc_ControlCommand_Type_ARRAYSIZE ((openxc_ControlCommand_Type)(openxc_ControlCommand_Type_GET_VIN+1))
 
 typedef enum _openxc_DiagnosticControlCommand_Action {
     openxc_DiagnosticControlCommand_Action_UNUSED = 0,
@@ -69,6 +70,8 @@ typedef enum _openxc_PayloadFormatCommand_PayloadFormat {
     openxc_PayloadFormatCommand_PayloadFormat_PROTOBUF = 2
 } openxc_PayloadFormatCommand_PayloadFormat;
 #define _openxc_PayloadFormatCommand_PayloadFormat_MIN openxc_PayloadFormatCommand_PayloadFormat_UNUSED
+#define _openxc_PayloadFormatCommand_PayloadFormat_MAX openxc_PayloadFormatCommand_PayloadFormat_PROTOBUF
+#define _openxc_PayloadFormatCommand_PayloadFormat_ARRAYSIZE ((openxc_PayloadFormatCommand_PayloadFormat)(openxc_PayloadFormatCommand_PayloadFormat_PROTOBUF+1))
 
 typedef enum _openxc_NetworkOperatorSettings_OperatorSelectMode {
     openxc_NetworkOperatorSettings_OperatorSelectMode_AUTOMATIC = 0,
