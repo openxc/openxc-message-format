@@ -1,6 +1,6 @@
 # OpenXC Message Format Specification
 
-Version: v0.7.0-dev
+Version: v0.8.0
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
@@ -161,7 +161,7 @@ found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01)
 License
 =======
 
-Copyright (c) 2012-2014 Ford Motor Company
+Copyright (c) 2012-2021 Ford Motor Company
 
 Licensed under the BSD license.
 
