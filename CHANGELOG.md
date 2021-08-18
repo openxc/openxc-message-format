@@ -4,6 +4,7 @@
 
 * Feature: Support for GET_VIN command
 * Improvements: Diagnostic Request structure enhanced to handle stitch frames
+* Removed: MessagePack encoding removed
 
 ## v0.7.0-dev
 
