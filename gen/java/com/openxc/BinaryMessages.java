@@ -12916,6 +12916,16 @@ public final class BinaryMessages {
      * <code>.openxc.DynamicField value = 8;</code>
      */
     com.openxc.BinaryMessages.DynamicFieldOrBuilder getValueOrBuilder();
+
+    /**
+     * <code>int32 frame = 9;</code>
+     */
+    int getFrame();
+
+    /**
+     * <code>uint32 total_size = 10;</code>
+     */
+    int getTotalSize();
   }
   /**
    * Protobuf type {@code openxc.DiagnosticResponse}
@@ -12936,6 +12946,8 @@ public final class BinaryMessages {
       success_ = false;
       negativeResponseCode_ = 0;
       payload_ = com.google.protobuf.ByteString.EMPTY;
+      frame_ = 0;
+      totalSize_ = 0;
     }
 
     @java.lang.Override
@@ -13009,6 +13021,16 @@ public final class BinaryMessages {
                 value_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 72: {
+
+              frame_ = input.readInt32();
+              break;
+            }
+            case 80: {
+
+              totalSize_ = input.readUInt32();
               break;
             }
           }
@@ -13118,6 +13140,24 @@ public final class BinaryMessages {
       return getValue();
     }
 
+    public static final int FRAME_FIELD_NUMBER = 9;
+    private int frame_;
+    /**
+     * <code>int32 frame = 9;</code>
+     */
+    public int getFrame() {
+      return frame_;
+    }
+
+    public static final int TOTAL_SIZE_FIELD_NUMBER = 10;
+    private int totalSize_;
+    /**
+     * <code>uint32 total_size = 10;</code>
+     */
+    public int getTotalSize() {
+      return totalSize_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -13153,6 +13193,12 @@ public final class BinaryMessages {
       }
       if (value_ != null) {
         output.writeMessage(8, getValue());
+      }
+      if (frame_ != 0) {
+        output.writeInt32(9, frame_);
+      }
+      if (totalSize_ != 0) {
+        output.writeUInt32(10, totalSize_);
       }
     }
 
@@ -13193,6 +13239,14 @@ public final class BinaryMessages {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, getValue());
       }
+      if (frame_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, frame_);
+      }
+      if (totalSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, totalSize_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -13228,6 +13282,10 @@ public final class BinaryMessages {
         result = result && getValue()
             .equals(other.getValue());
       }
+      result = result && (getFrame()
+          == other.getFrame());
+      result = result && (getTotalSize()
+          == other.getTotalSize());
       return result;
     }
 
@@ -13257,6 +13315,10 @@ public final class BinaryMessages {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getValue().hashCode();
       }
+      hash = (37 * hash) + FRAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFrame();
+      hash = (37 * hash) + TOTAL_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getTotalSize();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -13395,6 +13457,10 @@ public final class BinaryMessages {
           value_ = null;
           valueBuilder_ = null;
         }
+        frame_ = 0;
+
+        totalSize_ = 0;
+
         return this;
       }
 
@@ -13429,6 +13495,8 @@ public final class BinaryMessages {
         } else {
           result.value_ = valueBuilder_.build();
         }
+        result.frame_ = frame_;
+        result.totalSize_ = totalSize_;
         onBuilt();
         return result;
       }
@@ -13493,6 +13561,12 @@ public final class BinaryMessages {
         }
         if (other.hasValue()) {
           mergeValue(other.getValue());
+        }
+        if (other.getFrame() != 0) {
+          setFrame(other.getFrame());
+        }
+        if (other.getTotalSize() != 0) {
+          setTotalSize(other.getTotalSize());
         }
         onChanged();
         return this;
@@ -13820,6 +13894,58 @@ public final class BinaryMessages {
           value_ = null;
         }
         return valueBuilder_;
+      }
+
+      private int frame_ ;
+      /**
+       * <code>int32 frame = 9;</code>
+       */
+      public int getFrame() {
+        return frame_;
+      }
+      /**
+       * <code>int32 frame = 9;</code>
+       */
+      public Builder setFrame(int value) {
+        
+        frame_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 frame = 9;</code>
+       */
+      public Builder clearFrame() {
+        
+        frame_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int totalSize_ ;
+      /**
+       * <code>uint32 total_size = 10;</code>
+       */
+      public int getTotalSize() {
+        return totalSize_;
+      }
+      /**
+       * <code>uint32 total_size = 10;</code>
+       */
+      public Builder setTotalSize(int value) {
+        
+        totalSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 total_size = 10;</code>
+       */
+      public Builder clearTotalSize() {
+        
+        totalSize_ = 0;
+        onChanged();
+        return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -15783,20 +15909,21 @@ public final class BinaryMessages {
       "\010\022\021\n\tfrequency\030\007 \001(\001\022\014\n\004name\030\010 \001(\t\022;\n\014de" +
       "coded_type\030\t \001(\0162%.openxc.DiagnosticRequ" +
       "est.DecodedType\"-\n\013DecodedType\022\n\n\006UNUSED" +
-      "\020\000\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\267\001\n\022DiagnosticRes" +
+      "\020\000\022\010\n\004NONE\020\001\022\010\n\004OBD2\020\002\"\332\001\n\022DiagnosticRes" +
       "ponse\022\013\n\003bus\030\001 \001(\005\022\022\n\nmessage_id\030\002 \001(\r\022\014" +
       "\n\004mode\030\003 \001(\r\022\013\n\003pid\030\004 \001(\r\022\017\n\007success\030\005 \001",
       "(\010\022\036\n\026negative_response_code\030\006 \001(\r\022\017\n\007pa" +
       "yload\030\007 \001(\014\022#\n\005value\030\010 \001(\0132\024.openxc.Dyna" +
-      "micField\"\256\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162" +
-      "\031.openxc.DynamicField.Type\022\024\n\014string_val" +
-      "ue\030\002 \001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboole" +
-      "an_value\030\004 \001(\010\"1\n\004Type\022\n\n\006UNUSED\020\000\022\n\n\006ST" +
-      "RING\020\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"g\n\rSimpleMessa" +
-      "ge\022\014\n\004name\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.openxc" +
-      ".DynamicField\022#\n\005event\030\003 \001(\0132\024.openxc.Dy" +
-      "namicFieldB\034\n\ncom.openxcB\016BinaryMessages",
-      "b\006proto3"
+      "micField\022\r\n\005frame\030\t \001(\005\022\022\n\ntotal_size\030\n " +
+      "\001(\r\"\256\001\n\014DynamicField\022\'\n\004type\030\001 \001(\0162\031.ope" +
+      "nxc.DynamicField.Type\022\024\n\014string_value\030\002 " +
+      "\001(\t\022\025\n\rnumeric_value\030\003 \001(\001\022\025\n\rboolean_va" +
+      "lue\030\004 \001(\010\"1\n\004Type\022\n\n\006UNUSED\020\000\022\n\n\006STRING\020" +
+      "\001\022\007\n\003NUM\020\002\022\010\n\004BOOL\020\003\"g\n\rSimpleMessage\022\014\n" +
+      "\004name\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.openxc.Dyna" +
+      "micField\022#\n\005event\030\003 \001(\0132\024.openxc.Dynamic",
+      "FieldB\034\n\ncom.openxcB\016BinaryMessagesb\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -15911,7 +16038,7 @@ public final class BinaryMessages {
     internal_static_openxc_DiagnosticResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_openxc_DiagnosticResponse_descriptor,
-        new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Success", "NegativeResponseCode", "Payload", "Value", });
+        new java.lang.String[] { "Bus", "MessageId", "Mode", "Pid", "Success", "NegativeResponseCode", "Payload", "Value", "Frame", "TotalSize", });
     internal_static_openxc_DynamicField_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_openxc_DynamicField_fieldAccessorTable = new

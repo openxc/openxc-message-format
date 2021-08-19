@@ -221,19 +221,16 @@ type PayloadFormatCommand_PayloadFormat int32
 const (
 	PayloadFormatCommand_JSON        PayloadFormatCommand_PayloadFormat = 1
 	PayloadFormatCommand_PROTOBUF    PayloadFormatCommand_PayloadFormat = 2
-	PayloadFormatCommand_MESSAGEPACK PayloadFormatCommand_PayloadFormat = 3
 )
 
 var PayloadFormatCommand_PayloadFormat_name = map[int32]string{
 	1: "JSON",
 	2: "PROTOBUF",
-	3: "MESSAGEPACK",
 }
 
 var PayloadFormatCommand_PayloadFormat_value = map[string]int32{
 	"JSON":        1,
 	"PROTOBUF":    2,
-	"MESSAGEPACK": 3,
 }
 
 func (x PayloadFormatCommand_PayloadFormat) Enum() *PayloadFormatCommand_PayloadFormat {

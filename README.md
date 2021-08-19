@@ -1,6 +1,6 @@
 # OpenXC Message Format Specification
 
-Version: v0.7.0-dev
+Version: v0.8.0
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
@@ -29,21 +29,6 @@ method (any protobuf library should support this).
 
 The binary format is best if you need to maximize the amount of data that can be
 sent from the VI, trading off flexibility for efficiency.
-
-## Message Pack
-MessagePack is an efficient binary serialization format. It lets you exchange data
-among multiple languages like JSON, but it's faster and smaller. Small integers are 
-encoded into a single byte, and typical short strings require only one extra byte
-in addition to the strings themselves
-
-For protocol specification visit:
-https://github.com/msgpack/msgpack/blob/master/spec.md
-
-We are using the following lib:
-https://github.com/camgunz/cmp
-
-MessagePack provides a binary alternative to ProtoBuf. There are pros & cons to each 
-so you can decide what works best for your project.
 
 ## Trace File Format
 
@@ -176,7 +161,7 @@ found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01)
 License
 =======
 
-Copyright (c) 2012-2014 Ford Motor Company
+Copyright (c) 2012-2021 Ford Motor Company
 
 Licensed under the BSD license.
 
