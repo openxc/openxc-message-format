@@ -1,6 +1,6 @@
 # OpenXC Message Format Specification
 
-Version: v0.8.0
+Version: v0.9.0
 
 This specification is a part of the [OpenXC platform][OpenXC].
 
@@ -139,7 +139,7 @@ manufacturers may support custom message names.
 
 ## Signals from Diagnostic Messages
 
-This set of signals is often retreived from OBD-II requests. The units can be
+This set of signals is often retrived from OBD-II requests. The units can be
 found in the [OBD-II standard](http://en.wikipedia.org/wiki/OBD-II_PIDs#Mode_01).
 
 * engine_load
@@ -166,3 +166,4 @@ Copyright (c) 2012-2021 Ford Motor Company
 Licensed under the BSD license.
 
 [OpenXC]: http://openxcplatform.com
+
